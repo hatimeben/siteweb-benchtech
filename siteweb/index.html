@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BenchTech | shaping tomorrow, today</title>
     <meta name="description" content="Cabinet d'expertise en IA, Business Intelligence et centre de formation informatique de référence à Casablanca.">
-    <!-- Polices : Inter pour la modernité et Montserrat pour le caractère institutionnel -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- Header -->
-    <header class="main-header">
-        <nav class="container nav-flex">
+    <header>
+        <nav class="container">
             <div class="logo">
                 <span class="monogram">BT</span>
                 <span class="brand-name">BenchTech</span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
                 <li><a href="#expertise">Expertise</a></li>
@@ -30,284 +33,135 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="container hero-grid">
+            <div class="container">
                 <div class="hero-content">
                     <p class="slogan">« shaping tomorrow, today »</p>
-                    <h1>L'Alliance de l'Expertise Data et de la Transmission</h1>
+                    <h1>L'Alliance de l'Expertise Data et de la Rigueur Académique</h1>
                     <p class="hero-description">
-                        BenchTech accompagne les organisations dans leur transformation numérique par le déploiement d'architectures d'IA et de Business Intelligence, tout en formant les talents de demain aux rigueurs de l'informatique académique.
+                        BenchTech accompagne les organisations dans leur transformation numérique par le déploiement d'architectures d'IA et de Business Intelligence, tout en formant les talents de demain aux rigueurs de l'informatique fondamentale.
                     </p>
                     <div class="hero-actions">
-                        <a href="#expertise" class="btn btn-gold">Découvrir nos pôles</a>
-                        <a href="#formation" class="btn btn-outline">Consulter l'Academy</a>
+                        <a href="#expertise" class="btn btn-primary">Nos Expertises</a>
+                        <a href="#formation" class="btn btn-outline">L'Academy</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section Conseil / Expertise -->
-        <section id="expertise" class="section-padding">
+        <!-- Section Expertise -->
+        <section id="expertise" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-title">Pôle Conseil</span>
-                    <h2>Business Intelligence & Data</h2>
+                    <h2>Conseil en Technologies</h2>
+                    <div class="divider"></div>
                 </div>
-                <div class="grid-expertise">
-                    <div class="expertise-card">
-                        <div class="icon-box"><i class="fas fa-layer-group"></i></div>
-                        <h3>Architecture de Données</h3>
-                        <p>Conception et déploiement d'écosystèmes robustes pour une donnée fiable, structurée et sécurisée.</p>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Business Intelligence</h3>
+                        <p>Intégration de solutions Power BI pour transformer vos données en décisions stratégiques.</p>
                     </div>
-                    <div class="expertise-card">
-                        <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
-                        <h3>Microsoft Power BI</h3>
-                        <p>Intégration de tableaux de bord décisionnels avancés pour piloter votre performance en temps réel.</p>
-                    </div>
-                    <div class="expertise-card">
-                        <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
                         <h3>Intelligence Artificielle</h3>
-                        <p>Automatisation et modèles prédictifs au service de votre agilité opérationnelle.</p>
+                        <p>Conception de modèles prédictifs et automatisation intelligente pour votre agilité opérationnelle.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-database"></i></div>
+                        <h3>Architecture Data</h3>
+                        <p>Mise en place d'écosystèmes de données robustes, sécurisés et évolutifs.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section Formation / Academy -->
-        <section id="formation" class="section-padding bg-light">
+        <!-- Section Formation -->
+        <section id="formation" class="section bg-light">
             <div class="container">
                 <div class="section-header">
-                    <span class="sub-title">BenchTech Academy</span>
-                    <h2>Cursus Professionnels</h2>
+                    <h2>Formation Académique</h2>
+                    <div class="divider"></div>
                 </div>
-                <div class="grid-academy">
-                    <div class="academy-card">
-                        <div class="card-image bg-data"></div>
-                        <div class="card-content">
-                            <h3>Bases de Données</h3>
-                            <p>Maîtrisez SQL et la modélisation relationnelle pour structurer le savoir.</p>
-                            <span class="duration">Format intensif</span>
-                        </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-code"></i></div>
+                        <h3>Algorithmique</h3>
+                        <p>Maîtrise des structures de données et de la logique de programmation avancée.</p>
                     </div>
-                    <div class="academy-card">
-                        <div class="card-image bg-algo"></div>
-                        <div class="card-content">
-                            <h3>Algorithmique</h3>
-                            <p>Développer une logique de résolution de problèmes complexe et optimisée.</p>
-                            <span class="duration">Fondamentaux & Avancé</span>
-                        </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                        <h3>Environnements UNIX</h3>
+                        <p>Administration système et scripting pour une infrastructure performante.</p>
                     </div>
-                    <div class="academy-card">
-                        <div class="card-image bg-unix"></div>
-                        <div class="card-content">
-                            <h3>Environnements UNIX</h3>
-                            <p>Dompter la puissance des systèmes pour une infrastructure agile.</p>
-                            <span class="duration">Administration & Scripting</span>
-                        </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-server"></i></div>
+                        <h3>Bases de Données</h3>
+                        <p>Modélisation relationnelle et optimisation SQL pour la gestion du savoir.</p>
+                    </div>
+                </div>
+                
+                <!-- Focus Formation Power BI -->
+                <div class="special-promo">
+                    <div class="promo-content">
+                        <span class="badge">Session en cours</span>
+                        <h3>Formation Power BI Expert</h3>
+                        <p>Une immersion pratique tous les samedis matins pendant 1 mois.</p>
+                        <ul class="promo-details">
+                            <li><i class="fas fa-check-circle"></i> Non-certifiante - Focus Compétences</li>
+                            <li><i class="fas fa-check-circle"></i> Études de cas réels</li>
+                        </ul>
+                        <a href="tel:+212662197679" class="promo-contact"><i class="fas fa-phone"></i> +212 06.62.19.76.79</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Section Contact -->
-        <section id="contact" class="section-padding">
-            <div class="container contact-container">
-                <div class="contact-info">
-                    <h2>Entrons en contact</h2>
-                    <p>Une question sur nos formations ou un projet d'expertise ? Nos consultants vous répondent.</p>
-                    <ul class="contact-list">
-                        <li><i class="fas fa-phone-alt"></i> +212 06.62.19.76.79</li>
-                        <li><i class="fas fa-envelope"></i> contact@benchtech.ma</li>
-                    </ul>
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Parlons de votre projet</h2>
+                        <p>Nos experts sont à votre disposition pour toute demande de conseil ou d'inscription aux formations.</p>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@benchtech.ma</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+212 06.62.19.76.79</span>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Nom Complet" required>
+                        <input type="email" placeholder="Email Professionnel" required>
+                        <textarea placeholder="Votre Message" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Votre Nom" required>
-                    <input type="email" placeholder="Votre Email" required>
-                    <textarea placeholder="Votre message" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-gold">Envoyer le message</button>
-                </form>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <span class="monogram">BT</span> <strong>BenchTech</strong>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-legal">
-                <p>BenchTech - SARL AU | Capital social : 100 000 MAD | Siège social : Casablanca, Maroc | RC : Casablanca n° 752759</p>
-            </div>
-            <div class="footer-copy">
-                &copy; 2023 BenchTech. Tous droits réservés.
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenchTech | shaping tomorrow, today</title>
-    <meta name="description" content="BenchTech - Expertises en IA, Business Intelligence et Formations professionnelles à Casablanca.">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-    <!-- Header & Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <span class="brand">BenchTech</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#expertises">Expertises</a></li>
-                <li><a href="#formations">Formations</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>BenchTech</h1>
-            <p class="slogan">shaping tomorrow, today</p>
-            <div class="hero-btns">
-                <a href="#formations" class="btn btn-primary">Nos Formations</a>
-                <a href="#contact" class="btn btn-outline">Nous Contacter</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Conseil & Expertises -->
-    <section id="expertises" class="section">
-        <div class="container">
-            <h2 class="section-title">Conseil & Expertises</h2>
-            <div class="grid-expertises">
-                <div class="card">
-                    <i class="fas fa-brain card-icon"></i>
-                    <h3>IA</h3>
-                    <p>Intégration d'intelligence artificielle pour optimiser vos processus décisionnels.</p>
-                </div>
-                <div class="card">
-                    <div class="monogram">BI</div>
-                    <h3>Business Intelligence</h3>
-                    <p>Transformation de vos données brutes en indicateurs stratégiques actionnables.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-database card-icon"></i>
-                    <h3>Bases de Données</h3>
-                    <p>Conception, optimisation et sécurisation de vos architectures de données.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-rocket card-icon"></i>
-                    <h3>Transformation Numérique</h3>
-                    <p>Accompagnement stratégique vers une infrastructure moderne et agile.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Formations -->
-    <section id="formations" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Formations Phares</h2>
-            <div class="formation-container">
-                <div class="formation-card featured">
-                    <div class="formation-badge">Programme Intensif</div>
-                    <div class="formation-content">
-                        <h3>Maîtrise de Power BI</h3>
-                        <p class="instructor">Animé par un formateur expert</p>
-                        <ul class="details">
-                            <li><i class="far fa-calendar-alt"></i> Samedi matin (Formation pratique)</li>
-                            <li><i class="far fa-clock"></i> Durée : 1 mois</li>
-                            <li><i class="fas fa-info-circle"></i> Non-certifiante (Focus Compétences)</li>
-                        </ul>
-                        <div class="contact-info">
-                            <p>Inscription & Information :</p>
-                            <a href="tel:+212662197679" class="phone-link"><i class="fas fa-phone-alt"></i> +212 06.62.19.76.79</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
-            <div class="contact-wrapper">
-                <form id="contact-form" class="modern-form">
-                    <div class="form-group">
-                        <label for="name">Nom Complet</label>
-                        <input type="text" id="name" name="name" placeholder="Ex: Jean Dupont" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Sujet</label>
-                        <select id="subject" name="subject">
-                            <option value="conseil">Conseil & Expertises</option>
-                            <option value="formation">Formation Power BI</option>
-                            <option value="autre">Autre demande</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-gold">Envoyer le message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="container footer-content">
-            <div class="footer-info">
-                <h3>BenchTech</h3>
-                <p class="footer-slogan">shaping tomorrow, today</p>
-            </div>
-            <div class="footer-legal">
-                <p><strong>SARL AU</strong> au Capital de 100 000 MAD</p>
-                <p>Siège social : Casablanca, Maroc</p>
-                <p>RC n° 752759</p>
-            </div>
-            <div class="footer-copy">
-                &copy; 2023 BenchTech. Tous droits réservés.
+        <div class="container">
+            <div class="footer-content">
+                <p>BenchTech - SARL AU | Capital social : 100 000 MAD | Siège social : Casablanca, Maroc | RC : Casablanca n° 752759</p>
+                <div class="footer-bottom">
+                    &copy; 2023 BenchTech. Tous droits réservés.
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple Mobile Menu Toggle
         const menuToggle = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
-        if(menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-        }
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
