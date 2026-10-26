@@ -24,7 +24,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#formation">Formation</a></li>
+                <li><a href="#formation">Formations</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </nav>
@@ -79,24 +80,37 @@
         <section id="formation" class="section bg-light">
             <div class="container">
                 <div class="section-header">
-                    <h2>Formation Académique</h2>
+                    <h2>Nos formations</h2>
                     <div class="divider"></div>
+                    <p class="section-intro">Développez vos compétences en informatique fondamentale et en Business Intelligence.</p>
                 </div>
                 <div class="grid">
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-code"></i></div>
                         <h3>Algorithmique</h3>
-                        <p>Maîtrise des structures de données et de la logique de programmation avancée.</p>
+                        <p>Renforcez votre logique de programmation et votre maîtrise des structures de données.</p>
+                        <ul class="course-topics">
+                            <li>Structures de données</li>
+                            <li>Logique de programmation avancée</li>
+                        </ul>
                     </div>
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-terminal"></i></div>
                         <h3>Environnements UNIX</h3>
-                        <p>Administration système et scripting pour une infrastructure performante.</p>
+                        <p>Découvrez l'administration système et le scripting sous UNIX.</p>
+                        <ul class="course-topics">
+                            <li>Administration système</li>
+                            <li>Scripting</li>
+                        </ul>
                     </div>
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-server"></i></div>
                         <h3>Bases de Données</h3>
-                        <p>Modélisation relationnelle et optimisation SQL pour la gestion du savoir.</p>
+                        <p>Apprenez à structurer et interroger efficacement vos données.</p>
+                        <ul class="course-topics">
+                            <li>Modélisation relationnelle</li>
+                            <li>Optimisation SQL</li>
+                        </ul>
                     </div>
                 </div>
                 
@@ -113,6 +127,38 @@
                         <a href="tel:+212662197679" class="promo-contact"><i class="fas fa-phone"></i> +212 06.62.19.76.79</a>
                     </div>
                 </div>
+                <div class="training-cta">
+                    <p>Vous souhaitez connaître le programme, les prérequis ou les prochaines sessions ?</p>
+                    <a href="#contact" class="btn btn-primary">Demander des informations</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Questions fréquentes</h2>
+                    <div class="divider"></div>
+                    <p class="section-intro">Retrouvez les réponses aux questions les plus fréquentes sur nos parcours de formation.</p>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Quelles formations propose BenchTech ?</summary>
+                        <p>La page présente des formations en algorithmique, environnements UNIX, bases de données et Power BI. Contactez-nous pour connaître les programmes détaillés et les disponibilités.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>La formation Power BI est-elle certifiante ?</summary>
+                        <p>La session Power BI présentée ici est non-certifiante et axée sur les compétences. Pour les autres parcours, contactez-nous afin de confirmer les modalités.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Où consulter les tarifs, prérequis et prochaines dates ?</summary>
+                        <p>Ces informations ne sont pas publiées sur cette page. Demandez-les à notre équipe avant de vous inscrire.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Comment demander des informations ou s’inscrire ?</summary>
+                        <p>Appelez-nous au <a href="tel:+212662197679">+212 06.62.19.76.79</a> ou utilisez le <a href="#contact">formulaire de contact</a>.</p>
+                    </details>
+                </div>
             </div>
         </section>
 
@@ -125,17 +171,26 @@
                         <p>Nos experts sont à votre disposition pour toute demande de conseil ou d'inscription aux formations.</p>
                         <div class="info-item">
                             <i class="fas fa-envelope"></i>
-                            <span>contact@benchtech.ma</span>
+                            <a href="mailto:contact@benchtech.ma">contact@benchtech.ma</a>
                         </div>
                         <div class="info-item">
                             <i class="fas fa-phone"></i>
-                            <span>+212 06.62.19.76.79</span>
+                            <a href="tel:+212662197679">+212 06.62.19.76.79</a>
                         </div>
                     </div>
-                    <form class="contact-form">
-                        <input type="text" placeholder="Nom Complet" required>
-                        <input type="email" placeholder="Email Professionnel" required>
-                        <textarea placeholder="Votre Message" rows="5" required></textarea>
+                    <form class="contact-form" action="https://formsubmit.co/contact@benchtech.ma" method="POST">
+                        <input type="hidden" name="_subject" value="Nouveau message depuis le site BenchTech">
+                        <div class="form-honeypot" aria-hidden="true">
+                            <label for="contact-website">Ne pas remplir ce champ</label>
+                            <input type="text" id="contact-website" name="_honey" tabindex="-1" autocomplete="off">
+                        </div>
+                        <label for="contact-name">Nom complet</label>
+                        <input type="text" id="contact-name" name="name" autocomplete="name" required>
+                        <label for="contact-email">E-mail professionnel</label>
+                        <input type="email" id="contact-email" name="email" autocomplete="email" required>
+                        <label for="contact-message">Votre message</label>
+                        <textarea id="contact-message" name="message" rows="5" required></textarea>
+                        <p class="form-note">En envoyant ce formulaire, vos données sont transmises à FormSubmit pour acheminer votre demande à BenchTech.</p>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
                 </div>
