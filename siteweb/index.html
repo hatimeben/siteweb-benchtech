@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BenchTech | shaping tomorrow, today</title>
+    <meta name="description" content="BenchTech - Expertises en IA, Business Intelligence et Formations professionnelles à Casablanca.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <span class="brand">BenchTech</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#expertises">Expertises</a></li>
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>BenchTech</h1>
+            <p class="slogan">shaping tomorrow, today</p>
+            <div class="hero-btns">
+                <a href="#formations" class="btn btn-primary">Nos Formations</a>
+                <a href="#contact" class="btn btn-outline">Nous Contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Conseil & Expertises -->
+    <section id="expertises" class="section">
+        <div class="container">
+            <h2 class="section-title">Conseil & Expertises</h2>
+            <div class="grid-expertises">
+                <div class="card">
+                    <i class="fas fa-brain card-icon"></i>
+                    <h3>IA</h3>
+                    <p>Intégration d'intelligence artificielle pour optimiser vos processus décisionnels.</p>
+                </div>
+                <div class="card">
+                    <div class="monogram">BI</div>
+                    <h3>Business Intelligence</h3>
+                    <p>Transformation de vos données brutes en indicateurs stratégiques actionnables.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-database card-icon"></i>
+                    <h3>Bases de Données</h3>
+                    <p>Conception, optimisation et sécurisation de vos architectures de données.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-rocket card-icon"></i>
+                    <h3>Transformation Numérique</h3>
+                    <p>Accompagnement stratégique vers une infrastructure moderne et agile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Formations -->
+    <section id="formations" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Formations Phares</h2>
+            <div class="formation-container">
+                <div class="formation-card featured">
+                    <div class="formation-badge">Programme Intensif</div>
+                    <div class="formation-content">
+                        <h3>Maîtrise de Power BI</h3>
+                        <p class="instructor">Animé par un formateur expert</p>
+                        <ul class="details">
+                            <li><i class="far fa-calendar-alt"></i> Samedi matin (Formation pratique)</li>
+                            <li><i class="far fa-clock"></i> Durée : 1 mois</li>
+                            <li><i class="fas fa-info-circle"></i> Non-certifiante (Focus Compétences)</li>
+                        </ul>
+                        <div class="contact-info">
+                            <p>Inscription & Information :</p>
+                            <a href="tel:+212662197679" class="phone-link"><i class="fas fa-phone-alt"></i> +212 06.62.19.76.79</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="contact-wrapper">
+                <form id="contact-form" class="modern-form">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" name="name" placeholder="Ex: Jean Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <select id="subject" name="subject">
+                            <option value="conseil">Conseil & Expertises</option>
+                            <option value="formation">Formation Power BI</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>BenchTech</h3>
+                <p class="footer-slogan">shaping tomorrow, today</p>
+            </div>
+            <div class="footer-legal">
+                <p><strong>SARL AU</strong> au Capital de 100 000 MAD</p>
+                <p>Siège social : Casablanca, Maroc</p>
+                <p>RC n° 752759</p>
+            </div>
+            <div class="footer-copy">
+                &copy; 2023 BenchTech. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
