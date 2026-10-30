@@ -19,16 +19,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Feuilles de style -->
-    <link rel="stylesheet" href="css/style.css?v=2.2">
-    <!-- Initialisation précoce du thème (évite tout flash blanc) -->
+    <link rel="stylesheet" href="css/style.css?v=4.0">
+    <!-- Initialisation précoce du mode d'affichage -->
     <script>
         (function() {
             try {
-                var saved = localStorage.getItem('benchtech_theme');
-                if (saved && (saved === 'dark' || saved === 'high-contrast' || saved === 'light')) {
+                var validModes = ['light', 'dark', 'high-contrast'];
+                var saved = localStorage.getItem('benchtech_display_mode');
+                if (saved && validModes.indexOf(saved) !== -1) {
                     document.documentElement.setAttribute('data-theme', saved);
-                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
                 }
             } catch(e) {}
         })();
@@ -55,20 +56,20 @@
                     <li><a href="#contact" class="nav-cta">Échanger avec un expert</a></li>
                 </ul>
 
-                <div class="nav-extra-wrap">
-                    <!-- Sélecteur de Thème Visuel (Clair / Sombre / Contraste Élevé) -->
-                    <div class="theme-switcher" role="radiogroup" aria-label="Mode d'affichage">
-                        <button type="button" class="theme-btn active" data-theme-val="light" onclick="applyTheme('light')" role="radio" aria-checked="true" title="Activer le Mode Clair">
+                <div class="nav-vertical-modes-wrap">
+                    <!-- Sélecteur Vertical Fixe des 3 Modes d'Affichage (l'un au-dessous de l'autre) -->
+                    <div class="theme-vertical-group" role="radiogroup" aria-label="Modes d'affichage visuel">
+                        <button type="button" class="theme-vertical-btn active" data-theme-val="light" onclick="applyDisplayMode('light')" role="radio" aria-checked="true" title="Activer le Mode Clair">
                             <i class="fas fa-sun" aria-hidden="true"></i>
-                            <span class="sr-only">Mode Clair</span>
+                            <span>Clair</span>
                         </button>
-                        <button type="button" class="theme-btn" data-theme-val="dark" onclick="applyTheme('dark')" role="radio" aria-checked="false" title="Activer le Mode Sombre">
+                        <button type="button" class="theme-vertical-btn" data-theme-val="dark" onclick="applyDisplayMode('dark')" role="radio" aria-checked="false" title="Activer le Mode Sombre">
                             <i class="fas fa-moon" aria-hidden="true"></i>
-                            <span class="sr-only">Mode Sombre</span>
+                            <span>Sombre</span>
                         </button>
-                        <button type="button" class="theme-btn" data-theme-val="high-contrast" onclick="applyTheme('high-contrast')" role="radio" aria-checked="false" title="Activer le Mode Contraste Élevé">
+                        <button type="button" class="theme-vertical-btn" data-theme-val="high-contrast" onclick="applyDisplayMode('high-contrast')" role="radio" aria-checked="false" title="Activer le Mode Contraste Élevé">
                             <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
-                            <span class="sr-only">Mode Contraste Élevé</span>
+                            <span>Contraste</span>
                         </button>
                     </div>
 
@@ -93,7 +94,7 @@
                     </div>
                     
                     <h1>
-                        L'Alliance de l'<span class="highlight-gold">Expertise Technologique</span> et de la Rigueur Académique
+                        L'Alliance de l'<span class="highlight-gold">Expertise Technologique</span><br class="hero-break">et de la Rigueur Académique
                     </h1>
                     
                     <p class="hero-description">
@@ -2598,15 +2599,6 @@
                 </div>
 
                 <div class="training-cta">
-                    <p>Besoin d'un audit de compétences sur mesure pour vos équipes ou d'une convention d'entreprise ?</p>
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-file-signature" aria-hidden="true"></i> Demander une proposition
-                    </a>
-                </div>
-            </div>
-        </section>
-
-                <div class="training-cta">
                     <p>Besoin d'un cursus sur mesure pour vos équipes ou d'une convention d'entreprise ?</p>
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-file-signature" aria-hidden="true"></i> Demander une proposition
@@ -2844,43 +2836,55 @@
     </footer>
 
     <!-- =======================================================================
+         BANQUE DE QUESTIONS DYNAMIQUE BenchTech (PAR THÉMATIQUE)
+         Architecture modulaire & ultra-performante pour hébergement Hostinger / MassiveHoster
+         ======================================================================= -->
+    <script src="js/quiz-data/powerbi.js"></script>
+    <script src="js/quiz-data/copilot.js"></script>
+    <script src="js/quiz-data/sql.js"></script>
+    <script src="js/quiz-data/github-copilot.js"></script>
+    <script src="js/quiz-data/copilot-sdk.js"></script>
+    <script src="js/quiz-data/unix.js"></script>
+    <script src="js/quiz-data/excel.js"></script>
+    <script src="js/quiz-data/algo.js"></script>
+    <script src="js/quiz-data/scrum.js"></script>
+    <script src="js/quiz-data/msproject.js"></script>
+    <script src="js/quiz-data/quiz-database.js"></script>
+
+    <!-- =======================================================================
          8. SCRIPTS (MENU MOBILE, FILTRE CATÉGORIES & QUIZ HUB MULTI-DOMAINES)
          ======================================================================= -->
     <script>
         // ---------------------------------------------------------------------
-        // GESTIONNAIRE DU THÈME VISUEL (Clair / Sombre / Contraste Élevé)
+        // GESTIONNAIRE DES 3 MODES D'AFFICHAGE (Clair / Sombre / Contraste Élevé)
         // ---------------------------------------------------------------------
-        window.applyTheme = function(theme) {
-            if (!['light', 'dark', 'high-contrast'].includes(theme)) {
-                theme = 'light';
+        window.applyDisplayMode = function(mode) {
+            const valid = ['light', 'dark', 'high-contrast'];
+            if (!valid.includes(mode)) {
+                mode = 'light';
             }
-            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.setAttribute('data-theme', mode);
             if (document.body) {
-                document.body.setAttribute('data-theme', theme);
+                document.body.setAttribute('data-theme', mode);
             }
             try {
-                localStorage.setItem('benchtech_theme', theme);
+                localStorage.setItem('benchtech_display_mode', mode);
             } catch(e) {}
 
-            document.querySelectorAll('.theme-btn').forEach(btn => {
+            document.querySelectorAll('.theme-vertical-btn').forEach(btn => {
                 const val = btn.getAttribute('data-theme-val');
-                const isActive = (val === theme);
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-checked', isActive ? 'true' : 'false');
+                const isMatch = (val === mode);
+                btn.classList.toggle('active', isMatch);
+                btn.setAttribute('aria-checked', isMatch ? 'true' : 'false');
             });
         };
 
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const selected = btn.getAttribute('data-theme-val');
-                applyTheme(selected);
-            });
-        });
+        // Rétrocompatibilité
+        window.applyTheme = window.applyDisplayMode;
 
-        // Initialisation de l'état des boutons au chargement
-        (function initThemeButtons() {
-            const current = document.documentElement.getAttribute('data-theme') || 'light';
-            applyTheme(current);
+        (function initDisplayModeState() {
+            const currentMode = document.documentElement.getAttribute('data-theme') || 'light';
+            window.applyDisplayMode(currentMode);
         })();
 
         // ---------------------------------------------------------------------
@@ -2930,910 +2934,15 @@
         });
 
         // ---------------------------------------------------------------------
-        // 3. Banques de questions des Quiz de Positionnement (Sources Officielles)
+        // 3. MOTEUR DE POSITIONNEMENT TECHNIQUE DYNAMIQUE BenchTech (Banque Modulaire)
+        // Les questions sont organisées par thème dans js/quiz-data/ pour une
+        // maintenance simplifiée et une compatibilité native Hostinger / MassiveHoster.
         // ---------------------------------------------------------------------
-        const QUIZ_DATA = {
-            copilot: {
-                id: 'copilot',
-                title: "Agents IA Métiers & Microsoft Copilot Studio",
-                icon: 'fa-robot',
-                source: 'Référentiel Microsoft Copilot Studio & Microsoft Learn AI',
-                duration: '6-8 min',
-                recommendedCourse: "Conception & Déploiement d'Agents IA Métiers avec Microsoft Copilot Studio",
-                formTopic: 'Formation Copilot Studio',
-                description: '8 questions d\'expertise pour évaluer vos compétences sur les systèmes agentiques, les réponses génératives (RAG), les connecteurs SI et la gouvernance d\'agents IA.',
-                questions: [
-                    {
-                        question: "Quel est l'objectif premier de la plateforme Microsoft Copilot Studio dans l'écosystème d'entreprise ?",
-                        answers: [
-                            "Créer, orchestrer et déployer des agents et copilotes IA conversationnels autonomes connectés aux données métiers et au SI",
-                            "Remplacer les serveurs de fichiers Windows par un stockage cloud",
-                            "Générer uniquement du code Python pour les développeurs back-end"
-                        ],
-                        correct: 0,
-                        explanation: "Copilot Studio est la plateforme low-code de référence de Microsoft pour concevoir des agents IA autonomes ou personnalisés pour Copilot for M365."
-                    },
-                    {
-                        question: "Dans Copilot Studio, comment fonctionnent les 'Réponses Génératives' (Generative Answers / RAG) ?",
-                        answers: [
-                            "L'agent interroge des sources d'entreprise (SharePoint, Dataverse, sites web) et génère une réponse sourcée et contextualisée via un LLM sans programmation manuelle de dialogue",
-                            "L'agent répète mot pour mot un texte statique préenregistré dans une variable globale",
-                            "L'agent redirige systématiquement l'utilisateur vers un moteur de recherche externe"
-                        ],
-                        correct: 0,
-                        explanation: "Les réponses génératives s'appuient sur l'architecture RAG (Retrieval-Augmented Generation) pour synthétiser des réponses en temps réel à partir de documents internes."
-                    },
-                    {
-                        question: "Qu'est-ce qui distingue fondamentalement un 'Système Agentique' (Agentic AI) d'un chatbot linéaire traditionnel ?",
-                        answers: [
-                            "La capacité d'autonomie : l'agent décompose un objectif complexe, sélectionne dynamiquement les outils appropriés et exécute des actions multi-étapes sans chemin rigide prédéfini",
-                            "Le fait d'afficher des émojis dans chaque message",
-                            "L'obligation de fonctionner sans aucune connexion Internet"
-                        ],
-                        correct: 0,
-                        explanation: "Les systèmes agentiques possèdent une boucle de raisonnement (Reasoning Loop) leur permettant d'orchestrer des plans d'action autonomes pour atteindre un résultat."
-                    },
-                    {
-                        question: "Quel mécanisme Copilot Studio utilise-t-il pour permettre à un agent d'exécuter des actions concrètes (ex: créer un ticket SAP, réserver une ressource dans Salesforce) ?",
-                        answers: [
-                            "Les Actions Copilot (Plugins / Connecteurs Power Platform & flux Power Automate)",
-                            "L'envoi manuel d'un e-mail non sécurisé",
-                            "Une capture d'écran automatisée du poste client"
-                        ],
-                        correct: 0,
-                        explanation: "Les connecteurs certifiés (Power Platform, API REST, OpenAPI) permettent aux agents d'interagir directement en lecture et écriture avec les logiciels d'entreprise."
-                    },
-                    {
-                        question: "En Prompt Engineering d'agents, quel est le rôle des 'Instructions Système' (System Prompt / Custom Instructions) dans Copilot Studio ?",
-                        answers: [
-                            "Définir le rôle, le ton, le périmètre d'action, les contraintes métier strictes et les règles de conformité de l'agent pour éviter les hallucinations",
-                            "Changer la couleur de fond de la fenêtre de chat",
-                            "Accélérer la vitesse de frappe sur le clavier de l'utilisateur"
-                        ],
-                        correct: 0,
-                        explanation: "Les instructions système constituent la constitution de l'agent : elles bornent son comportement, précisent ses priorités et cadrent la formulation de ses réponses."
-                    },
-                    {
-                        question: "Dans l'orchestration des flux conversationnels, à quoi sert un 'Déclencheur' (Trigger) dans Copilot Studio ?",
-                        answers: [
-                            "À détecter l'intention de l'utilisateur (via analyse sémantique NLU) ou un événement externe pour activer la bonne rubrique (Topic)",
-                            "À redémarrer le serveur à minuit",
-                            "À effacer l'historique des conversations de l'entreprise"
-                        ],
-                        correct: 0,
-                        explanation: "Les déclencheurs analysent les phrases clés ou les intentions pour router la conversation vers les nœuds logiques correspondants."
-                    },
-                    {
-                        question: "Comment s'assure-t-on de la sécurité et de la confidentialité des données traitées par les agents Copilot déployés en entreprise ?",
-                        answers: [
-                            "En s'appuyant sur l'authentification Entra ID (Azure AD), les politiques DLP (Data Loss Prevention) et le respect des permissions d'accès aux documents de chaque utilisateur",
-                            "En désactivant tous les mots de passe des bases de données",
-                            "En publiant l'agent sur les réseaux sociaux grand public"
-                        ],
-                        correct: 0,
-                        explanation: "Copilot Studio applique le principe du moindre privilège : un utilisateur ne peut jamais obtenir via l'agent des informations auxquelles il n'a pas accès nativement."
-                    },
-                    {
-                        question: "Dans une perspective DSI d'industrialisation, quelle métrique de l'Analytics intégré de Copilot Studio est primordiale pour mesurer le ROI ?",
-                        answers: [
-                            "Le taux de résolution au premier contact (Resolution Rate) et le taux d'escalade vers un opérateur humain",
-                            "Le nombre de caractères totaux tapés par les employés",
-                            "La résolution de l'écran des utilisateurs"
-                        ],
-                        correct: 0,
-                        explanation: "Le taux de résolution autonome et la réduction des escalades démontrent directement l'efficacité opérationnelle et la valeur ajoutée de l'agent."
-                    }
-                ]
-            },
-
-            'github-copilot': {
-                id: 'github-copilot',
-                title: "Développement Augmenté : GitHub Copilot dans VS Code",
-                icon: 'fa-code',
-                source: 'Documentation officielle GitHub Copilot & Microsoft Learn',
-                duration: '6-8 min',
-                recommendedCourse: "Développement Augmenté par l'IA : Maîtriser GitHub Copilot dans VS Code",
-                formTopic: 'Formation GitHub Copilot',
-                description: '8 questions d\'expertise pour évaluer votre maîtrise des modes Ask/Edit/Agent, des contextes @workspace, des tests unitaires et de la sécurité du code.',
-                questions: [
-                    {
-                        question: "Quelle commande de contexte dans GitHub Copilot Chat permet d'interroger Copilot en indexant l'ensemble de votre solution/espace de travail ?",
-                        answers: [
-                            "@workspace : pour analyser l'arborescence, les dépendances et le code de tout le projet",
-                            "@global : pour chercher sur le web public uniquement",
-                            "@terminal : pour formater le disque dur"
-                        ],
-                        correct: 0,
-                        explanation: "@workspace permet à Copilot de construire un index de votre projet local et d'apporter des réponses tenant compte de toute votre architecture logicielle."
-                    },
-                    {
-                        question: "Dans VS Code, quel fichier standard permet de définir des instructions personnalisées globales appliquées systématiquement par GitHub Copilot à tout le repository ?",
-                        answers: [
-                            ".github/copilot-instructions.md",
-                            "settings.env",
-                            "copilot.config.xml"
-                        ],
-                        correct: 0,
-                        explanation: "Le fichier .github/copilot-instructions.md est la convention officielle GitHub pour guider le comportement, le style et les règles d'architecture de Copilot."
-                    },
-                    {
-                        question: "Quelle est la différence opérationnelle entre le mode 'Ask' (Chat) et le mode 'Edit' (Inline Chat Ctrl+I / Cmd+I) de GitHub Copilot ?",
-                        answers: [
-                            "Le mode Edit propose directement des diffs de code in-line intégrables dans le fichier, tandis que le mode Ask répond sous forme de discussion dans le volet latéral",
-                            "Le mode Edit ne fonctionne que sur du code HTML",
-                            "Le mode Ask nécessite un abonnement payant supplémentaire"
-                        ],
-                        correct: 0,
-                        explanation: "Le mode Edit (Inline Chat) applique des refactorings ou ajouts directement dans le flux d'édition avec prévisualisation des modifications."
-                    },
-                    {
-                        question: "Dans le volet GitHub Copilot Chat, quelle commande slash permet d'analyser la fonction sélectionnée et de générer sa suite de tests unitaires ?",
-                        answers: [
-                            "/tests : pour générer les cas de test pertinents avec votre framework configuré (ex: Jest, Mocha, PyTest)",
-                            "/deploy : pour mettre en production immédiatement",
-                            "/clean : pour supprimer la sélection"
-                        ],
-                        correct: 0,
-                        explanation: "La commande slash /tests analyse la logique et les cas limites du code pour produire des tests unitaires complets."
-                    },
-                    {
-                        question: "Quelle mesure de gouvernance d'entreprise garantit que des fichiers sensibles (ex: .env, clés d'API, code confidentiel) ne soient jamais traités par GitHub Copilot ?",
-                        answers: [
-                            "La configuration de la fonctionnalité 'Content Exclusion' au niveau de l'organisation GitHub ou des règles de repository",
-                            "Le renommage des fichiers avec une extension .txt",
-                            "L'interdiction d'utiliser le clavier après 18h"
-                        ],
-                        correct: 0,
-                        explanation: "Content Exclusion bloque l'accès de Copilot aux chemins et fichiers sensibles configurés par les administrateurs d'organisation."
-                    },
-                    {
-                        question: "Que permet le mode 'Agent' (Agent Mode) de GitHub Copilot pour VS Code par rapport à la simple complétion ?",
-                        answers: [
-                            "Déléguer une tâche multi-fichiers : Copilot lit les erreurs du terminal, navigue entre plusieurs fichiers et itère de manière autonome pour résoudre un problème",
-                            "Prendre le contrôle de la webcam du développeur",
-                            "Arrêter automatiquement les serveurs locaux"
-                        ],
-                        correct: 0,
-                        explanation: "Le mode Agent dote Copilot d'une autonomie d'exécution outillée pour planifier, modifier plusieurs fichiers et vérifier le résultat."
-                    },
-                    {
-                        question: "Comment optimiser la qualité des suggestions de code en ligne (Ghost Text) de GitHub Copilot dans un projet React / TypeScript ?",
-                        answers: [
-                            "Conserver ouverts dans les onglets de VS Code les fichiers de types, interfaces et composants voisins pour enrichir le contexte local (Neighboring Tabs)",
-                            "Fermer tous les fichiers et ne travailler que dans un fichier vide",
-                            "Désactiver le typage strict de TypeScript"
-                        ],
-                        correct: 0,
-                        explanation: "Copilot analyse en priorité les onglets ouverts et adjacents (Neighboring Tabs) pour déduire les conventions, types et patterns du projet."
-                    },
-                    {
-                        question: "Quel paramètre de conformité de GitHub Copilot for Business permet d'interdire les suggestions reproduisant à l'identique du code sous licence publique open source ?",
-                        answers: [
-                            "Le filtre 'Suggestions matching public code' configuré sur 'Blocked'",
-                            "Le filtre 'Anti-Spam Public'",
-                            "La désactivation du protocole HTTPS"
-                        ],
-                        correct: 0,
-                        explanation: "Le filtre de duplication vérifie les suggestions d'environ 150 caractères contre le code public de GitHub et bloque toute correspondance directe."
-                    }
-                ]
-            },
-
-            'copilot-sdk': {
-                id: 'copilot-sdk',
-                title: "Orchestration Multi-Agents & Copilot SDK (MCP)",
-                icon: 'fa-network-wired',
-                source: 'GitHub Copilot SDK Docs, MCP Standard & Architectures Agentiques',
-                duration: '6-8 min',
-                recommendedCourse: "Orchestration Multi-Agents & Architecture Applicative avec le GitHub Copilot SDK",
-                formTopic: 'Formation Copilot SDK',
-                description: '8 questions d\'expertise pour évaluer votre maîtrise du Copilot SDK, des serveurs MCP (Model Context Protocol), du routage dynamique de modèles LLM et des architectures multi-agents distribuées.',
-                questions: [
-                    {
-                        question: "Quel est l'objectif premier du GitHub Copilot SDK dans une architecture d'entreprise ?",
-                        answers: [
-                            "Permettre aux développeurs de concevoir, orchestrer et étendre des agents IA programmatiques intégrés à leurs flux applicatifs et systèmes internes",
-                            "Remplacer l'environnement d'exécution Node.js par un simple script bash",
-                            "Générer automatiquement des images de présentation marketing"
-                        ],
-                        correct: 0,
-                        explanation: "Le Copilot SDK fournit les abstractions et bibliothèques pour développer des agents programmatiques connectés, interopérables et auditables."
-                    },
-                    {
-                        question: "Qu'est-ce que le standard MCP (Model Context Protocol) et quel problème architectural résout-il ?",
-                        answers: [
-                            "Un protocole ouvert standardisant la manière dont les modèles et agents accèdent aux outils (tools), ressources de données et prompts fournis par des serveurs dédiés",
-                            "Un nouveau câble réseau physique pour connecter les clusters GPU",
-                            "Un format propriétaire de compression audio pour les assistants vocaux"
-                        ],
-                        correct: 0,
-                        explanation: "Le protocole MCP unifie la communication entre clients agentiques et serveurs d'outils, éliminant les connecteurs ad-hoc au profit d'un standard industriel."
-                    },
-                    {
-                        question: "Dans une architecture agentique moderne, qu'appelle-t-on le 'Routage Dynamique de Modèles' (Dynamic Model Routing) ?",
-                        answers: [
-                            "Le fait d'orienter dynamiquement chaque sous-tâche vers le LLM optimal (modèle rapide/économique pour le tri, modèle à haut raisonnement pour la synthèse complexe) selon la complexité et les coûts",
-                            "Le redémarrage périodique du routeur Wi-Fi du datacenter",
-                            "L'obligation d'utiliser un modèle unique pour l'ensemble des requêtes utilisateurs"
-                        ],
-                        correct: 0,
-                        explanation: "Le routage dynamique sélectionne contextuellement le modèle LLM adapté au niveau d'exigence (latence, précision, coût par token) de chaque étape d'un workflow."
-                    },
-                    {
-                        question: "Dans un système multi-agents (Multi-Agent System), comment assure-t-on une collaboration efficace sans boucle infinie ?",
-                        answers: [
-                            "En définissant des contrats d'interface clairs, un agent coordinateur (orchestrateur) ou routeur d'état, et des conditions de terminaison explicites (max iterations, state checks)",
-                            "En laissant tous les agents s'interpeller mutuellement sans aucune condition de fin",
-                            "En limitant l'ensemble du système à un seul fichier texte sans structure"
-                        ],
-                        correct: 0,
-                        explanation: "Une architecture multi-agents requiert un mécanisme d'orchestration (superviseur, graphe d'états ou passage de relais déterministe) et des garde-fous pour garantir la convergence."
-                    },
-                    {
-                        question: "Comment un agent Copilot SDK interagit-il de manière sécurisée avec un serveur MCP (Model Context Protocol) ?",
-                        answers: [
-                            "Par négociation de capacités (handshake, discovery des tools et prompts) via transport standardisé (stdio, SSE) avec validation de schéma JSON et contrôle d'accès",
-                            "En exécutant du code binaire arbitraire téléchargé sans inspection préalable",
-                            "En partageant la mémoire vive du processeur sans aucune couche réseau"
-                        ],
-                        correct: 0,
-                        explanation: "MCP formalise l'échange par des requêtes JSON-RPC sur stdio ou Server-Sent Events (SSE), assurant un typage rigoureux des paramètres et retours d'outils."
-                    },
-                    {
-                        question: "Quel rôle jouent les événements et webhooks dans l'intégration du Copilot SDK aux flux applicatifs d'entreprise ?",
-                        answers: [
-                            "Permettre le déclenchement asynchrone des agents en réponse à des événements réels (commits Git, tickets Jira, alertes monitoring, requêtes API)",
-                            "Créer des copies de sauvegarde sur disquettes magnétiques",
-                            "Forcer le rechargement de la page web du client toutes les 5 secondes"
-                        ],
-                        correct: 0,
-                        explanation: "L'intégration événementielle permet aux agents d'agir de façon proactive et asynchrone au sein des pipelines CI/CD et des processus métiers."
-                    },
-                    {
-                        question: "Comment optimise-t-on la consommation de jetons (tokens) et la latence lors de requêtes multi-agents volumineuses ?",
-                        answers: [
-                            "Par l'élagage intelligent du contexte (Context Pruning), le caching de préfixes/prompts et la compression sémantique des historiques de dialogue",
-                            "En concaténant l'intégralité des bases de données dans chaque message envoyé au modèle",
-                            "En désactivant le chiffrement TLS"
-                        ],
-                        correct: 0,
-                        explanation: "Le prompt caching et le context pruning réduisent drastiquement la latence et les coûts opérationnels en ne transmettant que le différentiel d'information essentiel."
-                    },
-                    {
-                        question: "Dans une démarche d'industrialisation LLMOps, comment valide-t-on la robustesse et la non-régression d'un système multi-agents ?",
-                        answers: [
-                            "Par la mise en place de suites d'évaluation automatisées (Evals) mesurant la conformité des schémas d'outils, la fidélité factuelle et le taux de succès des tâches",
-                            "En se fiant uniquement à l'impression visuelle d'un utilisateur occasionnel",
-                            "En supprimant les tests d'intégration pour accélérer le cycle de déploiement"
-                        ],
-                        correct: 0,
-                        explanation: "Les frameworks d'évaluations (Evals) automatisées sont le standard industriel pour mesurer objectivement la précision, la robustesse et l'absence de régression d'agents autonomes."
-                    }
-                ]
-            },
-
-            powerbi: {
-                id: 'powerbi',
-                title: 'Microsoft Power BI & Modélisation DAX',
-                icon: 'fa-chart-pie',
-                source: 'Référentiel Microsoft Certified PL-300 & SQLBI',
-                duration: '6-8 min',
-                recommendedCourse: 'Formation Power BI Expert (Samedi matin ou Intra-entreprise)',
-                formTopic: 'Formation Power BI',
-                description: '10 questions ciblées pour évaluer votre maîtrise de Power Query, du modèle en étoile, de la syntaxe DAX et de la sécurité RLS.',
-                questions: [
-                    {
-                        question: "Quel est le rôle principal de Power BI Desktop ?",
-                        answers: [
-                            "Créer des rapports interactifs et élaborer des modèles sémantiques de données",
-                            "Gérer les comptes utilisateurs et les autorisations de Windows Server",
-                            "Remplacer un système de gestion de bases de données transactionnelles"
-                        ],
-                        correct: 0,
-                        explanation: "Power BI Desktop est l'outil d'auteur dédié à l'ingestion, la modélisation et la restitution visuelle des données."
-                    },
-                    {
-                        question: "Quel composant de Power BI permet de nettoyer et transformer les données avant chargement ?",
-                        answers: ["Power Pivot", "Power Query (moteur M)", "Power Automate"],
-                        correct: 1,
-                        explanation: "Power Query utilise le langage M pour exécuter les opérations d'extraction, transformation et nettoyage (ETL)."
-                    },
-                    {
-                        question: "Dans un schéma en étoile (Star Schema), où place-t-on les métriques numériques à agréger ?",
-                        answers: ["Dans la table de faits", "Uniquement dans les tables de dimensions", "Dans une table déconnectée sans relation"],
-                        correct: 0,
-                        explanation: "La table de faits contient les clés de jointure et les mesures quantitatives (ventes, montants, volumes)."
-                    },
-                    {
-                        question: "Quelle est la différence fondamentale entre une mesure DAX et une colonne calculée ?",
-                        answers: [
-                            "Une mesure est calculée dynamiquement selon le contexte de filtre ; une colonne calculée consomme de la mémoire ligne par ligne",
-                            "Une colonne calculée ne peut jamais être filtrée dans un visuel",
-                            "Une mesure modifie directement la table source d'origine"
-                        ],
-                        correct: 0,
-                        explanation: "Les colonnes calculées sont matérialisées dans la mémoire du moteur VertiPaq ; les mesures sont évaluées à la volée."
-                    },
-                    {
-                        question: "À quoi sert principalement la fonction DAX CALCULATE ?",
-                        answers: [
-                            "À modifier ou remplacer le contexte de filtre d'une expression et déclencher la transition de contexte",
-                            "À importer un fichier Excel local dans le modèle",
-                            "À générer automatiquement une page de rapport"
-                        ],
-                        correct: 0,
-                        explanation: "CALCULATE est la fonction clé de DAX permettant d'altérer le contexte de filtre d'évaluation."
-                    },
-                    {
-                        question: "Quelle cardinalité de relation est la plus recommandée entre une table de faits et une table de dimensions ?",
-                        answers: ["Un-à-un (1:1)", "Plusieurs-à-un (*:1), des faits vers la dimension", "Plusieurs-à-plusieurs (*:*) sans filtre"],
-                        correct: 1,
-                        explanation: "Le modèle en étoile repose sur des relations Plusieurs-à-un (*:1) garantissant performance et clarté d'analyse."
-                    },
-                    {
-                        question: "À quoi sert le contexte de filtre (Filter Context) dans DAX ?",
-                        answers: [
-                            "À déterminer l'ensemble des lignes prises en compte par une mesure selon les filtres actifs dans le rapport",
-                            "À définir les couleurs du thème graphique de l'entreprise",
-                            "À empêcher tout filtrage interactif des utilisateurs"
-                        ],
-                        correct: 0,
-                        explanation: "Le contexte de filtre filtre les lignes du modèle avant que la formule de la mesure ne soit exécutée."
-                    },
-                    {
-                        question: "Quel mécanisme officiel permet de restreindre dynamiquement les données visibles selon le compte de l'utilisateur ?",
-                        answers: ["L'actualisation incrémentielle", "La sécurité au niveau des lignes (RLS avec USERPRINCIPALNAME)", "Le formatage conditionnel"],
-                        correct: 1,
-                        explanation: "Le RLS (Row-Level Security) filtre les données à la source selon le rôle et l'identité de l'utilisateur."
-                    },
-                    {
-                        question: "Quel est le bénéfice majeur de l'actualisation incrémentielle sur une table de faits volumineuse ?",
-                        answers: [
-                            "Ne traiter et recharger que les partitions de données récentes au lieu de recalculer tout l'historique",
-                            "Supprimer le besoin d'un entrepôt de données source",
-                            "Convertir automatiquement toutes les chaînes de texte en mesures DAX"
-                        ],
-                        correct: 0,
-                        explanation: "L'actualisation incrémentielle réduit drastiquement les temps de traitement et la consommation de ressources."
-                    },
-                    {
-                        question: "En mode DirectQuery, comment Power BI génère-t-il les visuels d'un rapport ?",
-                        answers: [
-                            "Il interroge la source de données distante en temps réel via des requêtes SQL natives",
-                            "Il importe une copie intégrale des données dans la RAM du poste local",
-                            "Il lit exclusivement des fichiers plats mis en cache"
-                        ],
-                        correct: 0,
-                        explanation: "DirectQuery n'importe aucune donnée en mémoire et délègue l'exécution des requêtes au SGBD source."
-                    }
-                ]
-            },
-
-            excel: {
-                id: 'excel',
-                title: "Microsoft Excel : Formules, TCD, Power Query & VBA",
-                icon: 'fa-file-excel',
-                source: 'Référentiel Microsoft Office Specialist (MOS Expert) & Pratiques Décisionnelles',
-                duration: '6-8 min',
-                recommendedCourse: "Microsoft Excel : Parcours d'Ingénierie Pédagogique Sur-Mesure",
-                formTopic: 'Formation Excel Sur-Mesure',
-                description: '8 questions professionnelles pour évaluer vos compétences sur les formules avancées (RECHERCHEX), les Tableaux Croisés Dynamiques, l\'ETL Power Query et les macros VBA.',
-                questions: [
-                    {
-                        question: "Quelle est la différence fondamentale entre la référence '=A1*B$1' et '=A1*$B1' lors d'une recopie de formule ?",
-                        answers: [
-                            "B$1 fige la ligne 1 lors d'une recopie vers le bas ; $B1 fige la colonne B lors d'une recopie vers la droite",
-                            "$B1 force la cellule à être au format texte exclusivement",
-                            "B$1 applique un arrondi automatique aux montants monétaires"
-                        ],
-                        correct: 0,
-                        explanation: "Le symbole '$' bloque l'élément qui le suit immédiatement : 'B$1' fige la ligne 1 (référence mixte), tandis que '$B1' fige la colonne B."
-                    },
-                    {
-                        question: "Pourquoi la fonction RECHERCHEX (XLOOKUP) est-elle aujourd'hui préférée à l'ancienne fonction RECHERCHEV (VLOOKUP) ?",
-                        answers: [
-                            "Elle recherche indifféremment vers la gauche ou la droite, gère nativement les erreurs sans SIERREUR et ne dépend pas d'un numéro d'index de colonne fragile",
-                            "Elle ne fonctionne qu'avec des nombres entiers",
-                            "Elle oblige l'utilisateur à trier la table par ordre alphabétique croissant"
-                        ],
-                        correct: 0,
-                        explanation: "RECHERCHEX élimine la contrainte de la première colonne de recherche, intègre le paramètre [si_non_trouvé] et ne casse pas si l'on insère des colonnes intermédiaires."
-                    },
-                    {
-                        question: "Dans un classeur Excel comportant plusieurs Tableaux Croisés Dynamiques (TCD) issus de la même source, comment piloter l'ensemble avec un seul Segment (Slicer) ?",
-                        answers: [
-                            "Via le menu 'Connexions de rapports' (Report Connections) du segment, en cochant tous les TCD cibles",
-                            "En fusionnant manuellement les cellules de chaque TCD",
-                            "En écrivant une formule SOMME.SI.ENS dans chaque en-tête"
-                        ],
-                        correct: 0,
-                        explanation: "L'option 'Connexions de rapports' d'un segment permet de synchroniser un même filtre interactif sur plusieurs tableaux et graphiques croisés dynamiques."
-                    },
-                    {
-                        question: "Quelle syntaxe permet d'imbriquer une condition logique multiple exigeant que la cellule A2 soit supérieure à 100 ET que B2 soit égale à 'Validé' ?",
-                        answers: [
-                            "=SI(ET(A2>100; B2=\"Validé\"); \"OK\"; \"Refus\")",
-                            "=ET(SI(A2>100); SI(B2=\"Validé\"))",
-                            "=SI(A2>100 OU B2=\"Validé\"; \"OK\"; \"Refus\")"
-                        ],
-                        correct: 0,
-                        explanation: "La fonction ET() regroupe les conditions logiques et renvoie VRAI uniquement si tous ses arguments sont vérifiés, servant de premier paramètre au SI()."
-                    },
-                    {
-                        question: "Dans l'éditeur Power Query d'Excel, quelle commande transforme un tableau avec des colonnes mensuelles (Janvier, Février...) en une liste verticale normalisée exploitable en TCD ?",
-                        answers: [
-                            "Dépivoter les colonnes (Unpivot Columns)",
-                            "Transposer la feuille entière",
-                            "Remplacer les valeurs nulles"
-                        ],
-                        correct: 0,
-                        explanation: "Le dépivotage de colonnes (Unpivot) transforme des colonnes d'attributs horizontales en paires Attribut/Valeur verticales, créant une table plate idéale pour l'analyse."
-                    },
-                    {
-                        question: "Comment créer une liste déroulante dynamique dont le contenu dépend du choix fait dans une cellule précédente (listes en cascade) ?",
-                        answers: [
-                            "En utilisant la 'Validation des données' (Mode Liste) combinée à la formule =INDIRECT(CelluleSource)",
-                            "En verrouillant la feuille avec un mot de passe",
-                            "En désactivant le calcul automatique du classeur"
-                        ],
-                        correct: 0,
-                        explanation: "La fonction INDIRECT() convertit le texte sélectionné dans la première liste en une plage nommée correspondante pour alimenter la liste dépendante."
-                    },
-                    {
-                        question: "Comment sécuriser un modèle financier pour que les utilisateurs puissent renseigner des hypothèses sans risquer d'effacer les formules ?",
-                        answers: [
-                            "Déverrouiller les cellules de saisie (Format de cellule > Protection), puis activer la 'Protection de la feuille'",
-                            "Masquer les colonnes sans activer de mot de passe",
-                            "Enregistrer le classeur sous format .CSV plat"
-                        ],
-                        correct: 0,
-                        explanation: "Toutes les cellules sont verrouillées par défaut. Il faut explicitement décocher 'Verrouillée' sur les cellules de saisie avant d'enclencher la protection de feuille."
-                    },
-                    {
-                        question: "En langage VBA Excel, quelle structure de boucle est recommandée pour appliquer un traitement à chaque cellule d'une plage sans connaître sa taille fixe ?",
-                        answers: [
-                            "For Each cel In MaPlage ... Next cel",
-                            "Goto LigneSuivante",
-                            "While True ... End While sans condition de sortie"
-                        ],
-                        correct: 0,
-                        explanation: "La boucle 'For Each ... In Range' itère de manière robuste et élégante sur chaque objet cellule de la collection sans nécessiter d'indice numérique de ligne."
-                    }
-                ]
-            },
-
-            sql: {
-                id: 'sql',
-                title: 'SQL & Architecture de Bases de Données',
-                icon: 'fa-database',
-                source: 'Norme ANSI SQL & Modélisation Relationnelle (MCD/MLD)',
-                duration: '6-8 min',
-                recommendedCourse: 'Bases de Données & Optimisation SQL',
-                formTopic: 'Conseil BI & Data',
-                description: '8 questions techniques pour évaluer votre maîtrise de la normalisation, des requêtes complexes, des index B-Tree et des transactions ACID.',
-                questions: [
-                    {
-                        question: "Quelle condition est indispensable pour qu'une table relationnelle soit en Première Forme Normale (1NF) ?",
-                        answers: [
-                            "Chaque cellule doit contenir une valeur atomique et indivisible, sans groupe répétitif",
-                            "Toutes les colonnes numériques doivent être indexées",
-                            "La table doit posséder au moins trois clés étrangères"
-                        ],
-                        correct: 0,
-                        explanation: "La 1NF impose l'atomicité de chaque attribut et l'unicité de chaque enregistrement via une clé primaire."
-                    },
-                    {
-                        question: "Quelle clause SQL permet de filtrer les résultats APRÈS un regroupement avec GROUP BY ?",
-                        answers: ["WHERE", "HAVING", "ORDER BY"],
-                        correct: 1,
-                        explanation: "WHERE filtre les lignes avant le regroupement ; HAVING filtre les groupes après agrégation."
-                    },
-                    {
-                        question: "Que garantit une jointure LEFT OUTER JOIN entre une table Clients (gauche) et Commandes (droite) ?",
-                        answers: [
-                            "Tous les clients sont retournés, même ceux qui n'ont passé aucune commande (avec NULL pour les colonnes de Commandes)",
-                            "Seuls les clients ayant passé au moins une commande sont affichés",
-                            "Un produit cartésien complet entre les deux tables"
-                        ],
-                        correct: 0,
-                        explanation: "LEFT JOIN conserve l'intégralité des enregistrements de la table de gauche indépendamment des correspondances à droite."
-                    },
-                    {
-                        question: "Quel est le principe de fonctionnement d'un index B-Tree sur une colonne SQL ?",
-                        answers: [
-                            "Organiser les clés dans un arbre équilibré pour permettre des recherches et des plages en temps logarithmique O(log n)",
-                            "Compresser les données en mémoire vive pour doubler la capacité de stockage",
-                            "Crypter les données pour empêcher les accès non autorisés"
-                        ],
-                        correct: 0,
-                        explanation: "L'index B-Tree réduit le nombre de lectures disque nécessaires pour trouver un enregistrement de O(n) à O(log n)."
-                    },
-                    {
-                        question: "Dans les propriétés transactionnelles ACID, que garantit l'Atomicité ?",
-                        answers: [
-                            "Que toutes les opérations de la transaction sont menées à bien, ou qu'aucune ne l'est en cas d'erreur",
-                            "Que les requêtes s'exécutent à la vitesse de la lumière",
-                            "Que les données sont répliquées sur deux disques distincts"
-                        ],
-                        correct: 0,
-                        explanation: "L'atomicité garantit qu'une transaction n'est jamais partiellement appliquée : c'est 'tout ou rien'."
-                    },
-                    {
-                        question: "Quelle est la différence technique entre DELETE FROM table et TRUNCATE TABLE ?",
-                        answers: [
-                            "TRUNCATE réinitialise les pages de données sans journaliser chaque ligne individuellement, ce qui est bien plus rapide",
-                            "DELETE supprime la structure même de la table dans le dictionnaire de données",
-                            "Il n'existe aucune différence, ce sont de stricts synonymes"
-                        ],
-                        correct: 0,
-                        explanation: "TRUNCATE est une instruction DDL désallouant les blocs de stockage, bien plus performante sur les grandes tables."
-                    },
-                    {
-                        question: "À quoi sert la clause OVER (PARTITION BY client_id ORDER BY date_vente) en SQL ?",
-                        answers: [
-                            "À appliquer une fonction de fenêtrage analytique (ex: calcul de cumul ou classement) sans agréger ni masquer les lignes",
-                            "À créer une vue matérialisée sur le serveur",
-                            "À forcer l'utilisation d'une transaction distribuée"
-                        ],
-                        correct: 0,
-                        explanation: "Les fonctions de fenêtrage (Window Functions) calculent des agrégats par partition tout en conservant le niveau de détail individuel."
-                    },
-                    {
-                        question: "Que garantit une contrainte de clé étrangère (FOREIGN KEY) ?",
-                        answers: [
-                            "L'intégrité référentielle : la valeur saisie doit obligatoirement exister dans la clé primaire de la table parente",
-                            "Que la colonne ne peut jamais contenir de valeur nulle (NOT NULL)",
-                            "Que la colonne est automatiquement incrémentée à chaque insertion"
-                        ],
-                        correct: 0,
-                        explanation: "La clé étrangère prévient les orphelins de données et assure la cohérence des relations entre tables."
-                    }
-                ]
-            },
-
-            algo: {
-                id: 'algo',
-                title: 'Algorithmique & Structures de Données',
-                icon: 'fa-code',
-                source: 'Fondements Informatiques (MIT CS / Cormen & Leiserson)',
-                duration: '5-7 min',
-                recommendedCourse: 'Algorithmique & Structures de Données',
-                formTopic: 'Autre Formation',
-                description: '8 questions d\'évaluation sur la complexité temporelle (Big-O), les arbres, le tri et la récursivité.',
-                questions: [
-                    {
-                        question: "Quelle est la complexité temporelle dans le pire des cas d'une recherche dichotomique sur un tableau trié de taille n ?",
-                        answers: ["O(log n)", "O(n)", "O(n log n)"],
-                        correct: 0,
-                        explanation: "À chaque étape, l'espace de recherche est divisé par deux, ce qui correspond à une complexité logarithmique O(log n)."
-                    },
-                    {
-                        question: "Quel principe d'ordonnancement régit une structure de File (Queue) ?",
-                        answers: [
-                            "FIFO (First In, First Out) : le premier élément inséré est le premier retiré",
-                            "LIFO (Last In, First Out) : le dernier élément inséré est le premier retiré",
-                            "Aléatoire (Random Access)"
-                        ],
-                        correct: 0,
-                        explanation: "La file respecte le principe FIFO (comme une file d'attente), contrairement à la pile (Stack) qui est LIFO."
-                    },
-                    {
-                        question: "Quelle est la condition indispensable pour concevoir un algorithme récursif fonctionnel ?",
-                        answers: [
-                            "Définir un cas de base (condition d'arrêt) clair pour stopper les appels et éviter le débordement de pile",
-                            "Utiliser obligatoirement au moins une boucle 'for'",
-                            "Allouer un tableau statique de 1000 éléments"
-                        ],
-                        correct: 0,
-                        explanation: "Sans cas de base terminal, les appels récursifs s'empilent indéfiniment jusqu'à un crash par Stack Overflow."
-                    },
-                    {
-                        question: "Quelle propriété définit un Arbre Binaire de Recherche (BST) valide ?",
-                        answers: [
-                            "Pour chaque nœud, toutes les clés du sous-arbre gauche sont inférieures, et celles du sous-arbre droit sont supérieures",
-                            "Tous les nœuds ont impérativement la même valeur",
-                            "L'arbre ne peut posséder plus de 2 niveaux au total"
-                        ],
-                        correct: 0,
-                        explanation: "Cette règle d'invariant permet de rechercher, insérer ou supprimer des clés efficacement en O(h) avec h la hauteur."
-                    },
-                    {
-                        question: "Quelle est la complexité temporelle moyenne du tri rapide (QuickSort) sur un tableau de taille n ?",
-                        answers: ["O(n log n)", "O(n²)", "O(1)"],
-                        correct: 0,
-                        explanation: "En moyenne, QuickSort partitionne efficacement le tableau en deux sous-problèmes et atteint O(n log n)."
-                    },
-                    {
-                        question: "Quelle est la complexité moyenne pour insérer ou rechercher un élément dans une table de hachage bien conçue ?",
-                        answers: ["O(1) en temps constant", "O(n) en temps linéaire", "O(n²) en temps quadratique"],
-                        correct: 0,
-                        explanation: "La fonction de hachage calcule directement l'indice du seau, offrant un accès en temps constant O(1)."
-                    },
-                    {
-                        question: "Pour de grands n, quelle fonction de complexité croît le plus rapidement ?",
-                        answers: ["O(2^n) - exponentielle", "O(n³) - cubique", "O(n log n) - quasi-linéaire"],
-                        correct: 0,
-                        explanation: "La croissance exponentielle 2^n surpasse rapidement toutes les croissances polynomiales."
-                    },
-                    {
-                        question: "Quelle structure de données est naturellement utilisée pour implémenter un parcours en profondeur (DFS) d'un graphe ?",
-                        answers: [
-                            "Une Pile (Stack), explicite ou via la pile d'appels récursifs",
-                            "Une File (Queue) FIFO",
-                            "Une matrice diagonale"
-                        ],
-                        correct: 0,
-                        explanation: "Le parcours en profondeur (DFS) explore chaque branche jusqu'au bout via une pile (LIFO), tandis que le BFS utilise une file."
-                    }
-                ]
-            },
-
-            unix: {
-                id: 'unix',
-                title: 'Environnements UNIX / Linux & Shell',
-                icon: 'fa-terminal',
-                source: 'Standards POSIX & Linux Foundation',
-                duration: '5-7 min',
-                recommendedCourse: 'Environnements UNIX & Linux',
-                formTopic: 'Autre Formation',
-                description: '8 questions pratiques sur les permissions POSIX, la gestion des flux, les signaux et les processus système.',
-                questions: [
-                    {
-                        question: "Que signifient les permissions octales 754 sur un fichier sous Linux (chmod 754) ?",
-                        answers: [
-                            "Propriétaire: rwx (7) | Groupe: r-x (5) | Autres: r-- (4)",
-                            "Propriétaire: r-- (4) | Groupe: r-x (5) | Autres: rwx (7)",
-                            "Tous les utilisateurs ont les droits d'écriture complets"
-                        ],
-                        correct: 0,
-                        explanation: "En binaire/octal : 7 = 4+2+1 (rwx), 5 = 4+0+1 (r-x), 4 = 4+0+0 (r--)."
-                    },
-                    {
-                        question: "Que réalise la syntaxe Bash : commande > fichier.log 2>&1 ?",
-                        answers: [
-                            "Elle redirige la sortie standard (stdout, descripteur 1) et la sortie d'erreur (stderr, descripteur 2) vers fichier.log",
-                            "Elle exécute la commande deux fois en parallèle",
-                            "Elle supprime silencieusement les erreurs"
-                        ],
-                        correct: 0,
-                        explanation: "2>&1 redirige le flux d'erreur standard 2 vers la même destination que le flux standard 1."
-                    },
-                    {
-                        question: "Quel signal système est envoyé par défaut par la commande kill <PID> ?",
-                        answers: ["SIGTERM (signal 15, demande d'arrêt propre)", "SIGKILL (signal 9, arrêt immédiat et forcé)", "SIGHUP (signal 1)"],
-                        correct: 0,
-                        explanation: "SIGTERM (15) permet au processus de capturer le signal, de fermer ses fichiers et de se terminer proprement."
-                    },
-                    {
-                        question: "Quelle est la caractéristique essentielle d'un lien physique (Hard Link) ?",
-                        answers: [
-                            "Il partage exactement le même inode que le fichier cible et reste valide même si le fichier d'origine est déplacé ou supprimé",
-                            "C'est un simple fichier texte contenant le chemin absolu de la cible",
-                            "Il ne fonctionne qu'entre machines distantes via SSH"
-                        ],
-                        correct: 0,
-                        explanation: "Un hard link est une référence supplémentaire vers le même inode ; les données ne sont libérées que lorsque le compteur de liens atteint 0."
-                    },
-                    {
-                        question: "À quoi correspond le répertoire virtuel /proc sous Linux ?",
-                        answers: [
-                            "À un pseudo-système de fichiers en mémoire vive exposant en temps réel l'état du noyau et des processus actifs",
-                            "Au dossier d'installation des logiciels propriétaires",
-                            "À la corbeille temporaire de l'administrateur root"
-                        ],
-                        correct: 0,
-                        explanation: "/proc ne consomme pas d'espace disque physique : c'est une interface dynamique avec la mémoire du noyau Linux."
-                    },
-                    {
-                        question: "Qu'est-ce qu'un processus 'Zombie' (état Z) sous Linux ?",
-                        answers: [
-                            "Un processus dont l'exécution est achevée mais dont le processus parent n'a pas encore lu le code de retour via wait()",
-                            "Un virus informatique qui consomme 100% du CPU",
-                            "Un démon système qui tourne en arrière-plan indéfiniment"
-                        ],
-                        correct: 0,
-                        explanation: "Le zombie ne consomme plus de CPU ou de RAM, mais conserve une entrée dans la table des processus du noyau."
-                    },
-                    {
-                        question: "Quel est le rôle de la variable d'environnement PATH ?",
-                        answers: [
-                            "Indiquer la liste ordonnée des répertoires où le shell recherche les exécutables des commandes saisies",
-                            "Définir le dossier d'enregistrement par défaut des téléchargements",
-                            "Fixer le fuseau horaire de la machine"
-                        ],
-                        correct: 0,
-                        explanation: "Lorsque vous tapez une commande sans chemin relatif/absolu, le shell parcourt les répertoires listés dans $PATH."
-                    },
-                    {
-                        question: "Quelle commande permet de rechercher récursivement des fichiers par leur nom dans une arborescence ?",
-                        answers: ["find /chemin -name '*.conf'", "grep -r 'mot' /chemin", "cat -n /chemin"],
-                        correct: 0,
-                        explanation: "find recherche des fichiers selon leurs métadonnées (nom, taille, date), alors que grep cherche dans le contenu textuel."
-                    }
-                ]
-            },
-
-            scrum: {
-                id: 'scrum',
-                title: 'Scrum & Cadre Agile d\'Entreprise',
-                icon: 'fa-sync-alt',
-                source: 'Scrum Guide officiel 2020 (Ken Schwaber & Jeff Sutherland)',
-                duration: '5-7 min',
-                recommendedCourse: 'Scrum & Gestion de Projet Agile',
-                formTopic: 'Autre Formation',
-                description: '8 questions officielles pour évaluer votre compréhension des rôles, des artefacts et de la gouvernance Scrum.',
-                questions: [
-                    {
-                        question: "Selon le Scrum Guide officiel 2020, qui est l'unique responsable de la gestion du Product Backlog ?",
-                        answers: [
-                            "Le Product Owner uniquement",
-                            "Le Scrum Master conjointement avec le client",
-                            "L'ensemble des Développeurs lors du Daily Scrum"
-                        ],
-                        correct: 0,
-                        explanation: "Le Product Owner est l'unique personne responsable de maximiser la valeur du produit et de prioriser le Backlog."
-                    },
-                    {
-                        question: "Quelle est la durée maximale autorisée pour un Sprint selon le Scrum Guide ?",
-                        answers: ["Un mois civil au maximum", "Deux mois pour les projets complexes", "Deux semaines obligatoirement"],
-                        correct: 0,
-                        explanation: "Le Scrum Guide stipule que les Sprints sont des événements d'une durée fixe d'un mois ou moins pour limiter les risques."
-                    },
-                    {
-                        question: "Quels sont les trois piliers de la théorie empirique sur laquelle repose Scrum ?",
-                        answers: [
-                            "Transparence, Inspection, Adaptation",
-                            "Planification, Documentation, Négociation",
-                            "Rapidité, Budget fixe, Périmètre fermé"
-                        ],
-                        correct: 0,
-                        explanation: "Scrum repose sur l'empirisme : la prise de décision est fondée sur l'observation de faits visibles et vérifiables."
-                    },
-                    {
-                        question: "Quel est l'objectif premier de la réunion quotidienne 'Daily Scrum' (15 minutes) ?",
-                        answers: [
-                            "Inspecter la progression vers le Sprint Goal et adapter le Sprint Backlog du jour",
-                            "Faire un rapport hiérarchique détaillé au Scrum Master",
-                            "Négocier de nouveaux contrats avec le client"
-                        ],
-                        correct: 0,
-                        explanation: "Le Daily Scrum est un événement interne aux Développeurs pour synchroniser leurs efforts vers le Sprint Goal."
-                    },
-                    {
-                        question: "Que devient un élément du Product Backlog qui n'est pas terminé (non conforme à la Definition of Done) à la fin du Sprint ?",
-                        answers: [
-                            "Il ne peut pas être présenté ni livré dans l'Incrément ; il retourne dans le Product Backlog pour réestimation",
-                            "Il est comptabilisé comme partiellement terminé pour le calcul de vélocité",
-                            "Il est automatiquement reporté au Sprint suivant sans concertation"
-                        ],
-                        correct: 0,
-                        explanation: "Si un élément ne respecte pas la Definition of Done, il ne fait pas partie de l'Incrément et retourne au Product Backlog."
-                    },
-                    {
-                        question: "Quel événement Scrum est spécifiquement dédié à l'inspection de l'équipe elle-même et de ses méthodes de travail ?",
-                        answers: ["La Rétrospective de Sprint (Sprint Retrospective)", "La Sprint Review", "Le Sprint Planning"],
-                        correct: 0,
-                        explanation: "La Rétrospective a pour but d'analyser le déroulement du Sprint (individus, processus, outils) et de planifier des améliorations."
-                    },
-                    {
-                        question: "Qui a le pouvoir d'annuler prématurément un Sprint si l'objectif (Sprint Goal) devient obsolète ?",
-                        answers: [
-                            "Le Product Owner uniquement",
-                            "Le Scrum Master à la majorité absolue",
-                            "Le management de l'entreprise sans préavis"
-                        ],
-                        correct: 0,
-                        explanation: "Seul le Product Owner détient l'autorité d'annuler un Sprint si le Sprint Goal n'a plus de sens économique ou métier."
-                    },
-                    {
-                        question: "Quel artefact Scrum représente l'engagement de qualité de l'Incrément ?",
-                        answers: ["La Définition de Fini (Definition of Done)", "Le Sprint Goal", "Le diagramme de Burndown"],
-                        correct: 0,
-                        explanation: "La Definition of Done est une description formelle de l'état de l'Incrément lorsqu'il satisfait aux critères de qualité requis."
-                    }
-                ]
-            },
-
-            msproject: {
-                id: 'msproject',
-                title: 'MS Project & Ordonnancement de Projets',
-                icon: 'fa-tasks',
-                source: 'Méthode du Chemin Critique (CPM) & PMI / Microsoft Project',
-                duration: '5-7 min',
-                recommendedCourse: 'MS Project & Pilotage Opérationnel',
-                formTopic: 'Autre Formation',
-                description: '8 questions d\'expertise sur le chemin critique, la marge totale, le nivellement des ressources et les lignes de base.',
-                questions: [
-                    {
-                        question: "Qu'est-ce que le 'Chemin Critique' (Critical Path) dans la planification d'un projet ?",
-                        answers: [
-                            "La suite séquentielle de tâches dont la marge totale est nulle, déterminant la durée totale minimale du projet",
-                            "L'ensemble des tâches les plus dangereuses pour les collaborateurs",
-                            "La liste des livrables ayant le budget financier le plus élevé"
-                        ],
-                        correct: 0,
-                        explanation: "Tout retard sur une tâche du chemin critique retarde directement la date d'achèvement final du projet."
-                    },
-                    {
-                        question: "Qu'est-ce que la 'Marge Totale' (Total Slack / Float) d'une tâche ?",
-                        answers: [
-                            "Le délai dont une tâche peut être retardée sans repousser la date de fin du projet",
-                            "Le délai accordé par le client pour signer le bon de commande",
-                            "Le temps de pause obligatoire entre deux journées de travail"
-                        ],
-                        correct: 0,
-                        explanation: "La marge totale mesure la flexibilité d'une tâche avant qu'elle ne devienne critique."
-                    },
-                    {
-                        question: "Dans MS Project, quelle relation d'antécédence est appliquée par défaut entre deux tâches ?",
-                        answers: [
-                            "Fin à Début (FD / Finish-to-Start) : la tâche B ne peut commencer que lorsque la tâche A est terminée",
-                            "Début à Début (DD / Start-to-Start)",
-                            "Fin à Fin (FF / Finish-to-Finish)"
-                        ],
-                        correct: 0,
-                        explanation: "La relation Fin à Début (FD) est la dépendance logique la plus courante dans l'ordonnancement de projets."
-                    },
-                    {
-                        question: "Quelle est la définition d'un 'Jalon' (Milestone) dans Microsoft Project ?",
-                        answers: [
-                            "Une tâche marquante de durée zéro représentant un événement clé ou la validation d'un livrable",
-                            "Une tâche qui dure au minimum un mois",
-                            "Une ressource matérielle partagée"
-                        ],
-                        correct: 0,
-                        explanation: "Un jalon matérialise une étape importante (ex: validation de phase) et n'a pas de durée propre."
-                    },
-                    {
-                        question: "À quoi sert la fonction de 'Nivellement des ressources' (Resource Leveling) dans MS Project ?",
-                        answers: [
-                            "À résoudre les conflits de surutilisation de ressources en décalant automatiquement les tâches ayant de la marge",
-                            "À augmenter arbitrairement le salaire des intervenants",
-                            "À supprimer les tâches en retard"
-                        ],
-                        correct: 0,
-                        explanation: "Le nivellement lisse la charge de travail pour qu'aucune ressource ne soit affectée au-delà de sa capacité maximale."
-                    },
-                    {
-                        question: "Pourquoi est-il indispensable d'enregistrer une 'Planification de Référence' (Set Baseline) avant le lancement des travaux ?",
-                        answers: [
-                            "Pour figer une copie du planning initial approuvé afin de pouvoir mesurer objectivement les écarts de coûts et de délais réels",
-                            "Pour verrouiller le fichier avec un mot de passe",
-                            "Pour envoyer automatiquement le planning par e-mail aux équipes"
-                        ],
-                        correct: 0,
-                        explanation: "Sans référence figée (Baseline), il est impossible d'analyser la dérive temporelle ou budgétaire du projet."
-                    },
-                    {
-                        question: "Dans le management de projet selon le PMI, que représente le sigle WBS (Work Breakdown Structure) ?",
-                        answers: [
-                            "L'Organigramme des Tâches : décomposition hiérarchique orientée livrables du périmètre global du projet",
-                            "Un serveur web sécurisé pour partager les rapports",
-                            "Une formule de calcul de la marge bénéficiaire"
-                        ],
-                        correct: 0,
-                        explanation: "La WBS décompose les grands livrables du projet en lots de travail élémentaires (Work Packages) gérables."
-                    },
-                    {
-                        question: "Dans la méthode de la valeur acquise (EVM), que signifie un indice de performance des coûts CPI (Cost Performance Index) égal à 1.15 ?",
-                        answers: [
-                            "Pour chaque dirham dépensé, le projet a produit 1,15 dirham de valeur (le projet est sous son budget prévisionnel)",
-                            "Le projet est en surcoût financier de 15%",
-                            "Le projet accuse un retard de planning de 15 jours"
-                        ],
-                        correct: 0,
-                        explanation: "Un CPI > 1 indique une performance financière favorable : le coût réel (AC) est inférieur à la valeur acquise (EV)."
-                    }
-                ]
-            }
-        };
-
-        // ---------------------------------------------------------------------
-        // 4. Moteur d'exécution interactif du Quiz Hub Multi-domaines
-        // ---------------------------------------------------------------------
-        let currentQuizKey = 'powerbi';
+        const QUIZ_DATA = window.BenchTechQuizDatabase || {};
 
         const quizTabs = document.querySelectorAll('.quiz-tab-btn');
+        let currentQuizKey = 'copilot';
+
         const quizTitle = document.getElementById('quiz-title');
         const quizDescription = document.getElementById('quiz-description');
         const quizSourceText = document.getElementById('quiz-source-text');
@@ -3849,18 +2958,18 @@
 
         function loadQuiz(quizKey) {
             currentQuizKey = quizKey;
-            const data = QUIZ_DATA[quizKey];
+            const data = (window.BenchTechQuizDatabase && window.BenchTechQuizDatabase.getTheme) ? window.BenchTechQuizDatabase.getTheme(quizKey) : QUIZ_DATA[quizKey];
             if (!data) return;
 
-            // Mise à jour de l'interface d'en-tête
+            // Mise à jour de l'en-tête de présentation
             if (quizTitle) quizTitle.textContent = `Évaluation : ${data.title}`;
             if (quizDescription) quizDescription.textContent = data.description;
             if (quizSourceText) quizSourceText.textContent = data.source;
             if (quizDuration) quizDuration.textContent = data.duration;
-            if (quizQCount) quizQCount.textContent = `${data.questions.length} questions`;
+            if (quizQCount) quizQCount.textContent = `${data.questions.length} cas pratiques`;
             if (quizIntroIcon) quizIntroIcon.innerHTML = `<i class="fas ${data.icon}"></i>`;
 
-            // Réinitialisation de l'état du formulaire
+            // Réinitialisation de l'état
             if (startButton) {
                 startButton.hidden = false;
                 startButton.setAttribute('aria-expanded', 'false');
@@ -3875,17 +2984,40 @@
                 quizForm.reset();
             }
 
-            // Génération des questions dans le DOM
+            // Rendu des questions orientées terrain avec scénarios réels
             if (questionContainer) {
                 questionContainer.innerHTML = '';
                 data.questions.forEach((item, questionIndex) => {
                     const fieldset = document.createElement('fieldset');
                     fieldset.className = 'quiz-question';
 
-                    const legend = document.createElement('legend');
-                    legend.textContent = `${questionIndex + 1}. ${item.question}`;
-                    fieldset.appendChild(legend);
+                    // En-tête avec niveau granulaire (Intermédiaire / Avancé / Expert)
+                    const headerRow = document.createElement('div');
+                    headerRow.className = 'quiz-q-header';
 
+                    const diffBadge = document.createElement('span');
+                    const diffClass = item.difficulty.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                    diffBadge.className = `quiz-diff-badge diff-${diffClass}`;
+                    diffBadge.innerHTML = `<i class="fas fa-layer-group"></i> Niveau ${item.difficulty} (${item.points} pt${item.points > 1 ? 's' : ''})`;
+
+                    const qNum = document.createElement('span');
+                    qNum.className = 'quiz-q-num';
+                    qNum.textContent = `Question ${questionIndex + 1} sur ${data.questions.length}`;
+
+                    headerRow.append(qNum, diffBadge);
+
+                    // Scénario métier contextualisé
+                    const scenarioBox = document.createElement('div');
+                    scenarioBox.className = 'quiz-scenario-box';
+                    scenarioBox.innerHTML = `<strong><i class="fas fa-briefcase"></i> Scénario Opérationnel :</strong> ${item.scenario}`;
+
+                    // Intitulé de la question
+                    const legend = document.createElement('legend');
+                    legend.textContent = item.question;
+
+                    fieldset.append(headerRow, scenarioBox, legend);
+
+                    // Propositions techniques avec piège subtil
                     item.answers.forEach((answer, answerIndex) => {
                         const label = document.createElement('label');
                         label.className = 'quiz-answer';
@@ -3918,7 +3050,7 @@
             });
         });
 
-        // Déclencheur direct depuis les cartes de formation
+        // Déclencheur direct depuis les cartes du catalogue
         window.switchAndStartQuiz = function(quizKey) {
             quizTabs.forEach(tab => {
                 if (tab.getAttribute('data-quiz-tab') === quizKey) {
@@ -3929,19 +3061,17 @@
             });
             loadQuiz(quizKey);
 
-            // Défilement fluide vers la section évaluation
             const evalSection = document.getElementById('evaluations');
             if (evalSection) {
                 evalSection.scrollIntoView({ behavior: 'smooth' });
             }
 
-            // Lancement automatique du formulaire
             setTimeout(() => {
                 if (startButton) startButton.click();
             }, 300);
         };
 
-        // Démarrage du test
+        // Lancement du test
         if (startButton) {
             startButton.addEventListener('click', () => {
                 if (quizContent) quizContent.hidden = false;
@@ -3952,91 +3082,154 @@
             });
         }
 
-        // Soumission et calcul du score
+        // Soumission, calcul du score pondéré & orientation sur-mesure
         if (quizForm) {
             quizForm.addEventListener('submit', (event) => {
                 event.preventDefault();
-                const currentData = QUIZ_DATA[currentQuizKey];
+                const currentData = (window.BenchTechQuizDatabase && window.BenchTechQuizDatabase.getTheme) ? window.BenchTechQuizDatabase.getTheme(currentQuizKey) : QUIZ_DATA[currentQuizKey];
                 if (!currentData) return;
 
                 const formData = new FormData(quizForm);
-                const totalQuestions = currentData.questions.length;
+                let totalPossiblePoints = 0;
+                let earnedPoints = 0;
+                let correctCount = 0;
 
-                const score = currentData.questions.reduce(
-                    (total, item, questionIndex) =>
-                        total + (Number(formData.get(`question-${questionIndex}`)) === item.correct ? 1 : 0),
-                    0
-                );
+                const resultsBreakdown = currentData.questions.map((item, idx) => {
+                    const rawVal = formData.get(`question-${idx}`);
+                    const selectedIdx = rawVal !== null ? Number(rawVal) : -1;
+                    const isCorrect = (selectedIdx === item.correct);
+                    
+                    totalPossiblePoints += item.points;
+                    if (isCorrect) {
+                        earnedPoints += item.points;
+                        correctCount++;
+                    }
 
-                const percent = Math.round((score / totalQuestions) * 100);
+                    return {
+                        question: item.question,
+                        scenario: item.scenario,
+                        difficulty: item.difficulty,
+                        points: item.points,
+                        selected: selectedIdx,
+                        correct: item.correct,
+                        isCorrect: isCorrect,
+                        selectedText: item.answers[selectedIdx] || 'Non répondu',
+                        correctText: item.answers[item.correct],
+                        explanation: item.explanation
+                    };
+                });
 
-                let level;
-                let guidance;
-                let levelBadgeColor = 'var(--color-magician)';
+                const percent = Math.round((earnedPoints / totalPossiblePoints) * 100);
 
-                if (percent <= 40) {
-                    level = "Profil Découverte / Fondamentaux à consolider";
-                    guidance = `Vos connaissances sur ce domaine sont introductives. Le cursus BenchTech en ${currentData.recommendedCourse} vous apportera une méthodologie solide pas-à-pas pour maîtriser les bases théoriques et opérationnelles indispensables.`;
-                } else if (percent <= 75) {
-                    level = "Profil Opérationnel / Intermédiaire";
-                    guidance = `Vous possédez de bons réflexes opérationnels. Notre programme ${currentData.recommendedCourse} vous permettra de franchir un cap d'expertise sur les concepts avancés et les cas industriels réels.`;
+                let levelTitle;
+                let levelDescription;
+                let badgeClass;
+                let suggestedPreset;
+
+                if (percent < 45) {
+                    levelTitle = "Profil Découverte — Fondamentaux & Socle Opérationnel à Consolider";
+                    levelDescription = "Votre score indique une connaissance introductive du domaine. Des lacunes sur les mécanismes sous-jacents et les cas limites exposent vos livrables à des risques de performance ou de sécurité. Nous vous orientons vers notre cursus d'initiation et de structuration progressive.";
+                    badgeClass = "level-initial";
+                    suggestedPreset = "niveau1";
+                } else if (percent < 75) {
+                    levelTitle = "Profil Praticien Confirmé — Maîtrise des Usages Standards & Cas Courants";
+                    levelDescription = "Vous possédez de solides réflexes opérationnels. Pour franchir le cap vers le profil Référent / Tech Lead, il vous reste à dompter les cas de forte volumétrie, les optimisations de bas niveau et les architectures complexes.";
+                    badgeClass = "level-inter";
+                    suggestedPreset = "niveau2";
                 } else {
-                    level = "Profil Avancé / Maîtrise Confirmée";
-                    guidance = `Félicitations, vous démontrez une excellente rigueur technique sur ce sujet ! Vous êtes prêt pour nos modules d'approfondissement d'élite ou des missions de conseil stratégique.`;
+                    levelTitle = "Profil Spécialiste Avancé / Tech Lead — Excellence Technique Démontrée";
+                    levelDescription = "Félicitations ! Vous démontrez une rigueur conceptuelle et pratique remarquable face à des cas d'erreurs complexes. Vous êtes prêt pour nos modules d'approfondissement d'élite ou des missions d'expertise architecturale.";
+                    badgeClass = "level-expert";
+                    suggestedPreset = "niveau3";
                 }
 
                 if (resultContainer) {
                     resultContainer.innerHTML = '';
 
+                    // 1. En-tête de restitution
                     const headerBox = document.createElement('div');
                     headerBox.className = 'result-card-header';
 
-                    const heading = document.createElement('h4');
-                    heading.innerHTML = `<i class="fas fa-certificate" style="color: ${levelBadgeColor}; margin-right: 8px;"></i> ${level}`;
-
-                    const scoreGauge = document.createElement('div');
-                    scoreGauge.className = 'result-score-gauge';
-                    scoreGauge.innerHTML = `<i class="fas fa-chart-simple"></i> Score : ${score} / ${totalQuestions} (${percent}%)`;
-
-                    headerBox.append(heading, scoreGauge);
-
-                    const guidanceP = document.createElement('p');
-                    guidanceP.textContent = guidance;
-
-                    // Encadré de recommandation de formation BenchTech
-                    const courseBox = document.createElement('div');
-                    courseBox.className = 'recommended-course-box';
-                    courseBox.innerHTML = `
-                        <h5><i class="fas fa-graduation-cap" style="color: var(--color-magician); margin-right: 8px;"></i> Formation recommandée par BenchTech :</h5>
-                        <p><strong>${currentData.recommendedCourse}</strong> — Accompagnement par des praticiens seniors, sessions pratiques et études de cas concrètes.</p>
+                    const titleWrap = document.createElement('div');
+                    titleWrap.innerHTML = `
+                        <span class="result-level-tag ${badgeClass}"><i class="fas fa-medal"></i> Diagnostic de Positionnement</span>
+                        <h4 class="result-title">${levelTitle}</h4>
                     `;
 
-                    const disclaimer = document.createElement('p');
-                    disclaimer.className = 'quiz-disclaimer';
-                    disclaimer.textContent = "Ce test indicatif est confidentiel et anonyme. Il fournit une première cartographie de compétences pour guider vos choix de formation.";
+                    const gaugeBox = document.createElement('div');
+                    gaugeBox.className = 'result-score-gauge';
+                    gaugeBox.innerHTML = `
+                        <div class="score-number">${earnedPoints} / ${totalPossiblePoints} pts</div>
+                        <div class="score-percent">Taux de maîtrise pondéré : <strong>${percent}%</strong> (${correctCount}/${currentData.questions.length} cas résolus)</div>
+                    `;
 
-                    // Boutons d'actions
-                    const actionsContainer = document.createElement('div');
-                    actionsContainer.style.display = 'flex';
-                    actionsContainer.style.gap = '14px';
-                    actionsContainer.style.flexWrap = 'wrap';
-                    actionsContainer.style.marginTop = '20px';
+                    headerBox.append(titleWrap, gaugeBox);
 
-                    const contactBtn = document.createElement('a');
-                    contactBtn.href = '#contact';
-                    contactBtn.className = 'btn btn-primary';
-                    contactBtn.innerHTML = '<i class="fas fa-file-signature"></i> Demander le programme adapté';
-                    contactBtn.addEventListener('click', () => {
-                        const topicSelect = document.getElementById('contact-topic');
-                        if (topicSelect && currentData.formTopic) {
-                            topicSelect.value = currentData.formTopic;
-                        }
+                    const descP = document.createElement('p');
+                    descP.className = 'result-desc-text';
+                    descP.textContent = levelDescription;
+
+                    // 2. Encadré d'orientation directe vers le Studio Sur-Mesure
+                    const studioBox = document.createElement('div');
+                    studioBox.className = 'result-studio-recommendation';
+                    const targetStudioId = currentData.studioTarget || 'studios-sur-mesure';
+                    
+                    studioBox.innerHTML = `
+                        <div class="studio-rec-header">
+                            <i class="fas fa-sliders" aria-hidden="true"></i>
+                            <div>
+                                <h5>Recommandation Pédagogique Sur-Mesure BenchTech</h5>
+                                <p>Pour combler précisément les lacunes diagnostiquées sans réapprendre ce que vous maîtrisez déjà :</p>
+                            </div>
+                        </div>
+                        <div class="studio-rec-actions">
+                            <a href="#${targetStudioId}" class="btn btn-primary" onclick="navigateToStudio('${targetStudioId}', '${suggestedPreset}')">
+                                <i class="fas fa-wand-magic-sparkles"></i> Charger mon programme recommandé dans le Studio
+                            </a>
+                            <a href="#contact" class="btn btn-outline" onclick="prefillContactForm('${currentData.formTopic}')">
+                                <i class="fas fa-file-signature"></i> Transmettre ce diagnostic à un expert BenchTech
+                            </a>
+                        </div>
+                    `;
+
+                    // 3. Revue détaillée question par question avec explications et pièges
+                    const reviewSection = document.createElement('div');
+                    reviewSection.className = 'quiz-review-section';
+                    reviewSection.innerHTML = '<h5 class="review-heading"><i class="fas fa-list-check"></i> Analyse Détaillée des Cas Pratiques & Corrigé Pédagogique</h5>';
+
+                    resultsBreakdown.forEach((res, i) => {
+                        const itemCard = document.createElement('div');
+                        itemCard.className = `review-item ${res.isCorrect ? 'item-success' : 'item-fail'}`;
+
+                        itemCard.innerHTML = `
+                            <div class="review-item-header">
+                                <span class="review-status-pill ${res.isCorrect ? 'status-ok' : 'status-ko'}">
+                                    <i class="fas ${res.isCorrect ? 'fa-check' : 'fa-xmark'}"></i> ${res.isCorrect ? 'Validé' : 'Échec technique'}
+                                </span>
+                                <span class="review-diff">Niveau ${res.difficulty} (${res.points} pt${res.points > 1 ? 's' : ''})</span>
+                            </div>
+                            <p class="review-q-text"><strong>Cas ${i + 1} :</strong> ${res.question}</p>
+                            <div class="review-answers-compare">
+                                <div class="user-ans ${res.isCorrect ? 'ans-correct' : 'ans-wrong'}">
+                                    <strong>Votre réponse :</strong> ${res.selectedText}
+                                </div>
+                                ${!res.isCorrect ? `<div class="correct-ans"><strong>Solution recommandée :</strong> ${res.correctText}</div>` : ''}
+                            </div>
+                            <div class="review-explanation">
+                                <strong><i class="fas fa-lightbulb"></i> Le Pourquoi Pédagogique :</strong> ${res.explanation}
+                            </div>
+                        `;
+                        reviewSection.appendChild(itemCard);
                     });
 
+                    // 4. Bouton Recommencer
+                    const footerActions = document.createElement('div');
+                    footerActions.className = 'quiz-result-footer-actions';
+                    
                     const restartBtn = document.createElement('button');
                     restartBtn.type = 'button';
                     restartBtn.className = 'btn btn-outline';
-                    restartBtn.innerHTML = '<i class="fas fa-rotate-left"></i> Refaire ce test';
+                    restartBtn.innerHTML = '<i class="fas fa-rotate-left"></i> Refaire ce test de positionnement';
                     restartBtn.addEventListener('click', () => {
                         quizForm.reset();
                         resultContainer.hidden = true;
@@ -4045,15 +3238,37 @@
                         if (firstInput) firstInput.focus();
                     });
 
-                    actionsContainer.append(contactBtn, restartBtn);
+                    footerActions.appendChild(restartBtn);
 
-                    resultContainer.append(headerBox, guidanceP, courseBox, disclaimer, actionsContainer);
+                    resultContainer.append(headerBox, descP, studioBox, reviewSection, footerActions);
                     resultContainer.hidden = false;
                     quizForm.hidden = true;
-                    resultContainer.focus();
+                    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         }
+
+        // Navigation intelligente vers le studio correspondant avec application du preset
+        window.navigateToStudio = function(studioId, presetKey) {
+            // Activer l'onglet studio correspondant
+            const tabBtn = document.querySelector(`.studio-nav-tab[data-studio-target="${studioId}"]`);
+            if (tabBtn) tabBtn.click();
+
+            // Défilement vers le studio
+            setTimeout(() => {
+                const studioEl = document.getElementById(studioId);
+                if (studioEl) {
+                    studioEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 250);
+        };
+
+        window.prefillContactForm = function(topic) {
+            const topicSelect = document.getElementById('contact-topic');
+            if (topicSelect && topic) {
+                topicSelect.value = topic;
+            }
+        };
 
         // ---------------------------------------------------------------------
         // 4. STUDIO D'INGÉNIERIE PÉDAGOGIQUE EXCEL SUR-MESURE (3 NIVEAUX / 4 BLOCS PAR NIVEAU / 2 JOURS PAR NIVEAU)
