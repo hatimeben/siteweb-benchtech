@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Feuilles de style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2.2">
     <!-- Initialisation précoce du thème (évite tout flash blanc) -->
     <script>
         (function() {
@@ -58,15 +58,15 @@
                 <div class="nav-extra-wrap">
                     <!-- Sélecteur de Thème Visuel (Clair / Sombre / Contraste Élevé) -->
                     <div class="theme-switcher" role="radiogroup" aria-label="Mode d'affichage">
-                        <button type="button" class="theme-btn active" data-theme-val="light" role="radio" aria-checked="true" title="Mode Clair">
+                        <button type="button" class="theme-btn active" data-theme-val="light" onclick="applyTheme('light')" role="radio" aria-checked="true" title="Activer le Mode Clair">
                             <i class="fas fa-sun" aria-hidden="true"></i>
                             <span class="sr-only">Mode Clair</span>
                         </button>
-                        <button type="button" class="theme-btn" data-theme-val="dark" role="radio" aria-checked="false" title="Mode Sombre">
+                        <button type="button" class="theme-btn" data-theme-val="dark" onclick="applyTheme('dark')" role="radio" aria-checked="false" title="Activer le Mode Sombre">
                             <i class="fas fa-moon" aria-hidden="true"></i>
                             <span class="sr-only">Mode Sombre</span>
                         </button>
-                        <button type="button" class="theme-btn" data-theme-val="high-contrast" role="radio" aria-checked="false" title="Mode Contraste Élevé">
+                        <button type="button" class="theme-btn" data-theme-val="high-contrast" onclick="applyTheme('high-contrast')" role="radio" aria-checked="false" title="Activer le Mode Contraste Élevé">
                             <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
                             <span class="sr-only">Mode Contraste Élevé</span>
                         </button>
@@ -2850,11 +2850,14 @@
         // ---------------------------------------------------------------------
         // GESTIONNAIRE DU THÈME VISUEL (Clair / Sombre / Contraste Élevé)
         // ---------------------------------------------------------------------
-        function applyTheme(theme) {
+        window.applyTheme = function(theme) {
             if (!['light', 'dark', 'high-contrast'].includes(theme)) {
                 theme = 'light';
             }
             document.documentElement.setAttribute('data-theme', theme);
+            if (document.body) {
+                document.body.setAttribute('data-theme', theme);
+            }
             try {
                 localStorage.setItem('benchtech_theme', theme);
             } catch(e) {}
@@ -2865,7 +2868,7 @@
                 btn.classList.toggle('active', isActive);
                 btn.setAttribute('aria-checked', isActive ? 'true' : 'false');
             });
-        }
+        };
 
         document.querySelectorAll('.theme-btn').forEach(btn => {
             btn.addEventListener('click', () => {

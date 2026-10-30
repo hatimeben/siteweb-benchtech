@@ -2664,3 +2664,205 @@ summary:focus-visible {
         background-color: var(--card-bg) !important;
     }
 }
+
+/* ==========================================================================
+   RÈGLES D'APPLICATION DIRECTES DES THÈMES (GARANTIE DE CHANGEMENT VISUEL IMMÉDIAT)
+   ========================================================================== */
+
+/* --- MODE SOMBRE EXPLICITE --- */
+html[data-theme="dark"],
+body[data-theme="dark"] {
+    background-color: #0F172A !important;
+    color: #CBD5E1 !important;
+}
+
+html[data-theme="dark"] .bg-white,
+body[data-theme="dark"] .bg-white {
+    background-color: #0F172A !important;
+}
+
+html[data-theme="dark"] .bg-secondary,
+body[data-theme="dark"] .bg-secondary {
+    background-color: #1E293B !important;
+}
+
+html[data-theme="dark"] header,
+body[data-theme="dark"] header {
+    background-color: rgba(15, 23, 42, 0.98) !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .academy-card,
+html[data-theme="dark"] .consulting-card,
+html[data-theme="dark"] .studio-card,
+html[data-theme="dark"] .live-syllabus-sheet,
+html[data-theme="dark"] .excel-studio-section,
+html[data-theme="dark"] .powerbi-studio-section,
+html[data-theme="dark"] .unix-studio-section,
+html[data-theme="dark"] .sql-studio-section,
+html[data-theme="dark"] .copilot-studio-section,
+html[data-theme="dark"] .hybrid-studio-section,
+html[data-theme="dark"] .contact-form-wrapper,
+html[data-theme="dark"] .contact-info-card,
+html[data-theme="dark"] .quiz-hub,
+html[data-theme="dark"] .quiz-container,
+html[data-theme="dark"] .studio-nav-tab,
+html[data-theme="dark"] .preset-btn,
+html[data-theme="dark"] .hybrid-pack-card,
+html[data-theme="dark"] .block-item,
+html[data-theme="dark"] .recommended-course-box {
+    background: #1E293B !important;
+    background-color: #1E293B !important;
+    border-color: #334155 !important;
+    color: #CBD5E1 !important;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] .brand-name,
+html[data-theme="dark"] .nav-links li a,
+html[data-theme="dark"] .section-header h2,
+html[data-theme="dark"] .course-title,
+html[data-theme="dark"] .syllabus-title,
+html[data-theme="dark"] .block-title {
+    color: #F8FAFC !important;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] .section-intro,
+html[data-theme="dark"] .hero-description,
+html[data-theme="dark"] .course-desc,
+html[data-theme="dark"] .block-desc,
+html[data-theme="dark"] .faq-answer,
+html[data-theme="dark"] .syllabus-subtitle,
+html[data-theme="dark"] .syllabus-footnote,
+html[data-theme="dark"] .contact-intro {
+    color: #CBD5E1 !important;
+}
+
+html[data-theme="dark"] .form-group input,
+html[data-theme="dark"] .form-group select,
+html[data-theme="dark"] .form-group textarea,
+html[data-theme="dark"] .studio-select {
+    background-color: #0F172A !important;
+    color: #F8FAFC !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .block-item.checked {
+    background-color: #243552 !important;
+    border-color: var(--color-magician) !important;
+}
+
+html[data-theme="dark"] .level-group-wrapper {
+    background-color: #162235 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .footer-brand .brand-name {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="dark"] .theme-switcher {
+    background: #0F172A !important;
+    border-color: #334155 !important;
+}
+
+/* --- MODE CONTRASTE ÉLEVÉ EXPLICITE (WCAG AAA) --- */
+html[data-theme="high-contrast"],
+body[data-theme="high-contrast"] {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+html[data-theme="high-contrast"] .bg-white,
+body[data-theme="high-contrast"] .bg-white,
+html[data-theme="high-contrast"] .bg-secondary,
+body[data-theme="high-contrast"] .bg-secondary {
+    background-color: #000000 !important;
+}
+
+html[data-theme="high-contrast"] header,
+body[data-theme="high-contrast"] header {
+    background-color: #000000 !important;
+    border-bottom: 2px solid #FFFFFF !important;
+}
+
+html[data-theme="high-contrast"] .card,
+html[data-theme="high-contrast"] .academy-card,
+html[data-theme="high-contrast"] .consulting-card,
+html[data-theme="high-contrast"] .studio-card,
+html[data-theme="high-contrast"] .live-syllabus-sheet,
+html[data-theme="high-contrast"] .excel-studio-section,
+html[data-theme="high-contrast"] .powerbi-studio-section,
+html[data-theme="high-contrast"] .unix-studio-section,
+html[data-theme="high-contrast"] .sql-studio-section,
+html[data-theme="high-contrast"] .copilot-studio-section,
+html[data-theme="high-contrast"] .hybrid-studio-section,
+html[data-theme="high-contrast"] .contact-form-wrapper,
+html[data-theme="high-contrast"] .contact-info-card,
+html[data-theme="high-contrast"] .quiz-hub,
+html[data-theme="high-contrast"] .quiz-container,
+html[data-theme="high-contrast"] .studio-nav-tab,
+html[data-theme="high-contrast"] .preset-btn,
+html[data-theme="high-contrast"] .hybrid-pack-card,
+html[data-theme="high-contrast"] .block-item,
+html[data-theme="high-contrast"] .recommended-course-box {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    border: 2px solid #FFFFFF !important;
+    color: #FFFFFF !important;
+}
+
+html[data-theme="high-contrast"] h1,
+html[data-theme="high-contrast"] h2,
+html[data-theme="high-contrast"] h3,
+html[data-theme="high-contrast"] h4,
+html[data-theme="high-contrast"] h5,
+html[data-theme="high-contrast"] h6,
+html[data-theme="high-contrast"] p,
+html[data-theme="high-contrast"] span,
+html[data-theme="high-contrast"] .brand-name,
+html[data-theme="high-contrast"] .nav-links li a,
+html[data-theme="high-contrast"] .section-header h2,
+html[data-theme="high-contrast"] .course-title,
+html[data-theme="high-contrast"] .syllabus-title,
+html[data-theme="high-contrast"] .block-title,
+html[data-theme="high-contrast"] .section-intro,
+html[data-theme="high-contrast"] .hero-description {
+    color: #FFFFFF !important;
+}
+
+html[data-theme="high-contrast"] .btn-primary,
+html[data-theme="high-contrast"] .btn-gold,
+html[data-theme="high-contrast"] .nav-cta {
+    background-color: #FFFF00 !important;
+    color: #000000 !important;
+    border: 2px solid #FFFFFF !important;
+    font-weight: 800 !important;
+}
+
+html[data-theme="high-contrast"] .form-group input,
+html[data-theme="high-contrast"] .form-group select,
+html[data-theme="high-contrast"] .form-group textarea,
+html[data-theme="high-contrast"] .studio-select {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFFFFF !important;
+}
+
+html[data-theme="high-contrast"] .theme-switcher {
+    background: #000000 !important;
+    border: 2px solid #FFFFFF !important;
+}
+
+html[data-theme="high-contrast"] .theme-btn.active {
+    background: #FFFF00 !important;
+    color: #000000 !important;
+    border: 1px solid #FFFFFF !important;
+}
