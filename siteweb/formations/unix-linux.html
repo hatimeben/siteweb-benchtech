@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation UNIX / Linux Avancé : Administration, Shell Bash &amp; Sécurité | BenchTech</title>
+    <meta name="description" content="Formation certifiante UNIX et Linux Avancé à Casablanca et en ligne. Maîtrisez l'administration système d'entreprise (RHEL/Debian), le scripting Bash robuste, systemd et la sécurité du kernel.">
+    <link rel="canonical" href="https://benchtech.ma/formations/unix-linux">
+
+    <!-- Métadonnées Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BenchTech">
+    <meta property="og:title" content="Formation UNIX &amp; Linux Avancé : Administration Système &amp; Scripting Shell | BenchTech">
+    <meta property="og:description" content="Cursus d'ingénierie dispensé par des sysadmins et DBAs seniors. Architecture kernel, gestion des processus, scripting Bash sécurisé et durcissement système.">
+    <meta property="og:url" content="https://benchtech.ma/formations/unix-linux">
+    <meta property="og:image" content="https://benchtech.ma/images/logo-benchtech.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Formation UNIX / Linux Avancé &amp; Scripting Bash — BenchTech">
+    <meta name="twitter:description" content="Perfectionnement professionnel UNIX & Linux : kernel internals, signaux POSIX, automatisation Bash robuste et administration de serveurs de production.">
+    <meta name="twitter:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <!-- Schéma structuré Schema.org (Course) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation UNIX / Linux Avancé : Administration Système, Scripting Bash & Sécurité",
+      "description": "Programme intensif destiné aux administrateurs systèmes, ingénieurs DevOps et développeurs backend pour maîtriser l'architecture interne de Linux, l'automatisation système et la résilience en production.",
+      "provider": {
+        "@type": "Organization",
+        "name": "BenchTech",
+        "url": "https://benchtech.ma/",
+        "logo": "https://benchtech.ma/images/logo-benchtech.png"
+      },
+      "inLanguage": "fr",
+      "educationalLevel": "Intermediate to Advanced",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": ["onsite", "online"],
+        "courseWorkload": "PT28H"
+      }
+    }
+    </script>
+
+    <!-- Favicon officiel BenchTech -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/monogram-bt.png">
+
+    <!-- Polices Google Fonts : Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/style.css?v=5.1">
+</head>
+<body class="page-course-detail">
+
+    <!-- =======================================================================
+         1. NAVIGATION
+         ======================================================================= -->
+    <header>
+        <div class="container">
+            <nav aria-label="Navigation principale">
+                <a href="../index.html" class="logo" aria-label="BenchTech — Retour à l'accueil">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech — shaping tomorrow, today" class="header-logo-img" width="220" height="68">
+                </a>
+
+                <ul class="nav-links" id="main-nav-links">
+                    <li><a href="../index.html#conseil">Conseil &amp; IA</a></li>
+                    <li><a href="../index.html#references">Références</a></li>
+                    <li><a href="../index.html#formations" class="active">Académie</a></li>
+                    <li><a href="../index.html#studios-sur-mesure">Cursus Sur-Mesure</a></li>
+                    <li><a href="../index.html#evaluations">Quiz Technique</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contact" class="nav-cta">Demander un devis</a></li>
+                </ul>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav-links">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- =======================================================================
+             2. FIL D'ARIANE (BREADCRUMB)
+             ======================================================================= -->
+        <div class="breadcrumbs-bar">
+            <div class="container">
+                <nav aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../index.html"><i class="fas fa-house" aria-hidden="true"></i> Accueil</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="../index.html#formations">Formations &amp; Académie</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li aria-current="page">UNIX &amp; Linux Avancé, Shell &amp; Sécurité</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             3. BANNIÈRE HERO DU CURSUS
+             ======================================================================= -->
+        <section class="course-hero">
+            <div class="container">
+                <div class="course-hero-content">
+                    <div class="course-category-badge">
+                        <i class="fas fa-terminal" aria-hidden="true"></i> Pôle Systèmes, Infrastructure &amp; Ingénierie DevOps
+                    </div>
+
+                    <h1 class="course-main-title">
+                        UNIX &amp; Linux Avancé : Administration Système, Scripting Bash &amp; <span class="highlight-gold">Sécurité Kernel</span>
+                    </h1>
+
+                    <p class="course-lead">
+                        De la gestion fine des processus et signaux POSIX au diagnostic de surcharge mémoire (OOM Killer), en passant par l'automatisation Bash robuste et le durcissement de serveurs de production (RHEL, Debian, Ubuntu) : maîtrisez le système d'exploitation au cœur des infrastructures d'entreprise.
+                    </p>
+
+                    <div class="course-metrics-bar">
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-calendar-day" aria-hidden="true"></i> Durée totale</span>
+                            <span class="metric-value">4 jours (28h)</span>
+                            <span class="metric-sub">Intensif ou Samedis</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-laptop-code" aria-hidden="true"></i> Approche</span>
+                            <span class="metric-value">80% Labs en Terminal</span>
+                            <span class="metric-sub">Environnements RHEL / Debian</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-server" aria-hidden="true"></i> Production</span>
+                            <span class="metric-value">Zéro Panne Inexpliquée</span>
+                            <span class="metric-sub">Troubleshooting avancé</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-certificate" aria-hidden="true"></i> Attestation</span>
+                            <span class="metric-value">Certificat d'Excellence</span>
+                            <span class="metric-sub">Délivré par BenchTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             4. GRILLE PRINCIPALE (SYLLABUS + SIDEBAR STICKY)
+             ======================================================================= -->
+        <div class="container">
+            <div class="course-layout-grid">
+                
+                <!-- COLONNE PRINCIPALE DU PROGRAMME -->
+                <div class="course-main-col">
+
+                    <!-- Bloc Objectifs Opérationnels -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-bullseye" aria-hidden="true"></i> Compétences Opérationnelles Acquises</h2>
+                        <div class="outcomes-grid">
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
+                                <h4>Maîtrise du Kernel Linux</h4>
+                                <p>Diagnostiquer les goulots d'étranglement CPU, RAM, swap, neutraliser les processus zombies et dompter l'OOM Killer en production.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                                <h4>Scripting Bash de Niveau Industriel</h4>
+                                <p>Écrire des scripts d'exploitation résilients avec gestion stricte d'erreurs (set -euo pipefail), signaux trap, parsing getopts et logs rotatifs.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-gears" aria-hidden="true"></i></div>
+                                <h4>Orchestration systemd</h4>
+                                <p>Concevoir des unités de service personnalisées, gérer les dépendances de démarrage et remplacer cron par des timers systemd précis.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                                <h4>Durcissement Système (Hardening)</h4>
+                                <p>Appliquer les recommandations de sécurité CIS/ANSSI, verrouiller SSH avec clés Ed25519, configurer Firewalld et auditer les droits.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Programme Détaillé Module par Module (Syllabus) -->
+                    <section class="course-block-card">
+                        <div class="syllabus-header-row">
+                            <h2 class="block-heading" style="margin-bottom: 0;">
+                                <i class="fas fa-list-check" aria-hidden="true"></i> Programme Pédagogique Détaillé
+                            </h2>
+                            <span class="syllabus-version-chip">Standards POSIX.1-2017 &amp; RHEL 9 / Debian 12</span>
+                        </div>
+                        <p class="section-subtext">
+                            5 modules intensifs axés sur la ligne de commande, l'architecture interne et la résolution méthodique de pannes réelles en production.
+                        </p>
+
+                        <div class="syllabus-timeline">
+                            <!-- Module 1 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">01</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Architecture du Kernel, Mémoire &amp; Cycle de Vie des Processus</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 1 — Matin (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Comprendre comment le noyau alloue les ressources et réagit sous très forte charge serveur.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Cycle de vie des processus :</strong> Appels système fork(), exec(), wait() et exit() ; hiérarchie des processus (PID 1 systemd) et adoption des orphelins.</li>
+                                        <li><strong>États des processus &amp; Signaux POSIX :</strong> Différence entre états R (Running), S (Interruptible), D (Uninterruptible Sleep / I/O Wait) et Z (Zombie / Defunct) ; signaux SIGTERM, SIGKILL, SIGHUP, SIGCHLD.</li>
+                                        <li><strong>Gestion de la mémoire &amp; OOM Killer :</strong> Cache mémoire (Buffers/Cached), swap, métrique commit limit et configuration de /proc/sys/vm/ ; immuniser les services vitaux avec oom_score_adj.</li>
+                                        <li><strong>Descripteurs de fichiers &amp; Tubes (Pipes) :</strong> Entrées/sorties standard (stdin, stdout, stderr), redirection avancée (2>&amp;1, &amp;>), tubes anonymes et nommés (FIFO).</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #1 :</strong> Diagnostic en direct d'un serveur Linux saturé : identification d'un processus en I/O Wait bloquant, purge de zombies et protection prioritaire d'une base de données contre l'OOM Killer.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 2 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">02</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Système de Fichiers, Droits Spéciaux &amp; Listes de Contrôle d'Accès (ACLs)</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 1 — Après-midi (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Sécuriser l'accès aux répertoires partagés et maîtriser les mécanismes de privilèges d'entreprise.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Architecture FHS &amp; Inodes :</strong> Structure des systèmes de fichiers (Ext4, XFS), liens physiques (Hard Links) vs liens symboliques (Symlinks), détection de saturation d'inodes (df -i).</li>
+                                        <li><strong>Permissions standard &amp; Masque umask :</strong> Droits rwx en notation symbolique et octale, impact d'umask sur la création des fichiers et répertoires.</li>
+                                        <li><strong>Bits spéciaux de privilèges :</strong> SUID (exécution sous l'identité du propriétaire), SGID (héritage de groupe collaboratif) et Sticky Bit (protection de suppression dans /tmp).</li>
+                                        <li><strong>ACLs POSIX étendues :</strong> Définir des permissions fines multi-utilisateurs et multi-groupes avec setfacl, getfacl et gestion des droits par défaut sur les nouveaux dossiers.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #2 :</strong> Mise en place d'un espace collaboratif sécurisé pour une équipe finance et audit avec permissions SGID, Sticky Bit et ACLs granulaires garantissant l'étanchéité des données.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 3 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">03</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Scripting Bash Industriel : Robustesse, Traitement d'Erreurs &amp; Logs</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 2 — Journée Complète (7h)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Écrire des scripts d'exploitation d'une fiabilité absolue, capables de s'exécuter sans surveillance humaine.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Le mode strict Bash (Strict Mode) :</strong> La directive incontournable set -euo pipefail pour arrêter l'exécution dès la première erreur, bloquer les variables non définies et capturer les échecs dans les pipes.</li>
+                                        <li><strong>Capture de signaux &amp; Nettoyage (Trap) :</strong> Intercepter EXIT, SIGINT (Ctrl+C) et SIGTERM avec trap pour supprimer systématiquement les fichiers temporaires et libérer les verrous (Locks).</li>
+                                        <li><strong>Structures de données avancées :</strong> Tableaux indexés et tableaux associatifs (dictionnaires), manipulation native de chaînes sans awk/sed pour des performances maximales.</li>
+                                        <li><strong>Parsing d'arguments &amp; Options :</strong> Utiliser l'utilitaire natif getopts pour concevoir des CLI professionnelles acceptant flags courts et options obligatoires avec affichage d'usage (help).</li>
+                                        <li><strong>Journalisation &amp; Alertes :</strong> Écriture dans le journal système avec logger (syslog / systemd-journald) et gestion des niveaux d'alerte (INFO, WARN, CRIT).</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #3 :</strong> Développement d'une suite complète de scripts Bash d'exploitation : sauvegarde différentielle de bases de données, calcul d'empreinte SHA-256, rotation sur 30 jours et notification automatique en cas d'échec.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 4 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">04</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Orchestration des Services systemd, Timers &amp; Analyse des Logs</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 3 — Matin (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Moderniser l'administration des daemons et automatiser les tâches d'exploitation avec systemd.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Anatomie des unités systemd (.service) :</strong> Sections [Unit], [Service] et [Install], directives ExecStart, Restart=always, RestartSec, User, Group et isolation sandboxing (ProtectSystem, PrivateTmp).</li>
+                                        <li><strong>Timers systemd vs Cron :</strong> Création d'unités .timer (OnCalendar, RandomizedDelaySec) pour remplacer cron avec un suivi précis des exécutions et échecs.</li>
+                                        <li><strong>Exploitation experte de journalctl :</strong> Filtrage par unité (-u), par niveau de priorité (-p err), par plage horaire (--since), format JSON et suivi temps réel (-f).</li>
+                                        <li><strong>Cgroups &amp; Limites de ressources :</strong> Restreindre l'empreinte CPU (CPUQuota=50%) et mémoire (MemoryMax=2G) d'un service applicatif pour protéger le serveur.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #4 :</strong> Déploiement d'une application backend encapsulée dans un service systemd durci avec redémarrage automatique en cas de crash, limites de RAM strictes et timer de maintenance planifié.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 5 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">05</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Sécurité Réseau, SSH Avancé &amp; Durcissement Système (Hardening)</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 3 — Après-midi &amp; Jour 4 (10h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Verrouiller l'accès au serveur et aligner l'infrastructure sur les normes de cybersécurité bancaire et étatique.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Diagnostic réseau &amp; Sockets :</strong> Outils modernes ip (remplaçant ifconfig), ss (remplaçant netstat), lsof -i pour identifier les processus écoutant sur le réseau et capture de paquets tcpdump.</li>
+                                        <li><strong>Sécurisation SSH de niveau bancaire :</strong> Désactivation de l'authentification par mot de passe et de root direct, clés cryptographiques modernes Ed25519, jump hosts (ProxyJump) et limitation avec Fail2ban.</li>
+                                        <li><strong>Filtrage réseau avec Firewalld / Nftables :</strong> Gestion des zones de confiance (public, internal), ouverture stricte de ports, translation d'adresses (NAT) et blocage d'adresses malveillantes.</li>
+                                        <li><strong>Fondations SELinux / AppArmor :</strong> Comprendre les contextes de sécurité (type context), modes Enforcing vs Permissive, diagnostic des refus avec sealert/audit2why et création de modules de politique.</li>
+                                        <li><strong>Audit de conformité avec Lynis :</strong> Exécution d'un audit de sécurité automatisé et application méthodique des recommandations de durcissement (Hardening).</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #5 (Grand Cas de Synthèse) :</strong> Durcissement complet (Hardening) d'un serveur Linux d'entreprise fraîchement installé : configuration SSH par clés uniquement, zonage réseau Firewalld, politique de mots de passe PAM et passage de l'indice de sécurité Lynis de 52 à 86+.
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Profil des participants & Prérequis -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-users-gear" aria-hidden="true"></i> Public Cible &amp; Prérequis Recommandés</h2>
+                        <div class="prereq-grid">
+                            <div class="prereq-card">
+                                <h4><i class="fas fa-user-check"></i> Profils Cibles Prioritaires</h4>
+                                <ul>
+                                    <li>Administrateurs Systèmes Linux / UNIX et Techniciens Support N2/N3</li>
+                                    <li>Ingénieurs DevOps, SRE (Site Reliability Engineers) et Cloud</li>
+                                    <li>Développeurs Backend (Python, Java, Go, PHP) déployant sur Linux</li>
+                                    <li>Administrateurs de Bases de Données (DBAs Oracle, PostgreSQL, MySQL)</li>
+                                    <li>Responsables de production informatique et Ingénieurs Cybersécurité</li>
+                                </ul>
+                            </div>
+                            <div class="prereq-card">
+                                <h4><i class="fas fa-clipboard-check"></i> Prérequis Conseillés</h4>
+                                <ul>
+                                    <li>Pratique élémentaire de la ligne de commande Linux (commandes cd, ls, cat, grep de base)</li>
+                                    <li>Notions de base sur les réseaux IP (adresses IP, ports, masques de sous-réseau)</li>
+                                    <li>Aisance avec un éditeur de texte en terminal (nano ou vim)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Formateur Consultant Référent -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Excellence des Formateurs Consultants BenchTech</h2>
+                        <div class="instructor-profile">
+                            <div class="instructor-avatar">
+                                <i class="fas fa-terminal" aria-hidden="true"></i>
+                            </div>
+                            <div class="instructor-bio">
+                                <h3>Pôle Consultants Seniors Systèmes &amp; Infrastructure</h3>
+                                <span class="instructor-title">Ingénieurs Certifiés Red Hat (RHCE/RHCA) &amp; Administrateurs Systèmes de Production</span>
+                                <p>
+                                    Nos cursus systèmes sont animés par des architectes d'infrastructure justifiant de plus de 15 ans d'expérience dans la gestion de parcs de serveurs critiques sous RHEL, Debian et SUSE pour le compte d'opérateurs télécoms, de banques et d'administrations publiques au Maroc.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- COLONNE LATÉRALE : STICKY SIDEBAR DE RÉSERVATION -->
+                <aside class="course-sidebar-col">
+                    <div class="sticky-sidebar-card">
+                        <div class="sidebar-header">
+                            <span class="sidebar-format-badge"><i class="fas fa-building" aria-hidden="true"></i> Intra &amp; Inter-Entreprises</span>
+                            <div class="sidebar-price-row">
+                                <span class="sidebar-price-label">Tarif de la session :</span>
+                                <span class="sidebar-price-val">Sur Devis B2B</span>
+                            </div>
+                            <span class="sidebar-price-sub">Financement &amp; Contrats Spéciaux de Formation (OFPPT / FPC)</span>
+                        </div>
+
+                        <div class="sidebar-body">
+                            <ul class="sidebar-features-list">
+                                <li><i class="fas fa-clock" aria-hidden="true"></i> <span><strong>Volume :</strong> 28 heures (4 journées ou samedis)</span></li>
+                                <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span><strong>Lieu :</strong> Casablanca (ou vos locaux au Maroc)</span></li>
+                                <li><i class="fas fa-video" aria-hidden="true"></i> <span><strong>Option Distanciel :</strong> Disponible en direct interactif</span></li>
+                                <li><i class="fas fa-users" aria-hidden="true"></i> <span><strong>Groupe :</strong> Restreint (4 à 8 participants max)</span></li>
+                                <li><i class="fas fa-laptop" aria-hidden="true"></i> <span><strong>Labs :</strong> Machines virtuelles dédiées par participant</span></li>
+                                <li><i class="fas fa-certificate" aria-hidden="true"></i> <span><strong>Attestation :</strong> Certificat d'Excellence BenchTech</span></li>
+                            </ul>
+
+                            <div class="sidebar-cta-group">
+                                <a href="../index.html#contact" class="btn btn-primary" style="width: 100%;">
+                                    <i class="fas fa-file-signature" aria-hidden="true"></i> Demander un devis officiel
+                                </a>
+
+                                <a href="https://wa.me/212662041272?text=Bonjour%20BenchTech%2C%20je%20souhaite%20des%20informations%20sur%20la%20formation%20UNIX%20Linux%20Avanc%C3%A9%20et%20Shell." class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #128C7E; font-weight: 700;" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Échanger sur WhatsApp
+                                </a>
+
+                                <a href="../index.html#unix-studio" class="btn btn-outline" style="width: 100%;">
+                                    <i class="fas fa-sliders" aria-hidden="true"></i> Calibrer en Cursus Sur-Mesure
+                                </a>
+                            </div>
+
+                            <div class="sidebar-phone-support">
+                                <i class="fas fa-headset" aria-hidden="true"></i>
+                                <div>
+                                    <span class="support-label">Conseiller pédagogique dédié :</span>
+                                    <a href="tel:+212662041272" class="support-num">+212 06.62.04.12.72</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             5. SECTION CALL-TO-ACTION INFÉRIEURE
+             ======================================================================= -->
+        <section class="course-cta-section">
+            <div class="container">
+                <div class="cta-inner-card">
+                    <span class="cta-tag">Systèmes &amp; Résilience</span>
+                    <h2>Besoin d'un programme Linux adapté à votre distribution et votre environnement de production ?</h2>
+                    <p>
+                        Nos consultants seniors conçoivent des programmes intra-entreprise sur-mesure ajustés à vos contraintes de sécurité bancaire, vos outils de supervision et vos architectures de déploiement.
+                    </p>
+                    <div class="cta-buttons-row">
+                        <a href="../index.html#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> Planifier un cadrage technique
+                        </a>
+                        <a href="../index.html#evaluations" class="btn btn-secondary">
+                            <i class="fas fa-list-check" aria-hidden="true"></i> Passer le diagnostic Linux (10 cas)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =======================================================================
+         6. FOOTER INSTITUTIONNEL BenchTech
+         ======================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech" class="footer-logo-img" width="200" height="62" style="background: #fff; padding: 4px; border-radius: 4px;">
+                    <p class="footer-mission">
+                        Cabinet de conseil en technologies &amp; Académie d'excellence professionnelle à Casablanca. Ingénierie des systèmes, automatisation des infrastructures et montée en compétences stratégique.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Pôles d'Expertise</h4>
+                    <ul>
+                        <li><a href="../index.html#conseil">Conseil &amp; Intégration IA</a></li>
+                        <li><a href="power-bi.html">Microsoft Power BI &amp; DAX</a></li>
+                        <li><a href="copilot-studio.html">Copilot Studio &amp; Agents IA</a></li>
+                        <li><a href="sql-sgbd.html">SQL Avancé &amp; SGBD</a></li>
+                        <li><a href="unix-linux.html">UNIX / Linux &amp; Shell</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Formations Phares</h4>
+                    <ul>
+                        <li><a href="power-bi.html">Microsoft Power BI Avancé</a></li>
+                        <li><a href="copilot-studio.html">Microsoft Copilot Studio</a></li>
+                        <li><a href="sql-sgbd.html">Bases de Données &amp; SQL Avancé</a></li>
+                        <li><a href="unix-linux.html">UNIX / Linux &amp; Scripting Shell</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact &amp; Siège</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span>Casablanca, Maroc</span></li>
+                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <span>+212 06.62.04.12.72</span></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> <span>contact@benchtech.ma</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 BenchTech. Tous droits réservés.
+                    <span class="footer-legal-tag">
+                        BenchTech | SARL AU au capital de 100 000 MAD | Siège social : Casablanca, Maroc | Registre du Commerce (RC) : Casablanca n° 752759.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Menu Mobile -->
+    <script>
+        (function() {
+            try {
+                localStorage.removeItem('benchtech_display_mode');
+                document.documentElement.removeAttribute('data-theme');
+            } catch(e) {}
+
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('main-nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', String(isActive));
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
