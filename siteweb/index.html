@@ -3521,19 +3521,19 @@
          CATALOGUE OFFICIEL & BANQUE DE QUESTIONS DYNAMIQUE BenchTech
          Architecture modulaire & ultra-performante pour hébergement Hostinger / MassiveHoster
          ======================================================================= -->
-    <script src="js/catalog-data.js?v=5.1"></script>
-    <script src="js/quiz-data/powerbi.js?v=5.1"></script>
-    <script src="js/quiz-data/copilot.js?v=5.1"></script>
-    <script src="js/quiz-data/sql.js?v=5.1"></script>
-    <script src="js/quiz-data/github-copilot.js?v=5.1"></script>
-    <script src="js/quiz-data/copilot-sdk.js?v=5.1"></script>
-    <script src="js/quiz-data/unix.js?v=5.1"></script>
-    <script src="js/quiz-data/excel.js?v=5.1"></script>
-    <script src="js/quiz-data/algo.js?v=5.1"></script>
-    <script src="js/quiz-data/scrum.js?v=5.1"></script>
-    <script src="js/quiz-data/msproject.js?v=5.1"></script>
-    <script src="js/quiz-data/quiz-pool-data.js?v=5.1"></script>
-    <script src="js/quiz-data/quiz-database.js?v=5.1"></script>
+    <script src="js/catalog-data.js?v=5.2"></script>
+    <script src="js/quiz-data/powerbi.js?v=5.2"></script>
+    <script src="js/quiz-data/copilot.js?v=5.2"></script>
+    <script src="js/quiz-data/sql.js?v=5.2"></script>
+    <script src="js/quiz-data/github-copilot.js?v=5.2"></script>
+    <script src="js/quiz-data/copilot-sdk.js?v=5.2"></script>
+    <script src="js/quiz-data/unix.js?v=5.2"></script>
+    <script src="js/quiz-data/excel.js?v=5.2"></script>
+    <script src="js/quiz-data/algo.js?v=5.2"></script>
+    <script src="js/quiz-data/scrum.js?v=5.2"></script>
+    <script src="js/quiz-data/msproject.js?v=5.2"></script>
+    <script src="js/quiz-data/quiz-pool-data.js?v=5.2"></script>
+    <script src="js/quiz-data/quiz-database.js?v=5.2"></script>
 
     <!-- =======================================================================
          8. SCRIPTS (MENU MOBILE, FILTRE CATÉGORIES & QUIZ HUB MULTI-DOMAINES)
@@ -6950,8 +6950,40 @@
             if (modulesEl)    modulesEl.innerHTML     = '';
         }
 
+        function resolveInitialQuizKey() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const qParam = params.get('quiz');
+                if (qParam) return qParam;
+                const hash = window.location.hash || '';
+                const match = hash.match(/quiz=([a-zA-Z0-9_-]+)/);
+                if (match) return match[1];
+                if (hash.includes('scrum')) return 'scrum';
+                if (hash.includes('powerbi') || hash.includes('power-bi')) return 'powerbi';
+                if (hash.includes('sql')) return 'sql';
+                if (hash.includes('excel')) return 'excel';
+                if (hash.includes('unix') || hash.includes('linux')) return 'unix';
+                if (hash.includes('copilot-studio') || hash.includes('copilot')) return 'copilot';
+                if (hash.includes('msproject') || hash.includes('ms-project')) return 'msproject';
+                if (hash.includes('algo')) return 'algo';
+            } catch(e) {}
+            return 'general';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            loadQuiz('general');
+            const initialKey = resolveInitialQuizKey();
+            if (initialKey && initialKey !== 'general') {
+                quizTabs.forEach(tab => {
+                    if (tab.getAttribute('data-quiz-tab') === initialKey) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+                loadQuiz(initialKey);
+            } else {
+                loadQuiz('general');
+            }
             updateExcelStudioSyllabus();
             updatePowerBiStudioSyllabus();
             updateSqlStudioSyllabus();
@@ -6959,6 +6991,15 @@
             updateCopilotStudioSyllabus();
             renderHybridCheckboxes();
             updateHybridStudioSyllabus();
+        });
+
+        window.addEventListener('hashchange', () => {
+            const newKey = resolveInitialQuizKey();
+            if (newKey && newKey !== currentQuizKey) {
+                if (window.switchAndStartQuiz) {
+                    window.switchAndStartQuiz(newKey);
+                }
+            }
         });
     </script>
 

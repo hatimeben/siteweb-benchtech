@@ -137,8 +137,8 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
             }
         }
 
-        // Si le pool du thème est vide, basculer sur le pool global
-        if (pool.length === 0) {
+        // Si le pool du thème est vide, basculer sur le pool global uniquement pour le grand diagnostic généraliste
+        if (pool.length === 0 && (themeKey === 'all' || themeKey === 'general' || themeKey === 'grand-diagnostic')) {
             pool = db.getAllPoolQuestions();
         }
 
@@ -186,10 +186,10 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
             }
         }
 
-        // RÈGLE DE GARANTIE ABSOLUE DES 10 QUESTIONS :
-        // Si le sous-thème sélectionné avait moins de 10 questions,
-        // compléter immédiatement avec les meilleures questions du pool global des 40 !
-        if (selected.length < limit) {
+        // RÈGLE D'ÉTANCHÉITÉ STRICTE :
+        // Pour les quiz spécifiques (Scrum, UNIX, SQL, Excel...), on n'injecte JAMAIS de questions d'autres matières !
+        // Seul le Grand Diagnostic généraliste ('general' / 'all') est autorisé à puiser dans le pool global des 40.
+        if (selected.length < limit && (themeKey === 'all' || themeKey === 'general' || themeKey === 'grand-diagnostic')) {
             const globalPool = db.getAllPoolQuestions();
             const availableGlobal = globalPool.filter(gq => 
                 !selected.some(sq => (sq.id && gq.id && sq.id === gq.id) || sq.question === gq.question)
