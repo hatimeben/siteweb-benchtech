@@ -3683,3 +3683,290 @@ summary:focus-visible {
     margin-top: 24px;
     text-align: center;
 }
+
+/* ==========================================================================
+   ÉTAPES 2 & 3 : MOTEUR DE PRESCRIPTION PÉDAGOGIQUE & ATTESTATION DE DIAGNOSTIC
+   ========================================================================== */
+
+/* Boîte de Prescription Pédagogique (Axes de rattrapage) */
+.result-remedial-box {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 2px solid var(--color-magician);
+    border-radius: var(--radius-lg);
+    padding: 24px 26px;
+    margin-bottom: 26px;
+    box-shadow: 0 10px 25px rgba(27, 42, 74, 0.08);
+}
+
+.remedial-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.remedial-header i {
+    font-size: 2rem;
+    color: var(--color-magician);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.remedial-header h5 {
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: var(--color-sage);
+    margin: 0 0 6px 0;
+}
+
+.remedial-header p {
+    font-size: 0.92rem;
+    color: var(--text-body);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.remedial-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.remedial-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--color-magician);
+    border-radius: 6px;
+    padding: 12px 16px;
+    transition: var(--transition);
+}
+
+.remedial-item:hover {
+    border-color: var(--color-magician);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    transform: translateX(3px);
+}
+
+.remedial-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.remedial-code-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--color-sage);
+    background: var(--color-magician-light);
+    border-radius: 4px;
+    padding: 2px 8px;
+    width: fit-content;
+}
+
+.remedial-item-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-sage);
+}
+
+.remedial-item-obj {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.remedial-item-duration {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-sage);
+    white-space: nowrap;
+    background: #F1F5F9;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.remedial-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-color);
+}
+
+/* Modale d'Attestation Officielle de Diagnostic */
+.modal-attestation-card {
+    max-width: 720px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.certificate-preview-box {
+    background: #FFFFFF;
+    border: 3px double var(--color-magician);
+    border-radius: 8px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    margin: 16px 0 20px 0;
+}
+
+.certificate-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-magician-light);
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+}
+
+.certificate-brand {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--color-sage);
+    letter-spacing: -0.5px;
+}
+
+.certificate-brand span {
+    color: var(--color-magician);
+}
+
+.certificate-ref-badge {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-sage);
+    background: #F8FAFC;
+    border: 1px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.certificate-title-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.certificate-main-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-sage);
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.certificate-sub-text {
+    font-size: 0.90rem;
+    color: var(--text-muted);
+}
+
+.certificate-candidate-wrap {
+    text-align: center;
+    margin: 20px 0;
+    padding: 16px;
+    background: #FFFDF5;
+    border: 1px dashed var(--color-magician-border);
+    border-radius: 6px;
+}
+
+.certificate-candidate-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-sage);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.certificate-candidate-meta {
+    font-size: 0.88rem;
+    color: var(--text-body);
+}
+
+.certificate-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.cert-metric-card {
+    background: #F8FAFC;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.cert-metric-val {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-sage);
+}
+
+.cert-metric-lbl {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.certificate-footer-signatures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: var(--color-sage);
+}
+
+.cert-signature-box {
+    text-align: center;
+}
+
+.cert-stamp-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--color-magician);
+    margin: 8px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--color-sage);
+    background: var(--color-magician-light);
+    line-height: 1.1;
+}
+
+/* Formulaire d'information candidat dans la modale */
+.candidate-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+@media (max-width: 600px) {
+    .candidate-form-row {
+        grid-template-columns: 1fr;
+    }
+    .certificate-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .certificate-footer-signatures {
+        grid-template-columns: 1fr;
+    }
+}

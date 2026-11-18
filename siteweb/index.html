@@ -3503,9 +3503,10 @@
     </footer>
 
     <!-- =======================================================================
-         BANQUE DE QUESTIONS DYNAMIQUE BenchTech (PAR THÉMATIQUE)
+         CATALOGUE OFFICIEL & BANQUE DE QUESTIONS DYNAMIQUE BenchTech
          Architecture modulaire & ultra-performante pour hébergement Hostinger / MassiveHoster
          ======================================================================= -->
+    <script src="js/catalog-data.js"></script>
     <script src="js/quiz-data/powerbi.js"></script>
     <script src="js/quiz-data/copilot.js"></script>
     <script src="js/quiz-data/sql.js"></script>
@@ -3868,7 +3869,9 @@
                         isCorrect: isCorrect,
                         selectedText: item.answers[selectedIdx] || 'Non répondu',
                         correctText: item.answers[item.correct],
-                        explanation: item.explanation
+                        explanation: item.explanation,
+                        linkedBlockCode: item.linkedBlockCode || null,
+                        linkedBlockTitle: item.linkedBlockTitle || null
                     };
                 });
 
@@ -3922,25 +3925,104 @@
                     descP.className = 'result-desc-text';
                     descP.textContent = levelDescription;
 
-                    // 2. Encadré d'orientation directe vers le Studio Sur-Mesure
+                    // 2. ÉTAPE 2 : Encadré de Prescription Pédagogique Prédictive (Blocs de rattrapage)
+                    const failedItems = resultsBreakdown.filter(r => !r.isCorrect);
+                    const remedialBlocks = [];
+                    const seenCodes = new Set();
+
+                    failedItems.forEach(item => {
+                        if (item.linkedBlockCode && !seenCodes.has(item.linkedBlockCode)) {
+                            seenCodes.add(item.linkedBlockCode);
+                            remedialBlocks.push({
+                                code: item.linkedBlockCode,
+                                title: item.linkedBlockTitle || item.linkedBlockCode,
+                                reason: `Lacune décelée sur le cas : « ${item.question.length > 75 ? item.question.substring(0, 75) + '…' : item.question} »`
+                            });
+                        }
+                    });
+
+                    // Si 0 faute (100% de réussite) ou pas de bloc rattaché, proposer l'approfondissement d'élite
+                    if (remedialBlocks.length === 0) {
+                        remedialBlocks.push({
+                            code: `${currentQuizKey.toUpperCase()}-EXP-ADV`,
+                            title: `Perfectionnement Expert & Architecture Haute Performance : ${currentData.title}`,
+                            reason: 'Excellence technique validée à 100% : orientation recommandée vers les ateliers d\'architecture avancée et de gouvernance d\'entreprise.'
+                        });
+                    }
+
+                    const remedialBox = document.createElement('div');
+                    remedialBox.className = 'result-remedial-box';
+
+                    let remedialListHtml = '';
+                    remedialBlocks.forEach(b => {
+                        remedialListHtml += `
+                            <li class="remedial-item">
+                                <div class="remedial-item-info">
+                                    <span class="remedial-code-chip"><i class="fas fa-crosshairs"></i> ${b.code}</span>
+                                    <span class="remedial-item-title">${b.title}</span>
+                                    <span class="remedial-item-obj">${b.reason}</span>
+                                </div>
+                                <span class="remedial-item-duration">~3h30 (Module ciblé)</span>
+                            </li>
+                        `;
+                    });
+
+                    remedialBox.innerHTML = `
+                        <div class="remedial-header">
+                            <i class="fas fa-stethoscope" aria-hidden="true"></i>
+                            <div>
+                                <h5>Ordonnance Pédagogique Sur-Mesure BenchTech (Prescription Automatique)</h5>
+                                <p>D'après l'audit de vos ${qList.length} réponses, notre algorithme a isolé précisément les <strong>${remedialBlocks.length} axes d'approfondissement prioritaires</strong> suivants :</p>
+                            </div>
+                        </div>
+                        <ul class="remedial-list">
+                            ${remedialListHtml}
+                        </ul>
+                        <div class="remedial-actions">
+                            <button type="button" class="btn btn-primary" id="btn-launch-prescribed-syllabus">
+                                <i class="fas fa-sliders" aria-hidden="true"></i> Générer mon Programme de Rattrapage Sur-Mesure (${remedialBlocks.length} bloc${remedialBlocks.length > 1 ? 's' : ''})
+                            </button>
+                            <button type="button" class="btn btn-outline" id="btn-trigger-attestation-modal">
+                                <i class="fas fa-certificate" aria-hidden="true"></i> Obtenir mon Attestation de Diagnostic Technique (PDF)
+                            </button>
+                        </div>
+                    `;
+
+                    // Câblage du bouton Prescription -> Programme Sur-Mesure
+                    const btnPrescribe = remedialBox.querySelector('#btn-launch-prescribed-syllabus');
+                    if (btnPrescribe) {
+                        btnPrescribe.addEventListener('click', () => {
+                            launchRemedialProgram(currentQuizKey, currentData, remedialBlocks, percent, levelTitle);
+                        });
+                    }
+
+                    // Câblage du bouton Attestation Officielle (Étape 3)
+                    const btnAttest = remedialBox.querySelector('#btn-trigger-attestation-modal');
+                    if (btnAttest) {
+                        btnAttest.addEventListener('click', () => {
+                            openDiagnosticModal(currentData.title, earnedPoints, totalPossiblePoints, percent, levelTitle);
+                        });
+                    }
+
+                    // 3. Encadré d'orientation directe vers le Studio Sur-Mesure
                     const studioBox = document.createElement('div');
                     studioBox.className = 'result-studio-recommendation';
                     const targetStudioId = currentData.studioTarget || 'studios-sur-mesure';
                     
                     studioBox.innerHTML = `
                         <div class="studio-rec-header">
-                            <i class="fas fa-sliders" aria-hidden="true"></i>
+                            <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
                             <div>
-                                <h5>Recommandation Pédagogique Sur-Mesure BenchTech</h5>
-                                <p>Pour combler précisément les lacunes diagnostiquées sans réapprendre ce que vous maîtrisez déjà :</p>
+                                <h5>Personnalisation Complète dans le Studio Pédagogique</h5>
+                                <p>Vous pouvez également calibrer vous-même l'intégralité du cursus et ajouter des blocs complémentaires :</p>
                             </div>
                         </div>
                         <div class="studio-rec-actions">
                             <a href="#${targetStudioId}" class="btn btn-primary" onclick="navigateToStudio('${targetStudioId}', '${suggestedPreset}')">
-                                <i class="fas fa-wand-magic-sparkles"></i> Charger mon programme recommandé dans le Studio
+                                <i class="fas fa-sliders"></i> Ouvrir le ${currentData.title} Studio
                             </a>
                             <a href="#contact" class="btn btn-outline" onclick="prefillContactForm('${currentData.formTopic}')">
-                                <i class="fas fa-file-signature"></i> Transmettre ce diagnostic à un expert BenchTech
+                                <i class="fas fa-envelope"></i> Poser une question à un formateur consultant
                             </a>
                         </div>
                     `;
@@ -3993,13 +4075,166 @@
 
                     footerActions.appendChild(restartBtn);
 
-                    resultContainer.append(headerBox, descP, studioBox, reviewSection, footerActions);
+                    resultContainer.append(headerBox, descP, remedialBox, studioBox, reviewSection, footerActions);
                     resultContainer.hidden = false;
                     quizForm.hidden = true;
                     resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         }
+
+        // ---------------------------------------------------------------------
+        // ÉTAPE 2 : Génération du Programme de Rattrapage Sur-Mesure
+        // ---------------------------------------------------------------------
+        window.launchRemedialProgram = function(quizKey, themeData, remedialBlocks, percent, levelTitle) {
+            // Chercher dans le catalogue global si disponible pour enrichir les blocs
+            const catalog = window.BENCHTECH_CATALOG;
+            const fullBlocks = [];
+
+            remedialBlocks.forEach(rb => {
+                let foundInCatalog = null;
+                if (catalog && catalog.filieres) {
+                    for (const f of catalog.filieres) {
+                        if (f.blocs) {
+                            const match = f.blocs.find(b => b.code_bloc === rb.code);
+                            if (match) {
+                                foundInCatalog = match;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (foundInCatalog) {
+                    fullBlocks.push({
+                        id: foundInCatalog.code_bloc,
+                        name: foundInCatalog.titre_bloc,
+                        duration: `${foundInCatalog.duree_heures}h`,
+                        badge: foundInCatalog.badge_technique || 'Axe Prioritaire',
+                        desc: foundInCatalog.objectif_operationnel,
+                        objectives: foundInCatalog.modules ? foundInCatalog.modules.map(m => m.titre_module) : [foundInCatalog.objectif_operationnel],
+                        topics: foundInCatalog.modules ? foundInCatalog.modules.map(m => `${m.titre_module} : ${m.theorie_notions}`).join(' | ') : ''
+                    });
+                } else {
+                    fullBlocks.push({
+                        id: rb.code,
+                        name: rb.title,
+                        duration: '~3h30',
+                        badge: 'Axe de Rattrapage',
+                        desc: rb.reason,
+                        objectives: [rb.reason, 'Exercices pratiques et ateliers labs d\'ingénierie'],
+                        topics: 'Concepts clés, pièges opérationnels et résolution de cas complexes.'
+                    });
+                }
+            });
+
+            const totalHours = fullBlocks.reduce((acc, b) => acc + (parseFloat(b.duration) || 3.5), 0);
+            const daysCount = Math.max(1, Math.ceil(totalHours / 7));
+
+            const customSyllabus = {
+                techKey: quizKey,
+                techName: themeData.title || 'Formation BenchTech',
+                studioId: themeData.studioTarget || 'studios-sur-mesure',
+                title: `Formation ${themeData.title} : Cursus de Rattrapage & Montée en Compétences`,
+                subtitle: `Programme sur-mesure d'ingénierie pédagogique prescrit pour combler les ${fullBlocks.length} axes prioritaires diagnostiqués lors de votre évaluation technique.`,
+                duration: `${daysCount} jour${daysCount > 1 ? 's' : ''} (${totalHours}h) — ${fullBlocks.length} bloc${fullBlocks.length > 1 ? 's' : ''}`,
+                level: `${levelTitle} (${percent}% au test de positionnement)`,
+                profile: 'Collaborateur audité en diagnostic de positionnement',
+                format: 'Présentiel Intra-Entreprise ou Distanciel Interactif',
+                orientation: 'Rattrapage ciblé des lacunes & consolidation des réflexes opérationnels',
+                pace: 'Journées consécutives immersives ou Samedis exécutifs',
+                groupSize: 'Équipe opérationnelle (1 à 8 participants)',
+                clientCompany: '',
+                clientDept: '',
+                selectedBlocks: fullBlocks
+            };
+
+            try {
+                sessionStorage.setItem('benchtech_custom_syllabus', JSON.stringify(customSyllabus));
+            } catch(e) {}
+
+            window.location.href = 'formations/programme-sur-mesure.html';
+        };
+
+        // ---------------------------------------------------------------------
+        // ÉTAPE 3 : Modale d'Attestation Officielle de Diagnostic Technique
+        // ---------------------------------------------------------------------
+        window.openDiagnosticModal = function(themeTitle, earnedPoints, totalPossiblePoints, percent, levelTitle) {
+            const modal = document.getElementById('modal-diagnostic-attestation');
+            if (!modal) return;
+
+            // Référence unique de diagnostic
+            const refCode = 'BT-DIAG-2026-' + (Math.floor(1000 + Math.random() * 9000)).toString(16).toUpperCase();
+            const dateStr = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+            const refEl = document.getElementById('cert-display-ref');
+            const scoreEl = document.getElementById('cert-display-score');
+            const percentEl = document.getElementById('cert-display-percent');
+            const levelEl = document.getElementById('cert-display-level');
+            const themeEl = document.getElementById('cert-theme-name');
+            const dateEl = document.getElementById('cert-display-date');
+
+            if (refEl) refEl.textContent = `Réf : ${refCode}`;
+            if (scoreEl) scoreEl.textContent = `${earnedPoints} / ${totalPossiblePoints} pts`;
+            if (percentEl) percentEl.textContent = `${percent}%`;
+            if (levelEl) levelEl.textContent = levelTitle;
+            if (themeEl) themeEl.textContent = themeTitle;
+            if (dateEl) dateEl.textContent = dateStr;
+
+            // Synchronisation en direct des champs formulaire
+            const nameInput = document.getElementById('cert-input-name');
+            const companyInput = document.getElementById('cert-input-company');
+            const roleInput = document.getElementById('cert-input-role');
+            const emailInput = document.getElementById('cert-input-email');
+            const displayName = document.getElementById('cert-display-name');
+            const displayMeta = document.getElementById('cert-display-meta');
+            const btnWhatsapp = document.getElementById('btn-whatsapp-certificate');
+
+            function updateDisplay() {
+                const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim().toUpperCase() : 'COLLABORATEUR PROFESSIONNEL';
+                const comp = (companyInput && companyInput.value.trim()) ? companyInput.value.trim() : 'Entreprise Partenaire';
+                const role = (roleInput && roleInput.value.trim()) ? roleInput.value.trim() : 'Audité Technique';
+
+                if (displayName) displayName.textContent = name;
+                if (displayMeta) displayMeta.textContent = `${comp} • ${role}`;
+
+                if (btnWhatsapp) {
+                    const msg = encodeURIComponent(`Bonjour BenchTech, je viens d'éditer mon Attestation de Diagnostic Technique Réf: ${refCode} sur « ${themeTitle} » avec un score de ${percent}% (${earnedPoints}/${totalPossiblePoints} pts). Je souhaite planifier un échange avec un formateur consultant.`);
+                    btnWhatsapp.href = `https://wa.me/212662041272?text=${msg}`;
+                }
+            }
+
+            if (nameInput) nameInput.addEventListener('input', updateDisplay);
+            if (companyInput) companyInput.addEventListener('input', updateDisplay);
+            if (roleInput) roleInput.addEventListener('input', updateDisplay);
+            if (emailInput) emailInput.addEventListener('input', updateDisplay);
+
+            updateDisplay();
+
+            // Gestion de l'impression
+            const btnPrint = document.getElementById('btn-print-certificate');
+            if (btnPrint) {
+                btnPrint.onclick = () => window.print();
+            }
+
+            // Affichage de la modale
+            modal.hidden = false;
+            document.body.style.overflow = 'hidden';
+
+            const closeBtn = document.getElementById('modal-attestation-close');
+            if (closeBtn) {
+                closeBtn.onclick = () => {
+                    modal.hidden = true;
+                    document.body.style.overflow = '';
+                };
+            }
+            modal.onclick = (e) => {
+                if (e.target === modal) {
+                    modal.hidden = true;
+                    document.body.style.overflow = '';
+                }
+            };
+        };
 
         // Navigation intelligente vers le studio correspondant avec application du preset
         window.navigateToStudio = function(studioId, presetKey) {
@@ -6711,6 +6946,103 @@
             updateHybridStudioSyllabus();
         });
     </script>
+
+    <!-- =======================================================================
+         MODALE OFFICIELLE : ATTESTATION DE DIAGNOSTIC TECHNIQUE & LEAD CAPTURE
+         ======================================================================= -->
+    <div class="modal-overlay" id="modal-diagnostic-attestation" role="dialog" aria-modal="true" aria-labelledby="modal-attestation-title" hidden>
+        <div class="modal-card modal-attestation-card">
+            <div class="modal-header">
+                <h3 id="modal-attestation-title"><i class="fas fa-certificate" aria-hidden="true"></i> Attestation de Diagnostic Technique BenchTech</h3>
+                <button type="button" class="modal-close-btn" id="modal-attestation-close" aria-label="Fermer la fenêtre">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Formulaire de personnalisation nominative -->
+                <div class="candidate-form-row">
+                    <div class="form-group">
+                        <label for="cert-input-name"><i class="fas fa-user"></i> Nom &amp; Prénom du Candidat :</label>
+                        <input type="text" id="cert-input-name" class="form-input" placeholder="ex: Mehdi Benali">
+                    </div>
+                    <div class="form-group">
+                        <label for="cert-input-company"><i class="fas fa-building"></i> Entreprise / Organisation :</label>
+                        <input type="text" id="cert-input-company" class="form-input" placeholder="ex: Banque Centrale Populaire">
+                    </div>
+                </div>
+                <div class="candidate-form-row">
+                    <div class="form-group">
+                        <label for="cert-input-role"><i class="fas fa-briefcase"></i> Fonction / Département :</label>
+                        <input type="text" id="cert-input-role" class="form-input" placeholder="ex: Contrôleur de Gestion Senior">
+                    </div>
+                    <div class="form-group">
+                        <label for="cert-input-email"><i class="fas fa-envelope"></i> Email Professionnel :</label>
+                        <input type="email" id="cert-input-email" class="form-input" placeholder="ex: m.benali@banque.ma">
+                    </div>
+                </div>
+
+                <!-- Aperçu Certificat Officiel -->
+                <div class="certificate-preview-box" id="printable-certificate-area">
+                    <div class="certificate-top-row">
+                        <div class="certificate-brand">BENCH<span>TECH</span> ACADEMY</div>
+                        <div class="certificate-ref-badge" id="cert-display-ref">Réf : BT-DIAG-2026-XXXX</div>
+                    </div>
+
+                    <div class="certificate-title-section">
+                        <h4 class="certificate-main-title">Attestation de Diagnostic Technique</h4>
+                        <span class="certificate-sub-text">Évaluation de Positionnement &amp; Validation des Acquis Opérationnels</span>
+                    </div>
+
+                    <div class="certificate-candidate-wrap">
+                        <div class="certificate-candidate-name" id="cert-display-name">COLLABORATEUR PROFESSIONNEL</div>
+                        <div class="certificate-candidate-meta" id="cert-display-meta">Entreprise Partenaire &bull; Cas Pratiques Réels</div>
+                    </div>
+
+                    <div class="certificate-metrics-grid">
+                        <div class="cert-metric-card">
+                            <div class="cert-metric-val" id="cert-display-score">-- / 25 pts</div>
+                            <div class="cert-metric-lbl">Score Pondéré</div>
+                        </div>
+                        <div class="cert-metric-card">
+                            <div class="cert-metric-val" id="cert-display-percent" style="color: var(--color-magician);">--%</div>
+                            <div class="cert-metric-lbl">Taux de Maîtrise</div>
+                        </div>
+                        <div class="cert-metric-card">
+                            <div class="cert-metric-val" id="cert-display-level" style="font-size: 0.86rem; line-height: 1.2;">--</div>
+                            <div class="cert-metric-lbl">Profil Attribué</div>
+                        </div>
+                    </div>
+
+                    <div id="cert-display-theme-text" style="font-size: 0.88rem; color: var(--color-sage); margin-bottom: 16px; text-align: center;">
+                        <strong>Domaine Audité :</strong> <span id="cert-theme-name">Architecture SQL &amp; Optimisation SGBD</span>
+                    </div>
+
+                    <div class="certificate-footer-signatures">
+                        <div class="cert-signature-box">
+                            <strong>Date d'Émission :</strong>
+                            <div id="cert-display-date">18 Novembre 2026</div>
+                            <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 4px;">Casablanca, Maroc</div>
+                        </div>
+                        <div class="cert-signature-box">
+                            <strong>Direction Pédagogique BenchTech</strong>
+                            <div class="cert-stamp-circle">
+                                <span>BENCH<br>TECH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions de la modale -->
+                <div class="modal-actions-row" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button type="button" class="btn btn-primary" id="btn-print-certificate" style="flex: 1;">
+                        <i class="fas fa-print" aria-hidden="true"></i> Imprimer / Exporter PDF
+                    </button>
+                    <a id="btn-whatsapp-certificate" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="flex: 1; border-color: #25D366; color: #128C7E; font-weight: 700;">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Transmettre sur WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- =======================================================================
          WIDGET FLOTTANT WHATSAPP BUSINESS
