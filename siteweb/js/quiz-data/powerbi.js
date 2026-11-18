@@ -1,107 +1,216 @@
 /**
- * BenchTech Academy - Banque de Questions
- * Thématique : Microsoft Power BI, Architecture VertiPaq & Maîtrise DAX
- * Casse officielle : BenchTech | « shaping tomorrow, today »
+ * BenchTech Academy - Banque de Questions Dynamique
+ * Thématique : Microsoft Power BI : Modélisation en Étoile, DAX & VertiPaq
+ * Généré automatiquement depuis benchtech_formations.db (Pool de 40 questions)
  */
 window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
 
 (function() {
     const themeDefinition = {
-    "id": "powerbi",
-    "title": "Microsoft Power BI, Architecture VertiPaq & Maîtrise DAX",
-    "icon": "fa-chart-pie",
-    "source": "Référentiel Microsoft PL-300 & Méthodologie SQLBI",
-    "duration": "10-12 min",
-    "studioTarget": "powerbi-studio",
-    "recommendedCourse": "Formation Power BI Sur-Mesure : Modélisation en Étoile & DAX Avancé",
-    "formTopic": "Formation Power BI Sur-Mesure",
-    "description": "Évaluation avancée orientée production : context transition, moteurs Formule vs Stockage (VertiPaq), tables déconnectées, RLS dynamique et Time Intelligence sous haute volumétrie.",
-    "questions": [
+        "id": "powerbi",
+        "title": "Microsoft Power BI : Modélisation en Étoile, DAX & VertiPaq",
+        "icon": "fa-chart-pie",
+        "source": "Microsoft Learn PL-300, The Definitive Guide to DAX (Russo & Ferrari)",
+        "duration": "10-12 min",
+        "studioTarget": "powerbi-studio",
+        "recommendedCourse": "Formation Power BI Sur-Mesure : DAX & Modélisation",
+        "formTopic": "Formation Power BI Sur-Mesure",
+        "maxQuestionsPerSession": 10,
+        "description": "Évaluation de haut niveau calibrée par BenchTech avec scénarios d'entreprise réels et diagnostics opérationnels.",
+        "questions": [
         {
-            "scenario": "Lors d'un audit sur un jeu de données de 20M de lignes, la mesure SUMX(Ventes, Ventes[Quantite] * [PrixUnitaireMesure]) entraîne une saturation mémoire et un temps de rendu de 14 secondes dans un visuel matriciel.",
-            "question": "Quelle est l'origine précise du goulet d'étranglement et la correction à appliquer ?",
-            "difficulty": "Expert",
-            "points": 3,
-            "answers": [
-                "Les colonnes de la table de faits manquent d'index B-Tree dans le modèle tabulaire Power BI.",
-                "L'appel d'une mesure ([PrixUnitaireMesure]) dans un itérateur déclenche une transition de contexte (CALCULATE implicite) pour chaque ligne, forçant le Formule Engine mono-thread à évaluer 20M de contextes de filtre.",
-                "L'itérateur SUMX est par nature mono-colonne et refuse les multiplications entre champs de granularités différentes.",
-                "La fonction SUMX doit être remplacée par un ALLSELECTED pour empêcher la propagation des filtres croisés."
-            ],
-            "correct": 1,
-            "trapIndex": 0,
-            "explanation": "En DAX, appeler une mesure à l'intérieur d'un itérateur comme SUMX injecte un CALCULATE implicite, provoquant une transition de contexte ligne-à-filtre à chaque itération. Sur 20 millions de lignes, le Storage Engine VertiPaq ne peut pas vectoriser le calcul et renvoie 20 millions d'appels au Formule Engine mono-thread. La solution consiste à utiliser la colonne native 'Ventes[PrixUnitaire]' directement sans transition ou à pré-agréger la table."
+                "id": 11,
+                "scenario": "Dans un fichier de reporting commercial, les données mensuelles arrivent sous forme de 12 colonnes 'Janvier', 'Février', ..., 'Décembre'.",
+                "question": "Quelle opération incontournable de Power Query devez-vous appliquer pour rendre ce jeu de données conforme à la modélisation relationnelle ?",
+                "difficulty": "Fondamentaux",
+                "points": 1,
+                "answers": [
+                        "Dépivoter les colonnes (Unpivot Columns) pour obtenir une ligne par mois et montant.",
+                        "Transposer l'ensemble de la table pour inverser lignes et colonnes.",
+                        "Fusionner les 12 colonnes en une seule chaîne de texte séparée par des virgules.",
+                        "Créer 12 colonnes calculées en DAX avec des fonctions IF conditionnelles."
+                ],
+                "correct": 0,
+                "trapIndex": 1,
+                "explanation": "L'opération 'Dépivoter les colonnes' (Unpivot Columns) transforme une structure matricielle 'large' en structure relationnelle 'longue' (une colonne 'Mois' et une colonne 'Valeur'), indispensable pour créer des mesures et filtres DAX performants.",
+                "linkedBlockCode": "PBI-ETL-01",
+                "linkedBlockTitle": "Ingestion Multi-Sources & Préparation Power Query",
+                "themeCode": "powerbi"
         },
         {
-            "scenario": "Vous concevez un rapport de marge commerciale avec un modèle en étoile. Vous devez calculer le chiffre d'affaires cumulé annuel (YTD) mais l'entreprise clôture son exercice fiscal le 30 juin de chaque année.",
-            "question": "Quelle syntaxe DAX respecte scrupuleusement la performance VertiPaq et la table Calendrier standard ?",
-            "difficulty": "Avancé",
-            "points": 2,
-            "answers": [
-                "CALCULATE([CA], FILTER(Calendrier, Calendrier[Date] <= MAX(Calendrier[Date]) && Calendrier[AnneeFiscale] = SELECTEDVALUE(Calendrier[AnneeFiscale])))",
-                "TOTALYTD([CA], Calendrier[Date], '06-30')",
-                "CALCULATE([CA], DATESYTD(Calendrier[Date], '30/06'))",
-                "SUMX(FILTER(Calendrier, Calendrier[Mois] <= 6), [CA])"
-            ],
-            "correct": 1,
-            "trapIndex": 2,
-            "explanation": "La fonction native TOTALYTD accepte un troisième argument optionnel spécifiant la date de clôture fiscale au format 'MM-DD' (ex: '06-30'). DATESYTD attend le format 'MM-DD' et non 'DD/MM', et la syntaxe avec FILTER manuel détruit le cache de requêtes VertiPaq en forçant une itération ligne à ligne."
+                "id": 12,
+                "scenario": "Dans un modèle Power BI, vous devez relier la table 'Clients' (1 million de lignes) à la table 'Ventes' (15 millions de lignes) sur la clé 'Client_ID'.",
+                "question": "Quelle est la cardinalité recommandée et le sens de filtrage optimal selon les standards de modélisation en étoile (Kimball) ?",
+                "difficulty": "Fondamentaux",
+                "points": 1,
+                "answers": [
+                        "Cardinalité 1 à Plusieurs (1:*), filtrage à sens unique (De Clients vers Ventes).",
+                        "Cardinalité Plusieurs à Plusieurs (*:*) avec filtrage bidirectionnel activé.",
+                        "Cardinalité 1 à 1 (1:1) avec désactivation de la relation.",
+                        "Aucune relation physique : tout filtrer via des fonctions LOOKUPVALUE en DAX."
+                ],
+                "correct": 0,
+                "trapIndex": 1,
+                "explanation": "Dans un Star Schema optimal, les relations entre dimension et fait sont de type 1 à Plusieurs (1:*), avec un sens de filtrage unidirectionnel (de la dimension Clients vers la table de faits Ventes).",
+                "linkedBlockCode": "PBI-MOD-02",
+                "linkedBlockTitle": "Modélisation Dimensionnelle en Étoile (Star Schema)",
+                "themeCode": "powerbi"
         },
         {
-            "scenario": "Un modèle décisionnel contient deux tables de faits à granularités hétérogènes : Ventes (au jour/produit/client) et Objectifs (au mois/famille de produit). Un développeur propose une relation bidirectionnelle directe (*:*).",
-            "question": "Pourquoi cette approche est-elle proscrite en architecture Ralph Kimball et quelle est l'alternative certifiée ?",
-            "difficulty": "Avancé",
-            "points": 2,
-            "answers": [
-                "Elle crée des ambiguïtés de propagation de filtre, des résultats imprévisibles et des dégradations de performance majeures ; la solution consiste à relier chaque fait à des dimensions conformes partagées (Temps, Produit) à la granularité commune.",
-                "Power BI interdit strictement toute relation plusieurs-à-plusieurs sans clé primaire synthétique composite.",
-                "La bidirectionnalité désactive le moteur VertiPaq et force un basculement complet en mode DirectQuery.",
-                "Il faut fusionner les deux tables de faits dans Power Query avec un Merge plein (Full Outer Join)."
-            ],
-            "correct": 0,
-            "trapIndex": 3,
-            "explanation": "Les relations plusieurs-à-plusieurs bidirectionnelles directes entre faits violent les fondements du Star Schema. Elles introduisent des cycles de filtrage vicieux et empêchent le moteur de garantir l'intégrité référentielle. Le standard d'architecture consiste à modéliser des dimensions partagées conformées (Conformed Dimensions) à la granularité la plus haute ou à utiliser des tables de pont (Bridge Tables) rigoureuses."
+                "id": 13,
+                "scenario": "Un débutant crée une colonne calculée '[CA_Ligne] = Ventes[Quantite] * Ventes[Prix_Unitaire]' pour une table de 10 millions de lignes. Le fichier .pbix prend 400 Mo.",
+                "question": "Quelle est la bonne pratique d'architecture DAX pour obtenir ce calcul sans gonfler la mémoire RAM du modèle ?",
+                "difficulty": "Opérationnel",
+                "points": 2,
+                "answers": [
+                        "Créer une mesure explicite avec un itérateur : CA = SUMX(Ventes, Ventes[Quantite] * Ventes[Prix_Unitaire]).",
+                        "Conserver la colonne calculée mais changer son format d'affichage en monétaire.",
+                        "Créer une mesure utilisant la formule simple CA = SUM(Ventes[Quantite]) * SUM(Ventes[Prix_Unitaire]).",
+                        "Dupliquer la table dans Power Query avant d'appliquer le calcul."
+                ],
+                "correct": 0,
+                "trapIndex": 2,
+                "explanation": "Créer une mesure explicite itérative 'CA = SUMX(Ventes, Ventes[Quantite] * Ventes[Prix_Unitaire])'. Les colonnes calculées sont stockées physiquement en mémoire RAM et compressées par VertiPaq, alors que les mesures sont évaluées à la volée selon le contexte de filtre.",
+                "linkedBlockCode": "PBI-DAX-03",
+                "linkedBlockTitle": "Fondations DAX & Transition de Contexte (CALCULATE)",
+                "themeCode": "powerbi"
         },
         {
-            "scenario": "Vous devez restreindre l'accès aux données régionales via la Sécurité au Niveau des Lignes (RLS). La table 'Utilisateurs' contient l'adresse e-mail et le code région. La table 'Ventes' est filtrée dynamiquement.",
-            "question": "Quelle expression de filtre de rôle DAX assure une sécurité sans faille en production dans Power BI Service ?",
-            "difficulty": "Expert",
-            "points": 3,
-            "answers": [
-                "Ventes[Region] = LOOKUPVALUE(Utilisateurs[Region], Utilisateurs[Email], USERNAME())",
-                "Utilisateurs[Email] = USERPRINCIPALNAME() sur la table Utilisateurs, avec une relation 1:* unidirectionnelle active vers la table Ventes sur le code Région",
-                "CALCULATE(COUNTROWS(Ventes), Ventes[EmailCommercial] = USERNAME()) > 0",
-                "FILTER(Ventes, Ventes[Region] = USERPRINCIPALNAME())"
-            ],
-            "correct": 1,
-            "trapIndex": 0,
-            "explanation": "Dans le Service Power BI Cloud, USERPRINCIPALNAME() retourne systématiquement l'adresse UPN de l'utilisateur connecté (alors que USERNAME() retourne souvent le format Domaine\\User en local). En filtrant la dimension Utilisateurs via Utilisateurs[Email] = USERPRINCIPALNAME(), le filtre se propage naturellement vers la table de faits via la relation relationnelle 1:* sans nécessiter d'appels répétés coûteux à LOOKUPVALUE."
+                "id": 14,
+                "scenario": "Vous utilisez la fonction DAX 'SAMEPERIODLASTYEAR(Calendrier[Date])', mais les résultats retournent des valeurs vides ou totalement fausses.",
+                "question": "Quel prérequis technique fondamental sur la table Calendrier n'a très probablement pas été respecté ?",
+                "difficulty": "Opérationnel",
+                "points": 2,
+                "answers": [
+                        "La table Calendrier n'est pas continue (jours manquants) ou n'a pas été marquée comme 'Table de dates'.",
+                        "La colonne Date doit obligatoirement être au format texte 'JJ/MM/AAAA'.",
+                        "La fonction SAMEPERIODLASTYEAR ne fonctionne que sur les années bissextiles.",
+                        "Il faut désactiver le moteur VertiPaq dans les options Power BI Desktop."
+                ],
+                "correct": 0,
+                "trapIndex": 1,
+                "explanation": "Toutes les fonctions DAX de Time Intelligence exigent une table de dates continue (sans aucun trou de date) marquée comme 'Table de dates' (Mark as Date Table), couvrant l'ensemble des années concernées et reliée aux faits par une relation 1:*.",
+                "linkedBlockCode": "PBI-TIM-04",
+                "linkedBlockTitle": "DAX Temporel (Time Intelligence) & Analyses Comparatives",
+                "themeCode": "powerbi"
         },
         {
-            "scenario": "Dans DAX Studio, la métrique 'SE CPU / FE CPU' d'une mesure indique un ratio de 95% FE (Formule Engine) et 5% SE (Storage Engine), avec une exécution globale jugée inacceptable.",
-            "question": "Comment interpréter ce diagnostic d'ingénierie et quel levier actionner ?",
-            "difficulty": "Expert",
-            "points": 3,
-            "answers": [
-                "Le moteur VertiPaq est sous-dimensionné ; il faut augmenter la RAM du serveur hébergeant le Power BI Gateway.",
-                "Le Formule Engine est saturé car la mesure empêche la vectorisation VertiPaq (présence de fonctions non vectorisables, conversions de types à la volée ou conditions imbriquées dans des itérateurs) ; il faut simplifier les prédicats pour déléguer les calculs au Storage Engine multi-thread.",
-                "Le Storage Engine est trop rapide pour le Formule Engine ; il faut forcer le mode DirectQuery.",
-                "La mesure est mise en cache et ne nécessite aucune intervention."
-            ],
-            "correct": 1,
-            "trapIndex": 0,
-            "explanation": "Le Storage Engine (SE / VertiPaq) est massivement parallélisé et optimisé pour le scanning rapide de colonnes compressées. Le Formule Engine (FE) est mono-thread et gère la logique complexe. Un score de 95% FE prouve que le code DAX force le moteur à sortir du mode vectorisé pour évaluer des calculs ligne par ligne en CPU mono-cœur. Réécrire les prédicats pour que VertiPaq gère les filtres résout le problème."
+                "id": 15,
+                "scenario": "Vous souhaitez calculer le pourcentage du chiffre d'affaires d'une catégorie par rapport au total général de toutes les catégories.",
+                "question": "Quelle combinaison de fonctions DAX permet d'ignorer le filtre de catégorie pour obtenir le dénominateur global ?",
+                "difficulty": "Opérationnel",
+                "points": 2,
+                "answers": [
+                        "CALCULATE([CA Total], ALL(Produits[Categorie])) (ou REMOVEFILTERS).",
+                        "SUM([CA Total]) / COUNT(Produits[Categorie]).",
+                        "CALCULATE([CA Total], KEEPFILTERS(Produits[Categorie])).",
+                        "TOTALYTD([CA Total], Calendrier[Date])."
+                ],
+                "correct": 0,
+                "trapIndex": 2,
+                "explanation": "CALCULATE([CA Total], ALL(Produits[Categorie])) ou REMOVEFILTERS(Produits[Categorie]) supprime le filtre actif sur la colonne Categorie au sein du contexte d'évaluation pour restituer la somme globale.",
+                "linkedBlockCode": "PBI-DAX-03",
+                "linkedBlockTitle": "Fondations DAX & Transition de Contexte (CALCULATE)",
+                "themeCode": "powerbi"
+        },
+        {
+                "id": 16,
+                "scenario": "À l'intérieur d'une fonction itérative 'AVERAGEX(Clients, [Montant Total])', vous remarquez que la mesure [Montant Total] recalcule la valeur pour chaque client individuel, même sans fonction CALCULATE explicite dans la formule.",
+                "question": "Quel concept fondamental interne au langage DAX s'est produit automatiquement lors de l'appel de la mesure ?",
+                "difficulty": "Avancé",
+                "points": 3,
+                "answers": [
+                        "La transition de contexte automatique provoquée par l'encapsulation implicite de la mesure dans un CALCULATE.",
+                        "Une dénormalisation temporaire exécutée par le moteur Power Query en tâche de fond.",
+                        "L'application d'un verrou exclusif sur la table de faits.",
+                        "Une anomalie de filtrage bidirectionnel nécessitant un redémarrage de Power BI."
+                ],
+                "correct": 0,
+                "trapIndex": 3,
+                "explanation": "Toute référence à une mesure existante à l'intérieur d'un itérateur (comme AVERAGEX ou FILTER) est automatiquement encapsulée dans un CALCULATE invisible, ce qui déclenche la 'Transition de Contexte' (Context Transition) transformant le contexte de ligne courant en contexte de filtre.",
+                "linkedBlockCode": "PBI-DAX-03",
+                "linkedBlockTitle": "Fondations DAX & Transition de Contexte (CALCULATE)",
+                "themeCode": "powerbi"
+        },
+        {
+                "id": 17,
+                "scenario": "Vous analysez un modèle de 3 Go avec DAX Studio (VertiPaq Analyzer). Vous découvrez qu'une seule colonne 'DateHeure_Transaction' (avec heure, minute, seconde) consomme 75% de la mémoire totale du modèle.",
+                "question": "Quelle est l'explication architecturale liée à la compression VertiPaq et quelle est l'optimisation immédiate ?",
+                "difficulty": "Avancé",
+                "points": 3,
+                "answers": [
+                        "La très forte cardinalité de la colonne détruit la compression du dictionnaire ; il faut scinder la colonne en 'Date' et 'Heure' séparées.",
+                        "La colonne doit être encodée en format Base64 pour être compressée.",
+                        "Il faut désactiver les relations inactives avec USERELATIONSHIP.",
+                        "Il faut forcer le mode DirectQuery pour éliminer le stockage en RAM."
+                ],
+                "correct": 0,
+                "trapIndex": 2,
+                "explanation": "Le moteur colonnaire VertiPaq compresse les données par dictionnaire de valeurs distinctes (cardinalité). Une colonne Horodatage à la seconde possède une cardinalité gigantesque, détruisant la compression. Séparer cette colonne en deux (une colonne Date + une colonne Heure arrondie ou par tranche) divise l'empreinte mémoire par 10 ou 20.",
+                "linkedBlockCode": "PBI-OPT-05",
+                "linkedBlockTitle": "Optimisation Moteur VertiPaq & Réduction Mémoire",
+                "themeCode": "powerbi"
+        },
+        {
+                "id": 18,
+                "scenario": "Votre direction générale exige que chaque directeur régional ne visualise dans les tableaux de bord que les données de sa propre région, avec un seul et même rapport publié sur Power BI Service.",
+                "question": "Quelle fonctionnalité de gouvernance Power BI répond rigoureusement à cette exigence de cloisonnement des données ?",
+                "difficulty": "Avancé",
+                "points": 3,
+                "answers": [
+                        "La sécurité au niveau des lignes dynamique (RLS) avec la fonction USERPRINCIPALNAME().",
+                        "Créer autant de fichiers .pbix séparés qu'il y a de directeurs régionaux.",
+                        "Masquer les pages du rapport avec des signets (Bookmarks) verrouillés par mot de passe.",
+                        "Appliquer un filtre visuel dans le volet filtre de Power BI Desktop."
+                ],
+                "correct": 0,
+                "trapIndex": 1,
+                "explanation": "La sécurité au niveau des lignes (RLS - Row-Level Security) dynamique combinée à la fonction DAX USERPRINCIPALNAME() filtre automatiquement les données retournées selon l'identité Azure AD / Entra ID de l'utilisateur connecté sans multiplier les rapports.",
+                "linkedBlockCode": "PBI-GOV-06",
+                "linkedBlockTitle": "Sécurité à la Ligne (RLS) & Déploiement Power BI Service",
+                "themeCode": "powerbi"
+        },
+        {
+                "id": 19,
+                "scenario": "Dans un rapport financier très sollicité, une mesure DAX contenant plusieurs sous-requêtes CALCULATE imbriquées génère des ralentissements majeurs de rendu (plus de 8 secondes d'attente pour afficher un visuel matriciel).",
+                "question": "Quelle technique de refactorisation DAX experte permet d'éliminer les recalculs redondants de contextes identiques ?",
+                "difficulty": "Expert",
+                "points": 4,
+                "answers": [
+                        "Stocker les résultats intermédiaires dans des variables DAX (VAR / RETURN) pour figer leur évaluation.",
+                        "Remplacer toutes les mesures par des colonnes calculées dans la table de faits.",
+                        "Activer le filtrage bidirectionnel sur toutes les tables de dimensions.",
+                        "Encapsuler chaque étape dans un bloc try/catch en M dans Power Query."
+                ],
+                "correct": 0,
+                "trapIndex": 1,
+                "explanation": "L'utilisation de variables DAX 'VAR ... RETURN' stocke le résultat d'une expression évaluée une seule fois dans son contexte de définition, évitant au moteur Formula Engine (FE) de recalculer plusieurs fois la même mesure dans la boucle d'évaluation.",
+                "linkedBlockCode": "PBI-OPT-05",
+                "linkedBlockTitle": "Optimisation Moteur VertiPaq & Réduction Mémoire",
+                "themeCode": "powerbi"
+        },
+        {
+                "id": 20,
+                "scenario": "Lors d'un audit de performance dans DAX Studio, vous analysez les métriques 'Storage Engine (SE) CPU' vs 'Formula Engine (FE) CPU'. Le FE CPU représente 92% du temps d'exécution total de la requête DAX.",
+                "question": "Quelle est la signification architecturale de cette métrique et que devez-vous optimiser en priorité ?",
+                "difficulty": "Expert",
+                "points": 4,
+                "answers": [
+                        "Le Formula Engine (monothreadé) est saturé par une logique DAX trop complexe ; il faut réécrire la mesure pour déléguer le travail au Storage Engine (VertiPaq multithreadé).",
+                        "La mémoire vive du serveur est défaillante ; il faut redémarrer la passerelle de données (Gateway).",
+                        "Le réseau entre le client et Power BI Service a un temps de latence trop élevé.",
+                        "Il faut convertir le modèle en DirectQuery pour soulager le Formula Engine."
+                ],
+                "correct": 0,
+                "trapIndex": 2,
+                "explanation": "Le Storage Engine (VertiPaq) est massivement multithreadé et ultra-rapide en RAM, tandis que le Formula Engine est monothreadé. Un FE à 92% signifie que la mesure force le moteur à exécuter du code procédural complexe ligne par ligne (ex: fonctions non supportées par SE, transitions de contextes excessives). Il faut simplifier le DAX pour déléguer les agrégations au Storage Engine.",
+                "linkedBlockCode": "PBI-OPT-05",
+                "linkedBlockTitle": "Optimisation Moteur VertiPaq & Réduction Mémoire",
+                "themeCode": "powerbi"
         }
-    ]
-};
+]
+    };
 
-    // Enregistrement dans la banque centrale (avec support tiret et underscore)
-    window.BenchTechQuizDatabase["powerbi"] = themeDefinition;
-    window.BenchTechQuizDatabase["powerbi"] = themeDefinition;
-    if ("powerbi".includes('-')) {
-        window.BenchTechQuizDatabase["powerbi".replace(/-/g, '_')] = themeDefinition;
-    }
-    if ("powerbi".includes('_')) {
-        window.BenchTechQuizDatabase["powerbi".replace(/_/g, '-')] = themeDefinition;
-    }
+    window.BenchTechQuizDatabase['powerbi'] = themeDefinition;
+    window.BenchTechQuizDatabase['powerbi'] = themeDefinition;
 })();

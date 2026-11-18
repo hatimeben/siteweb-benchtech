@@ -102,6 +102,66 @@ CREATE TABLE IF NOT EXISTS demande_blocs (
 );
 
 -- =======================================================================
+-- MODULE QUIZ DYNAMIQUE & DIAGNOSTICS DE POSITIONNEMENT
+-- =======================================================================
+
+-- 9. Table des Thématiques de Quiz
+CREATE TABLE IF NOT EXISTS quiz_themes (
+    id_theme INTEGER PRIMARY KEY AUTOINCREMENT,
+    code TEXT NOT NULL UNIQUE, -- 'powerbi', 'sql', 'copilot', 'excel', 'unix', 'general'
+    titre TEXT NOT NULL,
+    icone TEXT DEFAULT 'fa-question-circle',
+    source_standard TEXT,
+    id_filiere INTEGER,
+    questions_par_session INTEGER NOT NULL DEFAULT 10,
+    est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1)),
+    FOREIGN KEY (id_filiere) REFERENCES filieres (id_filiere) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+-- 10. Table du Pool Central de Questions
+CREATE TABLE IF NOT EXISTS quiz_questions (
+    id_question INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_theme INTEGER NOT NULL,
+    id_bloc INTEGER, -- Bloc de formation rattaché pour prescription sur-mesure !
+    scenario TEXT NOT NULL,
+    question TEXT NOT NULL,
+    difficulte TEXT NOT NULL CHECK (difficulte IN ('Fondamentaux', 'Opérationnel', 'Avancé', 'Expert')),
+    points INTEGER NOT NULL DEFAULT 1 CHECK (points > 0),
+    explication TEXT NOT NULL,
+    est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1)),
+    FOREIGN KEY (id_theme) REFERENCES quiz_themes (id_theme) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_bloc) REFERENCES blocs_competences (id_bloc) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+-- 11. Table des Réponses (Options à Choix Multiples)
+CREATE TABLE IF NOT EXISTS quiz_reponses (
+    id_reponse INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_question INTEGER NOT NULL,
+    texte_reponse TEXT NOT NULL,
+    est_correcte INTEGER NOT NULL DEFAULT 0 CHECK (est_correcte IN (0, 1)),
+    est_piege INTEGER NOT NULL DEFAULT 0 CHECK (est_piege IN (0, 1)),
+    ordre_affichage INTEGER NOT NULL DEFAULT 1,
+    FOREIGN KEY (id_question) REFERENCES quiz_questions (id_question) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- 12. Table des Sessions de Passage (Diagnostics Candidats & Leads)
+CREATE TABLE IF NOT EXISTS quiz_sessions (
+    id_session INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_theme INTEGER NOT NULL,
+    reference_session TEXT NOT NULL UNIQUE, -- ex: BT-EVAL-2026-A1B2
+    candidat_nom TEXT,
+    candidat_email TEXT,
+    candidat_entreprise TEXT,
+    score_obtenu INTEGER NOT NULL,
+    score_max INTEGER NOT NULL,
+    pourcentage REAL NOT NULL,
+    niveau_attribue TEXT NOT NULL,
+    date_passage DATETIME DEFAULT CURRENT_TIMESTAMP,
+    details_json TEXT,
+    FOREIGN KEY (id_theme) REFERENCES quiz_themes (id_theme) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+-- =======================================================================
 -- INDEX D'OPTIMISATION DE PERFORMANCES
 -- =======================================================================
 CREATE INDEX IF NOT EXISTS idx_blocs_filiere ON blocs_competences(id_filiere);
@@ -109,3 +169,8 @@ CREATE INDEX IF NOT EXISTS idx_blocs_niveau ON blocs_competences(id_niveau);
 CREATE INDEX IF NOT EXISTS idx_contenus_bloc ON contenus_modules(id_bloc);
 CREATE INDEX IF NOT EXISTS idx_demandes_ref ON demandes_sur_mesure(reference_dossier);
 CREATE INDEX IF NOT EXISTS idx_demandes_entreprise ON demandes_sur_mesure(nom_entreprise);
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_theme ON quiz_questions(id_theme);
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_diff ON quiz_questions(difficulte);
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_bloc ON quiz_questions(id_bloc);
+CREATE INDEX IF NOT EXISTS idx_quiz_reponses_question ON quiz_reponses(id_question);
+CREATE INDEX IF NOT EXISTS idx_quiz_sessions_ref ON quiz_sessions(reference_session);

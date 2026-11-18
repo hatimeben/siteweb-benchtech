@@ -3516,6 +3516,7 @@
     <script src="js/quiz-data/algo.js"></script>
     <script src="js/quiz-data/scrum.js"></script>
     <script src="js/quiz-data/msproject.js"></script>
+    <script src="js/quiz-data/quiz-pool-data.js"></script>
     <script src="js/quiz-data/quiz-database.js"></script>
 
     <!-- =======================================================================
@@ -3686,6 +3687,7 @@
 
         const quizTabs = document.querySelectorAll('.quiz-tab-btn');
         let currentQuizKey = 'copilot';
+        let currentSessionQuestions = [];
 
         const quizTitle = document.getElementById('quiz-title');
         const quizDescription = document.getElementById('quiz-description');
@@ -3705,12 +3707,17 @@
             const data = (window.BenchTechQuizDatabase && window.BenchTechQuizDatabase.getTheme) ? window.BenchTechQuizDatabase.getTheme(quizKey) : QUIZ_DATA[quizKey];
             if (!data) return;
 
+            // Tirage au sort de 10 questions équilibrées à chaque visiteur (stratifié & anti-triche)
+            currentSessionQuestions = (window.BenchTechQuizDatabase && window.BenchTechQuizDatabase.getSessionQuestions)
+                ? window.BenchTechQuizDatabase.getSessionQuestions(quizKey, { limit: 10, stratified: true, shuffle: true, shuffleAnswers: true })
+                : (data.questions || []);
+
             // Mise à jour de l'en-tête de présentation
             if (quizTitle) quizTitle.textContent = `Évaluation : ${data.title}`;
             if (quizDescription) quizDescription.textContent = data.description;
             if (quizSourceText) quizSourceText.textContent = data.source;
             if (quizDuration) quizDuration.textContent = data.duration;
-            if (quizQCount) quizQCount.textContent = `${data.questions.length} cas pratiques`;
+            if (quizQCount) quizQCount.textContent = `${currentSessionQuestions.length} cas pratiques (Session calibrée)`;
             if (quizIntroIcon) quizIntroIcon.innerHTML = `<i class="fas ${data.icon}"></i>`;
 
             // Réinitialisation de l'état
@@ -3731,7 +3738,7 @@
             // Rendu des questions orientées terrain avec scénarios réels
             if (questionContainer) {
                 questionContainer.innerHTML = '';
-                data.questions.forEach((item, questionIndex) => {
+                currentSessionQuestions.forEach((item, questionIndex) => {
                     const fieldset = document.createElement('fieldset');
                     fieldset.className = 'quiz-question';
 
@@ -3746,7 +3753,7 @@
 
                     const qNum = document.createElement('span');
                     qNum.className = 'quiz-q-num';
-                    qNum.textContent = `Question ${questionIndex + 1} sur ${data.questions.length}`;
+                    qNum.textContent = `Question ${questionIndex + 1} sur ${currentSessionQuestions.length}`;
 
                     headerRow.append(qNum, diffBadge);
 
@@ -3833,12 +3840,14 @@
                 const currentData = (window.BenchTechQuizDatabase && window.BenchTechQuizDatabase.getTheme) ? window.BenchTechQuizDatabase.getTheme(currentQuizKey) : QUIZ_DATA[currentQuizKey];
                 if (!currentData) return;
 
+                const qList = (currentSessionQuestions && currentSessionQuestions.length > 0) ? currentSessionQuestions : currentData.questions;
+
                 const formData = new FormData(quizForm);
                 let totalPossiblePoints = 0;
                 let earnedPoints = 0;
                 let correctCount = 0;
 
-                const resultsBreakdown = currentData.questions.map((item, idx) => {
+                const resultsBreakdown = qList.map((item, idx) => {
                     const rawVal = formData.get(`question-${idx}`);
                     const selectedIdx = rawVal !== null ? Number(rawVal) : -1;
                     const isCorrect = (selectedIdx === item.correct);
@@ -3904,7 +3913,7 @@
                     gaugeBox.className = 'result-score-gauge';
                     gaugeBox.innerHTML = `
                         <div class="score-number">${earnedPoints} / ${totalPossiblePoints} pts</div>
-                        <div class="score-percent">Taux de maîtrise pondéré : <strong>${percent}%</strong> (${correctCount}/${currentData.questions.length} cas résolus)</div>
+                        <div class="score-percent">Taux de maîtrise pondéré : <strong>${percent}%</strong> (${correctCount}/${qList.length} cas résolus)</div>
                     `;
 
                     headerBox.append(titleWrap, gaugeBox);

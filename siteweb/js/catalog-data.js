@@ -1,6 +1,5 @@
 /**
  * Catalogue Pédagogique Officiel BenchTech - Généré depuis benchtech_formations.db
- * Ne pas modifier manuellement ce fichier. Utilisez database/export_to_web.py.
  */
 
 window.BENCHTECH_CATALOG = {
