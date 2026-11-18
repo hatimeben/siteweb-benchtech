@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <circle cx="28" cy="30" r="18" stroke="#1B2A4A" stroke-width="3.5" fill="none"/>
+            <circle cx="28" cy="30" r="7" fill="#D4AF37"/>
+            <text x="56" y="34" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="20" font-weight="900" fill="#1B2A4A" letter-spacing="1">CAC</text>
+            <text x="56" y="47" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#D4AF37" letter-spacing="0.8">CENTRALE AUTOMOBILE</text>
+        </svg>

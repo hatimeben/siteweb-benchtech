@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <rect x="12" y="12" width="36" height="36" fill="#00008F"/>
+            <path d="M12 48L48 12" stroke="#E01A22" stroke-width="4.5"/>
+            <text x="58" y="41" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="28" font-weight="900" fill="#00008F" letter-spacing="2">AXA</text>
+        </svg>

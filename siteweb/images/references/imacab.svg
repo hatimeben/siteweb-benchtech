@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <path d="M16 30L26 14H40L50 30L40 46H26Z" stroke="#004B93" stroke-width="3" fill="none"/>
+            <circle cx="33" cy="30" r="6" fill="#D4AF37"/>
+            <text x="60" y="33" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="18" font-weight="900" fill="#004B93">IMACAB</text>
+            <text x="60" y="46" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="9" font-weight="700" fill="#64748B" letter-spacing="1">GROUPE INGELEC</text>
+        </svg>

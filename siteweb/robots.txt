@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://benchtech.ma/sitemap.xml
+

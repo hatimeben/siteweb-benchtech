@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <circle cx="30" cy="30" r="18" stroke="#EA1B23" stroke-width="3.5" fill="none"/>
+            <rect x="23" y="18" width="14" height="24" rx="2" stroke="#EA1B23" stroke-width="2.5" fill="none"/>
+            <text x="60" y="39" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="24" font-weight="900" fill="#EA1B23" letter-spacing="1.5">BOSCH</text>
+        </svg>

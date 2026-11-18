@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Complète &amp; Syllabus Sur-Mesure | BenchTech</title>
+    <meta name="description" content="Fiche pédagogique et syllabus de formation sur-mesure calibré par BenchTech. Découvrez votre programme personnalisé selon votre niveau, vos blocs de compétences et vos objectifs métiers.">
+    <link rel="canonical" href="https://benchtech.ma/formations/programme-sur-mesure">
+
+    <!-- Métadonnées Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BenchTech">
+    <meta property="og:title" content="Fiche Programme &amp; Syllabus Sur-Mesure | BenchTech">
+    <meta property="og:description" content="Programme d'ingénierie pédagogique calibré à la carte selon vos blocs de compétences, vos profils d'équipes et vos priorités opérationnelles.">
+    <meta property="og:url" content="https://benchtech.ma/formations/programme-sur-mesure">
+    <meta property="og:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fiche Complète &amp; Syllabus Sur-Mesure — BenchTech">
+    <meta name="twitter:description" content="Consultez votre programme de formation personnalisé élaboré au Studio Pédagogique BenchTech.">
+    <meta name="twitter:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <!-- Favicon officiel BenchTech -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/monogram-bt.png">
+
+    <!-- Polices Google Fonts : Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/style.css?v=4.6">
+
+    <style>
+        /* ==========================================================================
+           STYLES EXÉCUTIFS : CARTOUCHE OFFICIEL & CADRAGE DIRECTION
+           ========================================================================== */
+        .executive-dossier-card {
+            background: #FFFFFF;
+            border: 2px solid var(--color-magician-border);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(27, 42, 74, 0.05);
+            position: relative;
+        }
+
+        .dossier-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .dossier-ref-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .dossier-ref-label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .dossier-ref-code {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--color-sage);
+            background: var(--color-magician-light);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--color-magician-border);
+            letter-spacing: 0.04em;
+        }
+
+        .dossier-meta-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--color-sage);
+            flex-wrap: wrap;
+        }
+
+        .dossier-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dossier-meta-item i {
+            color: var(--color-magician);
+        }
+
+        .dossier-badge-fpc {
+            background: rgba(37, 211, 102, 0.12);
+            color: #128C7E;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Champs personnalisables pour l'entreprise cliente */
+        .dossier-client-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .dossier-client-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .dossier-client-field label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-sage);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dossier-client-field label i {
+            color: var(--color-magician);
+        }
+
+        .dossier-input {
+            width: 100%;
+            padding: 9px 12px;
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--color-sage);
+            background: #F8FAFC;
+            border: 1px dashed var(--color-magician);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .dossier-input:focus {
+            outline: none;
+            background: #FFFFFF;
+            border-style: solid;
+            border-color: var(--color-sage);
+            box-shadow: 0 0 0 3px rgba(27, 42, 74, 0.08);
+        }
+
+        /* Bandeau de contrôle & permalien */
+        .custom-status-banner {
+            background: linear-gradient(135deg, rgba(27, 42, 74, 0.04) 0%, rgba(212, 175, 55, 0.08) 100%);
+            border: 1px solid var(--color-magician-border);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .custom-status-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.90rem;
+            color: var(--color-sage);
+            font-weight: 600;
+        }
+
+        .custom-status-text i {
+            color: var(--color-magician);
+            font-size: 1.15rem;
+        }
+
+        .status-actions-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Grille des paramètres de cadrage */
+        .cadrage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .cadrage-tile {
+            background: #F8FAFC;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: var(--transition);
+        }
+
+        .cadrage-tile:hover {
+            border-color: var(--color-magician);
+            background: #FFFFFF;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .cadrage-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--color-magician-light);
+            color: var(--color-sage);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .cadrage-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cadrage-label {
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+        }
+
+        .cadrage-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-sage);
+            line-height: 1.35;
+        }
+
+        /* Cartouche de validation finale / Visa Direction */
+        .visa-validation-card {
+            margin-top: 30px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+        }
+
+        .visa-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 18px;
+        }
+
+        .visa-box {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 18px 20px;
+            background: #F8FAFC;
+        }
+
+        .visa-box.benchtech-visa {
+            border-top: 3px solid var(--color-magician);
+        }
+
+        .visa-box.client-visa {
+            border-top: 3px solid var(--color-sage);
+        }
+
+        .visa-header {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--color-sage);
+            margin-bottom: 2px;
+        }
+
+        .visa-sub {
+            font-size: 0.80rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .visa-stamp-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px;
+            background: #FFFFFF;
+            border: 1px dashed var(--color-magician);
+            border-radius: 6px;
+        }
+
+        .stamp-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid var(--color-magician);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-sage);
+            font-size: 0.70rem;
+            font-weight: 800;
+            line-height: 1.1;
+            text-align: center;
+            background: var(--color-magician-light);
+            flex-shrink: 0;
+        }
+
+        .stamp-text {
+            font-size: 0.82rem;
+            color: var(--color-sage);
+            line-height: 1.4;
+        }
+
+        .visa-client-lines {
+            background: #FFFFFF;
+            border: 1px dashed var(--border-color);
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 0.84rem;
+            color: var(--color-sage);
+            line-height: 1.8;
+        }
+
+        .signature-placeholder {
+            margin-top: 14px;
+            padding-top: 24px;
+            border-top: 1px dotted #CBD5E1;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .visa-legal-mention {
+            margin-top: 18px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+        }
+
+        /* Fenêtre Modale de Contact Express */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.70);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #FFFFFF;
+            width: 100%;
+            max-width: 540px;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--color-magician-border);
+            overflow: hidden;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            background: var(--color-sage);
+            color: #FFFFFF;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-form-group {
+            margin-bottom: 14px;
+        }
+
+        .modal-form-group label {
+            display: block;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--color-sage);
+            margin-bottom: 6px;
+        }
+
+        .modal-form-group input,
+        .modal-form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            font-family: inherit;
+            font-size: 0.90rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: #F8FAFC;
+            transition: var(--transition);
+        }
+
+        .modal-form-group input:focus,
+        .modal-form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-magician);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Toast notification */
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--color-sage);
+            color: #FFFFFF;
+            padding: 14px 22px;
+            border-radius: 6px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.90rem;
+            z-index: 10000;
+            border-left: 4px solid var(--color-magician);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .toast-notify.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           FEUILLE DE STYLE D'IMPRESSION OFFICIELLE (PRINT / PDF CABINET GRADE)
+           ========================================================================== */
+        @media print {
+            header, footer, .breadcrumbs-bar, .custom-status-banner, 
+            .sidebar-cta-group, .sidebar-phone-support, .btn, .modal-overlay,
+            .toast-notify, #btn-copy-permalink {
+                display: none !important;
+            }
+
+            body {
+                background: #FFFFFF !important;
+                color: #0F172A !important;
+                font-size: 11pt !important;
+            }
+
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .course-detail-layout {
+                display: block !important;
+            }
+
+            .course-sidebar-col {
+                display: none !important;
+            }
+
+            .course-hero {
+                background: #FFFFFF !important;
+                border-bottom: 2px solid #0F172A !important;
+                padding: 10px 0 20px 0 !important;
+            }
+
+            .course-main-title {
+                font-size: 18pt !important;
+                color: #0F172A !important;
+            }
+
+            .executive-dossier-card {
+                border: 2px solid #0F172A !important;
+                box-shadow: none !important;
+                margin-top: 10px !important;
+            }
+
+            .dossier-input {
+                border: none !important;
+                background: transparent !important;
+                font-weight: 700 !important;
+                padding: 0 !important;
+            }
+
+            .syllabus-card {
+                page-break-inside: avoid !important;
+                border: 1px solid #CBD5E1 !important;
+                box-shadow: none !important;
+                margin-bottom: 14px !important;
+            }
+
+            .visa-validation-card {
+                page-break-inside: avoid !important;
+                margin-top: 24px !important;
+            }
+
+            .print-official-header {
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 2px solid #0F172A;
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+
+            .print-official-logo {
+                height: 52px;
+                width: auto;
+            }
+
+            .print-official-badge {
+                text-align: right;
+                font-size: 8.5pt;
+                color: #475569;
+            }
+        }
+
+        .print-official-header {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .dossier-client-bar,
+            .visa-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="page-course-detail">
+
+    <!-- En-tête exclusif pour l'exportation PDF / Impression -->
+    <div class="print-official-header">
+        <img src="../images/logo-benchtech-original.jpg" alt="BenchTech" class="print-official-logo">
+        <div class="print-official-badge">
+            <strong>BenchTech — Cabinet de Conseil &amp; Académie d'Excellence</strong><br>
+            Proposition d'Ingénierie Pédagogique Sur-Mesure • Casablanca, Maroc
+        </div>
+    </div>
+
+    <!-- =======================================================================
+         1. NAVIGATION
+         ======================================================================= -->
+    <header>
+        <div class="container">
+            <nav aria-label="Navigation principale">
+                <a href="../index.html" class="logo" aria-label="BenchTech — Retour à l'accueil">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech — shaping tomorrow, today" class="header-logo-img" width="220" height="68">
+                </a>
+
+                <ul class="nav-links" id="main-nav-links">
+                    <li><a href="../index.html#conseil">Conseil &amp; IA</a></li>
+                    <li><a href="../index.html#references">Références</a></li>
+                    <li><a href="../index.html#formations">Académie</a></li>
+                    <li><a href="../index.html#studios-sur-mesure" class="active">Cursus Sur-Mesure</a></li>
+                    <li><a href="../index.html#evaluations">Quiz Technique</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contact" class="nav-cta">Demander un devis</a></li>
+                </ul>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav-links">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- =======================================================================
+             2. FIL D'ARIANE (BREADCRUMB)
+             ======================================================================= -->
+        <div class="breadcrumbs-bar">
+            <div class="container">
+                <nav aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../index.html"><i class="fas fa-house" aria-hidden="true"></i> Accueil</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="../index.html#studios-sur-mesure">Studios Pédagogiques</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li aria-current="page">Fiche Complète &amp; Syllabus Sur-Mesure</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             3. BANNIÈRE PRINCIPALE (HERO DYNAMIQUE)
+             ======================================================================= -->
+        <section class="course-hero">
+            <div class="container">
+                <div class="course-hero-content">
+                    <div class="course-hero-header">
+                        <span class="course-hero-tag" id="custom-hero-tag"><i class="fas fa-sliders" aria-hidden="true"></i> Ingénierie Pédagogique Sur-Mesure</span>
+                        <span class="course-hero-badge" id="custom-hero-tech-badge"><i class="fas fa-cube" aria-hidden="true"></i> Calibrage Studio BenchTech</span>
+                    </div>
+
+                    <h1 class="course-main-title" id="custom-syllabus-title">
+                        Programme Sur-Mesure Calibré par l'Utilisateur
+                    </h1>
+
+                    <p class="course-lead" id="custom-syllabus-subtitle">
+                        Ce syllabus sur-mesure a été calibré selon vos choix de blocs de compétences, vos profils d'équipes et vos contraintes opérationnelles d'entreprise.
+                    </p>
+
+                    <div class="course-metrics-bar">
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-clock" aria-hidden="true"></i> Volume Horaire</span>
+                            <span class="metric-value" id="custom-duration-val">14h (2 jours)</span>
+                            <span class="metric-sub" id="custom-blocks-count-val">4 blocs retenus</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-users" aria-hidden="true"></i> Profil Participants</span>
+                            <span class="metric-value" id="custom-profile-val">Équipe Opérationnelle</span>
+                            <span class="metric-sub" id="custom-level-sub">Niveau calibré</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-building" aria-hidden="true"></i> Modalité &amp; Format</span>
+                            <span class="metric-value" id="custom-format-val">Présentiel Intra</span>
+                            <span class="metric-sub" id="custom-pace-sub">Journées consécutives</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-certificate" aria-hidden="true"></i> Certification</span>
+                            <span class="metric-value">Attestation Nominative</span>
+                            <span class="metric-sub">Délivrée par BenchTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             4. GRILLE PRINCIPALE (FICHE CADRAGE + SYLLABUS + SIDEBAR)
+             ======================================================================= -->
+        <div class="container">
+            <div class="course-detail-layout">
+
+                <!-- ---------------------------------------------------------------
+                     COLONNE PRINCIPALE : DÉTAIL DU PROGRAMME CALIBRÉ
+                     --------------------------------------------------------------- -->
+                <div class="course-main-col">
+
+                    <!-- CARTOUCHE EXÉCUTIF OFFICIEL DE DOSSIER (FACTEUR CRÉDIBILITÉ) -->
+                    <div class="executive-dossier-card">
+                        <div class="dossier-top-bar">
+                            <div class="dossier-ref-group">
+                                <span class="dossier-ref-label">Dossier Technique &amp; Proposition Pédagogique :</span>
+                                <strong class="dossier-ref-code" id="dossier-ref-num">BT-PROG-2026-X842</strong>
+                            </div>
+                            <div class="dossier-meta-group">
+                                <span class="dossier-meta-item"><i class="fas fa-calendar-check" aria-hidden="true"></i> Émis le : <strong id="dossier-date-val">18 Novembre 2026</strong></span>
+                                <span class="dossier-meta-item"><i class="fas fa-clock" aria-hidden="true"></i> Validité : <strong>30 jours ouvrés</strong></span>
+                                <span class="dossier-badge-fpc"><i class="fas fa-stamp" aria-hidden="true"></i> Éligible Financement FPC / OFPPT</span>
+                            </div>
+                        </div>
+                        <div class="dossier-client-bar">
+                            <div class="dossier-client-field">
+                                <label for="client-company-input"><i class="fas fa-building" aria-hidden="true"></i> Entreprise / Organisation Bénéficiaire :</label>
+                                <input type="text" id="client-company-input" class="dossier-input" placeholder="Cliquez ici pour renseigner le nom de votre Entreprise..." value="">
+                            </div>
+                            <div class="dossier-client-field">
+                                <label for="client-dept-input"><i class="fas fa-users-viewfinder" aria-hidden="true"></i> Direction / Département Demandeur :</label>
+                                <input type="text" id="client-dept-input" class="dossier-input" placeholder="Ex: Direction Financière, DSI, Direction Générale, DRH..." value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bandeau de statut & barre d'actions rapides -->
+                    <div class="custom-status-banner">
+                        <div class="custom-status-text">
+                            <i class="fas fa-circle-check" aria-hidden="true"></i>
+                            <span>Votre programme est prêt pour présentation à votre Direction.</span>
+                        </div>
+                        <div class="status-actions-group">
+                            <button type="button" class="btn btn-outline" id="btn-copy-permalink" style="padding: 6px 14px; font-size: 0.82rem;">
+                                <i class="fas fa-link" aria-hidden="true"></i> Copier le lien du dossier
+                            </button>
+                            <a href="javascript:window.print();" class="print-btn-link" style="padding: 6px 10px;">
+                                <i class="fas fa-print" aria-hidden="true"></i> Imprimer / PDF
+                            </a>
+                            <a href="../index.html#studios-sur-mesure" class="btn btn-outline" id="btn-back-studio" style="padding: 6px 14px; font-size: 0.82rem;">
+                                <i class="fas fa-pen-to-square" aria-hidden="true"></i> Modifier ma sélection
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fiche de cadrage des paramètres sélectionnés -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-clipboard-list" aria-hidden="true"></i> 1. Cadrage Organisationnel &amp; Paramètres Métiers</h2>
+                        <p>
+                            Voici le récapitulatif des critères retenus pour calibrer la dynamique pédagogique de votre session :
+                        </p>
+
+                        <div class="cadrage-grid">
+                            <div class="cadrage-tile">
+                                <div class="cadrage-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                                <div class="cadrage-content">
+                                    <span class="cadrage-label">Univers Technologique</span>
+                                    <span class="cadrage-val" id="tile-tech-val">Microsoft Power BI</span>
+                                </div>
+                            </div>
+
+                            <div class="cadrage-tile">
+                                <div class="cadrage-icon"><i class="fas fa-signal" aria-hidden="true"></i></div>
+                                <div class="cadrage-content">
+                                    <span class="cadrage-label">Niveau de départ</span>
+                                    <span class="cadrage-val" id="tile-level-val">Intermédiaire</span>
+                                </div>
+                            </div>
+
+                            <div class="cadrage-tile">
+                                <div class="cadrage-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                                <div class="cadrage-content">
+                                    <span class="cadrage-label">Profil des participants</span>
+                                    <span class="cadrage-val" id="tile-profile-val">Contrôleurs de gestion &amp; Data Analysts</span>
+                                </div>
+                            </div>
+
+                            <div class="cadrage-tile">
+                                <div class="cadrage-icon"><i class="fas fa-chalkboard-user" aria-hidden="true"></i></div>
+                                <div class="cadrage-content">
+                                    <span class="cadrage-label">Format d'animation</span>
+                                    <span class="cadrage-val" id="tile-format-val">Présentiel Intra (Casablanca)</span>
+                                </div>
+                            </div>
+
+                            <div class="cadrage-tile">
+                                <div class="cadrage-icon"><i class="fas fa-crosshairs" aria-hidden="true"></i></div>
+                                <div class="cadrage-content">
+                                    <span class="cadrage-label">Orientation prioritaire</span>
+                                    <span class="cadrage-val" id="tile-orientation-val">Cas d'usage métiers directs</span>
+                                </div>
+                            </div>
+
+                            <div class="cadrage-tile">
+                                <div class="cadrage-icon"><i class="fas fa-calendar-days" aria-hidden="true"></i></div>
+                                <div class="cadrage-content">
+                                    <span class="cadrage-label">Rythme envisagé</span>
+                                    <span class="cadrage-val" id="tile-pace-val">Journées consécutives (2 jours)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Syllabus chronologique dynamique des blocs choisis -->
+                    <section class="course-block-card">
+                        <div class="syllabus-header-row">
+                            <h2 class="block-heading" style="margin-bottom: 0;">
+                                <i class="fas fa-list-check" aria-hidden="true"></i> 2. Syllabus Détaillé des Blocs de Compétences Retenus
+                            </h2>
+                            <span class="syllabus-version-chip" id="custom-blocks-badge">Programme calibré à la carte</span>
+                        </div>
+                        <p class="section-subtext">
+                            Chaque bloc représente un module autonome équilibré combinant rigueur conceptuelle, démonstration guidée et cas d'application pratique.
+                        </p>
+
+                        <div class="syllabus-timeline" id="custom-blocks-timeline">
+                            <!-- Injecté dynamiquement par JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Rigueur méthodologique & intervenants -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-medal" aria-hidden="true"></i> 3. L'Engagement Pédagogique BenchTech</h2>
+                        <div class="outcomes-grid">
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                                <h4>75% Pratique Terrain</h4>
+                                <p>Les participants travaillent sur des cas d'usage réels, des jeux de données d'entreprise et des ateliers de mise en pratique directe.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
+                                <h4>Consultants Seniors</h4>
+                                <p>Intervenants en exercice avec un capital d'expérience éprouvé auprès des grands comptes et administrations publiques.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                                <h4>Attestation Nominative</h4>
+                                <p>Délivrance d'un certificat d'excellence BenchTech détaillant les blocs de compétences validés pour chaque collaborateur.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
+                                <h4>Mentorat Post-Session</h4>
+                                <p>Assistance technique et réponses aux questions des participants pendant 30 jours après la formation.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CARTOUCHE DE VALIDATION & VISA DIRECTION (BON POUR ACCORD) -->
+                    <section class="course-block-card visa-validation-card">
+                        <h2 class="block-heading"><i class="fas fa-file-signature" aria-hidden="true"></i> 4. Visa &amp; Cadrage de Validation</h2>
+                        <p>
+                            Document d'ingénierie pédagogique préalable destiné à servir de base technique à la formalisation de la convention contractuelle de formation :
+                        </p>
+                        
+                        <div class="visa-grid">
+                            <!-- Volet Cabinet BenchTech -->
+                            <div class="visa-box benchtech-visa">
+                                <div class="visa-header">Pour le Cabinet BenchTech</div>
+                                <div class="visa-sub">Direction de l'Ingénierie Pédagogique &amp; Conseil</div>
+                                <div class="visa-stamp-area">
+                                    <div class="stamp-badge">
+                                        <span>BENCH<br>TECH</span>
+                                    </div>
+                                    <div class="stamp-text">
+                                        <strong>Ingénierie Validée Conforme</strong><br>
+                                        Pôle Formateurs Consultants Seniors<br>
+                                        Casablanca, Maroc
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Volet Entreprise Cliente -->
+                            <div class="visa-box client-visa">
+                                <div class="visa-header">Pour l'Entreprise Cliente (Bon pour Accord)</div>
+                                <div class="visa-sub">Visa de la Direction Générale / DSI / DRH</div>
+                                <div class="visa-client-lines">
+                                    <div><strong>Date :</strong> ..............................................................</div>
+                                    <div><strong>Nom &amp; Qualité :</strong> ......................................................</div>
+                                    <div class="signature-placeholder">
+                                        Signature &amp; Cachet de la Direction (Bon pour accord &amp; calendrier)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="visa-legal-mention">
+                            Document établi par BenchTech | SARL AU au capital de 100 000 MAD | Siège social : Casablanca, Maroc | Registre du Commerce (RC) : Casablanca n° 752759.
+                        </p>
+                    </section>
+
+                </div>
+
+                <!-- ---------------------------------------------------------------
+                     COLONNE LATÉRALE : STICKY SIDEBAR DE VALIDATION
+                     --------------------------------------------------------------- -->
+                <aside class="course-sidebar-col">
+                    <div class="sticky-sidebar-card">
+                        <div class="sidebar-header">
+                            <span class="sidebar-format-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Proposition Validée</span>
+                            <div class="sidebar-price-row">
+                                <span class="sidebar-price-label">Tarification Session :</span>
+                                <span class="sidebar-price-val">Sur Devis B2B</span>
+                            </div>
+                            <span class="sidebar-price-sub">Éligible plan de formation &amp; FPC</span>
+                        </div>
+
+                        <div class="sidebar-body">
+                            <ul class="sidebar-features-list">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span id="side-tech-feature"><strong>Technologie :</strong> Microsoft Power BI</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span id="side-duration-feature"><strong>Volume :</strong> 14h (2 jours)</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span id="side-format-feature"><strong>Modalité :</strong> Présentiel Intra</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span id="side-blocks-feature"><strong>Contenu :</strong> 4 blocs de compétences</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Support :</strong> Jeux de données, labs &amp; fiches mémos</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Certification :</strong> Attestation d'excellence BenchTech</span></li>
+                            </ul>
+
+                            <div class="sidebar-cta-group">
+                                <!-- Bouton Demande de Convention Express (Modale) -->
+                                <button type="button" id="btn-contact-custom" class="btn btn-primary" style="width: 100%;">
+                                    <i class="fas fa-file-signature" aria-hidden="true"></i> Demander la convention chiffrée
+                                </button>
+
+                                <!-- Bouton WhatsApp direct avec message prérempli -->
+                                <a id="btn-whatsapp-custom" href="https://wa.me/212662041272" class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #128C7E; font-weight: 700;" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Valider ce programme sur WhatsApp
+                                </a>
+
+                                <!-- Bouton Copie du lien pour partage direction -->
+                                <button type="button" class="btn btn-outline" id="btn-sidebar-copy-link" style="width: 100%;">
+                                    <i class="fas fa-share-nodes" aria-hidden="true"></i> Partager ce dossier (Lien direct)
+                                </button>
+
+                                <!-- Bouton Impression PDF -->
+                                <button type="button" class="btn btn-outline" onclick="window.print();" style="width: 100%;">
+                                    <i class="fas fa-file-pdf" aria-hidden="true"></i> Exporter en PDF / Imprimer
+                                </button>
+
+                                <!-- Bouton retour au studio -->
+                                <a href="../index.html#studios-sur-mesure" class="btn btn-outline" id="btn-reedit-studio" style="width: 100%;">
+                                    <i class="fas fa-sliders" aria-hidden="true"></i> Réajuster dans le Studio
+                                </a>
+                            </div>
+
+                            <div class="sidebar-phone-support">
+                                <i class="fas fa-headset" aria-hidden="true"></i>
+                                <div>
+                                    <span class="support-label">Conseiller pédagogique dédié :</span>
+                                    <a href="tel:+212662041272" class="support-num">+212 06.62.04.12.72</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- =======================================================================
+         MODALE EXPRESS : DEMANDE DE CONVENTION & CALENDRIER OFFICIEL
+         ======================================================================= -->
+    <div class="modal-overlay" id="modal-convention" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title"><i class="fas fa-file-signature" aria-hidden="true"></i> Demande de Convention &amp; Devis</h3>
+                <button type="button" class="modal-close-btn" id="modal-close" aria-label="Fermer la fenêtre">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">
+                    Renseignez vos coordonnées professionnelles pour recevoir la proposition formelle et vérifier la disponibilité de nos formateurs seniors pour vos dates :
+                </p>
+                <form id="modal-form">
+                    <div class="modal-form-group">
+                        <label for="modal-name">Nom &amp; Prénom du Responsable *</label>
+                        <input type="text" id="modal-name" required placeholder="Ex: Karim Bennani">
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="modal-company">Entreprise / Organisation *</label>
+                        <input type="text" id="modal-company" required placeholder="Nom de votre société">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div class="modal-form-group">
+                            <label for="modal-email">Email Professionnel *</label>
+                            <input type="email" id="modal-email" required placeholder="contact@entreprise.ma">
+                        </div>
+                        <div class="modal-form-group">
+                            <label for="modal-phone">Téléphone / WhatsApp *</label>
+                            <input type="tel" id="modal-phone" required placeholder="+212 6XX XX XX XX">
+                        </div>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="modal-notes">Remarques ou période souhaitée</label>
+                        <textarea id="modal-notes" rows="2" placeholder="Ex: Session souhaitée en présentiel début du mois prochain, 6 stagiaires."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Transmettre ma demande officielle
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notify" id="toast-notify">
+        <i class="fas fa-circle-check" aria-hidden="true"></i>
+        <span id="toast-msg">Lien copié dans le presse-papier !</span>
+    </div>
+
+    <!-- =======================================================================
+         5. FOOTER INSTITUTIONNEL BenchTech
+         ======================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column brand-col">
+                    <a href="../index.html" class="footer-logo" aria-label="BenchTech — Accueil">
+                        <img src="../images/logo-benchtech-original.jpg" alt="BenchTech" class="footer-logo-img" width="180" height="54">
+                    </a>
+                    <p class="footer-tagline">« shaping tomorrow, today »</p>
+                    <p class="footer-desc">
+                        Cabinet d'excellence technologique et de formation professionnelle de haut niveau à Casablanca. Accompagnement stratégique des entreprises dans l'ingénierie décisionnelle, l'IA d'entreprise et les architectures data.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Pôle Conseil</h4>
+                    <ul>
+                        <li><a href="../index.html#conseil">Business Intelligence &amp; Power BI</a></li>
+                        <li><a href="../index.html#conseil">Intelligence Artificielle &amp; Copilotes</a></li>
+                        <li><a href="../index.html#conseil">Architecture de Bases de Données</a></li>
+                        <li><a href="../index.html#conseil">Audit de Performance VertiPaq</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Formations Phares</h4>
+                    <ul>
+                        <li><a href="power-bi.html">Microsoft Power BI Avancé</a></li>
+                        <li><a href="copilot-studio.html">Microsoft Copilot Studio</a></li>
+                        <li><a href="sql-sgbd.html">Bases de Données &amp; SQL Avancé</a></li>
+                        <li><a href="../index.html#formations">UNIX / Linux &amp; Shell Scripting</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact &amp; Siège</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span>Casablanca, Maroc</span></li>
+                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <span>+212 06.62.04.12.72</span></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> <span>contact@benchtech.ma</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 BenchTech. Tous droits réservés.
+                    <span class="footer-legal-tag">
+                        BenchTech | SARL AU au capital de 100 000 MAD | Siège social : Casablanca, Maroc | Registre du Commerce (RC) : Casablanca n° 752759.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de restitution dynamique du Syllabus Sur-Mesure & Permalien -->
+    <script>
+        (function() {
+            // Nettoyage ancien mode si présent
+            try {
+                localStorage.removeItem('benchtech_display_mode');
+                document.documentElement.removeAttribute('data-theme');
+            } catch(e) {}
+
+            // Menu Mobile Toggle
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('main-nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', String(isActive));
+                });
+            }
+
+            // Génération de la Référence Unique & Date du jour
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+            const dateValEl = document.getElementById('dossier-date-val');
+            if (dateValEl) dateValEl.textContent = dateStr;
+
+            // Génération d'un code dossier stable
+            let refCode = 'BT-PROG-2026-' + (Math.floor(1000 + Math.random() * 9000)).toString(16).toUpperCase();
+            try {
+                const savedRef = sessionStorage.getItem('benchtech_dossier_ref');
+                if (savedRef) {
+                    refCode = savedRef;
+                } else {
+                    sessionStorage.setItem('benchtech_dossier_ref', refCode);
+                }
+            } catch(e) {}
+            const refNumEl = document.getElementById('dossier-ref-num');
+            if (refNumEl) refNumEl.textContent = refCode;
+
+            // Récupération de la configuration sauvegardée (ou via Permalien Hash)
+            let customData = null;
+            try {
+                // 1. Essai depuis le hash URL (si lien partagé)
+                if (window.location.hash && window.location.hash.startsWith('#share=')) {
+                    const b64 = window.location.hash.replace('#share=', '');
+                    const jsonStr = decodeURIComponent(escape(atob(b64)));
+                    customData = JSON.parse(jsonStr);
+                }
+            } catch(e) {
+                console.warn('Lien partagé non décodable:', e);
+            }
+
+            if (!customData) {
+                try {
+                    const stored = sessionStorage.getItem('benchtech_custom_syllabus') || localStorage.getItem('benchtech_custom_syllabus');
+                    if (stored) {
+                        customData = JSON.parse(stored);
+                    }
+                } catch(e) {
+                    console.warn('Erreur lecture programme sur-mesure:', e);
+                }
+            }
+
+            // Données par défaut si accès direct
+            if (!customData || !customData.selectedBlocks || customData.selectedBlocks.length === 0) {
+                customData = {
+                    techKey: 'powerbi',
+                    techName: 'Microsoft Power BI',
+                    studioId: 'powerbi-studio',
+                    title: 'Formation Microsoft Power BI : Modélisation en Étoile, DAX Avancé & Dataviz Décisionnelle',
+                    subtitle: 'Programme d\'ingénierie décisionnelle sur-mesure combinant l\'ingestion Power Query, la transition de contexte DAX et la conception de dashboards exécutifs.',
+                    duration: '2 jours (14h) — 4 blocs',
+                    level: 'Intermédiaire (utilise déjà Power BI ou Excel avancé)',
+                    profile: 'Contrôleurs de gestion, Directeurs Financiers & Data Analysts',
+                    format: 'Présentiel Intra-Entreprise (Casablanca ou vos locaux)',
+                    orientation: 'Cas d\'usage métiers concrets & Dashboards de pilotage',
+                    pace: 'Journées consécutives immersives (2 jours)',
+                    groupSize: 'Équipe opérationnelle (5 à 10 participants)',
+                    clientCompany: '',
+                    clientDept: '',
+                    selectedBlocks: [
+                        {
+                            id: '1.2',
+                            name: 'Bloc 1.2 : Ingestion Multi-Sources & Préparation Power Query',
+                            duration: '~3h30',
+                            badge: 'Power Query ETL',
+                            objectives: [
+                                'Nettoyer et transformer des flux bruts sans coder via l\'éditeur Power Query',
+                                'Fusionner (jointures) et ajouter (union) des tables hétérogènes',
+                                'Dépivoter des structures tabulaires matricielles (Unpivot) en tables relationnelles'
+                            ],
+                            topics: 'Power Query Editor, étapes appliquées, dépivotage Unpivot, jointures Merge/Append, gestion des valeurs nulles et erreurs.'
+                        },
+                        {
+                            id: '2.1',
+                            name: 'Bloc 2.1 : Modélisation Dimensionnelle en Étoile (Star Schema)',
+                            duration: '~3h30',
+                            badge: 'Modélisation',
+                            objectives: [
+                                'Concevoir un modèle dimensionnel optimal selon la méthodologie Kimball',
+                                'Distinguer tables de faits et tables de dimensions sans ambiguïté',
+                                'Résoudre les granularités mixtes et les relations n:n (plusieurs-à-plusieurs)'
+                            ],
+                            topics: 'Méthodologie Kimball, Star Schema vs Snowflake, granularité, relations actives/inactives, fonction USERELATIONSHIP.'
+                        },
+                        {
+                            id: '2.2',
+                            name: 'Bloc 2.2 : Fondations DAX, Contexte d\'Évaluation & CALCULATE',
+                            duration: '~3h30',
+                            badge: 'DAX Moteur',
+                            objectives: [
+                                'Maîtriser la distinction critique entre Contexte de Ligne et Contexte de Filtre',
+                                'Comprendre la transition de contexte provoquée par CALCULATE et CALCULATETABLE',
+                                'Manipuler les modificateurs de filtres : ALL, ALLEXCEPT, KEEPFILTERS'
+                            ],
+                            topics: 'Syntaxe DAX, colonnes calculées vs mesures explicites, transitions de contexte, fonction CALCULATE, modificateurs ALL/ALLEXCEPT.'
+                        },
+                        {
+                            id: '2.3',
+                            name: 'Bloc 2.3 : DAX Temporel (Time Intelligence) & Analyses Comparatives',
+                            duration: '~3h30',
+                            badge: 'Time Intelligence',
+                            objectives: [
+                                'Mettre en place des calculs cumulatifs fiables (YTD, QTD, MTD)',
+                                'Calculer les écarts d\'une année sur l\'autre (YoY, MoM, SAMEPERIODLASTYEAR)',
+                                'Gérer les décalages de périodes avec DATEADD et DATESBETWEEN'
+                            ],
+                            topics: 'Fonctions Time Intelligence (TOTALYTD, SAMEPERIODLASTYEAR, DATEADD, DATESYTD), prérequis sur la table Date continue.'
+                        }
+                    ]
+                };
+            }
+
+            // Gestion des champs entreprise & département éditables
+            const companyInput = document.getElementById('client-company-input');
+            const deptInput = document.getElementById('client-dept-input');
+            if (companyInput) {
+                if (customData.clientCompany) companyInput.value = customData.clientCompany;
+                companyInput.addEventListener('input', (e) => {
+                    customData.clientCompany = e.target.value;
+                    try { sessionStorage.setItem('benchtech_custom_syllabus', JSON.stringify(customData)); } catch(err) {}
+                    const modalCompany = document.getElementById('modal-company');
+                    if (modalCompany && !modalCompany.value) modalCompany.value = e.target.value;
+                });
+            }
+
+            if (deptInput) {
+                if (customData.clientDept) deptInput.value = customData.clientDept;
+                deptInput.addEventListener('input', (e) => {
+                    customData.clientDept = e.target.value;
+                    try { sessionStorage.setItem('benchtech_custom_syllabus', JSON.stringify(customData)); } catch(err) {}
+                });
+            }
+
+            // 1. Mise à jour des textes Hero & Titres
+            const titleEl = document.getElementById('custom-syllabus-title');
+            if (titleEl && customData.title) titleEl.textContent = customData.title;
+
+            const subtitleEl = document.getElementById('custom-syllabus-subtitle');
+            if (subtitleEl && customData.subtitle) subtitleEl.textContent = customData.subtitle;
+
+            const techBadgeEl = document.getElementById('custom-hero-tech-badge');
+            if (techBadgeEl && customData.techName) {
+                techBadgeEl.innerHTML = `<i class="fas fa-layer-group" aria-hidden="true"></i> ${customData.techName}`;
+            }
+
+            // 2. Mise à jour de la barre de métriques
+            const durationEl = document.getElementById('custom-duration-val');
+            if (durationEl && customData.duration) durationEl.textContent = customData.duration;
+
+            const blocksCountEl = document.getElementById('custom-blocks-count-val');
+            if (blocksCountEl) {
+                const count = customData.selectedBlocks ? customData.selectedBlocks.length : 0;
+                blocksCountEl.textContent = `${count} bloc${count > 1 ? 's' : ''} certifiant${count > 1 ? 's' : ''}`;
+            }
+
+            const profileEl = document.getElementById('custom-profile-val');
+            if (profileEl && customData.profile) profileEl.textContent = customData.profile;
+
+            const formatEl = document.getElementById('custom-format-val');
+            if (formatEl && customData.format) formatEl.textContent = customData.format;
+
+            const paceSubEl = document.getElementById('custom-pace-sub');
+            if (paceSubEl && customData.pace) paceSubEl.textContent = customData.pace;
+
+            // 3. Mise à jour de la grille de cadrage
+            const setTile = (id, val) => {
+                const el = document.getElementById(id);
+                if (el && val) el.textContent = val;
+            };
+            setTile('tile-tech-val', customData.techName);
+            setTile('tile-level-val', customData.level);
+            setTile('tile-profile-val', customData.profile);
+            setTile('tile-format-val', customData.format);
+            setTile('tile-orientation-val', customData.orientation);
+            setTile('tile-pace-val', customData.pace);
+
+            // 4. Mise à jour de la sidebar
+            const sideTech = document.getElementById('side-tech-feature');
+            if (sideTech) sideTech.innerHTML = `<strong>Technologie :</strong> ${customData.techName || 'Sur-Mesure'}`;
+
+            const sideDuration = document.getElementById('side-duration-feature');
+            if (sideDuration) sideDuration.innerHTML = `<strong>Volume :</strong> ${customData.duration || 'Sur devis'}`;
+
+            const sideFormat = document.getElementById('side-format-feature');
+            if (sideFormat) sideFormat.innerHTML = `<strong>Modalité :</strong> ${customData.format || 'Présentiel / Distanciel'}`;
+
+            const sideBlocks = document.getElementById('side-blocks-feature');
+            if (sideBlocks) {
+                const count = customData.selectedBlocks ? customData.selectedBlocks.length : 0;
+                sideBlocks.innerHTML = `<strong>Contenu :</strong> ${count} bloc${count > 1 ? 's' : ''} de compétences`;
+            }
+
+            // Boutons retour au studio
+            const studioTarget = customData.studioId ? `../index.html#${customData.studioId}` : '../index.html#studios-sur-mesure';
+            const btnBackStudio = document.getElementById('btn-back-studio');
+            if (btnBackStudio) btnBackStudio.href = studioTarget;
+            const btnReeditStudio = document.getElementById('btn-reedit-studio');
+            if (btnReeditStudio) btnReeditStudio.href = studioTarget;
+
+            // 5. Génération dynamique de la timeline des blocs choisis
+            const timelineEl = document.getElementById('custom-blocks-timeline');
+            if (timelineEl && customData.selectedBlocks && customData.selectedBlocks.length > 0) {
+                timelineEl.innerHTML = '';
+                customData.selectedBlocks.forEach((block, index) => {
+                    const blockNum = String(index + 1).padStart(2, '0');
+                    const article = document.createElement('article');
+                    article.className = 'syllabus-card';
+
+                    const objList = (block.objectives && block.objectives.length > 0)
+                        ? block.objectives.map(o => `<li><i class="fas fa-check" style="color: var(--color-magician); margin-right: 8px;"></i> ${o}</li>`).join('')
+                        : '';
+
+                    const topicsHtml = block.topics 
+                        ? `<p style="margin-top: 10px; font-size: 0.88rem; color: var(--text-muted);"><strong>Mots-clés &amp; outils :</strong> ${block.topics}</p>`
+                        : '';
+
+                    article.innerHTML = `
+                        <header class="syllabus-card-header">
+                            <span class="module-number">${blockNum}</span>
+                            <div class="module-title-wrap">
+                                <h3>${block.name}</h3>
+                                <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Durée estimée : ${block.duration || '~3h30'} | <span style="color: var(--color-magician); font-weight: 700;">${block.badge || 'Compétence Clé'}</span></span>
+                            </div>
+                        </header>
+                        <div class="syllabus-card-body">
+                            ${block.desc ? `<p class="module-intro">${block.desc}</p>` : ''}
+                            ${objList ? `<ul class="module-points" style="list-style: none; padding-left: 0;">${objList}</ul>` : ''}
+                            ${topicsHtml}
+                        </div>
+                    `;
+                    timelineEl.appendChild(article);
+                });
+            }
+
+            // Toast helper
+            function showToast(msg) {
+                const toast = document.getElementById('toast-notify');
+                const toastMsg = document.getElementById('toast-msg');
+                if (toast && toastMsg) {
+                    toastMsg.textContent = msg;
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 3500);
+                }
+            }
+
+            // Génération du Permalien de partage
+            function copyShareLink() {
+                try {
+                    const jsonStr = JSON.stringify(customData);
+                    const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+                    const shareUrl = window.location.origin + window.location.pathname + '#share=' + b64;
+                    navigator.clipboard.writeText(shareUrl).then(() => {
+                        showToast('Lien officiel du dossier copié ! Prêt à partager.');
+                    }).catch(() => {
+                        prompt('Copiez ce lien pour partager le dossier :', shareUrl);
+                    });
+                } catch(e) {
+                    showToast('Lien copié dans le presse-papier.');
+                }
+            }
+
+            const btnCopy = document.getElementById('btn-copy-permalink');
+            if (btnCopy) btnCopy.addEventListener('click', copyShareLink);
+
+            const btnSideCopy = document.getElementById('btn-sidebar-copy-link');
+            if (btnSideCopy) btnSideCopy.addEventListener('click', copyShareLink);
+
+            // 6. Configuration des CTAs de conversion (WhatsApp & Modale)
+            const blocksSummary = (customData.selectedBlocks || []).map(b => `• ${b.name} (${b.duration || '~3h30'})`).join('\n');
+            const clientCompanyStr = companyInput && companyInput.value ? `\n🏢 Entreprise : ${companyInput.value}` : '';
+            const waMessage = `Bonjour l'équipe BenchTech,\n\nJe vous transmets notre dossier de formation sur-mesure (Réf : ${refCode}) :${clientCompanyStr}\n\n📌 Intitulé : ${customData.title}\n⏱️ Volume : ${customData.duration}\n🎯 Profil : ${customData.profile}\n🏢 Modalité : ${customData.format}\n📅 Rythme : ${customData.pace}\n🧭 Orientation : ${customData.orientation}\n\n📚 Blocs retenus :\n${blocksSummary}\n\nMerci de nous transmettre votre convention officielle et disponibilités.`;
+
+            const waBtn = document.getElementById('btn-whatsapp-custom');
+            if (waBtn) {
+                waBtn.href = `https://wa.me/212662041272?text=${encodeURIComponent(waMessage)}`;
+            }
+
+            // Gestion de la modale express
+            const modal = document.getElementById('modal-convention');
+            const btnOpenModal = document.getElementById('btn-contact-custom') || document.getElementById('btn-open-modal');
+            const btnCloseModal = document.getElementById('modal-close');
+            const modalCompanyInput = document.getElementById('modal-company');
+
+            if (btnOpenModal && modal) {
+                btnOpenModal.addEventListener('click', () => {
+                    modal.classList.add('active');
+                    if (modalCompanyInput && companyInput && companyInput.value) {
+                        modalCompanyInput.value = companyInput.value;
+                    }
+                });
+            }
+
+            if (btnCloseModal && modal) {
+                btnCloseModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) modal.classList.remove('active');
+                });
+            }
+
+            const modalForm = document.getElementById('modal-form');
+            if (modalForm) {
+                modalForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('modal-name').value;
+                    const comp = document.getElementById('modal-company').value;
+                    const email = document.getElementById('modal-email').value;
+                    const phone = document.getElementById('modal-phone').value;
+                    const notes = document.getElementById('modal-notes').value;
+
+                    const finalMessage = `DEMANDE OFFICIELLE DE CONVENTION & DEVIS\n\nRéf Dossier : ${refCode}\nClient : ${name} (${comp})\nContact : ${email} | ${phone}\nRemarques : ${notes || 'Aucune'}\n\n${waMessage}`;
+
+                    try {
+                        sessionStorage.setItem('benchtech_contact_prefill', JSON.stringify({
+                            topic: `Formation ${customData.techName || 'Sur-Mesure'}`,
+                            message: finalMessage
+                        }));
+                    } catch(err) {}
+
+                    modal.classList.remove('active');
+                    showToast('Demande enregistrée ! Redirection vers la finalisation...');
+                    setTimeout(() => {
+                        window.location.href = '../index.html#contact';
+                    }, 1200);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

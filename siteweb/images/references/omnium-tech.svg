@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <rect x="14" y="14" width="30" height="30" rx="5" fill="#1E293B"/>
+            <circle cx="29" cy="29" r="5" fill="#0EA5E9"/>
+            <path d="M29 14v7M29 37v7M14 29h7M37 29h7" stroke="#0EA5E9" stroke-width="2.5"/>
+            <text x="54" y="32" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="14" font-weight="900" fill="#1B2A4A">OMNIUM</text>
+            <text x="54" y="46" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="9" font-weight="800" fill="#0EA5E9" letter-spacing="0.8">TECHNOLOGIQUE</text>
+        </svg>

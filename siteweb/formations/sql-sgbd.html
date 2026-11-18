@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation SQL Avancé, Optimisation SGBD &amp; PostgreSQL | BenchTech</title>
+    <meta name="description" content="Formation certifiante SQL Avancé et optimisation des performances SGBD à Casablanca et en ligne. Maîtrisez les requêtes analytiques (Window Functions), l'indexation B-Tree, l'analyse EXPLAIN et le tuning PostgreSQL / MySQL.">
+    <link rel="canonical" href="https://benchtech.ma/formations/sql-sgbd">
+
+    <!-- Métadonnées Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BenchTech">
+    <meta property="og:title" content="Formation SQL Avancé : Requêtes Analytiques &amp; Optimisation SGBD | BenchTech">
+    <meta property="og:description" content="Cursus d'ingénierie animé par des DBAs seniors. Modélisation 3NF, fenêtrage OVER, plans d'exécution EXPLAIN ANALYZE et tuning d'index haute performance.">
+    <meta property="og:url" content="https://benchtech.ma/formations/sql-sgbd">
+    <meta property="og:image" content="https://benchtech.ma/images/logo-benchtech.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Formation SQL Avancé &amp; Tuning SGBD — BenchTech">
+    <meta name="twitter:description" content="Perfectionnement professionnel SQL : requêtes analytiques complexes, indexation avancée, transactions ACID et élimination des goulets d'étranglement.">
+    <meta name="twitter:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <!-- Schéma structuré Schema.org (Course) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation SQL Avancé : Requêtes Analytiques, Indexation & Optimisation des Plans d'Exécution",
+      "description": "Programme intensif pour data analysts, développeurs backend et administrateurs de bases de données souhaitant maîtriser le requêtage SQL complexe, l'optimisation des performances et l'architecture des SGBD.",
+      "provider": {
+        "@type": "Organization",
+        "name": "BenchTech",
+        "url": "https://benchtech.ma/",
+        "logo": "https://benchtech.ma/images/logo-benchtech.png"
+      },
+      "inLanguage": "fr",
+      "educationalLevel": "Intermediate to Advanced",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": ["onsite", "online"],
+        "courseWorkload": "PT28H"
+      }
+    }
+    </script>
+
+    <!-- Favicon officiel BenchTech -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/monogram-bt.png">
+
+    <!-- Polices Google Fonts : Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/style.css?v=4.6">
+</head>
+<body class="page-course-detail">
+
+    <!-- =======================================================================
+         1. NAVIGATION
+         ======================================================================= -->
+    <header>
+        <div class="container">
+            <nav aria-label="Navigation principale">
+                <a href="../index.html" class="logo" aria-label="BenchTech — Retour à l'accueil">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech — shaping tomorrow, today" class="header-logo-img" width="220" height="68">
+                </a>
+
+                <ul class="nav-links" id="main-nav-links">
+                    <li><a href="../index.html#conseil">Conseil &amp; IA</a></li>
+                    <li><a href="../index.html#references">Références</a></li>
+                    <li><a href="../index.html#formations" class="active">Académie</a></li>
+                    <li><a href="../index.html#studios-sur-mesure">Cursus Sur-Mesure</a></li>
+                    <li><a href="../index.html#evaluations">Quiz Technique</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contact" class="nav-cta">Demander un devis</a></li>
+                </ul>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav-links">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- =======================================================================
+             2. FIL D'ARIANE (BREADCRUMB)
+             ======================================================================= -->
+        <div class="breadcrumbs-bar">
+            <div class="container">
+                <nav aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../index.html"><i class="fas fa-house" aria-hidden="true"></i> Accueil</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="../index.html#formations">Académie BenchTech</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li aria-current="page">SQL Avancé, Optimisation SGBD &amp; PostgreSQL</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             3. BANNIÈRE PRINCIPALE DU PROGRAMME (HERO)
+             ======================================================================= -->
+        <section class="course-hero">
+            <div class="container">
+                <div class="course-hero-content">
+                    <div class="course-hero-header">
+                        <span class="course-hero-tag"><i class="fas fa-database" aria-hidden="true"></i> Bases de Données &amp; Data Engineering</span>
+                        <span class="course-hero-badge"><i class="fas fa-server" aria-hidden="true"></i> PostgreSQL, MySQL, SQL Server &amp; Oracle</span>
+                    </div>
+
+                    <h1 class="course-main-title">
+                        SQL Avancé, Optimisation des Requêtes &amp; Tuning de Performance <span class="highlight-gold">SGBD</span>
+                    </h1>
+
+                    <p class="course-lead">
+                        De la modélisation relationnelle rigoureuse aux fonctions de fenêtrage analytiques (Window Functions) et à l'analyse experte des plans d'exécution EXPLAIN ANALYZE : éliminez les goulots d'étranglement de vos bases de données transactionnelles et analytiques.
+                    </p>
+
+                    <div class="course-metrics-bar">
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-calendar-day" aria-hidden="true"></i> Durée totale</span>
+                            <span class="metric-value">4 jours (28h)</span>
+                            <span class="metric-sub">Intensif ou Samedis</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-laptop-code" aria-hidden="true"></i> Approche</span>
+                            <span class="metric-value">75% Requêtes &amp; Labs</span>
+                            <span class="metric-sub">Volumes réels de données</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-bolt" aria-hidden="true"></i> Performance</span>
+                            <span class="metric-value">EXPLAIN &amp; B-Tree</span>
+                            <span class="metric-sub">Tuning milliseconde</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-certificate" aria-hidden="true"></i> Attestation</span>
+                            <span class="metric-value">Certificat d'Excellence</span>
+                            <span class="metric-sub">Délivré par BenchTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             4. GRILLE PRINCIPALE (SYLLABUS + SIDEBAR STICKY)
+             ======================================================================= -->
+        <div class="container">
+            <div class="course-detail-layout">
+
+                <!-- ---------------------------------------------------------------
+                     COLONNE PRINCIPALE : DÉTAIL PÉDAGOGIQUE
+                     --------------------------------------------------------------- -->
+                <div class="course-main-col">
+
+                    <!-- Résumé exécutif & Enjeux métier -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-bullseye" aria-hidden="true"></i> Pourquoi ce cursus d'ingénierie SQL ?</h2>
+                        <p>
+                            Dans la quasi-totalité des architectures d'entreprise, les requêtes mal calibrées, le manque d'index pertinents ou une méconnaissance des mécanismes de verrouillage constituent la cause numéro un des lenteurs applicatives et des surcoûts d'infrastructure cloud.
+                        </p>
+                        <p>
+                            Ce cursus d'élite, animé par des administrateurs et architectes de bases de données confirmés, vous transmet une maîtrise approfondie du moteur relationnel. Vous apprendrez à écrire des requêtes analytiques élégantes et compactes sans sous-requêtes redondantes, à interpréter avec précision chaque opérateur d'un plan d'exécution (*Index Scan, Nested Loop, Hash Join*), et à mettre en œuvre des stratégies d'indexation chirurgicales adaptées à vos volumétries de production.
+                        </p>
+                    </section>
+
+                    <!-- Objectifs opérationnels mesurables -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-chart-line" aria-hidden="true"></i> Compétences acquises à l'issue du cursus</h2>
+                        <div class="outcomes-grid">
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-filter" aria-hidden="true"></i></div>
+                                <h4>SQL Analytique de Pointe</h4>
+                                <p>Remplacer les jointures complexes par des fonctions de fenêtrage (OVER, LAG, LEAD, RANK) et des CTEs récursives hautement performantes.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-gauge-high" aria-hidden="true"></i></div>
+                                <h4>Diagnostic EXPLAIN ANALYZE</h4>
+                                <p>Lire et décortiquer les arbres d'exécution, identifier les lectures disque superflues (Buffers) et éliminer les Seq Scans destructeurs.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                                <h4>Indexation Stratégique</h4>
+                                <p>Concevoir des index couvrants, partiels, composites, GIN/GiST (pour données JSONB) garantissant un accès immédiat aux enregistrements.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+                                <h4>Robustesse Transactionnelle</h4>
+                                <p>Maîtriser les niveaux d'isolation ACID, le modèle MVCC et désamorcer les blocages et verrous mutuels (Deadlocks) sous forte charge.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Programme Détaillé Module par Module (Syllabus) -->
+                    <section class="course-block-card">
+                        <div class="syllabus-header-row">
+                            <h2 class="block-heading" style="margin-bottom: 0;">
+                                <i class="fas fa-list-check" aria-hidden="true"></i> Programme Pédagogique Détaillé
+                            </h2>
+                            <span class="syllabus-version-chip">Standard ANSI SQL &amp; PostgreSQL 16+</span>
+                        </div>
+                        <p class="section-subtext">
+                            5 modules structurés combinant rigueur mathématique relationnelle, benchmarks réels et ateliers de diagnostic de performance en direct.
+                        </p>
+
+                        <div class="syllabus-timeline">
+                            <!-- Module 1 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">01</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Modélisation Relationnelle Avancée, Normalisation &amp; Types Modernes</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 1 — Matin (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Poser les fondations d'un schéma robuste capable de monter en charge sans anomalies de mise à jour ni redondances non maîtrisées.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Théorie relationnelle &amp; Formes normales :</strong> Décomposition rigoureuse en 1NF, 2NF, 3NF et BCNF ; critères objectifs de dénormalisation tactique.</li>
+                                        <li><strong>Intégrité référentielle &amp; Clés :</strong> Clés primaires naturelles vs de substitution (Surrogate Keys, UUIDv7), contraintes CHECK, clés étrangères et stratégies ON DELETE.</li>
+                                        <li><strong>Types de données avancés :</strong> Gestion efficace des types temporels avec fuseaux, types monétaires, tableaux et colonnes JSON/JSONB structurées.</li>
+                                        <li><strong>Anti-patterns de modélisation :</strong> Éviter l'Entity-Attribute-Value (EAV), le polymorphisme bancal et la concaténation de listes en chaîne.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #1 :</strong> Audit d'un schéma transactionnel e-commerce dégradé, élimination des redondances et migration vers un modèle 3NF optimisé avec intégrité garantie.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 2 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">02</span>
+                                    <div class="module-title-wrap">
+                                        <h3>SQL Analytique Avancé, CTEs Récursives &amp; Fonctions de Fenêtrage</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 1 — Après-midi &amp; Jour 2 — Matin (7h)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Exprimer des requêtes complexes en une seule passe d'exécution grâce à la puissance des fonctions de fenêtrage et aux tables d'expressions communes.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Common Table Expressions (CTEs) :</strong> Lisibilité, modularité des sous-requêtes et CTEs récursives pour l'exploration de hiérarchies et graphes d'arborescence.</li>
+                                        <li><strong>Fenêtrage avec la clause OVER() :</strong> Partitionnement (PARTITION BY) et ordonnancement (ORDER BY) sans regroupement destructeur de lignes.</li>
+                                        <li><strong>Fonctions de classement &amp; décalage :</strong> ROW_NUMBER(), RANK(), DENSE_RANK(), NTILE(), LAG(), LEAD() et FIRST_VALUE() pour calculs de variations n/n-1.</li>
+                                        <li><strong>Cadres de fenêtres glissantes (Window Frames) :</strong> ROWS/RANGE BETWEEN UNBOUNDED PRECEDING et cumulatifs mobiles.</li>
+                                        <li><strong>Agrégations multidimensionnelles :</strong> Utilisation de GROUPING SETS, CUBE et ROLLUP pour le reporting décisionnel direct en base.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #2 :</strong> Calcul en pure SQL d'un tableau d'amortissement financier, de cohortes de rétention client mensuelles et d'un calcul de bonus commercial glissant sur 12 mois.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 3 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">03</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Moteurs SGBD Internes, Concurrence MVCC &amp; Transactions ACID</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 2 — Après-midi &amp; Jour 3 — Matin (7h)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Comprendre comment le moteur de base de données écrit sur disque, gère la mémoire tampon et protège vos données sous forte charge d'accès simultanés.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Architecture interne :</strong> Pages de données, Buffer Pool (Shared Buffers), journal de transactions (Write-Ahead Logging / WAL) et checkpoints.</li>
+                                        <li><strong>Propriétés ACID approfondies :</strong> Atomicité, cohérence, isolation et durabilité ; gestion des transactions imbriquées et points de sauvegarde (*Savepoints*).</li>
+                                        <li><strong>Modèle MVCC (Multi-Version Concurrency Control) :</strong> Visibilité des tuples, snapshots de transaction, phénomène de Dead Tuples et rôle du VACUUM.</li>
+                                        <li><strong>Gestion des verrous (Locking) :</strong> Niveaux de verrouillage (table, ligne), requêtes SELECT FOR UPDATE / FOR SHARE et prévention des Deadlocks.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #3 :</strong> Simulation de sessions concurrentes massives (réservation de billets d'avion), provocation et interception de verrous bloquants et configuration de timeouts.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 4 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">04</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Déchiffrage EXPLAIN ANALYZE, Stratégies d'Indexation &amp; Tuning</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 3 — Après-midi &amp; Jour 4 — Matin (7h)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Transformer l'optimisation des requêtes d'une intuition empirique en une méthode scientifique rigoureuse d'analyse du coût d'exécution.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Lecture d'EXPLAIN (ANALYZE, BUFFERS, VERBOSE) :</strong> Coût estimé (Startup/Total Cost), temps réel (Actual Time), nombre de boucles et consommation mémoire/I-O.</li>
+                                        <li><strong>Opérateurs de scan et jointure :</strong> Sequential Scan, Index Scan, Index Only Scan, Bitmap Index Scan ; Nested Loop, Hash Join, Merge Join.</li>
+                                        <li><strong>Typologie avancée des index :</strong> B-Tree standard, index composites (règle du préfixe le plus sélectif), index partiels (clause WHERE), index couvrants (clause INCLUDE).</li>
+                                        <li><strong>Indexation spécifique :</strong> Index fonctionnels (sur calculs/fonctions LOWER, DATE), index GIN pour colonnes JSONB et tableaux de données.</li>
+                                        <li><strong>Statistiques du planificateur :</strong> ANALYZE, calcul de sélectivité, histogrammes de fréquences et réglage de default_statistics_target.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #4 :</strong> Optimisation chronométrée : diagnostic d'une requête complexe scannant 10 millions d'enregistrements en 35 secondes, réécriture et indexation ciblée pour passer sous la barre des 8 millisecondes.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 5 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">05</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Partitionnement, Maintenance Proactive &amp; Intégration ORM</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 4 — Après-midi (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Maintenir la santé d'un SGBD en production sur le long terme et auditer le code généré par les frameworks applicatifs modernes.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Partitionnement déclaratif de tables :</strong> Partitionnement par plage de dates (Range), par liste ou par hachage ; élagage de partition (*Partition Pruning*).</li>
+                                        <li><strong>Maintenance préventive :</strong> Paramétrage d'Autovacuum, surveillance du bloat (gonflement des tables/index) et réindexation sans blocage (REINDEX CONCURRENTLY).</li>
+                                        <li><strong>Sécurité &amp; RLS :</strong> Gestion des privilèges par rôles (RBAC), Row-Level Security (RLS) pour le multi-tenant et audit des requêtes lentes via pg_stat_statements.</li>
+                                        <li><strong>Diagnostic des ORMs :</strong> Détection et éradication des requêtes N+1, préchargement efficace (Eager Loading) et optimisation de Hibernate, Prisma ou Entity Framework.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Projet Fil Rouge Certifiant :</strong> Audit complet de performance et d'intégrité sur une base de données de test de 50 millions de lignes avec production d'un rapport de recommandations chiffré.
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Public Cible & Prérequis -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-users-gear" aria-hidden="true"></i> Public Cible &amp; Prérequis Recommandés</h2>
+                        <div class="audience-grid">
+                            <div class="audience-col">
+                                <h4><i class="fas fa-user-check" aria-hidden="true"></i> À qui s'adresse cette formation ?</h4>
+                                <ul class="check-list">
+                                    <li>Data Analysts &amp; Business Intelligence Specialists souhaitant maîtriser le requêtage de pointe.</li>
+                                    <li>Développeurs Backend (Java, Python, PHP, Node.js, .NET) souhaitant optimiser leurs accès base de données.</li>
+                                    <li>Administrateurs de bases de données (DBA juniors ou généralistes) et ingénieurs DevOps.</li>
+                                    <li>Architectes logiciels et chefs de projets data confrontés à des problèmes de scalabilité.</li>
+                                </ul>
+                            </div>
+                            <div class="audience-col">
+                                <h4><i class="fas fa-clipboard-check" aria-hidden="true"></i> Prérequis conseillés</h4>
+                                <ul class="check-list">
+                                    <li>Maîtrise de base de la syntaxe SQL (SELECT, INSERT, UPDATE, jointures simples INNER/LEFT JOIN).</li>
+                                    <li>Familiarité avec au moins un système SGBD relationnel (PostgreSQL, MySQL, SQL Server, Oracle).</li>
+                                    <li>Aucune compétence en administration avancée du serveur requise (formation progressive axée conception &amp; requêtage).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Profil du Formateur Senior -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Votre Intervenant : Rigueur &amp; ADN Opérationnel</h2>
+                        <div class="instructor-card">
+                            <div class="instructor-avatar">
+                                <i class="fas fa-user-tie" aria-hidden="true"></i>
+                            </div>
+                            <div class="instructor-info">
+                                <h3>Architecte SGBD Senior &amp; Spécialiste Performance SQL</h3>
+                                <p class="instructor-role">Expert Référent BenchTech — Plus de 15 ans d'expérience terrain</p>
+                                <p class="instructor-bio">
+                                    Nos cursus SQL et bases de données sont animés par des architectes et consultants seniors en exercice, intervenus au cœur d'infrastructures bancaires, industrielles et de télécommunications hautement transactionnelles. Vous travaillez directement sur des cas vécus, des jeux de données réels et des problématiques de production concrètes.
+                                </p>
+                                <div class="instructor-badges">
+                                    <span class="inst-badge"><i class="fas fa-certificate" aria-hidden="true"></i> PostgreSQL Certified Professional</span>
+                                    <span class="inst-badge"><i class="fas fa-microchip" aria-hidden="true"></i> Expert Tuning Moteur &amp; Indexation</span>
+                                    <span class="inst-badge"><i class="fas fa-shield" aria-hidden="true"></i> Spécialiste Haute Disponibilité &amp; ACID</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ---------------------------------------------------------------
+                     COLONNE LATÉRALE : FICHE SYNTHÉTIQUE & CONVERSION (STICKY)
+                     --------------------------------------------------------------- -->
+                <aside class="course-sidebar-col">
+                    <div class="sticky-sidebar-card">
+                        <div class="sidebar-header">
+                            <span class="sidebar-format-badge"><i class="fas fa-building" aria-hidden="true"></i> Intra-Entreprise &amp; Inter</span>
+                            <div class="sidebar-price-row">
+                                <span class="sidebar-price-label">Tarification B2B :</span>
+                                <span class="sidebar-price-val">Sur Devis Personnalisé</span>
+                            </div>
+                            <span class="sidebar-price-sub">Financement plan de formation / FPC éligible</span>
+                        </div>
+
+                        <div class="sidebar-body">
+                            <ul class="sidebar-features-list">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Format :</strong> Présentiel Casablanca ou Classe Virtuelle</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Durée :</strong> 4 jours (28h) ou 4 samedis intensifs</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Taille groupe :</strong> Limité à 8 participants max</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Environnement :</strong> Serveurs dédiés PostgreSQL &amp; PgAdmin</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Attestation :</strong> Certificat nominatif d'excellence BenchTech</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> <span><strong>Suivi post-formation :</strong> 30 jours de mentorat technique</span></li>
+                            </ul>
+
+                            <div class="sidebar-cta-group">
+                                <a href="../index.html#contact" class="btn btn-primary" style="width: 100%;">
+                                    <i class="fas fa-file-signature" aria-hidden="true"></i> Demander une proposition
+                                </a>
+
+                                <a href="https://wa.me/212662041272?text=Bonjour%20BenchTech,%20je%20souhaite%20obtenir%20des%20informations%20sur%20la%20formation%20SQL%20Avancé%20et%20Optimisation%20SGBD." class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #128C7E;" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Échanger sur WhatsApp
+                                </a>
+
+                                <a href="../index.html#sql-studio" class="btn btn-outline" style="width: 100%;">
+                                    <i class="fas fa-sliders" aria-hidden="true"></i> Personnaliser au Studio
+                                </a>
+
+                                <button type="button" class="btn btn-outline" onclick="window.location.href='../index.html#evaluations';" style="width: 100%;">
+                                    <i class="fas fa-compass" aria-hidden="true"></i> Évaluer le niveau de mon équipe
+                                </button>
+                            </div>
+
+                            <div class="sidebar-phone-support">
+                                <i class="fas fa-headset" aria-hidden="true"></i>
+                                <div>
+                                    <span class="support-label">Conseiller pédagogique dédié :</span>
+                                    <a href="tel:+212662041272" class="support-num">+212 06.62.04.12.72</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- =======================================================================
+         5. FOOTER INSTITUTIONNEL BenchTech
+         ======================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column brand-col">
+                    <a href="../index.html" class="footer-logo" aria-label="BenchTech — Accueil">
+                        <img src="../images/logo-benchtech-original.jpg" alt="BenchTech" class="footer-logo-img" width="180" height="54">
+                    </a>
+                    <p class="footer-tagline">« shaping tomorrow, today »</p>
+                    <p class="footer-desc">
+                        Cabinet d'excellence technologique et de formation professionnelle de haut niveau à Casablanca. Accompagnement stratégique des entreprises dans l'ingénierie décisionnelle, l'IA d'entreprise et les architectures data.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Pôle Conseil</h4>
+                    <ul>
+                        <li><a href="../index.html#conseil">Business Intelligence &amp; Power BI</a></li>
+                        <li><a href="../index.html#conseil">Intelligence Artificielle &amp; Copilotes</a></li>
+                        <li><a href="../index.html#conseil">Architecture de Bases de Données</a></li>
+                        <li><a href="../index.html#conseil">Audit de Performance VertiPaq</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Formations Phares</h4>
+                    <ul>
+                        <li><a href="power-bi.html">Microsoft Power BI Avancé</a></li>
+                        <li><a href="copilot-studio.html">Microsoft Copilot Studio</a></li>
+                        <li><a href="sql-sgbd.html">Bases de Données &amp; SQL Avancé</a></li>
+                        <li><a href="../index.html#formations">UNIX / Linux &amp; Shell Scripting</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact &amp; Siège</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span>Casablanca, Maroc</span></li>
+                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <span>+212 06.62.04.12.72</span></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> <span>contact@benchtech.ma</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 BenchTech. Tous droits réservés.
+                    <span class="footer-legal-tag">
+                        BenchTech | SARL AU au capital de 100 000 MAD | Siège social : Casablanca, Maroc | Registre du Commerce (RC) : Casablanca n° 752759.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de gestion du menu mobile & nettoyage cache modes -->
+    <script>
+        try {
+            localStorage.removeItem('benchtech_display_mode');
+            document.documentElement.removeAttribute('data-theme');
+            if (document.body) document.body.removeAttribute('data-theme');
+        } catch(e) {}
+
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('main-nav-links');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', String(isActive));
+            });
+        }
+    </script>
+</body>
+</html>
+

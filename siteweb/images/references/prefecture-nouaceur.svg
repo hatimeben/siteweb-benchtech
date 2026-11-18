@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <path d="M28 12L15 22v20c0 8 13 13 13 13s13-5 13-13V22z" stroke="#0F766E" stroke-width="3" fill="none"/>
+            <path d="M28 20l5 7h-10z" fill="#D4AF37"/>
+            <text x="52" y="30" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="800" fill="#1B2A4A">PRÉFECTURE DE</text>
+            <text x="52" y="45" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="14" font-weight="900" fill="#0F766E" letter-spacing="0.5">NOUACEUR</text>
+        </svg>

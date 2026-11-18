@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" fill="none">
+            <path d="M28 12L16 20v26h24V20z" stroke="#005088" stroke-width="3" fill="none"/>
+            <path d="M16 20l12 7 12-7" stroke="#005088" stroke-width="2.5"/>
+            <text x="56" y="39" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="22" font-weight="900" fill="#005088">ELOPAK</text>
+        </svg>

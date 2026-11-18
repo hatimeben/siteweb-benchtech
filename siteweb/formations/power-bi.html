@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Microsoft Power BI : DAX Avancé, VertiPaq &amp; PL-300 | BenchTech</title>
+    <meta name="description" content="Formation certifiante Microsoft Power BI à Casablanca et en ligne. Maîtrisez la modélisation en étoile, le langage DAX complexe, l'optimisation VertiPaq et la gouvernance Fabric.">
+    <link rel="canonical" href="https://benchtech.ma/formations/power-bi">
+
+    <!-- Métadonnées Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BenchTech">
+    <meta property="og:title" content="Formation Microsoft Power BI : DAX Avancé &amp; Architecture VertiPaq | BenchTech">
+    <meta property="og:description" content="Cursus d'excellence animé par des consultants seniors. Modélisation décisionnelle, transition de contexte DAX, optimisation moteur et préparation PL-300.">
+    <meta property="og:url" content="https://benchtech.ma/formations/power-bi">
+    <meta property="og:image" content="https://benchtech.ma/images/logo-benchtech.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Formation Power BI &amp; DAX Avancé — BenchTech">
+    <meta name="twitter:description" content="Perfectionnement professionnel Power BI : modélisation en étoile, VertiPaq, RLS dynamique et pilotage de la performance.">
+    <meta name="twitter:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <!-- Schéma structuré Schema.org (Course) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation Microsoft Power BI : Modélisation en Étoile, DAX Avancé & VertiPaq",
+      "description": "Programme intensif pour décideurs, contrôleurs de gestion et data analysts souhaitant maîtriser l'architecture Power BI et le langage DAX.",
+      "provider": {
+        "@type": "Organization",
+        "name": "BenchTech",
+        "url": "https://benchtech.ma/",
+        "logo": "https://benchtech.ma/images/logo-benchtech.png"
+      },
+      "inLanguage": "fr",
+      "educationalLevel": "Intermediate to Advanced",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": ["onsite", "online"],
+        "courseWorkload": "PT35H"
+      }
+    }
+    </script>
+
+    <!-- Favicon officiel BenchTech -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/monogram-bt.png">
+
+    <!-- Polices Google Fonts : Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/style.css?v=4.6">
+</head>
+<body class="page-course-detail">
+
+    <!-- =======================================================================
+         1. NAVIGATION
+         ======================================================================= -->
+    <header>
+        <div class="container">
+            <nav aria-label="Navigation principale">
+                <a href="../index.html" class="logo" aria-label="BenchTech — Retour à l'accueil">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech — shaping tomorrow, today" class="header-logo-img" width="220" height="68">
+                </a>
+
+                <ul class="nav-links" id="main-nav-links">
+                    <li><a href="../index.html#conseil">Conseil &amp; IA</a></li>
+                    <li><a href="../index.html#references">Références</a></li>
+                    <li><a href="../index.html#formations" class="active">Académie</a></li>
+                    <li><a href="../index.html#studios-sur-mesure">Cursus Sur-Mesure</a></li>
+                    <li><a href="../index.html#evaluations">Quiz Technique</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contact" class="nav-cta">Demander un devis</a></li>
+                </ul>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav-links">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- =======================================================================
+             2. HERO DE LA FORMATION & FIL D'ARIANE
+             ======================================================================= -->
+        <section class="course-hero">
+            <div class="container">
+                <!-- Fil d'ariane -->
+                <nav class="breadcrumb-nav" aria-label="Fil d'ariane">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../index.html"><i class="fas fa-home" aria-hidden="true"></i> Accueil</a></li>
+                        <li><i class="fas fa-chevron-right breadcrumb-separator" aria-hidden="true"></i></li>
+                        <li><a href="../index.html#formations">Académie</a></li>
+                        <li><i class="fas fa-chevron-right breadcrumb-separator" aria-hidden="true"></i></li>
+                        <li aria-current="page">Microsoft Power BI</li>
+                    </ol>
+                </nav>
+
+                <div class="course-hero-header">
+                    <div class="course-badges-row">
+                        <span class="course-category-pill"><i class="fas fa-chart-pie" aria-hidden="true"></i> Data &amp; Business Intelligence</span>
+                        <span class="course-cert-pill"><i class="fas fa-award" aria-hidden="true"></i> Aligné Référentiel Microsoft PL-300</span>
+                        <span class="course-format-pill"><i class="fas fa-sliders" aria-hidden="true"></i> 100% Modulable en Studio</span>
+                    </div>
+
+                    <h1 class="course-main-title">
+                        Formation Microsoft Power BI : Modélisation en Étoile, <span class="highlight-gold">DAX Avancé</span> &amp; Architecture VertiPaq
+                    </h1>
+
+                    <p class="course-lead">
+                        Concevez des cockpits décisionnels résilients capables de traiter plusieurs dizaines de millions de lignes. Maîtrisez les secrets du moteur <strong>VertiPaq</strong>, la transition de contexte en <strong>DAX</strong> et la gouvernance d'entreprise sur <strong>Microsoft Fabric</strong>.
+                    </p>
+
+                    <!-- Barre synthétique des métriques clés -->
+                    <div class="course-metrics-bar">
+                        <div class="metric-item">
+                            <i class="fas fa-clock metric-icon" aria-hidden="true"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">Durée standard</span>
+                                <span class="metric-value">3 à 5 jours (21h - 35h)</span>
+                            </div>
+                        </div>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric-item">
+                            <i class="fas fa-layer-group metric-icon" aria-hidden="true"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">Niveau d'accès</span>
+                                <span class="metric-value">Intermédiaire à Expert</span>
+                            </div>
+                        </div>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric-item">
+                            <i class="fas fa-laptop-code metric-icon" aria-hidden="true"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">Pratique opérationnelle</span>
+                                <span class="metric-value">75 % Ateliers Hands-on</span>
+                            </div>
+                        </div>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric-item">
+                            <i class="fas fa-location-dot metric-icon" aria-hidden="true"></i>
+                            <div class="metric-info">
+                                <span class="metric-label">Modalités</span>
+                                <span class="metric-value">Présentiel (Casa) ou Virtuel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             3. CONTENU DÉTAILLÉ & SIDEBAR DE CONFIGURATION
+             ======================================================================= -->
+        <section class="section bg-white course-content-section">
+            <div class="container">
+                <div class="course-layout-grid">
+
+                    <!-- Colonne Principale : Le Syllabus & l'Ingénierie Pédagogique -->
+                    <div class="course-main-column">
+
+                        <!-- Objectifs Opérationnels -->
+                        <div class="content-block">
+                            <h2 class="block-heading"><i class="fas fa-bullseye" aria-hidden="true"></i> Ce que vous saurez accomplir dès la fin du cursus</h2>
+                            <div class="outcomes-grid">
+                                <div class="outcome-card">
+                                    <div class="outcome-icon"><i class="fas fa-database"></i></div>
+                                    <h4>Modélisation Dimensionnelle en Étoile</h4>
+                                    <p>Structurer des schémas en étoile stricts (Kimball), bannir les relations bidirectionnelles instables et optimiser la cardinalité.</p>
+                                </div>
+                                <div class="outcome-card">
+                                    <div class="outcome-icon"><i class="fas fa-calculator"></i></div>
+                                    <h4>Maîtrise Complète du Langage DAX</h4>
+                                    <p>Dompter <code>CALCULATE</code>, les contextes de ligne et de filtre, la transition de contexte implicite et les calculs temporels (Time Intelligence).</p>
+                                </div>
+                                <div class="outcome-card">
+                                    <div class="outcome-icon"><i class="fas fa-gauge-high"></i></div>
+                                    <h4>Audit &amp; Tuning VertiPaq avec DAX Studio</h4>
+                                    <p>Tracer les requêtes du Formula Engine vs Storage Engine, réduire l'empreinte mémoire RAM et accélérer les rendus sous 2 secondes.</p>
+                                </div>
+                                <div class="outcome-card">
+                                    <div class="outcome-icon"><i class="fas fa-shield-halved"></i></div>
+                                    <h4>Sécurité RLS Dynamique &amp; Fabric</h4>
+                                    <p>Déployer la sécurité au niveau des lignes (Row-Level Security) basée sur Azure AD (Entra ID) et administrer les espaces Microsoft Fabric.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Programme Détaillé Module par Module -->
+                        <div class="content-block">
+                            <div class="modules-header-row">
+                                <h2 class="block-heading"><i class="fas fa-list-check" aria-hidden="true"></i> Programme Détaillé du Cursus</h2>
+                                <span class="modules-count-badge">5 Modules Pédagogiques Clés</span>
+                            </div>
+
+                            <div class="syllabus-timeline">
+
+                                <!-- Module 1 -->
+                                <article class="syllabus-card">
+                                    <div class="syllabus-card-header">
+                                        <div class="module-num">01</div>
+                                        <div class="module-title-wrap">
+                                            <h3>Ingestion Avancée &amp; Modélisation ETL avec Power Query (M-Engine)</h3>
+                                            <span class="module-duration"><i class="fas fa-clock"></i> 7 heures (1 jour)</span>
+                                        </div>
+                                    </div>
+                                    <div class="syllabus-card-body">
+                                        <p>Au-delà du simple clic-bouton : apprenez à structurer une chaîne d'ingestion robuste et automatisée dans Power Query.</p>
+                                        <ul class="module-points">
+                                            <li>Compréhension du moteur d'évaluation <strong>M-Engine</strong> et principes du Query Folding (pliage de requêtes SQL).</li>
+                                            <li>Connexions aux sources hétérogènes : SGBD relationnels, API REST, dossiers SharePoint, fichiers Parquet et Fabric OneLake.</li>
+                                            <li>Gestion fine du typage des données, élimination des colonnes inutiles pour maximiser la compression VertiPaq.</li>
+                                            <li>Création de fonctions personnalisées réutilisables en langage M et gestion des paramètres d'environnements (Dev/Test/Prod).</li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <!-- Module 2 -->
+                                <article class="syllabus-card">
+                                    <div class="syllabus-card-header">
+                                        <div class="module-num">02</div>
+                                        <div class="module-title-wrap">
+                                            <h3>Architecture du Modèle Tabulaire &amp; Méthodologie en Étoile</h3>
+                                            <span class="module-duration"><i class="fas fa-clock"></i> 7 heures (1 jour)</span>
+                                        </div>
+                                    </div>
+                                    <div class="syllabus-card-body">
+                                        <p>La règle d'or d'un rapport performant : 90% des problèmes de DAX proviennent d'un modèle tabulaire mal conçu.</p>
+                                        <ul class="module-points">
+                                            <li>Règles fondamentales de la modélisation dimensionnelle (Ralph Kimball) appliquées au moteur en colonnes Power BI.</li>
+                                            <li>Différenciation stricte entre Tables de Faits (volumétrie) et Tables de Dimensions (filtres &amp; axes d'analyse).</li>
+                                            <li>Gestion des granularités hétérogènes, des dimensions à variation lente (SCD) et des tables de faits sans fait.</li>
+                                            <li>Bannissement des schémas en flocon excessifs et des relations plusieurs-à-plusieurs (Many-to-Many) non maîtrisées.</li>
+                                            <li>Conception et intégration d'une table Date (Calendrier) native conforme aux standards internationaux.</li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <!-- Module 3 -->
+                                <article class="syllabus-card">
+                                    <div class="syllabus-card-header">
+                                        <div class="module-num">03</div>
+                                        <div class="module-title-wrap">
+                                            <h3>Maîtrise Approfondie du Langage DAX (Formules &amp; Logique Métier)</h3>
+                                            <span class="module-duration"><i class="fas fa-clock"></i> 10.5 heures (1.5 jour)</span>
+                                        </div>
+                                    </div>
+                                    <div class="syllabus-card-body">
+                                        <p>Le cœur de l'expertise Power BI : comprendre la mécanique interne d'évaluation pour écrire des formules infaillibles.</p>
+                                        <ul class="module-points">
+                                            <li>Distinction capitale entre <strong>Contexte d'Évaluation de Ligne</strong> (Row Context) et <strong>Contexte de Filtre</strong> (Filter Context).</li>
+                                            <li>La mécanique exacte de la <strong>Transition de Contexte</strong> provoquée par <code>CALCULATE</code> et les appels de mesures.</li>
+                                            <li>Fonctions modificateurs de filtre : <code>ALL</code>, <code>ALLEXCEPT</code>, <code>REMOVEFILTERS</code>, <code>KEEPFILTERS</code> et <code>USERELATIONSHIP</code>.</li>
+                                            <li>Itérateurs avancés (<code>SUMX</code>, <code>AVERAGEX</code>, <code>RANKX</code>) sous contrainte d'optimisation mono/multi-thread.</li>
+                                            <li>Fonctions de Time Intelligence : YTD, MTD, Rolling 12 Months, décalages calendaires comparatifs et années fiscales non standard.</li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <!-- Module 4 -->
+                                <article class="syllabus-card">
+                                    <div class="syllabus-card-header">
+                                        <div class="module-num">04</div>
+                                        <div class="module-title-wrap">
+                                            <h3>Audit, Profilage &amp; Optimisation de la Performance (VertiPaq)</h3>
+                                            <span class="module-duration"><i class="fas fa-clock"></i> 7 heures (1 jour)</span>
+                                        </div>
+                                    </div>
+                                    <div class="syllabus-card-body">
+                                        <p>Apprenez à diviser par 10 les temps de chargement de vos rapports et à optimiser la mémoire RAM de vos capacités Fabric/Power BI Premium.</p>
+                                        <ul class="module-points">
+                                            <li>Fonctionnement interne du moteur tabulaire : Storage Engine (VertiPaq, xVelocity) vs Formula Engine (mono-thread).</li>
+                                            <li>Techniques de compression colonne : Encodage par valeur, Dictionnaire de hachage et Run Length Encoding (RLE).</li>
+                                            <li>Prise en main de <strong>DAX Studio</strong> et <strong>Tabular Editor</strong> pour auditer les requêtes serveur et les métriques de cardinalité.</li>
+                                            <li>Utilisation de l'analyseur de performances (Performance Analyzer) natif de Power BI Desktop pour traquer les goulets d'étranglement visuels.</li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                                <!-- Module 5 -->
+                                <article class="syllabus-card">
+                                    <div class="syllabus-card-header">
+                                        <div class="module-num">05</div>
+                                        <div class="module-title-wrap">
+                                            <h3>Gouvernance, Sécurité RLS Dynamique &amp; Déploiement Fabric</h3>
+                                            <span class="module-duration"><i class="fas fa-clock"></i> 3.5 heures (0.5 jour)</span>
+                                        </div>
+                                    </div>
+                                    <div class="syllabus-card-body">
+                                        <p>Passez du poste individuel à la gouvernance d'entreprise sécurisée pour des centaines de collaborateurs.</p>
+                                        <ul class="module-points">
+                                            <li>Mise en place de la sécurité Row-Level Security (RLS) statique et dynamique avec <code>USERPRINCIPALNAME()</code> et tables de sécurité hiérarchiques.</li>
+                                            <li>Structuration des Workspaces Power BI Service : rôles Admin, Membre, Contributeur, Lecteur et Apps de diffusion.</li>
+                                            <li>Pipelines de déploiement (Application Lifecycle Management) : promotion Développement ➔ Test ➔ Production.</li>
+                                            <li>Partage certifié des jeux de données (Semantic Models) pour éviter les doublons dans l'organisation.</li>
+                                        </ul>
+                                    </div>
+                                </article>
+
+                            </div>
+                        </div>
+
+                        <!-- Public cible & Prérequis -->
+                        <div class="content-block">
+                            <h2 class="block-heading"><i class="fas fa-users-gear" aria-hidden="true"></i> Public Cible &amp; Prérequis</h2>
+                            <div class="profile-cards-grid">
+                                <div class="profile-card">
+                                    <div class="profile-header"><i class="fas fa-user-check"></i> <h4>Public Cible</h4></div>
+                                    <ul>
+                                        <li>Contrôleurs de Gestion, Directeurs Financiers et Responsables Pilotage.</li>
+                                        <li>Data Analysts, Business Analysts et Consultants Décisionnels.</li>
+                                        <li>Ingénieurs IT, Développeurs BI et Architectes de Données.</li>
+                                        <li>Toute personne ayant à produire des tableaux de bord fiables et automatisés pour la direction générale.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="profile-card">
+                                    <div class="profile-header"><i class="fas fa-clipboard-check"></i> <h4>Prérequis Recommandés</h4></div>
+                                    <ul>
+                                        <li>Bonne maîtrise préalable des formules et tableaux de bord Excel (ou d'un premier outil BI).</li>
+                                        <li>Compréhension intuitive des données structurées (lignes, colonnes, identifiants uniques).</li>
+                                        <li>Aucune compétence en programmation informatique n'est obligatoire (le DAX s'apprend pas à pas).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Encadré Formateur Senior -->
+                        <div class="instructor-feature-box">
+                            <div class="instructor-avatar">
+                                <i class="fas fa-chalkboard-user"></i>
+                            </div>
+                            <div class="instructor-text">
+                                <h3>Animation par nos Consultants-Formateurs Seniors</h3>
+                                <p>
+                                    Cette formation n'est pas dispensée par des théoriciens, mais par des consultants en activité intervenant quotidiennement sur des architectures Power BI et Fabric de premier plan. Vous bénéficiez d'un retour d'expérience direct sur les pièges réels de production, les cas d'erreurs vécus et les meilleures pratiques du marché.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Colonne Latérale : Carte Récapitulative & Conversion -->
+                    <aside class="course-sidebar-column">
+                        <div class="sticky-sidebar-card">
+                            <div class="sidebar-card-header">
+                                <span class="sidebar-badge">Session Intra ou Inter-Entreprises</span>
+                                <h3 class="sidebar-title">Formation Microsoft Power BI</h3>
+                                <div class="sidebar-price-label">Programme Certifiant &amp; Clé-en-main</div>
+                            </div>
+
+                            <ul class="sidebar-features-list">
+                                <li><i class="fas fa-calendar-check"></i> <span><strong>Prochaines dates :</strong> Sessions ouvertes chaque mois</span></li>
+                                <li><i class="fas fa-clock"></i> <span><strong>Volume :</strong> 21h à 35h modulables</span></li>
+                                <li><i class="fas fa-location-dot"></i> <span><strong>Lieu :</strong> Casablanca / Sur site client / Virtuel</span></li>
+                                <li><i class="fas fa-file-pdf"></i> <span><strong>Support :</strong> Classeurs TP, guides DAX &amp; corrigés</span></li>
+                                <li><i class="fas fa-certificate"></i> <span><strong>Attestation :</strong> Certificat officiel BenchTech</span></li>
+                            </ul>
+
+                            <div class="sidebar-actions">
+                                <a href="../index.html#contact" class="btn btn-primary btn-block">
+                                    <i class="fas fa-envelope"></i> Demander une Proposition
+                                </a>
+
+                                <a href="../index.html#powerbi-studio" class="btn btn-gold btn-block">
+                                    <i class="fas fa-sliders"></i> Composer en Studio Sur-Mesure
+                                </a>
+
+                                <a href="../index.html#evaluations" class="btn btn-outline btn-block">
+                                    <i class="fas fa-clipboard-question"></i> Passer le Quiz Power BI
+                                </a>
+                            </div>
+
+                            <div class="sidebar-phone-support">
+                                <i class="fab fa-whatsapp"></i>
+                                <div>
+                                    <span>Besoin d'un conseil immédiat ?</span>
+                                    <a href="https://wa.me/212662041272" target="_blank" rel="noopener">+212 06.62.04.12.72</a>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =======================================================================
+         FOOTER INSTITUTIONNEL
+         ======================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo-wrap" aria-label="BenchTech — shaping tomorrow, today">
+                        <img src="../images/monogram-bt.png" alt="Monogramme BT BenchTech" class="footer-logo-img" width="48" height="48">
+                        <span class="brand-name">BenchTech</span>
+                    </a>
+                    <p class="footer-slogan">« shaping tomorrow, today »</p>
+                    <p class="footer-desc">
+                        Cabinet d'expertise en Intelligence Artificielle, Business Intelligence et centre de formation informatique d'excellence à Casablanca.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Pôle Conseil</h4>
+                    <ul>
+                        <li><a href="../index.html#conseil">Business Intelligence &amp; Power BI</a></li>
+                        <li><a href="../index.html#conseil">Intelligence Artificielle &amp; Copilotes</a></li>
+                        <li><a href="../index.html#conseil">Architecture de Bases de Données</a></li>
+                        <li><a href="../index.html#conseil">Audit de Performance VertiPaq</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Formations Phares</h4>
+                    <ul>
+                        <li><a href="power-bi.html">Microsoft Power BI Avancé</a></li>
+                        <li><a href="copilot-studio.html">Microsoft Copilot Studio</a></li>
+                        <li><a href="sql-sgbd.html">Bases de Données &amp; SQL Avancé</a></li>
+                        <li><a href="../index.html#formations">UNIX / Linux &amp; Shell Scripting</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact &amp; Siège</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span>Casablanca, Maroc</span></li>
+                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <span>+212 06.62.04.12.72</span></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> <span>contact@benchtech.ma</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 BenchTech. Tous droits réservés.
+                    <span class="footer-legal-tag">
+                        BenchTech | SARL AU au capital de 100 000 MAD | Siège social : Casablanca, Maroc | Registre du Commerce (RC) : Casablanca n° 752759.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de gestion du menu mobile & nettoyage cache modes -->
+    <script>
+        try {
+            localStorage.removeItem('benchtech_display_mode');
+            document.documentElement.removeAttribute('data-theme');
+            if (document.body) document.body.removeAttribute('data-theme');
+        } catch(e) {}
+
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('main-nav-links');
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', String(isActive));
+            });
+        }
+    </script>
+</body>
+</html>
+
