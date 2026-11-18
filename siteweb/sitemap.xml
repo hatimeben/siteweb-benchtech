@@ -73,6 +73,12 @@
         <priority>0.85</priority>
     </url>
     <url>
+        <loc>https://benchtech.ma/formations/scrum-agile</loc>
+        <lastmod>2026-11-18</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
         <loc>https://benchtech.ma/formations/programme-sur-mesure</loc>
         <lastmod>2026-11-18</lastmod>
         <changefreq>weekly</changefreq>
