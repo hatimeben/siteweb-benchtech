@@ -2,7 +2,7 @@
  * =====================================================================
  * BenchTech Academy - Moteur Central de Base de Données des Quiz
  * Marque officielle : BenchTech | « shaping tomorrow, today »
- * Tirage dynamique stratifié & anti-triche
+ * Tirage dynamique stratifié & anti-triche (Garantie 10 questions systématique)
  * =====================================================================
  */
 
@@ -28,6 +28,21 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
      */
     db.getTheme = function(key) {
         if (!key) return null;
+        if (key === 'general' || key === 'all' || key === 'grand-diagnostic') {
+            return {
+                id: 'general',
+                title: 'Grand Diagnostic BenchTech : Architecture Data, SQL, Power BI & IA',
+                icon: 'fa-cubes',
+                source: 'Standards Internationaux ANSI SQL, Microsoft Fabric, DAX & Power Platform',
+                duration: '10-12 min',
+                studioTarget: 'studios-sur-mesure',
+                recommendedCourse: 'Parcours d\'Ingénierie Sur-Mesure BenchTech',
+                formTopic: 'Grand Diagnostic Data & IA',
+                maxQuestionsPerSession: 10,
+                description: 'Évaluation globale de vos compétences d\'ingénierie : 10 cas pratiques tirés au sort parmi le pool d\'excellence de 40 questions BenchTech.',
+                questions: db.getAllPoolQuestions()
+            };
+        }
         if (db[key]) return db[key];
         const withHyphen = key.replace(/_/g, '-');
         if (db[withHyphen]) return db[withHyphen];
@@ -53,7 +68,7 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
         // Fallback sur les thèmes enregistrés dans db
         const allQ = [];
         db.getAllThemeKeys().forEach(k => {
-            const t = db.getTheme(k);
+            const t = db[k] || db[k.replace(/-/g, '_')];
             if (t && Array.isArray(t.questions)) {
                 allQ.push(...t.questions);
             }
@@ -99,7 +114,7 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
 
     /**
      * Génère un jeu de questions pour une session de test.
-     * TIRE AU SORT 10 QUESTIONS ÉQUILIBRÉES :
+     * GARANTIT TOUJOURS STRICTEMENT 10 QUESTIONS ÉQUILIBRÉES :
      * Stratification :
      *   - 2 Fondamentaux
      *   - 3 Opérationnel
@@ -108,6 +123,9 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
      *   Total = 10 questions
      */
     db.getSessionQuestions = function(themeKey, options = {}) {
+        const limit = options.limit || 10;
+        const doShuffleAnswers = options.shuffleAnswers !== false;
+
         let pool = [];
 
         if (themeKey === 'all' || themeKey === 'general' || themeKey === 'grand-diagnostic') {
@@ -119,62 +137,70 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
             }
         }
 
-        if (pool.length === 0) return [];
+        // Si le pool du thème est vide, basculer sur le pool global
+        if (pool.length === 0) {
+            pool = db.getAllPoolQuestions();
+        }
 
-        const limit = options.limit || 10;
-        const doShuffleAnswers = options.shuffleAnswers !== false;
+        // Normalisation des difficultés
+        const norm = (d) => {
+            if (!d) return 'Opérationnel';
+            const s = d.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            if (s.includes('fond') || s.includes('debutant') || s.includes('initial')) return 'Fondamentaux';
+            if (s.includes('inter') || s.includes('oper')) return 'Opérationnel';
+            if (s.includes('avan')) return 'Avancé';
+            if (s.includes('expert')) return 'Expert';
+            return 'Opérationnel';
+        };
+
+        const byDiff = {
+            'Fondamentaux': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Fondamentaux')),
+            'Opérationnel': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Opérationnel')),
+            'Avancé': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Avancé')),
+            'Expert': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Expert'))
+        };
 
         let selected = [];
 
-        if (options.stratified !== false && pool.length >= limit) {
-            // Normalisation des difficultés
-            const norm = (d) => {
-                if (!d) return 'Opérationnel';
-                const s = d.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-                if (s.includes('fond') || s.includes('debutant') || s.includes('initial')) return 'Fondamentaux';
-                if (s.includes('inter') || s.includes('oper')) return 'Opérationnel';
-                if (s.includes('avan')) return 'Avancé';
-                if (s.includes('expert')) return 'Expert';
-                return 'Opérationnel';
-            };
+        // Quotas pour 10 questions équilibrées : 2 Fond, 3 Opér, 3 Avan, 2 Exp
+        const targets = {
+            'Fondamentaux': Math.min(2, byDiff['Fondamentaux'].length),
+            'Opérationnel': Math.min(3, byDiff['Opérationnel'].length),
+            'Avancé': Math.min(3, byDiff['Avancé'].length),
+            'Expert': Math.min(2, byDiff['Expert'].length)
+        };
 
-            const byDiff = {
-                'Fondamentaux': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Fondamentaux')),
-                'Opérationnel': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Opérationnel')),
-                'Avancé': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Avancé')),
-                'Expert': db.shuffleArray(pool.filter(q => norm(q.difficulty) === 'Expert'))
-            };
-
-            // Quotas pour 10 questions équilibrées : 2 Fond, 3 Opér, 3 Avan, 2 Exp
-            const targets = {
-                'Fondamentaux': Math.min(2, byDiff['Fondamentaux'].length),
-                'Opérationnel': Math.min(3, byDiff['Opérationnel'].length),
-                'Avancé': Math.min(3, byDiff['Avancé'].length),
-                'Expert': Math.min(2, byDiff['Expert'].length)
-            };
-
-            // Prélèvement par strate
-            Object.keys(targets).forEach(diff => {
-                const count = targets[diff];
-                for (let i = 0; i < count; i++) {
-                    if (byDiff[diff][i]) selected.push(byDiff[diff][i]);
-                }
-            });
-
-            // Compléter si une strate contenait moins de questions que prévu
-            if (selected.length < limit) {
-                const remaining = pool.filter(q => !selected.includes(q));
-                const shuffledRemaining = db.shuffleArray(remaining);
-                while (selected.length < limit && shuffledRemaining.length > 0) {
-                    selected.push(shuffledRemaining.pop());
-                }
+        Object.keys(targets).forEach(diff => {
+            const count = targets[diff];
+            for (let i = 0; i < count; i++) {
+                if (byDiff[diff][i]) selected.push(byDiff[diff][i]);
             }
-        } else {
-            // Tirage aléatoire direct si le pool est réduit
-            selected = db.shuffleArray(pool).slice(0, limit);
+        });
+
+        // Compléter depuis le pool du thème si possible
+        if (selected.length < limit) {
+            const remaining = pool.filter(q => !selected.includes(q));
+            const shuffledRemaining = db.shuffleArray(remaining);
+            while (selected.length < limit && shuffledRemaining.length > 0) {
+                selected.push(shuffledRemaining.pop());
+            }
         }
 
-        // Mélanger l'ordre d'affichage des questions
+        // RÈGLE DE GARANTIE ABSOLUE DES 10 QUESTIONS :
+        // Si le sous-thème sélectionné avait moins de 10 questions,
+        // compléter immédiatement avec les meilleures questions du pool global des 40 !
+        if (selected.length < limit) {
+            const globalPool = db.getAllPoolQuestions();
+            const availableGlobal = globalPool.filter(gq => 
+                !selected.some(sq => (sq.id && gq.id && sq.id === gq.id) || sq.question === gq.question)
+            );
+            const shuffledGlobal = db.shuffleArray(availableGlobal);
+            while (selected.length < limit && shuffledGlobal.length > 0) {
+                selected.push(shuffledGlobal.pop());
+            }
+        }
+
+        // Mélanger l'ordre d'affichage des 10 questions
         if (options.shuffle !== false) {
             selected = db.shuffleArray(selected);
         }

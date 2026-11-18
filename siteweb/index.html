@@ -3192,8 +3192,23 @@
 
                     <!-- Onglets de sélection du domaine de quiz -->
                     <div class="quiz-tabs" role="tablist" aria-label="Sélectionnez un domaine d'évaluation">
-                        <button class="quiz-tab-btn active" data-quiz-tab="copilot" type="button">
+                        <button class="quiz-tab-btn active" data-quiz-tab="general" type="button">
+                            <i class="fas fa-star" aria-hidden="true" style="color: var(--color-magician);"></i> Grand Diagnostic Data &amp; IA
+                        </button>
+                        <button class="quiz-tab-btn" data-quiz-tab="powerbi" type="button">
+                            <i class="fas fa-chart-pie" aria-hidden="true"></i> Power BI &amp; DAX
+                        </button>
+                        <button class="quiz-tab-btn" data-quiz-tab="sql" type="button">
+                            <i class="fas fa-database" aria-hidden="true"></i> SQL &amp; SGBD
+                        </button>
+                        <button class="quiz-tab-btn" data-quiz-tab="copilot" type="button">
                             <i class="fas fa-robot" aria-hidden="true"></i> Agents IA Copilot
+                        </button>
+                        <button class="quiz-tab-btn" data-quiz-tab="excel" type="button">
+                            <i class="fas fa-file-excel" aria-hidden="true"></i> Excel &amp; Power Query
+                        </button>
+                        <button class="quiz-tab-btn" data-quiz-tab="unix" type="button">
+                            <i class="fas fa-terminal" aria-hidden="true"></i> UNIX &amp; Linux
                         </button>
                         <button class="quiz-tab-btn" data-quiz-tab="github-copilot" type="button">
                             <i class="fab fa-github" aria-hidden="true"></i> GitHub Copilot
@@ -3201,20 +3216,8 @@
                         <button class="quiz-tab-btn" data-quiz-tab="copilot-sdk" type="button">
                             <i class="fas fa-network-wired" aria-hidden="true"></i> Multi-Agents &amp; MCP
                         </button>
-                        <button class="quiz-tab-btn" data-quiz-tab="powerbi" type="button">
-                            <i class="fas fa-chart-pie" aria-hidden="true"></i> Power BI &amp; DAX
-                        </button>
-                        <button class="quiz-tab-btn" data-quiz-tab="excel" type="button">
-                            <i class="fas fa-file-excel" aria-hidden="true"></i> Excel &amp; Formules
-                        </button>
-                        <button class="quiz-tab-btn" data-quiz-tab="sql" type="button">
-                            <i class="fas fa-database" aria-hidden="true"></i> SQL &amp; SGBD
-                        </button>
                         <button class="quiz-tab-btn" data-quiz-tab="algo" type="button">
                             <i class="fas fa-code" aria-hidden="true"></i> Algorithmique
-                        </button>
-                        <button class="quiz-tab-btn" data-quiz-tab="unix" type="button">
-                            <i class="fas fa-terminal" aria-hidden="true"></i> UNIX &amp; Linux
                         </button>
                         <button class="quiz-tab-btn" data-quiz-tab="scrum" type="button">
                             <i class="fas fa-sync-alt" aria-hidden="true"></i> Scrum &amp; Agilité
@@ -3506,19 +3509,19 @@
          CATALOGUE OFFICIEL & BANQUE DE QUESTIONS DYNAMIQUE BenchTech
          Architecture modulaire & ultra-performante pour hébergement Hostinger / MassiveHoster
          ======================================================================= -->
-    <script src="js/catalog-data.js"></script>
-    <script src="js/quiz-data/powerbi.js"></script>
-    <script src="js/quiz-data/copilot.js"></script>
-    <script src="js/quiz-data/sql.js"></script>
-    <script src="js/quiz-data/github-copilot.js"></script>
-    <script src="js/quiz-data/copilot-sdk.js"></script>
-    <script src="js/quiz-data/unix.js"></script>
-    <script src="js/quiz-data/excel.js"></script>
-    <script src="js/quiz-data/algo.js"></script>
-    <script src="js/quiz-data/scrum.js"></script>
-    <script src="js/quiz-data/msproject.js"></script>
-    <script src="js/quiz-data/quiz-pool-data.js"></script>
-    <script src="js/quiz-data/quiz-database.js"></script>
+    <script src="js/catalog-data.js?v=5.1"></script>
+    <script src="js/quiz-data/powerbi.js?v=5.1"></script>
+    <script src="js/quiz-data/copilot.js?v=5.1"></script>
+    <script src="js/quiz-data/sql.js?v=5.1"></script>
+    <script src="js/quiz-data/github-copilot.js?v=5.1"></script>
+    <script src="js/quiz-data/copilot-sdk.js?v=5.1"></script>
+    <script src="js/quiz-data/unix.js?v=5.1"></script>
+    <script src="js/quiz-data/excel.js?v=5.1"></script>
+    <script src="js/quiz-data/algo.js?v=5.1"></script>
+    <script src="js/quiz-data/scrum.js?v=5.1"></script>
+    <script src="js/quiz-data/msproject.js?v=5.1"></script>
+    <script src="js/quiz-data/quiz-pool-data.js?v=5.1"></script>
+    <script src="js/quiz-data/quiz-database.js?v=5.1"></script>
 
     <!-- =======================================================================
          8. SCRIPTS (MENU MOBILE, FILTRE CATÉGORIES & QUIZ HUB MULTI-DOMAINES)
@@ -3687,7 +3690,7 @@
         const QUIZ_DATA = window.BenchTechQuizDatabase || {};
 
         const quizTabs = document.querySelectorAll('.quiz-tab-btn');
-        let currentQuizKey = 'copilot';
+        let currentQuizKey = 'general';
         let currentSessionQuestions = [];
 
         const quizTitle = document.getElementById('quiz-title');
@@ -6936,7 +6939,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadQuiz('copilot');
+            loadQuiz('general');
             updateExcelStudioSyllabus();
             updatePowerBiStudioSyllabus();
             updateSqlStudioSyllabus();
