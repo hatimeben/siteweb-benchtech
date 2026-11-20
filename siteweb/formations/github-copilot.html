@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation GitHub Copilot dans VS Code : Développement Augmenté par l'IA | BenchTech</title>
+    <meta name="description" content="Formation certifiante GitHub Copilot dans VS Code à Casablanca et en ligne. Maîtrisez le développement assisté par l'IA : modes Ask, Edit &amp; Agent, tests unitaires automatisés, refactoring complexe, Custom Instructions et sécurité du code.">
+    <link rel="canonical" href="https://benchtech.ma/formations/github-copilot">
+
+    <!-- Métadonnées Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BenchTech">
+    <meta property="og:title" content="Formation GitHub Copilot dans VS Code : Développement Augmenté par l'IA | BenchTech">
+    <meta property="og:description" content="Cursus d'excellence animé par des Tech Leads seniors. Modes Ask, Edit &amp; Agent, tests automatisés, refactoring, règles d'équipe et gouvernance DSI sécurisée.">
+    <meta property="og:url" content="https://benchtech.ma/formations/github-copilot">
+    <meta property="og:image" content="https://benchtech.ma/images/logo-benchtech.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Formation GitHub Copilot dans VS Code — BenchTech">
+    <meta name="twitter:description" content="Perfectionnement professionnel développeur : décuplez votre vélocité avec GitHub Copilot, sécurisez vos repos et automatisez tests et documentation.">
+    <meta name="twitter:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <!-- Schéma structuré Schema.org (Course) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation GitHub Copilot dans VS Code : Développement Augmenté par l'IA & Productivité Dev",
+      "description": "Programme intensif destiné aux développeurs, Tech Leads et architectes logiciels pour intégrer l'assistance IA dans le quotidien de développement sous VS Code, sécuriser le code et accélérer les cycles de livraison.",
+      "provider": {
+        "@type": "Organization",
+        "name": "BenchTech",
+        "url": "https://benchtech.ma/",
+        "logo": "https://benchtech.ma/images/logo-benchtech.png"
+      },
+      "inLanguage": "fr",
+      "educationalLevel": "Intermediate to Advanced",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": ["onsite", "online"],
+        "courseWorkload": "PT14H"
+      }
+    }
+    </script>
+
+    <!-- Favicon officiel BenchTech -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/monogram-bt.png">
+
+    <!-- Polices Google Fonts : Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/style.css?v=5.2">
+</head>
+<body class="page-course-detail">
+
+    <!-- =======================================================================
+         1. NAVIGATION
+         ======================================================================= -->
+    <header>
+        <div class="container">
+            <nav aria-label="Navigation principale">
+                <a href="../index.html" class="logo" aria-label="BenchTech — Retour à l'accueil">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech — shaping tomorrow, today" class="header-logo-img" width="220" height="68">
+                </a>
+
+                <ul class="nav-links" id="main-nav-links">
+                    <li><a href="../index.html#conseil">Conseil &amp; IA</a></li>
+                    <li><a href="../index.html#references">Références</a></li>
+                    <li><a href="../index.html#formations" class="active">Académie</a></li>
+                    <li><a href="../index.html#studios-sur-mesure">Cursus Sur-Mesure</a></li>
+                    <li><a href="../index.html#evaluations">Quiz Technique</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contact" class="nav-cta">Demander un devis</a></li>
+                </ul>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav-links">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- =======================================================================
+             2. FIL D'ARIANE (BREADCRUMB)
+             ======================================================================= -->
+        <div class="breadcrumbs-bar">
+            <div class="container">
+                <nav aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../index.html"><i class="fas fa-house" aria-hidden="true"></i> Accueil</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="../index.html#formations">Formations &amp; Académie</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li aria-current="page">GitHub Copilot dans VS Code &amp; Développement Augmenté</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             3. BANNIÈRE HERO DU CURSUS
+             ======================================================================= -->
+        <section class="course-hero">
+            <div class="container">
+                <div class="course-hero-content">
+                    <div class="course-category-badge">
+                        <i class="fab fa-github" aria-hidden="true"></i> Pôle IA Générative, Copilotes &amp; Ingénierie Logicielle
+                    </div>
+
+                    <h1 class="course-main-title">
+                        Développement Augmenté par l'IA : Maîtriser <span class="highlight-gold">GitHub Copilot dans VS Code</span>
+                    </h1>
+
+                    <p class="course-lead">
+                        De l'auto-complétion contextuelle intelligente à l'orchestration des modes Ask, Edit et Agent, en passant par la génération automatisée de tests unitaires, le refactoring assisté et les Custom Instructions d'équipe : transformez la productivité et la qualité de vos développements logiciels.
+                    </p>
+
+                    <div class="course-metrics-bar">
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-calendar-day" aria-hidden="true"></i> Durée totale</span>
+                            <span class="metric-value">2 jours (14h)</span>
+                            <span class="metric-sub">Intensif ou Modulable (7h à 14h)</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-laptop-code" aria-hidden="true"></i> Approche</span>
+                            <span class="metric-value">80% Labs &amp; Code</span>
+                            <span class="metric-sub">VS Code &amp; Repos Réels</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-shield-halved" aria-hidden="true"></i> Sécurité</span>
+                            <span class="metric-value">Gouvernance DSI</span>
+                            <span class="metric-sub">IP, Licences &amp; .copilotignore</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-certificate" aria-hidden="true"></i> Attestation</span>
+                            <span class="metric-value">Certificat d'Excellence</span>
+                            <span class="metric-sub">Délivré par BenchTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             4. GRILLE PRINCIPALE (SYLLABUS + SIDEBAR STICKY)
+             ======================================================================= -->
+        <div class="container">
+            <div class="course-layout-grid">
+                
+                <!-- COLONNE PRINCIPALE DU PROGRAMME -->
+                <div class="course-main-col">
+
+                    <!-- Bloc Objectifs Opérationnels -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-bullseye" aria-hidden="true"></i> Compétences Opérationnelles Acquises</h2>
+                        <div class="outcomes-grid">
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                                <h4>Vélocité &amp; Modes de Saisie</h4>
+                                <p>Exploiter le Ghost Text, les prompts inline (Ctrl+I), les modes Ask, Edit et Agent, ainsi que les raccourcis de génération rapide de code.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-vial-circle-check" aria-hidden="true"></i></div>
+                                <h4>Automatisation des Tests &amp; Qualité</h4>
+                                <p>Générer des suites de tests unitaires complètes avec couverture des cas aux limites (edge cases) et mocker les dépendances d'API externes.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></div>
+                                <h4>Refactoring &amp; Décryptage de Code</h4>
+                                <p>Auditer et moderniser du code legacy avec /explain, corriger méthodiquement les bugs avec /fix et optimiser la complexité algorithmique.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                                <h4>Gouvernance d'Équipe &amp; Sécurité</h4>
+                                <p>Déployer des règles partagées (.github/copilot-instructions.md), exclure les secrets d'entreprise et filtrer le code public sous licence.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Programme Détaillé Module par Module (Syllabus) -->
+                    <section class="course-block-card">
+                        <div class="syllabus-header-row">
+                            <h2 class="block-heading" style="margin-bottom: 0;">
+                                <i class="fas fa-list-check" aria-hidden="true"></i> Programme Pédagogique Détaillé
+                            </h2>
+                            <span class="syllabus-version-chip">VS Code 2026 &amp; GitHub Copilot Enterprise</span>
+                        </div>
+                        <p class="section-subtext">
+                            4 modules pratiques calibrés pour ancrer des réflexes de développement augmentés, sans compromettre la rigueur d'ingénierie ni la sécurité du code source.
+                        </p>
+
+                        <div class="syllabus-timeline">
+                            <!-- Module 1 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">01</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Configuration Sécurisée, Confidentialité &amp; Modes de Saisie dans VS Code</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 1 — Matin (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Installer, configurer et maîtriser l'extension Copilot tout en protégeant les actifs sensibles de l'entreprise.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Installation &amp; Architecture :</strong> Intégration de GitHub Copilot &amp; GitHub Copilot Chat dans Visual Studio Code ; gestion des licences (Individual, Business, Enterprise).</li>
+                                        <li><strong>Gouvernance &amp; Protection du Code :</strong> Paramétrage du filtre de suggestions publiques (Public Code Matching) pour éviter les violations de propriété intellectuelle.</li>
+                                        <li><strong>Isolation des Données Sensibles :</strong> Masquage des variables d'environnement, clés API et fichiers confidentiels via <code>.gitignore</code> et <code>.copilotignore</code>.</li>
+                                        <li><strong>Modes de Saisie Rapide :</strong> Auto-complétion contextuelle (Ghost Text), navigation entre alternatives (Alt+] / Alt+[), et saisie en ligne de commande inline (Ctrl+I / Cmd+I).</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #1 :</strong> Durcissement sécurisé de l'espace de travail VS Code d'une équipe, configuration des exclusions de secrets sensibles et entraînement aux raccourcis de productivité intensive.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 2 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">02</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Contexte Global (@workspace), Chat Interactif &amp; Commandes Slash</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 1 — Après-midi (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Exploiter l'ensemble du projet logiciel comme contexte sémantique pour résoudre des problématiques complexes.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Participants de Contexte Spécialisés :</strong> Utilisation de <code>@workspace</code> pour interroger l'intégralité du repository, <code>@terminal</code> pour analyser les erreurs d'exécution, et <code>@vscode</code> pour contrôler l'IDE.</li>
+                                        <li><strong>Commandes Slash Essentielles :</strong> Décryptage de code obscur ou non documenté avec <code>/explain</code>, diagnostic et correction ciblée d'anomalies avec <code>/fix</code>.</li>
+                                        <li><strong>Documentation Automatisée :</strong> Génération de commentaires standardisés (JSDoc, Python Docstrings, JavaDoc) via <code>/doc</code> pour pérenniser le savoir technique.</li>
+                                        <li><strong>Gestion de l'Historique de Conversation :</strong> Référencement de fichiers spécifiques (<code>#file</code>), sélection de blocs de code actifs et maintien d'un contexte de chat cohérent.</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #2 :</strong> Audit complet d'une base de code legacy non documentée avec <code>@workspace</code>, détection d'une fuite mémoire et correction assistée d'un bug subtil de concurrence.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 3 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">03</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Génération de Tests Unitaires, Refactoring Assisté &amp; Cas Bout-en-Bout</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 2 — Matin (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Faire de Copilot un allié d'excellence pour la qualité logicielle et le respect des standards Clean Code.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Génération Automatisée de Tests :</strong> Utilisation de la commande <code>/tests</code> pour générer des suites de tests unitaires rigoureuses (Jest, Pytest, JUnit, xUnit).</li>
+                                        <li><strong>Tests aux Limites &amp; Cas d'Erreurs :</strong> Identification automatique des cas limites (edge cases), des entrées nulles/invalides et génération de fixtures et mocks d'APIs.</li>
+                                        <li><strong>Refactoring Guidé &amp; Principes SOLID :</strong> Découpage de fonctions monolithiques, élimination du code mort, amélioration de la lisibilité et typage strict.</li>
+                                        <li><strong>Cas Pratique Bout-en-Bout :</strong> Construction accélérée d'une fonctionnalité métier complète (composants UI, validation de données et appels asynchrones).</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #3 :</strong> Passage d'un module critique de 20% à 90% de couverture de tests unitaires avec mocking de services externes et refactoring Clean Code sans régression.
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Module 4 -->
+                            <article class="syllabus-card">
+                                <header class="syllabus-card-header">
+                                    <span class="module-number">04</span>
+                                    <div class="module-title-wrap">
+                                        <h3>Custom Instructions d'Équipe, Agent Skills &amp; Écosystème Avancé</h3>
+                                        <span class="module-time"><i class="fas fa-clock" aria-hidden="true"></i> Jour 2 — Après-midi (3h30)</span>
+                                    </div>
+                                </header>
+                                <div class="syllabus-card-body">
+                                    <p class="module-intro">
+                                        Standardiser les conventions de développement à l'échelle de l'équipe et préparer le passage aux architectures multi-agents.
+                                    </p>
+                                    <ul class="module-points">
+                                        <li><strong>Fichiers d'Instructions Partagés :</strong> Création et maintenance de <code>.github/copilot-instructions.md</code> pour forcer le respect des conventions d'architecture de l'entreprise.</li>
+                                        <li><strong>Prompt Engineering Développeur :</strong> Conception de modèles de messages réutilisables pour standardiser les revues de code et les messages de commit Git conventionnels.</li>
+                                        <li><strong>Agent Skills Personnalisés :</strong> Introduction à la création de compétences d'agents spécifiques au domaine métier de l'entreprise.</li>
+                                        <li><strong>Perspectives d'Avenir :</strong> Passerelle vers le protocole MCP (Model Context Protocol) et intégration de Copilot dans la chaîne d'intégration continue (CI/CD).</li>
+                                    </ul>
+                                    <div class="module-workshop-badge">
+                                        <i class="fas fa-flask" aria-hidden="true"></i> <strong>Atelier Pratique #4 :</strong> Rédaction collective de la charte de Custom Instructions d'équipe, test de conformité sur un nouveau module et création d'un Agent Skill d'automatisation.
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Profil du Formateur -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Excellence des Formateurs Consultants BenchTech</h2>
+                        <div class="instructor-profile">
+                            <div class="instructor-avatar">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </div>
+                            <div class="instructor-bio">
+                                <h3>Pôle Consultants Seniors Développement &amp; IA Générative</h3>
+                                <span class="instructor-title">Tech Leads Full-Stack &amp; Architectes Logiciels Certifiés GitHub / Azure</span>
+                                <p>
+                                    Nos cursus sont dispensés par des praticiens en activité qui développent quotidiennement des applications critiques en entreprise. Ils partagent des astuces concrètes de terrain, les pièges d'hallucination à déjouer et les meilleures pratiques d'adoption pour maximiser le ROI de vos licences Copilot.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- COLONNE LATÉRALE : STICKY SIDEBAR DE RÉSERVATION -->
+                <aside class="course-sidebar-col">
+                    <div class="sticky-sidebar-card">
+                        <div class="sidebar-header">
+                            <span class="sidebar-format-badge"><i class="fas fa-building" aria-hidden="true"></i> Intra &amp; Inter-Entreprises</span>
+                            <div class="sidebar-price-row">
+                                <span class="sidebar-price-label">Tarif de la session :</span>
+                                <span class="sidebar-price-val">Sur Devis B2B</span>
+                            </div>
+                            <span class="sidebar-price-sub">Financement &amp; Contrats Spéciaux de Formation (OFPPT / FPC)</span>
+                        </div>
+
+                        <div class="sidebar-body">
+                            <ul class="sidebar-features-list">
+                                <li><i class="fas fa-clock" aria-hidden="true"></i> <span><strong>Volume :</strong> 14 heures (2 journées ou samedis)</span></li>
+                                <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span><strong>Lieu :</strong> Casablanca (ou vos locaux au Maroc)</span></li>
+                                <li><i class="fas fa-video" aria-hidden="true"></i> <span><strong>Option Distanciel :</strong> Disponible en direct interactif</span></li>
+                                <li><i class="fas fa-users" aria-hidden="true"></i> <span><strong>Groupe :</strong> Restreint (4 à 8 développeurs max)</span></li>
+                                <li><i class="fas fa-code-branch" aria-hidden="true"></i> <span><strong>Stack :</strong> Adaptable à vos langages (React, Python, Java, .NET)</span></li>
+                                <li><i class="fas fa-certificate" aria-hidden="true"></i> <span><strong>Attestation :</strong> Certificat d'Excellence BenchTech</span></li>
+                            </ul>
+
+                            <div class="sidebar-cta-group">
+                                <a href="../index.html#contact" class="btn btn-primary" style="width: 100%;">
+                                    <i class="fas fa-file-signature" aria-hidden="true"></i> Demander un devis officiel
+                                </a>
+
+                                <a href="https://wa.me/212662041272?text=Bonjour%20BenchTech%2C%20je%20souhaite%20des%20informations%20sur%20la%20formation%20GitHub%20Copilot%20dans%20VS%20Code." class="btn btn-outline" style="width: 100%; border-color: #25D366; color: #128C7E; font-weight: 700;" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Échanger sur WhatsApp
+                                </a>
+
+                                <a href="../index.html?studio=copilot&amp;preset=dev-ai#copilot-studio" class="btn btn-outline" style="width: 100%;">
+                                    <i class="fas fa-sliders" aria-hidden="true"></i> Calibrer en Cursus Sur-Mesure
+                                </a>
+
+                                <a href="../index.html?quiz=github-copilot#evaluations" class="btn btn-outline" style="width: 100%;">
+                                    <i class="fas fa-list-check" aria-hidden="true"></i> Tester mon niveau (10 cas réels)
+                                </a>
+                            </div>
+
+                            <div class="sidebar-phone-support">
+                                <i class="fas fa-headset" aria-hidden="true"></i>
+                                <div>
+                                    <span class="support-label">Conseiller pédagogique dédié :</span>
+                                    <a href="tel:+212662041272" class="support-num">+212 06.62.04.12.72</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             5. SECTION CALL-TO-ACTION INFÉRIEURE
+             ======================================================================= -->
+        <section class="course-cta-section">
+            <div class="container">
+                <div class="cta-inner-card">
+                    <span class="cta-tag">Productivité &amp; Rigueur Logicielle</span>
+                    <h2>Besoin d'un programme GitHub Copilot adapté à votre stack et vos règles d'architecture ?</h2>
+                    <p>
+                        Nos Tech Leads seniors conçoivent des cursus intra-entreprise sur-mesure ajustés à vos frameworks (React, Angular, Spring Boot, FastAPI, .NET) et vos standards de conformité DSI.
+                    </p>
+                    <div class="cta-buttons-row">
+                        <a href="../index.html#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> Planifier un cadrage technique
+                        </a>
+                        <a href="../index.html?quiz=github-copilot#evaluations" class="btn btn-secondary">
+                            <i class="fas fa-list-check" aria-hidden="true"></i> Passer le diagnostic GitHub Copilot (10 cas)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =======================================================================
+         6. FOOTER INSTITUTIONNEL BenchTech
+         ======================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech" class="footer-logo-img" width="200" height="62" style="background: #fff; padding: 4px; border-radius: 4px;">
+                    <p class="footer-mission">
+                        Cabinet de conseil en technologies &amp; Académie d'excellence professionnelle à Casablanca. Ingénierie des systèmes, automatisation des infrastructures et montée en compétences stratégique.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Pôles d'Expertise</h4>
+                    <ul>
+                        <li><a href="../index.html#conseil">Conseil &amp; Intégration IA</a></li>
+                        <li><a href="power-bi.html">Microsoft Power BI &amp; DAX</a></li>
+                        <li><a href="copilot-studio.html">Copilot Studio &amp; Agents IA</a></li>
+                        <li><a href="github-copilot.html">GitHub Copilot dans VS Code</a></li>
+                        <li><a href="sql-sgbd.html">SQL Avancé &amp; SGBD</a></li>
+                        <li><a href="unix-linux.html">UNIX / Linux &amp; Shell</a></li>
+                        <li><a href="scrum-agile.html">Scrum &amp; Gestion de Projet</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Formations Phares</h4>
+                    <ul>
+                        <li><a href="power-bi.html">Microsoft Power BI Avancé</a></li>
+                        <li><a href="copilot-studio.html">Microsoft Copilot Studio</a></li>
+                        <li><a href="github-copilot.html">GitHub Copilot dans VS Code</a></li>
+                        <li><a href="sql-sgbd.html">Bases de Données &amp; SQL Avancé</a></li>
+                        <li><a href="unix-linux.html">UNIX / Linux &amp; Scripting Shell</a></li>
+                        <li><a href="excel-avance.html">Microsoft Excel Avancé</a></li>
+                        <li><a href="scrum-agile.html">Scrum Master &amp; Product Owner</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact &amp; Siège</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i> <span>Casablanca, Maroc</span></li>
+                        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> <span>+212 06.62.04.12.72</span></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> <span>contact@benchtech.ma</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 BenchTech. Tous droits réservés.
+                    <span class="footer-legal-tag">
+                        BenchTech | SARL AU au capital de 100 000 MAD | Siège social : Casablanca, Maroc | Registre du Commerce (RC) : Casablanca n° 752759.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Menu Mobile -->
+    <script>
+        (function() {
+            try {
+                localStorage.removeItem('benchtech_display_mode');
+                document.documentElement.removeAttribute('data-theme');
+            } catch(e) {}
+
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('main-nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', String(isActive));
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

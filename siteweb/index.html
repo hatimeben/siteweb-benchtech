@@ -901,9 +901,12 @@
                             <div class="target-path-item"><strong>Ingénierie Web Full-Stack :</strong> Création d'applications web (React, JS) : du prototype aux tests unitaires.</div>
                         </div>
 
-                        <div style="display: flex; gap: 8px; margin-top: auto;">
-                            <a href="#copilot-studio" class="btn btn-primary btn-card-action" style="flex: 1;"><i class="fas fa-sliders" aria-hidden="true"></i> Composer sur-mesure</a>
-                            <button type="button" class="btn btn-outline btn-card-action" onclick="switchAndStartQuiz('github-copilot')" style="flex: 1;" title="Évaluer vos compétences sur GitHub Copilot">Tester niveau</button>
+                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
+                            <a href="formations/github-copilot.html" class="btn btn-primary btn-card-action" style="width: 100%;"><i class="fas fa-file-lines" aria-hidden="true"></i> Fiche complète &amp; Syllabus</a>
+                            <div style="display: flex; gap: 8px;">
+                                <a href="#copilot-studio" class="btn btn-outline btn-card-action" onclick="navigateToStudio('copilot-studio', 'dev-ai')" style="flex: 1;"><i class="fas fa-sliders" aria-hidden="true"></i> Sur-mesure</a>
+                                <button type="button" class="btn btn-outline btn-card-action" onclick="switchAndStartQuiz('github-copilot')" style="flex: 1;" title="Évaluer vos compétences sur GitHub Copilot">Tester niveau</button>
+                            </div>
                         </div>
                     </article>
 
@@ -3483,7 +3486,7 @@
                     <h4>Académie</h4>
                     <ul>
                         <li><a href="formations/copilot-studio.html"><strong>Formation Copilot Studio (Programme Complet)</strong></a></li>
-                        <li><a href="#formations">GitHub Copilot dans VS Code</a></li>
+                        <li><a href="formations/github-copilot.html"><strong>Formation GitHub Copilot (Programme Complet)</strong></a></li>
                         <li><a href="#formations">Multi-Agents &amp; Copilot SDK (MCP)</a></li>
                         <li><a href="#studios-sur-mesure"><strong>Pôle Cursus Sur-Mesure (6 Studios)</strong></a></li>
                         <li><a href="formations/power-bi.html"><strong>Formation Power BI (Programme Complet)</strong></a></li>
@@ -4256,6 +4259,16 @@
             // Activer l'onglet studio correspondant
             const tabBtn = document.querySelector(`.studio-nav-tab[data-studio-target="${studioId}"]`);
             if (tabBtn) tabBtn.click();
+
+            // Si un presetKey est fourni, l'activer automatiquement
+            if (presetKey) {
+                setTimeout(() => {
+                    const presetBtn = document.querySelector(`button[data-preset-copilot="${presetKey}"], button[data-preset-pbi="${presetKey}"], button[data-preset-excel="${presetKey}"], button[data-preset-sql="${presetKey}"], button[data-preset-unix="${presetKey}"], button[data-preset-hybrid="${presetKey}"]`);
+                    if (presetBtn) {
+                        presetBtn.click();
+                    }
+                }, 150);
+            }
 
             // Défilement vers le studio
             setTimeout(() => {
@@ -6991,6 +7004,21 @@
             updateCopilotStudioSyllabus();
             renderHybridCheckboxes();
             updateHybridStudioSyllabus();
+
+            // Support URL deep-linking vers un studio et un preset (?studio=copilot&preset=dev-ai)
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetStudio = urlParams.get('studio');
+                const targetPreset = urlParams.get('preset');
+                if (targetStudio) {
+                    const fullStudioId = targetStudio.endsWith('-studio') ? targetStudio : `${targetStudio}-studio`;
+                    setTimeout(() => {
+                        if (window.navigateToStudio) {
+                            window.navigateToStudio(fullStudioId, targetPreset);
+                        }
+                    }, 400);
+                }
+            } catch(e) {}
         });
 
         window.addEventListener('hashchange', () => {
