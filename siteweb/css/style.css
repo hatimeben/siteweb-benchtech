@@ -1145,8 +1145,8 @@ nav {
 .copilot-studio-grid,
 .hybrid-studio-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 28px;
+    grid-template-columns: 7fr 3fr;
+    gap: 24px;
     align-items: start;
 }
 
@@ -3968,5 +3968,439 @@ summary:focus-visible {
     }
     .certificate-footer-signatures {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   REFONTE DU CONFIGURATEUR STUDIOS SUR-MESURE (STYLE ÉPURÉ & PLEINE LARGEUR)
+   ========================================================================== */
+
+.configurator-section {
+    background-color: #F8FAFC;
+    padding: 60px 0 75px 0;
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.configurator-container {
+    width: 94%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.configurator-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.badge-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(197, 155, 39, 0.12);
+    color: #9A771C;
+    border: 1px solid rgba(197, 155, 39, 0.35);
+    border-radius: 9999px;
+    padding: 6px 18px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.configurator-title {
+    font-size: 2.15rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+}
+
+.configurator-subtitle {
+    font-size: 1.02rem;
+    color: #64748B;
+    margin: 0 auto;
+    max-width: 760px;
+    line-height: 1.5;
+}
+
+/* Masquer les éléments redondants / encombrants */
+.studios-tabs-nav,
+.powerbi-presets-bar,
+.excel-presets-bar,
+.unix-presets-bar,
+.sql-presets-bar,
+.copilot-presets-bar,
+.hybrid-presets-bar,
+.studio-panel > .section-header {
+    display: none !important;
+}
+
+/* Panneaux des studios sans fond lourd supplémentaire */
+.excel-studio-section,
+.powerbi-studio-section,
+.unix-studio-section,
+.sql-studio-section,
+.copilot-studio-section,
+.hybrid-studio-section {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+/* Barres de paramètres sur une seule ligne (4 colonnes égales) */
+.configurator-params-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+}
+
+.configurator-params-bar .param-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.configurator-params-bar .param-field label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0F172A;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+}
+
+.configurator-params-bar .param-field label i {
+    color: #C59B27;
+    font-size: 0.85rem;
+}
+
+.configurator-params-bar .studio-select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #CBD5E1;
+    background: #F8FAFC;
+    color: #0F172A;
+    font-size: 0.84rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: normal;
+    box-sizing: border-box;
+}
+
+.configurator-params-bar .studio-select:focus {
+    border-color: #C59B27;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+    background: #FFFFFF;
+}
+
+/* Carte des blocs de compétences */
+.builder-blocks-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+}
+
+.builder-blocks-card h4 {
+    font-size: 1.05rem;
+    color: #0F172A;
+    font-weight: 800;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.builder-blocks-card h4 i {
+    color: #C59B27;
+}
+
+.builder-helper-text {
+    font-size: 0.84rem;
+    color: #64748B;
+    margin-bottom: 20px;
+}
+
+/* Cartes individuelles des blocs de compétences (1 par ligne) */
+.block-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.block-item:hover {
+    border-color: rgba(197, 155, 39, 0.6);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    transform: translateY(-1px);
+}
+
+.block-item.checked {
+    border-color: #C59B27;
+    background: #FFFDF5;
+    box-shadow: 0 6px 20px rgba(197, 155, 39, 0.12);
+}
+
+.block-toggle {
+    width: 20px;
+    height: 20px;
+    accent-color: #C59B27;
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.block-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.block-header-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.block-badge {
+    font-size: 0.70rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 9px;
+    border-radius: 6px;
+}
+
+.block-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+.block-duration {
+    margin-left: auto;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #9A771C;
+    background: rgba(197, 155, 39, 0.12);
+    padding: 3px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(197, 155, 39, 0.25);
+    white-space: nowrap;
+}
+
+.block-desc {
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+/* Pilules de technologies et fonctions */
+.block-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.block-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: #F1F5F9;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    transition: all 0.15s ease;
+}
+
+.block-item.checked .block-pill {
+    background: #FEF9C3;
+    color: #854D0E;
+    border-color: #FDE047;
+}
+
+/* Fiche Pédagogique (colonne droite sticky) */
+.live-syllabus-sheet {
+    position: sticky;
+    top: 96px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    border-top: 4px solid #C59B27;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.syllabus-header-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #9A771C;
+    margin-bottom: 12px;
+}
+
+.syllabus-title {
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+.syllabus-subtitle {
+    font-size: 0.84rem;
+    color: #64748B;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.syllabus-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.syllabus-chip {
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.syllabus-chip i {
+    color: #C59B27;
+}
+
+.syllabus-funding-badge {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.80rem;
+    color: #065F46;
+    margin: 16px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.45;
+}
+
+.syllabus-funding-badge i {
+    color: #10B981;
+    font-size: 0.95rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, #C59B27 0%, #A8821D 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    font-size: 0.92rem;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 20px;
+    box-shadow: 0 4px 14px rgba(197, 155, 39, 0.25);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, #D4AF37 0%, #B88E20 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 155, 39, 0.35);
+}
+
+/* Responsive pour tablettes et mobiles */
+@media (max-width: 1024px) {
+    .powerbi-studio-grid,
+    .excel-studio-grid,
+    .unix-studio-grid,
+    .sql-studio-grid,
+    .copilot-studio-grid,
+    .hybrid-studio-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .configurator-params-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .live-syllabus-sheet {
+        position: static;
+        top: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .configurator-params-bar {
+        grid-template-columns: 1fr;
+    }
+    
+    .configurator-title {
+        font-size: 1.6rem;
+    }
+    
+    .block-header-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    .block-duration {
+        margin-left: 0;
     }
 }
