@@ -1,19 +1,25 @@
 -- =======================================================================
--- BENCHTECH - BASE DE DONNÉES SQLite : FORMATIONS SUR-MESURE & CATALOGUE
--- Schéma Conceptuel & Logique Normalisé (3NF)
+-- BENCHTECH - BASE DE DONNÉES SQLite : ÉCOSYSTÈME UNIFIÉ DES FORMATIONS & QUIZ
+-- Schéma Conceptuel & Logique Normalisé (3NF) - Modèle Unifié : THEMATIQUES
 -- Fichier : database/schema.sql
 -- =======================================================================
 
 PRAGMA foreign_keys = ON;
 
--- 1. Table des Filières d'Expertise (Domaines Technologiques)
-CREATE TABLE IF NOT EXISTS filieres (
-    id_filiere INTEGER PRIMARY KEY AUTOINCREMENT,
-    code TEXT NOT NULL UNIQUE,
-    libelle TEXT NOT NULL,
-    description TEXT NOT NULL,
-    icone TEXT DEFAULT 'fa-layer-group',
-    est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1))
+-- 1. Table Centrale Unifiée des Thématiques / Filières d'Expertise
+-- Fusionne conceptuellement la 'Filière' (offre formation) et le 'Thème' (évaluation diagnostique)
+CREATE TABLE IF NOT EXISTS thematiques (
+    id_thematique INTEGER PRIMARY KEY AUTOINCREMENT,
+    code TEXT NOT NULL UNIQUE,          -- ex: 'powerbi', 'sql', 'copilot', 'github-copilot', 'excel', 'unix', 'scrum', 'msproject', 'algo', 'hybrid', 'general'
+    code_filiere TEXT UNIQUE,           -- Code court legacy ex: 'PBI', 'SQL', 'COP', 'EXC', 'LNX', 'AGL', 'MSP', 'ALG', 'HYB', 'GEN'
+    titre TEXT NOT NULL,                -- ex: 'Microsoft Power BI & Data Analytics'
+    description TEXT NOT NULL,          -- Présentation complète du domaine
+    icone TEXT DEFAULT 'fa-layer-group',-- Classe FontAwesome
+    source_standard TEXT,               -- Référentiel de certification / standard mondial
+    id_parent INTEGER,                  -- Auto-référence réflexive pour sous-domaines (ex: github-copilot -> copilot)
+    questions_par_session INTEGER NOT NULL DEFAULT 10,
+    est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1)),
+    FOREIGN KEY (id_parent) REFERENCES thematiques (id_thematique) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 -- 2. Table des Niveaux de Compétence
@@ -39,14 +45,15 @@ CREATE TABLE IF NOT EXISTS blocs_competences (
     id_bloc INTEGER PRIMARY KEY AUTOINCREMENT,
     code_bloc TEXT NOT NULL UNIQUE,
     titre_bloc TEXT NOT NULL,
-    id_filiere INTEGER NOT NULL,
+    id_thematique INTEGER NOT NULL,
+    id_filiere INTEGER,                 -- Alias pour compatibilité
     id_niveau INTEGER NOT NULL,
     duree_heures REAL NOT NULL CHECK (duree_heures > 0),
     badge_technique TEXT,
     objectif_operationnel TEXT NOT NULL,
     ordre_pedagogique INTEGER NOT NULL DEFAULT 1,
     est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1)),
-    FOREIGN KEY (id_filiere) REFERENCES filieres (id_filiere) ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY (id_thematique) REFERENCES thematiques (id_thematique) ON UPDATE CASCADE ON DELETE RESTRICT,
     FOREIGN KEY (id_niveau) REFERENCES niveaux (id_niveau) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
@@ -105,35 +112,23 @@ CREATE TABLE IF NOT EXISTS demande_blocs (
 -- MODULE QUIZ DYNAMIQUE & DIAGNOSTICS DE POSITIONNEMENT
 -- =======================================================================
 
--- 9. Table des Thématiques de Quiz
-CREATE TABLE IF NOT EXISTS quiz_themes (
-    id_theme INTEGER PRIMARY KEY AUTOINCREMENT,
-    code TEXT NOT NULL UNIQUE, -- 'powerbi', 'sql', 'copilot', 'excel', 'unix', 'general'
-    titre TEXT NOT NULL,
-    icone TEXT DEFAULT 'fa-question-circle',
-    source_standard TEXT,
-    id_filiere INTEGER,
-    questions_par_session INTEGER NOT NULL DEFAULT 10,
-    est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1)),
-    FOREIGN KEY (id_filiere) REFERENCES filieres (id_filiere) ON UPDATE CASCADE ON DELETE SET NULL
-);
-
--- 10. Table du Pool Central de Questions
+-- 9. Table du Pool Central de Questions
 CREATE TABLE IF NOT EXISTS quiz_questions (
     id_question INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_theme INTEGER NOT NULL,
-    id_bloc INTEGER, -- Bloc de formation rattaché pour prescription sur-mesure !
+    id_thematique INTEGER NOT NULL,
+    id_theme INTEGER,                   -- Alias pour compatibilité
+    id_bloc INTEGER,                     -- Bloc de formation rattaché pour prescription sur-mesure !
     scenario TEXT NOT NULL,
     question TEXT NOT NULL,
     difficulte TEXT NOT NULL CHECK (difficulte IN ('Fondamentaux', 'Opérationnel', 'Avancé', 'Expert')),
     points INTEGER NOT NULL DEFAULT 1 CHECK (points > 0),
     explication TEXT NOT NULL,
     est_actif INTEGER NOT NULL DEFAULT 1 CHECK (est_actif IN (0, 1)),
-    FOREIGN KEY (id_theme) REFERENCES quiz_themes (id_theme) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_thematique) REFERENCES thematiques (id_thematique) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (id_bloc) REFERENCES blocs_competences (id_bloc) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
--- 11. Table des Réponses (Options à Choix Multiples)
+-- 10. Table des Réponses (Options à Choix Multiples)
 CREATE TABLE IF NOT EXISTS quiz_reponses (
     id_reponse INTEGER PRIMARY KEY AUTOINCREMENT,
     id_question INTEGER NOT NULL,
@@ -144,10 +139,11 @@ CREATE TABLE IF NOT EXISTS quiz_reponses (
     FOREIGN KEY (id_question) REFERENCES quiz_questions (id_question) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- 12. Table des Sessions de Passage (Diagnostics Candidats & Leads)
+-- 11. Table des Sessions de Passage (Diagnostics Candidats & Leads)
 CREATE TABLE IF NOT EXISTS quiz_sessions (
     id_session INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_theme INTEGER NOT NULL,
+    id_thematique INTEGER NOT NULL,
+    id_theme INTEGER,                   -- Alias pour compatibilité
     reference_session TEXT NOT NULL UNIQUE, -- ex: BT-EVAL-2026-A1B2
     candidat_nom TEXT,
     candidat_email TEXT,
@@ -158,18 +154,45 @@ CREATE TABLE IF NOT EXISTS quiz_sessions (
     niveau_attribue TEXT NOT NULL,
     date_passage DATETIME DEFAULT CURRENT_TIMESTAMP,
     details_json TEXT,
-    FOREIGN KEY (id_theme) REFERENCES quiz_themes (id_theme) ON UPDATE CASCADE ON DELETE RESTRICT
+    FOREIGN KEY (id_thematique) REFERENCES thematiques (id_thematique) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+-- =======================================================================
+-- VUES DE RÉTROCOMPATIBILITÉ POUR REQUÊTES ET SCRIPTS EXISTANTS
+-- =======================================================================
+DROP VIEW IF EXISTS filieres;
+CREATE VIEW filieres AS 
+SELECT 
+    id_thematique AS id_filiere,
+    COALESCE(code_filiere, UPPER(code)) AS code,
+    titre AS libelle,
+    description,
+    icone,
+    est_actif
+FROM thematiques;
+
+DROP VIEW IF EXISTS quiz_themes;
+CREATE VIEW quiz_themes AS 
+SELECT 
+    id_thematique AS id_theme,
+    code,
+    titre,
+    icone,
+    source_standard,
+    id_thematique AS id_filiere,
+    questions_par_session,
+    est_actif
+FROM thematiques;
 
 -- =======================================================================
 -- INDEX D'OPTIMISATION DE PERFORMANCES
 -- =======================================================================
-CREATE INDEX IF NOT EXISTS idx_blocs_filiere ON blocs_competences(id_filiere);
+CREATE INDEX IF NOT EXISTS idx_blocs_thematique ON blocs_competences(id_thematique);
 CREATE INDEX IF NOT EXISTS idx_blocs_niveau ON blocs_competences(id_niveau);
 CREATE INDEX IF NOT EXISTS idx_contenus_bloc ON contenus_modules(id_bloc);
 CREATE INDEX IF NOT EXISTS idx_demandes_ref ON demandes_sur_mesure(reference_dossier);
 CREATE INDEX IF NOT EXISTS idx_demandes_entreprise ON demandes_sur_mesure(nom_entreprise);
-CREATE INDEX IF NOT EXISTS idx_quiz_questions_theme ON quiz_questions(id_theme);
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_thematique ON quiz_questions(id_thematique);
 CREATE INDEX IF NOT EXISTS idx_quiz_questions_diff ON quiz_questions(difficulte);
 CREATE INDEX IF NOT EXISTS idx_quiz_questions_bloc ON quiz_questions(id_bloc);
 CREATE INDEX IF NOT EXISTS idx_quiz_reponses_question ON quiz_reponses(id_question);

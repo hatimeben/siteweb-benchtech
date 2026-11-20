@@ -16,14 +16,18 @@ SEED_PATH = os.path.join(BASE_DIR, "seed.sql")
 def init_database():
     print(f"[*] Initialisation de la base SQLite BenchTech : {DB_PATH}")
     
-    # Supprimer l'ancienne base si elle existe pour recréation propre
-    if os.path.exists(DB_PATH):
-        os.remove(DB_PATH)
-        print("    -> Ancienne base supprimée.")
-
+    # Ouvrir la connexion et nettoyer les tables existantes
     conn = sqlite3.connect(DB_PATH)
-    conn.execute("PRAGMA foreign_keys = ON;")
+    conn.execute("PRAGMA foreign_keys = OFF;")
     cursor = conn.cursor()
+    
+    # Purge propre des tables et vues
+    cursor.execute("SELECT name, type FROM sqlite_master WHERE type IN ('table', 'view') AND name NOT LIKE 'sqlite_%';")
+    objects = cursor.fetchall()
+    for obj_name, obj_type in objects:
+        cursor.execute(f"DROP {obj_type.upper()} IF EXISTS {obj_name};")
+    conn.commit()
+    print("    -> Anciennes tables et vues SQLite purgées avec succès.")
 
     # 1. Exécution du schéma
     with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
@@ -42,6 +46,7 @@ def init_database():
     # 3. Vérifications des tables et décomptes
     print("\n[+] Audit des tables créées :")
     tables = [
+        "thematiques",
         "filieres",
         "niveaux",
         "profils_participants",

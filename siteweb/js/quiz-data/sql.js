@@ -1,6 +1,6 @@
 /**
  * BenchTech Academy - Banque de Questions Dynamique
- * Thématique : Architecture SQL, Optimisation des Plans d'Exécution & SGBD Avancé
+ * Thématique : SQL Avancé, Optimisation SGBD & PostgreSQL
  * Généré automatiquement depuis benchtech_formations.db (Pool de 40 questions)
  */
 window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
@@ -8,7 +8,7 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
 (function() {
     const themeDefinition = {
         "id": "sql",
-        "title": "Architecture SQL, Optimisation des Plans d'Exécution & SGBD Avancé",
+        "title": "SQL Avancé, Optimisation SGBD & PostgreSQL",
         "icon": "fa-database",
         "source": "Standards ANSI SQL:2016, PostgreSQL & Microsoft SQL Server Internals",
         "duration": "10-12 min",

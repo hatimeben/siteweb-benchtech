@@ -1,6 +1,6 @@
 /**
  * BenchTech Academy - Banque de Questions Dynamique
- * Thématique : Excel Avancé, Power Query & Modélisation Financière
+ * Thématique : Microsoft Excel Avancé & Modélisation Financière
  * Généré automatiquement depuis benchtech_formations.db (Pool de 40 questions)
  */
 window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
@@ -8,7 +8,7 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
 (function() {
     const themeDefinition = {
         "id": "excel",
-        "title": "Excel Avancé, Power Query & Modélisation Financière",
+        "title": "Microsoft Excel Avancé & Modélisation Financière",
         "icon": "fa-file-excel",
         "source": "Microsoft 365 Dynamic Arrays & ETL Power Query Methodology",
         "duration": "10-12 min",

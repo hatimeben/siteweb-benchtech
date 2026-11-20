@@ -1,6 +1,6 @@
 /**
  * BenchTech Academy - Banque de Questions Dynamique
- * Thématique : Microsoft Copilot Studio & Conception d'Agents IA d'Entreprise
+ * Thématique : Microsoft Copilot Studio & Agents IA d'Entreprise
  * Généré automatiquement depuis benchtech_formations.db (Pool de 40 questions)
  */
 window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
@@ -8,7 +8,7 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
 (function() {
     const themeDefinition = {
         "id": "copilot",
-        "title": "Microsoft Copilot Studio & Conception d'Agents IA d'Entreprise",
+        "title": "Microsoft Copilot Studio & Agents IA d'Entreprise",
         "icon": "fa-robot",
         "source": "Microsoft Copilot Studio Architecture & Power Platform Governance",
         "duration": "10-12 min",

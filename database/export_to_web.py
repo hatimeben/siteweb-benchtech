@@ -255,6 +255,10 @@ def export_all():
     }
 
     for t_code, t_data in quiz_pool["themes"].items():
+        # Ne pas écraser les fichiers thématiques autonomes si SQLite ne contient pas encore leurs questions
+        if not t_data.get("questions") or len(t_data["questions"]) == 0:
+            continue
+            
         theme_file_path = os.path.join(QUIZ_DATA_DIR, f"{t_code}.js")
         meta = studio_map.get(t_code, {"studioTarget": "studios-sur-mesure", "recommendedCourse": "Formation Sur-Mesure", "formTopic": "Formation Sur-Mesure"})
         

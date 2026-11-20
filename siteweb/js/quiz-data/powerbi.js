@@ -1,6 +1,6 @@
 /**
  * BenchTech Academy - Banque de Questions Dynamique
- * Thématique : Microsoft Power BI : Modélisation en Étoile, DAX & VertiPaq
+ * Thématique : Microsoft Power BI & Data Analytics
  * Généré automatiquement depuis benchtech_formations.db (Pool de 40 questions)
  */
 window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
@@ -8,7 +8,7 @@ window.BenchTechQuizDatabase = window.BenchTechQuizDatabase || {};
 (function() {
     const themeDefinition = {
         "id": "powerbi",
-        "title": "Microsoft Power BI : Modélisation en Étoile, DAX & VertiPaq",
+        "title": "Microsoft Power BI & Data Analytics",
         "icon": "fa-chart-pie",
         "source": "Microsoft Learn PL-300, The Definitive Guide to DAX (Russo & Ferrari)",
         "duration": "10-12 min",

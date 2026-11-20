@@ -679,21 +679,17 @@ def seed_quiz_pool():
     conn.execute("PRAGMA foreign_keys = ON;")
     cursor = conn.cursor()
 
-    # 1. Insertion ou mise à jour des thèmes de quiz
-    print("[*] Insertion des 4 thèmes de quiz...")
+    # 1. Mise à jour des standards de thématiques
+    print("[*] Synchronisation des thématiques d'évaluation...")
     for t in THEMES:
         cursor.execute("""
-            INSERT INTO quiz_themes (id_theme, code, titre, icone, source_standard, id_filiere, questions_par_session, est_actif)
-            VALUES (?, ?, ?, ?, ?, ?, ?, 1)
-            ON CONFLICT(code) DO UPDATE SET
-                titre = excluded.titre,
-                icone = excluded.icone,
-                source_standard = excluded.source_standard,
-                questions_par_session = excluded.questions_par_session;
-        """, (t["id_theme"], t["code"], t["titre"], t["icone"], t["source_standard"], t["id_filiere"], t["questions_par_session"]))
+            UPDATE thematiques 
+            SET source_standard = ?, questions_par_session = ?
+            WHERE code = ?;
+        """, (t["source_standard"], t["questions_par_session"], t["code"]))
 
     # Récupération de la table de mapping des thèmes
-    cursor.execute("SELECT id_theme, code FROM quiz_themes;")
+    cursor.execute("SELECT id_thematique, code FROM thematiques;")
     theme_map = {row[1]: row[0] for row in cursor.fetchall()}
 
     # Récupération de la table de mapping des blocs
@@ -714,9 +710,10 @@ def seed_quiz_pool():
         bloc_id = bloc_map.get(q_data.get("bloc_code"))
 
         cursor.execute("""
-            INSERT INTO quiz_questions (id_theme, id_bloc, scenario, question, difficulte, points, explication, est_actif)
-            VALUES (?, ?, ?, ?, ?, ?, ?, 1);
+            INSERT INTO quiz_questions (id_thematique, id_theme, id_bloc, scenario, question, difficulte, points, explication, est_actif)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1);
         """, (
+            theme_id,
             theme_id,
             bloc_id,
             q_data["scenario"],

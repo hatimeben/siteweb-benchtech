@@ -6,26 +6,44 @@
 PRAGMA foreign_keys = ON;
 
 -- -----------------------------------------------------------------------
--- 1. INSERTION DES FILIÈRES
+-- 1. INSERTION DES THÉMATIQUES / FILIÈRES (TABLE UNIFIÉE thematiques)
 -- -----------------------------------------------------------------------
-INSERT INTO filieres (id_filiere, code, libelle, description, icone) VALUES
-(1, 'PBI', 'Microsoft Power BI & Data Analytics', 
-    'Ingénierie décisionnelle, modélisation en étoile, langage DAX avancé, optimisation VertiPaq et gouvernance Power BI Service.', 'fa-chart-pie'),
+INSERT INTO thematiques (id_thematique, code, code_filiere, titre, description, icone, source_standard, id_parent) VALUES
+(1, 'powerbi', 'PBI', 'Microsoft Power BI & Data Analytics', 
+    'Ingénierie décisionnelle, modélisation en étoile, langage DAX avancé, optimisation VertiPaq et gouvernance Power BI Service.', 'fa-chart-pie', 'Microsoft PL-300 & The Definitive Guide to DAX', NULL),
 
-(2, 'COP', 'Microsoft Copilot Studio & Agents IA d''Entreprise', 
-    'Conception d''agents autonomes, orchestration de prompts génératifs, intégration RAG sécurisée et connecteurs Power Platform.', 'fa-robot'),
+(2, 'copilot', 'COP', 'Microsoft Copilot Studio & Agents IA d''Entreprise', 
+    'Conception d''agents autonomes, orchestration de prompts génératifs, intégration RAG sécurisée et connecteurs Power Platform.', 'fa-robot', 'Microsoft Copilot Studio Architecture & Governance', NULL),
 
-(3, 'SQL', 'SQL Avancé, Optimisation SGBD & PostgreSQL', 
-    'Modélisation relationnelle 3NF, requêtes analytiques (Window Functions), lecture EXPLAIN ANALYZE et indexation B-Tree haute performance.', 'fa-database'),
+(3, 'sql', 'SQL', 'SQL Avancé, Optimisation SGBD & PostgreSQL', 
+    'Modélisation relationnelle 3NF, requêtes analytiques (Window Functions), lecture EXPLAIN ANALYZE et indexation B-Tree haute performance.', 'fa-database', 'Standards ANSI SQL:2016 & PostgreSQL Internals', NULL),
 
-(4, 'EXC', 'Microsoft Excel Avancé & Modélisation Financière', 
-    'Tableaux de bord exécutifs, automatisation ETL avec Power Query, formules matricielles dynamiques (LAMBDA, XLOOKUP) et modélisation financière.', 'fa-file-excel'),
+(4, 'excel', 'EXC', 'Microsoft Excel Avancé & Modélisation Financière', 
+    'Tableaux de bord exécutifs, automatisation ETL avec Power Query, formules matricielles dynamiques (LAMBDA, XLOOKUP) et modélisation financière.', 'fa-file-excel', 'Microsoft 365 Dynamic Arrays & ETL Methodology', NULL),
 
-(5, 'LNX', 'Unix / Linux, Shell & Administration Systèmes', 
-    'Administration des serveurs d''entreprise (RHEL, Debian/Ubuntu), automatisation Bash avancée, gestion fine des processus et sécurité réseau.', 'fa-terminal'),
+(5, 'unix', 'LNX', 'Unix / Linux, Shell & Administration Systèmes', 
+    'Administration des serveurs d''entreprise (RHEL, Debian/Ubuntu), automatisation Bash avancée, gestion fine des processus et sécurité réseau.', 'fa-terminal', 'POSIX.1-2017 & Red Hat Enterprise Linux 9', NULL),
 
-(6, 'HYB', 'Architectures Hybrides & Sécurité des Données', 
-    'Conception d''infrastructures cloud et on-premise résilientes, passerelles de données (Gateways) et conformité CNDP/RGPD.', 'fa-cubes');
+(6, 'scrum', 'AGL', 'Scrum Master, Agilité Opérationnelle & Product Ownership', 
+    'Guide Scrum 2020, posture de Servant Leader, facilitation des rituels, élimination des impédiments, maîtrise de la vélocité et préparation certifiante.', 'fa-sync-alt', 'Guide Scrum Officiel 2020 & PSM I / PSM II', NULL),
+
+(7, 'github-copilot', 'GHC', 'Développement Augmenté par l''IA : GitHub Copilot dans VS Code', 
+    'Productivité développeur maximale dans VS Code : Ghost Text, modes Ask, Edit, Agent, génération de tests unitaires et Custom Instructions.', 'fab fa-github', 'GitHub Copilot Enterprise Standards 2026', 2),
+
+(8, 'copilot-sdk', 'SDK', 'Orchestration Multi-Agents & Copilot SDK (MCP)', 
+    'Architecture applicative d''agents autonomes, Model Context Protocol (MCP) et intégration de serveurs d''outils distribués.', 'fa-network-wired', 'Model Context Protocol (Anthropic) & Semantic Kernel', 2),
+
+(9, 'msproject', 'MSP', 'MS Project & Pilotage Opérationnel de Projets', 
+    'Structure WBS, planification de chemin critique (CPM), nivellement de charges et suivi rigoureux des dérives de coûts et délais.', 'fa-tasks', 'Project Management Body of Knowledge (PMBOK)', NULL),
+
+(10, 'algo', 'ALG', 'Algorithmique & Structures de Données', 
+    'Pensée computationnelle, complexité spatio-temporelle (Big O), piles, files, arbres, graphes et programmation dynamique.', 'fa-code', 'Introduction to Algorithms (Cormen / MIT Press)', NULL),
+
+(11, 'hybrid', 'HYB', 'Cursus Hybride Multi-Technologies', 
+    'Bâtissez un programme sur-mesure combinant plusieurs technologies complémentaires (Power BI, Excel, SQL, Linux, Agents IA).', 'fa-cubes', 'Ingénierie Pédagogique Transverse BenchTech', NULL),
+
+(12, 'general', 'GEN', 'Grand Diagnostic BenchTech : Architecture Data, SQL, BI & IA', 
+    'Évaluation globale de positionnement technique sur 10 cas pratiques réels d''ingénierie et d''architecture.', 'fa-star', 'Standards Internationaux ANSI SQL, Fabric & M365', NULL);
 
 -- -----------------------------------------------------------------------
 -- 2. INSERTION DES NIVEAUX DE COMPÉTENCE
@@ -49,68 +67,82 @@ INSERT INTO profils_participants (id_profil, code, libelle, prerequis_recommande
 -- -----------------------------------------------------------------------
 -- 4. INSERTION DES BLOCS DE COMPÉTENCES (ÉCHANTILLON COMPLET RÉEL)
 -- -----------------------------------------------------------------------
-INSERT INTO blocs_competences (id_bloc, code_bloc, titre_bloc, id_filiere, id_niveau, duree_heures, badge_technique, objectif_operationnel, ordre_pedagogique) VALUES
--- Power BI
-(1, 'PBI-ETL-01', 'Ingestion Multi-Sources & Préparation Power Query', 1, 2, 3.5, 'Power Query ETL', 
+INSERT INTO blocs_competences (id_bloc, code_bloc, titre_bloc, id_thematique, id_filiere, id_niveau, duree_heures, badge_technique, objectif_operationnel, ordre_pedagogique) VALUES
+-- Power BI (id_thematique = 1)
+(1, 'PBI-ETL-01', 'Ingestion Multi-Sources & Préparation Power Query', 1, 1, 2, 3.5, 'Power Query ETL', 
     'Nettoyer, transformer et fusionner des sources hétérogènes (Excel, SQL, CSV) en modèles propres sans code.', 1),
 
-(2, 'PBI-MOD-02', 'Modélisation Dimensionnelle en Étoile (Star Schema)', 1, 2, 3.5, 'Modélisation Kimball', 
+(2, 'PBI-MOD-02', 'Modélisation Dimensionnelle en Étoile (Star Schema)', 1, 1, 2, 3.5, 'Modélisation Kimball', 
     'Structurer tables de faits et de dimensions, résoudre les relations plusieurs-à-plusieurs et optimiser le schéma.', 2),
 
-(3, 'PBI-DAX-03', 'Fondations DAX & Transition de Contexte (CALCULATE)', 1, 3, 3.5, 'DAX Moteur', 
+(3, 'PBI-DAX-03', 'Fondations DAX & Transition de Contexte (CALCULATE)', 1, 1, 3, 3.5, 'DAX Moteur', 
     'Maîtriser les contextes de ligne et de filtre, le mécanisme CALCULATE et les modificateurs ALL/ALLEXCEPT.', 3),
 
-(4, 'PBI-TIM-04', 'DAX Temporel (Time Intelligence) & Analyses Comparatives', 1, 3, 3.5, 'Time Intelligence', 
+(4, 'PBI-TIM-04', 'DAX Temporel (Time Intelligence) & Analyses Comparatives', 1, 1, 3, 3.5, 'Time Intelligence', 
     'Calculer les cumuls YTD/QTD, les écarts annuels YoY et les fenêtres glissantes dynamiques.', 4),
 
-(5, 'PBI-OPT-05', 'Optimisation Moteur VertiPaq & Réduction Mémoire', 1, 4, 3.5, 'Tuning VertiPaq', 
+(5, 'PBI-OPT-05', 'Optimisation Moteur VertiPaq & Réduction Mémoire', 1, 1, 4, 3.5, 'Tuning VertiPaq', 
     'Diagnostiquer la cardinalité des colonnes avec DAX Studio et diviser l''empreinte RAM par 5.', 5),
 
-(6, 'PBI-GOV-06', 'Sécurité à la Ligne (RLS) & Déploiement Power BI Service', 1, 3, 3.5, 'Gouvernance & RLS', 
+(6, 'PBI-GOV-06', 'Sécurité à la Ligne (RLS) & Déploiement Power BI Service', 1, 1, 3, 3.5, 'Gouvernance & RLS', 
     'Cloisonner les données par profil utilisateur avec RLS dynamique et gérer les espaces de travail Fabric/Service.', 6),
 
--- SQL & SGBD
-(7, 'SQL-MOD-01', 'Modélisation Relationnelle 3NF & Intégrité Référentielle', 3, 2, 3.5, 'Conception 3NF', 
+-- SQL & SGBD (id_thematique = 3)
+(7, 'SQL-MOD-01', 'Modélisation Relationnelle 3NF & Intégrité Référentielle', 3, 3, 2, 3.5, 'Conception 3NF', 
     'Normaliser un schéma transactionnel, définir les contraintes CHECK/FK et éliminer les anomalies de mise à jour.', 1),
 
-(8, 'SQL-WIN-02', 'SQL Analytique Avancé & Window Functions (OVER / PARTITION)', 3, 3, 3.5, 'Window Functions', 
+(8, 'SQL-WIN-02', 'SQL Analytique Avancé & Window Functions (OVER / PARTITION)', 3, 3, 3, 3.5, 'Window Functions', 
     'Effectuer des calculs de rang (DENSE_RANK), totaux cumulés et décalages temporels (LEAD/LAG) sans jointures.', 2),
 
-(9, 'SQL-EXP-03', 'Diagnostic des Plans d''Exécution (EXPLAIN ANALYZE)', 3, 3, 3.5, 'EXPLAIN Diagnostic', 
+(9, 'SQL-EXP-03', 'Diagnostic des Plans d''Exécution (EXPLAIN ANALYZE)', 3, 3, 3, 3.5, 'EXPLAIN Diagnostic', 
     'Décortiquer les plans d''exécution, repérer les Seq Scans superflus et analyser la consommation de buffers I/O.', 3),
 
-(10, 'SQL-IDX-04', 'Indexation Stratégique B-Tree & Index Couvrants', 3, 4, 3.5, 'Index Tuning', 
+(10, 'SQL-IDX-04', 'Indexation Stratégique B-Tree & Index Couvrants', 3, 3, 4, 3.5, 'Index Tuning', 
     'Concevoir des index composites sélectifs, partiels et couvrants (INCLUDE) pour réduire les temps de requête.', 4),
 
-(11, 'SQL-TXN-05', 'Transactions ACID, Modèle MVCC & Résolution des Deadlocks', 3, 4, 3.5, 'ACID & Concurrence', 
+(11, 'SQL-TXN-05', 'Transactions ACID, Modèle MVCC & Résolution des Deadlocks', 3, 3, 4, 3.5, 'ACID & Concurrence', 
     'Gérer les niveaux d''isolation, comprendre le multi-versioning MVCC et désamorcer les blocages concurrents.', 5),
 
--- Copilot Studio & IA
-(12, 'COP-FND-01', 'Fondations & Architecture des Copilotes Métiers', 2, 1, 3.5, 'Studio & Canaux', 
+-- Copilot Studio & IA (id_thematique = 2)
+(12, 'COP-FND-01', 'Fondations & Architecture des Copilotes Métiers', 2, 2, 1, 3.5, 'Studio & Canaux', 
     'Créer un premier agent conversationnel, maîtriser les déclencheurs et publier sur Teams ou le Web.', 1),
 
-(13, 'COP-RAG-02', 'Architecture RAG & Ancrage Sécurisé sur Données Entreprise', 2, 2, 3.5, 'RAG d''Entreprise', 
+(13, 'COP-RAG-02', 'Architecture RAG & Ancrage Sécurisé sur Données Entreprise', 2, 2, 2, 3.5, 'RAG d''Entreprise', 
     'Connecter l''agent à des sources documentaires (SharePoint, Dataverse) et paramétrer les filtres anti-hallucination.', 2),
 
-(14, 'COP-ACT-03', 'Actions Avancées & Déclenchement de Flux Power Automate', 2, 3, 3.5, 'Power Automate & API', 
+(14, 'COP-ACT-03', 'Actions Avancées & Déclenchement de Flux Power Automate', 2, 2, 3, 3.5, 'Power Automate & API', 
     'Permettre à l''agent d''exécuter des actions réelles dans le SI (créer un ticket, interroger un CRM via REST API).', 3),
 
-(15, 'COP-PRM-04', 'Prompt Engineering pour LLMs & Personnalisation de Ton', 2, 2, 3.5, 'Prompt Engineering', 
+(15, 'COP-PRM-04', 'Prompt Engineering pour LLMs & Personnalisation de Ton', 2, 2, 2, 3.5, 'Prompt Engineering', 
     'Structurer des consignes système précises, variables contextuelles et règles de gouvernance pour l''agent.', 4),
 
--- Excel Avancé
-(16, 'EXC-ETL-01', 'Power Query pour Excel : Automatisation des Imports Mensuels', 4, 2, 3.5, 'Power Query Excel', 
+-- Excel Avancé (id_thematique = 4)
+(16, 'EXC-ETL-01', 'Power Query pour Excel : Automatisation des Imports Mensuels', 4, 4, 2, 3.5, 'Power Query Excel', 
     'Remplacer les copier-coller manuels par un rafraîchissement en un clic de fichiers multi-dossiers.', 1),
 
-(17, 'EXC-MAT-02', 'Formules Matricielles Dynamiques & Nouvelles Fonctions', 4, 3, 3.5, 'Matrices Dynamiques', 
+(17, 'EXC-MAT-02', 'Formules Matricielles Dynamiques & Nouvelles Fonctions', 4, 4, 3, 3.5, 'Matrices Dynamiques', 
     'Maîtriser XLOOKUP, FILTER, UNIQUE, SORT, CHOOSEROWS et créer des fonctions sur-mesure avec LAMBDA.', 2),
 
--- UNIX / Linux
-(18, 'LNX-ADM-01', 'Gestion des Droits Avancés, ACLs & Sécurité Système', 5, 2, 3.5, 'Droits & ACL Linux', 
+-- UNIX / Linux (id_thematique = 5)
+(18, 'LNX-ADM-01', 'Gestion des Droits Avancés, ACLs & Sécurité Système', 5, 5, 2, 3.5, 'Droits & ACL Linux', 
     'Configurer les permissions Unix standard, les attributs spéciaux (SUID/SGID/Sticky) et les ACLs POSIX.', 1),
 
-(19, 'LNX-BSH-02', 'Scripting Bash Professionnel & Robustesse Opérationnelle', 5, 3, 3.5, 'Bash Robuste', 
-    'Écrire des scripts d''automatisation fiables avec gestion stricte d''erreurs (set -euo pipefail), logs et traps.', 2);
+(19, 'LNX-BSH-02', 'Scripting Bash Professionnel & Robustesse Opérationnelle', 5, 5, 3, 3.5, 'Bash Robuste', 
+    'Écrire des scripts d''automatisation fiables avec gestion stricte d''erreurs (set -euo pipefail), logs et traps.', 2),
+
+-- Scrum & Agilité (id_thematique = 6)
+(20, 'AGL-SM-01', 'Cadre Scrum 2020 & Posture de Servant Leader du Scrum Master', 6, 6, 2, 3.5, 'Scrum Master & Équipe', 
+    'Incarner le Servant Leadership, animer les 4 rituels sans dérive, éliminer les impédiments et faire respecter la DoD.', 1),
+
+(21, 'AGL-PO-02', 'Ingénierie du Product Backlog, Découpage INVEST & Priorisation', 6, 6, 2, 3.5, 'Product Ownership', 
+    'Décliner la vision produit en User Stories INVEST, animer le Backlog Refinement et prioriser par la valeur.', 2),
+
+-- GitHub Copilot dans VS Code (id_thematique = 7)
+(22, 'GHC-VSC-01', 'GitHub Copilot dans VS Code : Ghost Text, Modes Ask & Edit', 7, 7, 2, 3.5, 'VS Code & IA', 
+    'Maximiser la vélocité développeur : complétion multi-lignes, inline prompts, participants @workspace et commandes /fix.', 1),
+
+(23, 'GHC-TST-02', 'Automatisation des Tests Unitaires & Custom Instructions (.github)', 7, 7, 3, 3.5, 'Tests & Gouvernance', 
+    'Générer des suites de tests unitaires (/tests), mocker les dépendances et standardiser les règles d''équipe via copilot-instructions.md.', 2);
 
 -- -----------------------------------------------------------------------
 -- 5. INSERTION DES CONTENUS DÉTAILLÉS DES MODULES & LABS PRATIQUES
@@ -150,7 +182,25 @@ INSERT INTO contenus_modules (id_module, id_bloc, titre_module, theorie_notions,
 
 (8, 13, 'Garde-Fous, Confidentialité & Modération', 
     'Configuration du niveau de température, filtrage des sujets sensibles, blocage des injections de prompts et conformité d''accès aux données.', 
-    'Lab #2 : Test d''intrusion par invite (Prompt Injection) pour éprouver la résistance de l''agent et verrouiller les réponses aux seules sources autorisées.', 105, 2);
+    'Lab #2 : Test d''intrusion par invite (Prompt Injection) pour éprouver la résistance de l''agent et verrouiller les réponses aux seules sources autorisées.', 105, 2),
+
+-- Modules pour Bloc AGL-SM-01
+(9, 20, 'Facilitation des 4 Rituels & Posture Servant Leader', 
+    'Sprint Planning, Daily 15 min, Sprint Review collaborative et Rétrospective sécurisée (Directive de Kerth).', 
+    'Lab #1 : Simulation d''un Daily Scrum sous tension et animation d''une rétrospective avec plan d''action SMART.', 105, 1),
+
+(10, 20, 'Garantie de la Definition of Done & Dette Technique', 
+    'Critères non négociables de la DoD, détection du mini-cycle en V sur Burndown Chart et gestion des refactorings.', 
+    'Lab #2 : Diagnostic d''une dérive de vélocité sur Burndown et mise en place d''une DoD d''entreprise rigoureuse.', 105, 2),
+
+-- Modules pour Bloc GHC-VSC-01
+(11, 22, 'Gouvernance Sécurisée & Modes de Chat VS Code', 
+    'Public Code Matching, .copilotignore, @workspace, @terminal et commandes /explain et /fix.', 
+    'Lab #1 : Audit de code legacy avec @workspace et correction assistée d''un bug de concurrence.', 105, 1),
+
+(12, 23, 'Automatisation des Tests & Custom Instructions', 
+    'Génération de tests unitaires via /tests, mocks d''API REST et rédaction de .github/copilot-instructions.md.', 
+    'Lab #2 : Couverture de tests à 90% sur module critique et standardisation des conventions de l''équipe.', 105, 2);
 
 -- -----------------------------------------------------------------------
 -- 6. LIAISONS BLOCS <-> PROFILS CIBLES (TABLE bloc_profils)
@@ -184,7 +234,15 @@ INSERT INTO bloc_profils (id_bloc, id_profil, pertinence) VALUES
 (12, 2, 'Recommandé'),
 (13, 3, 'Essentiel'),
 (13, 5, 'Recommandé'),
-(14, 3, 'Essentiel');
+(14, 3, 'Essentiel'),
+
+-- Scrum Master & Agilité -> Chefs de projet, Tech Leads
+(20, 5, 'Essentiel'),
+(21, 5, 'Essentiel'),
+
+-- GitHub Copilot -> Développeurs Backend & Tech Leads
+(22, 3, 'Essentiel'),
+(23, 3, 'Essentiel');
 
 -- -----------------------------------------------------------------------
 -- 7. EXEMPLE RÉEL DE DOSSIER DE FORMATION SUR-MESURE (DEMANDE CLIENT)

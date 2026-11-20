@@ -501,10 +501,171 @@
     },
     {
       "id_filiere": 6,
+      "code": "AGL",
+      "libelle": "Scrum Master, Agilité Opérationnelle & Product Ownership",
+      "description": "Guide Scrum 2020, posture de Servant Leader, facilitation des rituels, élimination des impédiments, maîtrise de la vélocité et préparation certifiante.",
+      "icone": "fa-sync-alt",
+      "blocs": [
+        {
+          "id_bloc": 20,
+          "code_bloc": "AGL-SM-01",
+          "titre_bloc": "Cadre Scrum 2020 & Posture de Servant Leader du Scrum Master",
+          "duree_heures": 3.5,
+          "badge_technique": "Scrum Master & Équipe",
+          "objectif_operationnel": "Incarner le Servant Leadership, animer les 4 rituels sans dérive, éliminer les impédiments et faire respecter la DoD.",
+          "ordre_pedagogique": 1,
+          "niveau_code": "OPER",
+          "niveau_libelle": "Opérationnel / Intermédiaire",
+          "modules": [
+            {
+              "id_module": 9,
+              "titre_module": "Facilitation des 4 Rituels & Posture Servant Leader",
+              "theorie_notions": "Sprint Planning, Daily 15 min, Sprint Review collaborative et Rétrospective sécurisée (Directive de Kerth).",
+              "atelier_lab": "Lab #1 : Simulation d'un Daily Scrum sous tension et animation d'une rétrospective avec plan d'action SMART.",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 10,
+              "titre_module": "Garantie de la Definition of Done & Dette Technique",
+              "theorie_notions": "Critères non négociables de la DoD, détection du mini-cycle en V sur Burndown Chart et gestion des refactorings.",
+              "atelier_lab": "Lab #2 : Diagnostic d'une dérive de vélocité sur Burndown et mise en place d'une DoD d'entreprise rigoureuse.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "MGR_PROJ",
+              "libelle": "Chefs de Projet Digitaux & Product Owners",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 21,
+          "code_bloc": "AGL-PO-02",
+          "titre_bloc": "Ingénierie du Product Backlog, Découpage INVEST & Priorisation",
+          "duree_heures": 3.5,
+          "badge_technique": "Product Ownership",
+          "objectif_operationnel": "Décliner la vision produit en User Stories INVEST, animer le Backlog Refinement et prioriser par la valeur.",
+          "ordre_pedagogique": 2,
+          "niveau_code": "OPER",
+          "niveau_libelle": "Opérationnel / Intermédiaire",
+          "modules": [],
+          "profils_cibles": [
+            {
+              "code": "MGR_PROJ",
+              "libelle": "Chefs de Projet Digitaux & Product Owners",
+              "pertinence": "Essentiel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_filiere": 7,
+      "code": "GHC",
+      "libelle": "Développement Augmenté par l'IA : GitHub Copilot dans VS Code",
+      "description": "Productivité développeur maximale dans VS Code : Ghost Text, modes Ask, Edit, Agent, génération de tests unitaires et Custom Instructions.",
+      "icone": "fab fa-github",
+      "blocs": [
+        {
+          "id_bloc": 22,
+          "code_bloc": "GHC-VSC-01",
+          "titre_bloc": "GitHub Copilot dans VS Code : Ghost Text, Modes Ask & Edit",
+          "duree_heures": 3.5,
+          "badge_technique": "VS Code & IA",
+          "objectif_operationnel": "Maximiser la vélocité développeur : complétion multi-lignes, inline prompts, participants @workspace et commandes /fix.",
+          "ordre_pedagogique": 1,
+          "niveau_code": "OPER",
+          "niveau_libelle": "Opérationnel / Intermédiaire",
+          "modules": [
+            {
+              "id_module": 11,
+              "titre_module": "Gouvernance Sécurisée & Modes de Chat VS Code",
+              "theorie_notions": "Public Code Matching, .copilotignore, @workspace, @terminal et commandes /explain et /fix.",
+              "atelier_lab": "Lab #1 : Audit de code legacy avec @workspace et correction assistée d'un bug de concurrence.",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 23,
+          "code_bloc": "GHC-TST-02",
+          "titre_bloc": "Automatisation des Tests Unitaires & Custom Instructions (.github)",
+          "duree_heures": 3.5,
+          "badge_technique": "Tests & Gouvernance",
+          "objectif_operationnel": "Générer des suites de tests unitaires (/tests), mocker les dépendances et standardiser les règles d'équipe via copilot-instructions.md.",
+          "ordre_pedagogique": 2,
+          "niveau_code": "AVAN",
+          "niveau_libelle": "Avancé / Perfectionnement",
+          "modules": [
+            {
+              "id_module": 12,
+              "titre_module": "Automatisation des Tests & Custom Instructions",
+              "theorie_notions": "Génération de tests unitaires via /tests, mocks d'API REST et rédaction de .github/copilot-instructions.md.",
+              "atelier_lab": "Lab #2 : Couverture de tests à 90% sur module critique et standardisation des conventions de l'équipe.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Essentiel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_filiere": 8,
+      "code": "SDK",
+      "libelle": "Orchestration Multi-Agents & Copilot SDK (MCP)",
+      "description": "Architecture applicative d'agents autonomes, Model Context Protocol (MCP) et intégration de serveurs d'outils distribués.",
+      "icone": "fa-network-wired",
+      "blocs": []
+    },
+    {
+      "id_filiere": 9,
+      "code": "MSP",
+      "libelle": "MS Project & Pilotage Opérationnel de Projets",
+      "description": "Structure WBS, planification de chemin critique (CPM), nivellement de charges et suivi rigoureux des dérives de coûts et délais.",
+      "icone": "fa-tasks",
+      "blocs": []
+    },
+    {
+      "id_filiere": 10,
+      "code": "ALG",
+      "libelle": "Algorithmique & Structures de Données",
+      "description": "Pensée computationnelle, complexité spatio-temporelle (Big O), piles, files, arbres, graphes et programmation dynamique.",
+      "icone": "fa-code",
+      "blocs": []
+    },
+    {
+      "id_filiere": 11,
       "code": "HYB",
-      "libelle": "Architectures Hybrides & Sécurité des Données",
-      "description": "Conception d'infrastructures cloud et on-premise résilientes, passerelles de données (Gateways) et conformité CNDP/RGPD.",
+      "libelle": "Cursus Hybride Multi-Technologies",
+      "description": "Bâtissez un programme sur-mesure combinant plusieurs technologies complémentaires (Power BI, Excel, SQL, Linux, Agents IA).",
       "icone": "fa-cubes",
+      "blocs": []
+    },
+    {
+      "id_filiere": 12,
+      "code": "GEN",
+      "libelle": "Grand Diagnostic BenchTech : Architecture Data, SQL, BI & IA",
+      "description": "Évaluation globale de positionnement technique sur 10 cas pratiques réels d'ingénierie et d'architecture.",
+      "icone": "fa-star",
       "blocs": []
     }
   ],
