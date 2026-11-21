@@ -200,7 +200,7 @@ nav {
     text-decoration: none;
     transition: var(--transition);
     flex-shrink: 0;
-    margin-right: clamp(32px, 4vw, 68px); /* Espacement élégant et aéré entre le Logo et [Conseil & IA] */
+    margin-right: clamp(18px, 2.5vw, 44px); /* Espacement élégant et aéré entre le Logo et [Conseil & IA] */
 }
 
 /* Logo officiel BenchTech dans le Header (Format Original & Plus Grand) */
@@ -262,16 +262,21 @@ nav {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: clamp(16px, 1.8vw, 30px);
+    gap: clamp(14px, 1.5vw, 26px);
     flex-wrap: nowrap;
 }
 
+.nav-links li {
+    flex-shrink: 0;
+}
+
 .nav-links li a {
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     font-weight: 600;
     color: var(--color-sage);
     position: relative;
     padding: 8px 0;
+    white-space: nowrap;
 }
 
 .nav-links li a::after {
@@ -304,6 +309,11 @@ nav {
 }
 
 .nav-cta {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
     background-color: var(--color-magician);
     color: var(--color-sage) !important;
     font-weight: 700 !important;
@@ -311,6 +321,8 @@ nav {
     border-radius: var(--radius-sm);
     transition: var(--transition);
     box-shadow: var(--shadow-subtle);
+    text-decoration: none;
+    line-height: 1.2;
 }
 
 .nav-cta:hover {
@@ -3305,6 +3317,80 @@ summary:focus-visible {
     }
 }
 
+/* --------------------------------------------------------------------------
+   ADAPTATION NAVIGATION HEADER (TABLETTE & ÉCRANS COMPACTS)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1180px) and (min-width: 993px) {
+    .nav-links {
+        gap: clamp(8px, 1.2vw, 16px);
+    }
+    .nav-links li a {
+        font-size: 0.86rem;
+    }
+    .nav-cta {
+        padding: 8px 16px !important;
+        font-size: 0.86rem;
+    }
+    .header-logo-img {
+        height: 58px;
+    }
+    .logo {
+        margin-right: clamp(14px, 2vw, 28px);
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 92px;
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 10px 0;
+        transition: var(--transition);
+        white-space: nowrap;
+    }
+
+    .nav-links li a.active {
+        color: var(--color-magician) !important;
+        padding-left: 12px;
+        border-left: 3px solid var(--color-magician);
+    }
+
+    .nav-cta {
+        display: block !important;
+        text-align: center;
+        white-space: nowrap !important;
+        width: 100%;
+    }
+}
+
 
 
 /* --------------------------------------------------------------------------
@@ -3434,8 +3520,10 @@ summary:focus-visible {
     }
 
     .nav-cta {
-        display: block;
+        display: block !important;
         text-align: center;
+        white-space: nowrap !important;
+        width: 100%;
     }
 
     .grid-3, .grid-2 {
