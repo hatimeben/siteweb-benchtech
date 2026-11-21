@@ -363,6 +363,16 @@ nav {
     transform: translateX(-50%) translateY(4px);
 }
 
+/* Force la fermeture immédiate après clic sur un item */
+.nav-dropdown.dropdown-closing .nav-dropdown-menu,
+.nav-dropdown.dropdown-closing:hover .nav-dropdown-menu,
+.nav-dropdown.dropdown-closing:focus-within .nav-dropdown-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(10px) !important;
+}
+
 .nav-dropdown-menu li {
     width: 100%;
     padding: 0;

@@ -5154,6 +5154,32 @@
         }
 
         // ---------------------------------------------------------------------
+        // DROPDOWN NAV DESKTOP — Fermeture au clic sur un item
+        // ---------------------------------------------------------------------
+        document.querySelectorAll('.nav-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                // Retire le focus du parent pour couper :focus-within
+                const dropdown = link.closest('.nav-dropdown');
+                if (dropdown) {
+                    // Blur tous les éléments focusables dans le dropdown
+                    dropdown.querySelectorAll('a, button').forEach(el => el.blur());
+                    // Ajout temporaire d'une classe qui force la fermeture via CSS
+                    dropdown.classList.add('dropdown-closing');
+                    setTimeout(() => dropdown.classList.remove('dropdown-closing'), 400);
+                }
+            });
+        });
+
+        // Fermer le dropdown si on clique ailleurs dans la page
+        document.addEventListener('click', (e) => {
+            document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.querySelectorAll('a, button').forEach(el => el.blur());
+                }
+            });
+        });
+
+        // ---------------------------------------------------------------------
         // SCROLLSPY DYNAMIQUE BenchTech (SURLIGNAGE DU MENU AU DÉFILEMENT)
         // ---------------------------------------------------------------------
         const navAnchorLinks = document.querySelectorAll('#main-nav-links a[href^="#"]');
