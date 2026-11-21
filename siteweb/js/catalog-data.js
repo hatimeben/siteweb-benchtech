@@ -671,6 +671,261 @@ window.BENCHTECH_CATALOG = {
       "description": "Évaluation globale de positionnement technique sur 10 cas pratiques réels d'ingénierie et d'architecture.",
       "icone": "fa-star",
       "blocs": []
+    },
+    {
+      "id_filiere": 13,
+      "code": "CLD",
+      "libelle": "Cloud Computing, Conteneurs & Ingénierie DevOps",
+      "description": "Architectures Cloud résilientes, conteneurisation Docker, orchestration Kubernetes, Infrastructure as Code avec Terraform, pipelines CI/CD automatisés et observabilité SRE.",
+      "icone": "fa-cloud",
+      "blocs": [
+        {
+          "id_bloc": 24,
+          "code_bloc": "CLD-DCK-01",
+          "titre_bloc": "Conteneurisation d'Applications avec Docker & Registries Privés",
+          "duree_heures": 3.5,
+          "badge_technique": "Docker & Conteneurs",
+          "objectif_operationnel": "Concevoir des images Docker multi-stage légères et sécurisées, isoler les réseaux de conteneurs et publier sur des registres d'entreprise sécurisés.",
+          "ordre_pedagogique": 1,
+          "niveau_code": "OPER",
+          "niveau_libelle": "Opérationnel / Intermédiaire",
+          "modules": [
+            {
+              "id_module": 13,
+              "titre_module": "Architecture Docker Engine & Multi-Stage Builds Haute Performance",
+              "theorie_notions": "Namespaces Linux, cgroups, UnionFS, couches d'images, principes de réduction de surface d'attaque (images Alpine/Distroless), isolation utilisateur non-root.",
+              "atelier_lab": "Lab #1 : Réduction d'une image Docker Java/Node.js de 1,2 Go à 85 Mo via multi-stage builds et élimination complète des vulnérabilités critiques de build.",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 14,
+              "titre_module": "Volumes Persistants, Réseaux Bridge & Multi-Conteneurs Docker Compose",
+              "theorie_notions": "Drivers de stockage (bind mounts vs volumes managés), réseaux bridge utilisateurs avec DNS interne, variables d'environnement et secrets Docker.",
+              "atelier_lab": "Lab #2 : Orchestration locale d'une architecture 3-tiers (Web frontend, API backend et base PostgreSQL persistante) avec healthchecks et redémarrage automatique.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Recommandé"
+            },
+            {
+              "code": "DBA_SYS",
+              "libelle": "DBAs, Administrateurs Systèmes & DevOps",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 25,
+          "code_bloc": "CLD-K8S-02",
+          "titre_bloc": "Orchestration & Déploiement Résilient avec Kubernetes (K8s)",
+          "duree_heures": 3.5,
+          "badge_technique": "Kubernetes Core",
+          "objectif_operationnel": "Déployer des workloads conteneurisés en haute disponibilité, gérer les stratégies de Rolling Updates, l'Ingress Controller et le stockage persistant.",
+          "ordre_pedagogique": 2,
+          "niveau_code": "AVAN",
+          "niveau_libelle": "Avancé / Perfectionnement",
+          "modules": [
+            {
+              "id_module": 15,
+              "titre_module": "Architecture Control Plane & Primitives de Workloads K8s",
+              "theorie_notions": "Rôles de kube-apiserver, etcd, kube-scheduler, kubelet et kube-proxy. Déclarations YAML des Pods, Deployments, ReplicaSets et Namespaces.",
+              "atelier_lab": "Lab #1 : Déploiement d'un cluster d'API microservices avec zéro temps d'arrêt (Zero Downtime Rolling Update) et retour arrière instantané (Rollback).",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 16,
+              "titre_module": "Services Networking, Ingress Nginx & Gestion Sécurisée des Secrets",
+              "theorie_notions": "Différences entre ClusterIP, NodePort, LoadBalancer et Ingress Nginx. Injection sécurisée de ConfigMaps et Secrets chiffrés en base.",
+              "atelier_lab": "Lab #2 : Exposition externe sécurisée par TLS/HTTPS via Ingress Controller et routage par nom d'hôte avec sondes livenessProbe et readinessProbe.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Recommandé"
+            },
+            {
+              "code": "DBA_SYS",
+              "libelle": "DBAs, Administrateurs Systèmes & DevOps",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 26,
+          "code_bloc": "CLD-IAC-03",
+          "titre_bloc": "Infrastructure as Code (IaC) avec Terraform & Multi-Cloud",
+          "duree_heures": 3.5,
+          "badge_technique": "Terraform IaC",
+          "objectif_operationnel": "Provisionner et versionner des infrastructures Cloud souveraines (Azure, AWS ou OpenStack) de façon reproductible, modulaire et sans dérive.",
+          "ordre_pedagogique": 3,
+          "niveau_code": "AVAN",
+          "niveau_libelle": "Avancé / Perfectionnement",
+          "modules": [
+            {
+              "id_module": 17,
+              "titre_module": "Syntaxe HCL, State Management & Verrouillage Concurrentiel",
+              "theorie_notions": "Cycle de vie Terraform (init, plan, apply, destroy), gestion du fichier terraform.tfstate, remote backend sécurisé (S3/Azure Blob) avec verrouillage de lock concurrent.",
+              "atelier_lab": "Lab #1 : Initialisation d'un backend distant sécurisé et provisionnement automatisé d'un Virtual Private Cloud (VPC/VNet) avec sous-réseaux privés/publics.",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 18,
+              "titre_module": "Modules Réutilisables, Variables & Détection des Dérives (Drift)",
+              "theorie_notions": "Conception de modules Terraform d'entreprise réutilisables, gestion des environnements (Dev/Staging/Prod) et détection des dérives d'infrastructure (Drift Detection).",
+              "atelier_lab": "Lab #2 : Création d'un module d'infrastructure complet déployant une flotte de VMs managées derrière un équilibreur de charge avec alertes de drift.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Recommandé"
+            },
+            {
+              "code": "DBA_SYS",
+              "libelle": "DBAs, Administrateurs Systèmes & DevOps",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 27,
+          "code_bloc": "CLD-CICD-04",
+          "titre_bloc": "Pipelines CI/CD & Automatisation des Déploiements (GitHub Actions / GitLab)",
+          "duree_heures": 3.5,
+          "badge_technique": "CI/CD Automation",
+          "objectif_operationnel": "Automatiser les tests unitaires, l'analyse statique de code, le packaging d'artéfacts et la livraison continue vers les environnements de staging et production.",
+          "ordre_pedagogique": 4,
+          "niveau_code": "OPER",
+          "niveau_libelle": "Opérationnel / Intermédiaire",
+          "modules": [
+            {
+              "id_module": 19,
+              "titre_module": "Fondations CI/CD, Runners & Stratégies de Triggers Git",
+              "theorie_notions": "Événements Git (push, pull request, tag release), runners hébergés vs self-hosted sécurisés, mise en cache intelligente des dépendances.",
+              "atelier_lab": "Lab #1 : Construction d'un pipeline complet exécutant tests unitaires, linter de code, build de conteneur et publication automatique sur registre privé.",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 20,
+              "titre_module": "Déploiement Continu (CD), Approbations Manuelles & Blue/Green",
+              "theorie_notions": "Environnements protégés avec approbation requise des pairs, stratégies de déploiement Blue/Green et Canary Releases, gestion des secrets d'environnement.",
+              "atelier_lab": "Lab #2 : Pipeline CD automatisant le déploiement sur un cluster Kubernetes avec mise à jour automatique des manifestes et notification d'équipe en cas d'échec.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Recommandé"
+            },
+            {
+              "code": "DBA_SYS",
+              "libelle": "DBAs, Administrateurs Systèmes & DevOps",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 28,
+          "code_bloc": "CLD-OBS-05",
+          "titre_bloc": "Observabilité, Monitoring & Métriques (Prometheus & Grafana)",
+          "duree_heures": 3.5,
+          "badge_technique": "Observabilité SRE",
+          "objectif_operationnel": "Instrumenter les clusters et applications, collecter les métriques RED/USE en temps réel, concevoir des tableaux de bord Grafana et router les alertes critiques.",
+          "ordre_pedagogique": 5,
+          "niveau_code": "AVAN",
+          "niveau_libelle": "Avancé / Perfectionnement",
+          "modules": [
+            {
+              "id_module": 21,
+              "titre_module": "Collecte de Métriques Time-Series avec Prometheus & Exporters",
+              "theorie_notions": "Modèle de collecte pull vs push, métriques RED (Rate, Errors, Duration) et USE (Utilization, Saturation, Errors), Node Exporter et Kube-State-Metrics.",
+              "atelier_lab": "Lab #1 : Déploiement de la pile Prometheus sur un cluster, écriture de requêtes PromQL avancées (taux d'erreur 5xx, utilisation CPU/RAM moyenne sur 5m).",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 22,
+              "titre_module": "Visualisation Grafana, SLI/SLO & Alertmanager",
+              "theorie_notions": "Conception de dashboards exécutifs Grafana, définition des indicateurs de niveau de service (SLI/SLO) et configuration des règles d'alerting intelligentes.",
+              "atelier_lab": "Lab #2 : Conception d'un dashboard de production en direct avec déclenchement automatique d'alerte Alertmanager lors du dépassement du seuil critique.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Recommandé"
+            },
+            {
+              "code": "DBA_SYS",
+              "libelle": "DBAs, Administrateurs Systèmes & DevOps",
+              "pertinence": "Essentiel"
+            }
+          ]
+        },
+        {
+          "id_bloc": 29,
+          "code_bloc": "CLD-SEC-06",
+          "titre_bloc": "DevSecOps : Sécurisation du Cycle CI/CD & Scan de Vulnérabilités",
+          "duree_heures": 3.5,
+          "badge_technique": "DevSecOps",
+          "objectif_operationnel": "Intégrer les contrôles de sécurité Shift-Left (SAST, SCA, scan de conteneurs Trivy) et verrouiller les politiques d'admission Kubernetes avec OPA Gatekeeper.",
+          "ordre_pedagogique": 6,
+          "niveau_code": "EXPT",
+          "niveau_libelle": "Expert / Architecte",
+          "modules": [
+            {
+              "id_module": 23,
+              "titre_module": "Shift-Left Security : Analyse SAST & Scan d'Images Conteneurs",
+              "theorie_notions": "Détection statique des failles de code (SAST), analyse des composants tiers et CVEs (SCA), détection des secrets hardcodés (Gitleaks) et scan d'images avec Trivy.",
+              "atelier_lab": "Lab #1 : Blocage automatique d'un pipeline CI/CD dès détection d'une CVE critique (CVSS > 8.0) dans une image de base ou d'un secret leaké dans un commit.",
+              "duree_minutes": 105,
+              "ordre_affichage": 1
+            },
+            {
+              "id_module": 24,
+              "titre_module": "Politiques de Sécurité Runtime & Contrôleur d'Admission K8s",
+              "theorie_notions": "Sécurité du runtime conteneur, profils Seccomp/AppArmor, Kubernetes Pod Security Standards (Restricted) et admission controller avec Open Policy Agent (OPA).",
+              "atelier_lab": "Lab #2 : Déploiement d'une règle de gouvernance OPA interdisant formellement l'exécution de conteneurs en mode 'privileged' ou avec l'UID 0 (root) sur l'ensemble du cluster.",
+              "duree_minutes": 105,
+              "ordre_affichage": 2
+            }
+          ],
+          "profils_cibles": [
+            {
+              "code": "DEV_BACK",
+              "libelle": "Développeurs Backend & Ingénieurs Données",
+              "pertinence": "Recommandé"
+            },
+            {
+              "code": "DBA_SYS",
+              "libelle": "DBAs, Administrateurs Systèmes & DevOps",
+              "pertinence": "Essentiel"
+            }
+          ]
+        }
+      ]
     }
   ],
   "niveaux": [

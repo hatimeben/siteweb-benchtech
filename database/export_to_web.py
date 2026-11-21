@@ -251,7 +251,9 @@ def export_all():
         "sql": {"studioTarget": "sql-studio", "recommendedCourse": "Formation SQL Sur-Mesure : Requêtage Analytique & Query Tuning", "formTopic": "Formation SQL Sur-Mesure"},
         "powerbi": {"studioTarget": "powerbi-studio", "recommendedCourse": "Formation Power BI Sur-Mesure : DAX & Modélisation", "formTopic": "Formation Power BI Sur-Mesure"},
         "copilot": {"studioTarget": "copilot-studio", "recommendedCourse": "Formation Copilot Studio : Conception d'Agents IA", "formTopic": "Formation Copilot Studio"},
-        "excel": {"studioTarget": "excel-studio", "recommendedCourse": "Formation Excel Avancé : Power Query & Modélisation", "formTopic": "Formation Excel Sur-Mesure"}
+        "excel": {"studioTarget": "excel-studio", "recommendedCourse": "Formation Excel Avancé : Power Query & Modélisation", "formTopic": "Formation Excel Sur-Mesure"},
+        "unix": {"studioTarget": "unix-studio", "recommendedCourse": "Formation UNIX & Linux Sur-Mesure : Administration Système & Scripting Bash", "formTopic": "Formation UNIX Sur-Mesure"},
+        "cloud-devops": {"studioTarget": "cloud-devops-studio", "recommendedCourse": "Formation Cloud Computing, Conteneurs & Ingénierie DevOps Sur-Mesure", "formTopic": "Formation Cloud & DevOps Sur-Mesure"}
     }
 
     for t_code, t_data in quiz_pool["themes"].items():

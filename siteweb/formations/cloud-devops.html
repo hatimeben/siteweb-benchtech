@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Cloud Computing, Conteneurs &amp; Ingénierie DevOps : Docker, Kubernetes &amp; Terraform | BenchTech</title>
+    <meta name="description" content="Formation certifiante Cloud Computing &amp; DevOps à Casablanca et en ligne. Maîtrisez la conteneurisation Docker, l'orchestration Kubernetes (K8s), l'Infrastructure as Code Terraform et les pipelines CI/CD résilients.">
+    <link rel="canonical" href="https://benchtech.ma/formations/cloud-devops">
+
+    <!-- Métadonnées Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="BenchTech">
+    <meta property="og:title" content="Formation Cloud Computing, Conteneurs &amp; Ingénierie DevOps | BenchTech">
+    <meta property="og:description" content="Cursus d'excellence animé par des Cloud Architects et ingénieurs DevOps seniors. Docker multi-stage, cluster Kubernetes de production, Terraform IaC, observabilité Prometheus et DevSecOps.">
+    <meta property="og:url" content="https://benchtech.ma/formations/cloud-devops">
+    <meta property="og:image" content="https://benchtech.ma/images/logo-benchtech.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Formation Cloud &amp; DevOps — Docker, K8s, Terraform, CI/CD | BenchTech">
+    <meta name="twitter:description" content="Perfectionnement professionnel Cloud Native : conteneurs sécurisés, architecture Kubernetes résiliente, IaC Terraform reproductible et automatisation CI/CD industrielle.">
+    <meta name="twitter:image" content="https://benchtech.ma/images/logo-benchtech.png">
+
+    <!-- Schéma structuré Schema.org (Course) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation Cloud Computing, Conteneurs & Ingénierie DevOps : Docker, Kubernetes & Terraform",
+      "description": "Programme intensif destiné aux administrateurs systèmes, développeurs backend et ingénieurs DevOps pour maîtriser l'architecture Cloud Native, l'automatisation CI/CD et la haute disponibilité en production.",
+      "provider": {
+        "@type": "Organization",
+        "name": "BenchTech",
+        "url": "https://benchtech.ma/",
+        "logo": "https://benchtech.ma/images/logo-benchtech.png"
+      },
+      "inLanguage": "fr",
+      "educationalLevel": "Intermediate to Advanced",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": ["onsite", "online"],
+        "courseWorkload": "PT21H"
+      }
+    }
+    </script>
+
+    <!-- Favicon officiel BenchTech -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/monogram-bt.png">
+
+    <!-- Polices Google Fonts : Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="../css/style.css?v=5.1">
+</head>
+<body class="page-course-detail">
+
+    <!-- =======================================================================
+         1. NAVIGATION
+         ======================================================================= -->
+    <header>
+        <div class="container">
+            <nav aria-label="Navigation principale">
+                <a href="../index.html" class="logo" aria-label="BenchTech — Retour à l'accueil">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech — shaping tomorrow, today" class="header-logo-img" width="220" height="68">
+                </a>
+
+                <ul class="nav-links" id="main-nav-links">
+                    <li><a href="../index.html#conseil">Conseil &amp; IA</a></li>
+                    <li><a href="../index.html#references">Références</a></li>
+                    <li><a href="../index.html#formations" class="active">Académie</a></li>
+                    <li><a href="../index.html#studios-sur-mesure">Cursus Sur-Mesure</a></li>
+                    <li><a href="../index.html#evaluations">Quiz Technique</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contact" class="nav-cta">Demander un devis</a></li>
+                </ul>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav-links">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- =======================================================================
+             2. FIL D'ARIANE (BREADCRUMB)
+             ======================================================================= -->
+        <div class="breadcrumbs-bar">
+            <div class="container">
+                <nav aria-label="Fil d'Ariane">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../index.html"><i class="fas fa-house" aria-hidden="true"></i> Accueil</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li><a href="../index.html#formations">Formations &amp; Académie</a></li>
+                        <li><i class="fas fa-chevron-right" aria-hidden="true"></i></li>
+                        <li aria-current="page">Cloud Computing, Conteneurs &amp; Ingénierie DevOps</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             3. BANNIÈRE HERO DU CURSUS
+             ======================================================================= -->
+        <section class="course-hero">
+            <div class="container">
+                <div class="course-hero-content">
+                    <div class="course-category-badge">
+                        <i class="fas fa-cloud" aria-hidden="true"></i> Pôle Cloud Native, Systèmes &amp; Ingénierie DevOps
+                    </div>
+
+                    <h1 class="course-main-title">
+                        Cloud Computing, Conteneurs &amp; DevOps : Docker, Kubernetes &amp; <span class="highlight-gold">Terraform IaC</span>
+                    </h1>
+
+                    <p class="course-lead">
+                        De la conception d'images Docker minimales sécurisées à l'orchestration de clusters Kubernetes en haute disponibilité, en passant par le provisionnement reproductible via Terraform et les pipelines CI/CD résilients : maîtrisez l'ingénierie Cloud d'entreprise selon les standards CNCF et Linux Foundation.
+                    </p>
+
+                    <div class="course-metrics-bar">
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-calendar-day" aria-hidden="true"></i> Durée totale</span>
+                            <span class="metric-value">3 à 6 jours (21h à 42h)</span>
+                            <span class="metric-sub">Modulable par blocs de 3h30</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-laptop-code" aria-hidden="true"></i> Approche</span>
+                            <span class="metric-value">80% Labs Pratiques</span>
+                            <span class="metric-sub">Clusters K8s &amp; Multi-Cloud réels</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-shield-halved" aria-hidden="true"></i> Production</span>
+                            <span class="metric-value">Zéro Dérive (Drift)</span>
+                            <span class="metric-sub">Sécurité Shift-Left &amp; SRE</span>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <span class="metric-label"><i class="fas fa-certificate" aria-hidden="true"></i> Certifications</span>
+                            <span class="metric-value">Aligné CKA / DCA / IaC</span>
+                            <span class="metric-sub">Attestation d'Excellence BenchTech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================================
+             4. GRILLE PRINCIPALE (SYLLABUS + SIDEBAR STICKY)
+             ======================================================================= -->
+        <div class="container">
+            <div class="course-layout-grid">
+                
+                <!-- COLONNE PRINCIPALE DU PROGRAMME -->
+                <div class="course-main-col">
+
+                    <!-- Bloc Objectifs Opérationnels -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-bullseye" aria-hidden="true"></i> Compétences Opérationnelles Acquises</h2>
+                        <div class="outcomes-grid">
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fab fa-docker" aria-hidden="true"></i></div>
+                                <h4>Conteneurisation Optimisée</h4>
+                                <p>Rédiger des Dockerfiles multi-stage ultra-légers (&lt; 90 Mo), gérer les volumes persistants et éliminer les CVEs critiques dès la phase de build.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-dharmachakra" aria-hidden="true"></i></div>
+                                <h4>Orchestration Kubernetes Résiliente</h4>
+                                <p>Déployer des microservices avec Zero-Downtime Rolling Updates, piloter les Ingress L7, les sondes liveness/readiness et l'auto-scaling HPA.</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                                <h4>Infrastructure as Code (Terraform)</h4>
+                                <p>Provisionner des architectures multi-cloud déclaratives et modulaires, verrouiller les états distribués et neutraliser les dérives (Drift).</p>
+                            </div>
+                            <div class="outcome-card">
+                                <div class="outcome-icon"><i class="fas fa-shield-virus" aria-hidden="true"></i></div>
+                                <h4>CI/CD &amp; DevSecOps Industriel</h4>
+                                <p>Automatiser la livraison continue (GitHub Actions/GitLab CI), scanner le code et les images avec Trivy et verrouiller les politiques OPA Gatekeeper.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Programme Détaillé Module par Module (Syllabus) -->
+                    <section class="course-block-card">
+                        <div class="syllabus-header-row">
+                            <h2 class="block-heading" style="margin-bottom: 0;">
+                                <i class="fas fa-list-check" aria-hidden="true"></i> Programme Pédagogique Détaillé (6 Blocs de 3h30)
+                            </h2>
+                            <span class="syllabus-version-chip">Standards CNCF, Linux Foundation &amp; HashiCorp</span>
+                        </div>
+                        <p class="section-subtext">
+                            Chaque bloc de 3h30 combine 105 min de fondations architecturales rigoureuses et 105 min d'Atelier Pratique (Lab) en conditions réelles de production.
+                        </p>
+
+                        <div class="syllabus-accordion">
+                            
+                            <!-- BLOC 1 -->
+                            <div class="syllabus-item active">
+                                <div class="syllabus-item-header">
+                                    <div class="syllabus-item-title-wrap">
+                                        <span class="syllabus-item-badge badge-tag-blue">Niveau Opérationnel</span>
+                                        <h3 class="syllabus-item-title">Bloc CLD-DCK-01 : Conteneurisation d'Applications avec Docker &amp; Registries Privés</h3>
+                                    </div>
+                                    <span class="syllabus-duration-chip"><i class="fas fa-clock" aria-hidden="true"></i> 3h30 (210 min)</span>
+                                </div>
+                                <div class="syllabus-item-body">
+                                    <p class="syllabus-item-desc">
+                                        <strong>Objectif :</strong> Concevoir des images Docker multi-stage légères et sécurisées, isoler les réseaux de conteneurs et publier sur des registres d'entreprise sécurisés.
+                                    </p>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 1 (105 min) — Architecture Docker Engine &amp; Multi-Stage Builds</span>
+                                        <p class="subpart-text">Namespaces Linux, cgroups, UnionFS, couches d'images, principes de réduction de surface d'attaque (images Alpine/Distroless), isolation utilisateur non-root.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #1 :</strong> Réduction d'une image Docker Java/Node.js de 1,2 Go à 85 Mo via multi-stage builds et élimination complète des vulnérabilités critiques de build.
+                                        </div>
+                                    </div>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 2 (105 min) — Volumes Persistants, Réseaux Bridge &amp; Docker Compose</span>
+                                        <p class="subpart-text">Drivers de stockage (bind mounts vs volumes managés), réseaux bridge utilisateurs avec DNS interne, variables d'environnement et secrets Docker.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #2 :</strong> Orchestration locale d'une architecture 3-tiers (Web frontend, API backend et base PostgreSQL persistante) avec healthchecks et redémarrage automatique.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BLOC 2 -->
+                            <div class="syllabus-item active">
+                                <div class="syllabus-item-header">
+                                    <div class="syllabus-item-title-wrap">
+                                        <span class="syllabus-item-badge badge-tag-purple">Niveau Avancé</span>
+                                        <h3 class="syllabus-item-title">Bloc CLD-K8S-02 : Orchestration &amp; Déploiement Résilient avec Kubernetes (K8s)</h3>
+                                    </div>
+                                    <span class="syllabus-duration-chip"><i class="fas fa-clock" aria-hidden="true"></i> 3h30 (210 min)</span>
+                                </div>
+                                <div class="syllabus-item-body">
+                                    <p class="syllabus-item-desc">
+                                        <strong>Objectif :</strong> Déployer des workloads conteneurisés en haute disponibilité, gérer les stratégies de Rolling Updates, l'Ingress Controller et le stockage persistant.
+                                    </p>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 1 (105 min) — Architecture Control Plane &amp; Primitives de Workloads K8s</span>
+                                        <p class="subpart-text">Rôles de kube-apiserver, etcd, kube-scheduler, kubelet et kube-proxy. Déclarations YAML des Pods, Deployments, ReplicaSets et Namespaces.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #1 :</strong> Déploiement d'un cluster d'API microservices avec zéro temps d'arrêt (Zero Downtime Rolling Update) et retour arrière instantané (Rollback).
+                                        </div>
+                                    </div>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 2 (105 min) — Services Networking, Ingress Nginx &amp; Gestion Sécurisée des Secrets</span>
+                                        <p class="subpart-text">Différences entre ClusterIP, NodePort, LoadBalancer et Ingress Nginx. Injection sécurisée de ConfigMaps et Secrets chiffrés en base.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #2 :</strong> Exposition externe sécurisée par TLS/HTTPS via Ingress Controller et routage par nom d'hôte avec sondes livenessProbe et readinessProbe.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BLOC 3 -->
+                            <div class="syllabus-item active">
+                                <div class="syllabus-item-header">
+                                    <div class="syllabus-item-title-wrap">
+                                        <span class="syllabus-item-badge badge-tag-purple">Niveau Avancé</span>
+                                        <h3 class="syllabus-item-title">Bloc CLD-IAC-03 : Infrastructure as Code (IaC) avec Terraform &amp; Multi-Cloud</h3>
+                                    </div>
+                                    <span class="syllabus-duration-chip"><i class="fas fa-clock" aria-hidden="true"></i> 3h30 (210 min)</span>
+                                </div>
+                                <div class="syllabus-item-body">
+                                    <p class="syllabus-item-desc">
+                                        <strong>Objectif :</strong> Provisionner et versionner des infrastructures Cloud souveraines (Azure, AWS ou OpenStack) de façon reproductible, modulaire et sans dérive.
+                                    </p>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 1 (105 min) — Syntaxe HCL, State Management &amp; Verrouillage Concurrentiel</span>
+                                        <p class="subpart-text">Cycle de vie Terraform (init, plan, apply, destroy), gestion du fichier terraform.tfstate, remote backend sécurisé (S3/Azure Blob) avec verrouillage de lock concurrent.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #1 :</strong> Initialisation d'un backend distant sécurisé et provisionnement automatisé d'un Virtual Private Cloud (VPC/VNet) avec sous-réseaux privés/publics.
+                                        </div>
+                                    </div>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 2 (105 min) — Modules Réutilisables, Variables &amp; Détection des Dérives (Drift)</span>
+                                        <p class="subpart-text">Conception de modules Terraform d'entreprise réutilisables, gestion des environnements (Dev/Staging/Prod) et détection des dérives d'infrastructure (Drift Detection).</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #2 :</strong> Création d'un module d'infrastructure complet déployant une flotte de VMs managées derrière un équilibreur de charge avec alertes de drift.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BLOC 4 -->
+                            <div class="syllabus-item active">
+                                <div class="syllabus-item-header">
+                                    <div class="syllabus-item-title-wrap">
+                                        <span class="syllabus-item-badge badge-tag-blue">Niveau Opérationnel</span>
+                                        <h3 class="syllabus-item-title">Bloc CLD-CICD-04 : Pipelines CI/CD &amp; Automatisation des Déploiements</h3>
+                                    </div>
+                                    <span class="syllabus-duration-chip"><i class="fas fa-clock" aria-hidden="true"></i> 3h30 (210 min)</span>
+                                </div>
+                                <div class="syllabus-item-body">
+                                    <p class="syllabus-item-desc">
+                                        <strong>Objectif :</strong> Automatiser les tests unitaires, l'analyse statique de code, le packaging d'artéfacts et la livraison continue vers les environnements de staging et production.
+                                    </p>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 1 (105 min) — Fondations CI/CD, Runners &amp; Stratégies de Triggers Git</span>
+                                        <p class="subpart-text">Événements Git (push, pull request, tag release), runners hébergés vs self-hosted sécurisés, mise en cache intelligente des dépendances.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #1 :</strong> Construction d'un pipeline complet exécutant tests unitaires, linter de code, build de conteneur et publication automatique sur registre privé.
+                                        </div>
+                                    </div>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 2 (105 min) — Déploiement Continu (CD), Approbations Manuelles &amp; Blue/Green</span>
+                                        <p class="subpart-text">Environnements protégés avec approbation requise des pairs, stratégies de déploiement Blue/Green et Canary Releases, gestion des secrets d'environnement.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #2 :</strong> Pipeline CD automatisant le déploiement sur un cluster Kubernetes avec mise à jour automatique des manifestes et notification d'équipe en cas d'échec.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BLOC 5 -->
+                            <div class="syllabus-item active">
+                                <div class="syllabus-item-header">
+                                    <div class="syllabus-item-title-wrap">
+                                        <span class="syllabus-item-badge badge-tag-purple">Niveau Avancé</span>
+                                        <h3 class="syllabus-item-title">Bloc CLD-OBS-05 : Observabilité, Monitoring &amp; Métriques (Prometheus &amp; Grafana)</h3>
+                                    </div>
+                                    <span class="syllabus-duration-chip"><i class="fas fa-clock" aria-hidden="true"></i> 3h30 (210 min)</span>
+                                </div>
+                                <div class="syllabus-item-body">
+                                    <p class="syllabus-item-desc">
+                                        <strong>Objectif :</strong> Instrumenter les clusters et applications, collecter les métriques RED/USE en temps réel, concevoir des tableaux de bord Grafana et router les alertes critiques.
+                                    </p>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 1 (105 min) — Collecte de Métriques Time-Series avec Prometheus &amp; Exporters</span>
+                                        <p class="subpart-text">Modèle de collecte pull vs push, métriques RED (Rate, Errors, Duration) et USE (Utilization, Saturation, Errors), Node Exporter et Kube-State-Metrics.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #1 :</strong> Déploiement de la pile Prometheus sur un cluster, écriture de requêtes PromQL avancées (taux d'erreur 5xx, utilisation CPU/RAM moyenne sur 5m).
+                                        </div>
+                                    </div>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 2 (105 min) — Visualisation Grafana, SLI/SLO &amp; Alertmanager</span>
+                                        <p class="subpart-text">Conception de dashboards exécutifs Grafana, définition des indicateurs de niveau de service (SLI/SLO) et configuration des règles d'alerting intelligentes.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #2 :</strong> Conception d'un dashboard de production en direct avec déclenchement automatique d'alerte Alertmanager lors du dépassement du seuil critique.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BLOC 6 -->
+                            <div class="syllabus-item active">
+                                <div class="syllabus-item-header">
+                                    <div class="syllabus-item-title-wrap">
+                                        <span class="syllabus-item-badge badge-tag-gold">Niveau Expert</span>
+                                        <h3 class="syllabus-item-title">Bloc CLD-SEC-06 : DevSecOps : Sécurisation du Cycle CI/CD &amp; Politiques OPA</h3>
+                                    </div>
+                                    <span class="syllabus-duration-chip"><i class="fas fa-clock" aria-hidden="true"></i> 3h30 (210 min)</span>
+                                </div>
+                                <div class="syllabus-item-body">
+                                    <p class="syllabus-item-desc">
+                                        <strong>Objectif :</strong> Intégrer les contrôles de sécurité Shift-Left (SAST, SCA, scan de conteneurs Trivy) et verrouiller les politiques d'admission Kubernetes avec OPA Gatekeeper.
+                                    </p>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 1 (105 min) — Shift-Left Security : Analyse SAST &amp; Scan d'Images Conteneurs</span>
+                                        <p class="subpart-text">Détection statique des failles de code (SAST), analyse des composants tiers et CVEs (SCA), détection des secrets hardcodés (Gitleaks) et scan d'images avec Trivy.</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #1 :</strong> Blocage automatique d'un pipeline CI/CD dès détection d'une CVE critique (CVSS &gt; 8.0) dans une image de base ou d'un secret leaké dans un commit.
+                                        </div>
+                                    </div>
+                                    <div class="module-subpart">
+                                        <span class="subpart-tag"><i class="fas fa-gear"></i> Module 2 (105 min) — Politiques de Sécurité Runtime &amp; Contrôleur d'Admission K8s</span>
+                                        <p class="subpart-text">Sécurité du runtime conteneur, profils Seccomp/AppArmor, Kubernetes Pod Security Standards (Restricted) et admission controller avec Open Policy Agent (OPA).</p>
+                                        <div class="lab-highlight">
+                                            <i class="fas fa-flask" aria-hidden="true"></i>
+                                            <strong>Lab #2 :</strong> Déploiement d'une règle de gouvernance OPA interdisant formellement l'exécution de conteneurs en mode 'privileged' ou avec l'UID 0 (root) sur l'ensemble du cluster.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Pédagogie & Méthode -->
+                    <section class="course-block-card">
+                        <h2 class="block-heading"><i class="fas fa-graduation-cap" aria-hidden="true"></i> La Méthodologie d'Ingénierie BenchTech</h2>
+                        <div class="method-points-list">
+                            <div class="method-point">
+                                <i class="fas fa-terminal"></i>
+                                <div>
+                                    <h5>Environnements Pratiques Réels</h5>
+                                    <p>Chaque participant dispose d'un accès dédié à un cluster Kubernetes managé, d'un compte Cloud sandbox et de dépôts Git configurés pour manipuler en conditions d'entreprise sans contrainte.</p>
+                                </div>
+                            </div>
+                            <div class="method-point">
+                                <i class="fas fa-shield-halved"></i>
+                                <div>
+                                    <h5>Culture SRE &amp; Résilience</h5>
+                                    <p>Pas de théorie déconnectée : les exercices incluent des pannes simulées (Noeuds K8s en NotReady, saturation OOM, conflits d'état Terraform) pour éprouver la capacité de diagnostic opérationnel.</p>
+                                </div>
+                            </div>
+                            <div class="method-point">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <h5>Préparation aux Certifications Internationales</h5>
+                                    <p>Le contenu est rigoureusement aligné sur les examens CKA (Certified Kubernetes Administrator), CKAD (Application Developer) et HashiCorp Certified Terraform Associate.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- SIDEBAR STICKY (PANIER, CTA, INFOS CLÉS) -->
+                <aside class="course-sidebar-col">
+                    <div class="course-sticky-card">
+                        <div class="course-price-wrap">
+                            <span class="price-type-badge">Formation Entreprise B2B</span>
+                            <div class="price-headline">Tarif Intra-Entreprise Sur Devis</div>
+                            <p class="price-subtext">Groupe de 1 à 12 collaborateurs • Présentiel ou Distanciel</p>
+                        </div>
+
+                        <div class="sidebar-details-list">
+                            <div class="sidebar-detail-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <span class="label">Volume horaire</span>
+                                    <span class="value">21h à 42h (3 à 6 jours)</span>
+                                </div>
+                            </div>
+                            <div class="sidebar-detail-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <div>
+                                    <span class="label">Rythme adaptable</span>
+                                    <span class="value">Consécutif ou fractionné</span>
+                                </div>
+                            </div>
+                            <div class="sidebar-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <span class="label">Lieu</span>
+                                    <span class="value">Casablanca, Locaux client ou Visio</span>
+                                </div>
+                            </div>
+                            <div class="sidebar-detail-item">
+                                <i class="fas fa-user-gear"></i>
+                                <div>
+                                    <span class="label">Public cible</span>
+                                    <span class="value">DevOps, Sysadmins, Devs Backend, Lead Tech</span>
+                                </div>
+                            </div>
+                            <div class="sidebar-detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <span class="label">Certification</span>
+                                    <span class="value">Attestation officielle BenchTech</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-cta-group">
+                            <a href="../index.html#cloud-devops-studio" class="btn btn-primary" style="width: 100%; text-align: center;">
+                                <i class="fas fa-sliders" aria-hidden="true"></i> Calibrer en Studio Sur-Mesure
+                            </a>
+                            <a href="../index.html#evaluations" class="btn btn-outline" style="width: 100%; text-align: center;">
+                                <i class="fas fa-compass" aria-hidden="true"></i> Tester mon niveau (Quiz 10 Q)
+                            </a>
+                            <a href="../index.html#contact" class="btn btn-gold" style="width: 100%; text-align: center;">
+                                <i class="fas fa-envelope" aria-hidden="true"></i> Demander une proposition
+                            </a>
+                        </div>
+
+                        <div class="sidebar-guarantee">
+                            <i class="fas fa-check-double"></i> Programme adaptable aux technologies de votre stack (AWS, Azure, GCP, GitLab, GitHub, Helm).
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- =======================================================================
+             5. SECTION CALL-TO-ACTION INFÉRIEURE
+             ======================================================================= -->
+        <section class="section-cta-footer">
+            <div class="container">
+                <div class="cta-banner-content">
+                    <h2>Prêt à accélérer vos déploiements et fiabiliser vos infrastructures Cloud ?</h2>
+                    <p>Nos consultants Cloud &amp; DevOps seniors conçoivent un parcours adapté aux défis opérationnels et à la maturité technique de vos équipes.</p>
+                    <div class="cta-actions-row">
+                        <a href="../index.html#cloud-devops-studio" class="btn btn-primary btn-lg">
+                            <i class="fas fa-sliders" aria-hidden="true"></i> Accéder au Studio Cloud &amp; DevOps
+                        </a>
+                        <a href="../index.html#contact" class="btn btn-outline btn-lg">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Nous contacter pour un cadrage
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =======================================================================
+         6. FOOTER INSTITUTIONNEL BenchTech
+         ======================================================================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../images/logo-benchtech-original.jpg" alt="BenchTech" class="footer-logo-img" width="180" height="56">
+                    <p class="brand-tagline">« shaping tomorrow, today »</p>
+                    <p>Cabinet d'ingénierie pédagogique, d'audit technique et de formation d'excellence pour grands comptes et professionnels exigeants.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Pôles d'Excellence</h4>
+                    <ul>
+                        <li><a href="cloud-devops.html">Cloud Computing &amp; DevOps</a></li>
+                        <li><a href="unix-linux.html">UNIX &amp; Linux Avancé</a></li>
+                        <li><a href="sql-sgbd.html">Optimisation Bases de Données &amp; SQL</a></li>
+                        <li><a href="power-bi.html">Microsoft Power BI &amp; DAX</a></li>
+                        <li><a href="copilot-studio.html">Agents IA &amp; Copilot Studio</a></li>
+                        <li><a href="github-copilot.html">GitHub Copilot &amp; Ingénierie IA</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Outils &amp; Diagnostic</h4>
+                    <ul>
+                        <li><a href="../index.html#studios-sur-mesure">Configurateur Sur-Mesure</a></li>
+                        <li><a href="../index.html#evaluations">Quiz de Positionnement Technique</a></li>
+                        <li><a href="../index.html#references">Nos Références Clients</a></li>
+                        <li><a href="../index.html#faq">Questions Fréquentes</a></li>
+                        <li><a href="../index.html#contact">Demande de Devis Intra</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Siège &amp; Contact</h4>
+                    <p><i class="fas fa-location-dot"></i> Casablanca, Maroc</p>
+                    <p><i class="fas fa-envelope"></i> contact@benchtech.ma</p>
+                    <p><i class="fas fa-phone"></i> +212 5 22 00 00 00</p>
+                    <p><i class="fas fa-clock"></i> Lun - Ven : 08h30 - 18h30</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BenchTech. Tous droits réservés. Marque officielle déposée.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
