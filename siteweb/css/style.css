@@ -431,10 +431,13 @@ nav {
     justify-content: center;
     white-space: nowrap !important;
     flex-shrink: 0 !important;
+    overflow: visible;
+    min-width: max-content;
     background-color: var(--color-magician);
     color: var(--color-sage) !important;
     font-weight: 700 !important;
-    padding: 10px 22px !important;
+    font-size: 0.84rem !important;
+    padding: 9px 16px !important;
     border-radius: var(--radius-sm);
     transition: var(--transition);
     box-shadow: var(--shadow-subtle);
@@ -3445,8 +3448,10 @@ summary:focus-visible {
         font-size: 0.86rem;
     }
     .nav-cta {
-        padding: 8px 16px !important;
-        font-size: 0.86rem;
+        padding: 8px 14px !important;
+        font-size: 0.82rem !important;
+        white-space: nowrap !important;
+        min-width: max-content;
     }
     .header-logo-img {
         height: 58px;
