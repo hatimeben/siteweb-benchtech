@@ -276,7 +276,20 @@
                     <li><a href="#conseil">Conseil &amp; IA</a></li>
                     <li><a href="#references">Références</a></li>
                     <li><a href="#formations">Académie</a></li>
-                    <li><a href="#studios-sur-mesure">Cursus Sur-Mesure</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#studios-sur-mesure" class="nav-dropdown-toggle">
+                            Cursus Sur-Mesure <i class="fas fa-chevron-down nav-dropdown-arrow" aria-hidden="true"></i>
+                        </a>
+                        <ul class="nav-dropdown-menu" aria-label="Choisir un studio sur-mesure">
+                            <li><a href="#powerbi-studio" onclick="navigateToStudio('powerbi-studio')"><i class="fas fa-chart-pie" aria-hidden="true"></i> Power BI &amp; DAX</a></li>
+                            <li><a href="#excel-studio" onclick="navigateToStudio('excel-studio')"><i class="fas fa-file-excel" aria-hidden="true"></i> Excel Avancé &amp; Power Query</a></li>
+                            <li><a href="#sql-studio" onclick="navigateToStudio('sql-studio')"><i class="fas fa-database" aria-hidden="true"></i> SQL &amp; SGBD</a></li>
+                            <li><a href="#unix-studio" onclick="navigateToStudio('unix-studio')"><i class="fas fa-terminal" aria-hidden="true"></i> UNIX &amp; Linux</a></li>
+                            <li><a href="#cloud-devops-studio" onclick="navigateToStudio('cloud-devops-studio')"><i class="fas fa-cloud" aria-hidden="true"></i> Cloud &amp; DevOps</a></li>
+                            <li><a href="#copilot-studio" onclick="navigateToStudio('copilot-studio')"><i class="fas fa-robot" aria-hidden="true"></i> Copilot &amp; IA Générative</a></li>
+                            <li><a href="#hybrid-studio" onclick="navigateToStudio('hybrid-studio')"><i class="fas fa-cubes" aria-hidden="true"></i> Studio Hybride Multi-Technologies</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#evaluations">Quiz de Positionnement</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact" class="nav-cta" style="white-space: nowrap;">Échanger avec un expert</a></li>
@@ -1822,6 +1835,21 @@
                                     <span>BenchTech Académie &bull; Fiche Pédagogique Sur-Mesure</span>
                                 </div>
 
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio" selected>📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio">📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio">🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio">🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio">☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio">🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio">🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <h3 id="live-syllabus-title-pbi" class="syllabus-title">Formation Power BI Intermédiaire : Modélisation en Étoile &amp; DAX Opérationnel</h3>
                                 <p id="live-syllabus-subtitle-pbi" class="syllabus-subtitle">Parcours calibré pour structurer vos modèles relationnels d'entreprise et maîtriser les calculs analytiques DAX.</p>
 
@@ -2369,6 +2397,21 @@
                                     <span>BenchTech Académie — Fiche Pédagogique Sur-Mesure</span>
                                 </div>
 
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio">📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio" selected>📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio">🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio">🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio">☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio">🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio">🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <h3 id="live-syllabus-title" class="syllabus-title">Formation Excel Avancé : Fonctions Logiques, TCD &amp; Tableaux de Bord</h3>
                                 <p id="live-syllabus-subtitle" class="syllabus-subtitle">Parcours calibré pour optimiser la productivité et la fiabilité des reportings financiers et opérationnels.</p>
 
@@ -2911,6 +2954,21 @@
                                     <span>BenchTech Académie — Fiche Pédagogique Sur-Mesure</span>
                                 </div>
 
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio">📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio">📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio" selected>🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio">🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio">☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio">🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio">🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <h3 id="live-syllabus-title-sql" class="syllabus-title">Formation SQL Analytique Intermédiaire : CTE, Sous-Requêtes &amp; Fonctions de Fenêtrage</h3>
                                 <p id="live-syllabus-subtitle-sql" class="syllabus-subtitle">Parcours calibré pour les analystes et développeurs manipulant des requêtes complexes : CTE récursives, fenêtrage analytique et vues matérialisées.</p>
 
@@ -3448,6 +3506,21 @@
                                     <span>BenchTech Académie — Fiche Pédagogique Sur-Mesure</span>
                                 </div>
 
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio">📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio">📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio">🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio" selected>🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio">☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio">🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio">🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <h3 id="live-syllabus-title-unix" class="syllabus-title">Formation UNIX / Linux Intermédiaire : Administration Système, Processus &amp; Réseau</h3>
                                 <p id="live-syllabus-subtitle-unix" class="syllabus-subtitle">Parcours calibré pour administrer des serveurs de production en autonomie : gestion des processus, services systemd, disques LVM et réseau.</p>
 
@@ -3806,6 +3879,21 @@
                                 <div class="syllabus-header-badge">
                                     <img src="images/monogram-bt.png" alt="Monogramme BenchTech" width="26" height="26">
                                     <span>BenchTech Académie — Fiche Pédagogique Sur-Mesure</span>
+                                </div>
+
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio">📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio">📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio">🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio">🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio" selected>☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio">🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio">🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <h3 id="live-syllabus-title-cld" class="syllabus-title">Formation Cloud Computing, Conteneurs &amp; DevOps Sur-Mesure</h3>
@@ -4328,6 +4416,21 @@
                                     <span>BenchTech Académie — Fiche Pédagogique Sur-Mesure</span>
                                 </div>
 
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio">📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio">📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio">🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio">🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio">☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio" selected>🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio">🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <h3 id="live-syllabus-title-copilot" class="syllabus-title">Formation Agents IA Métiers &amp; Copilot Studio : Conception, RAG &amp; Déploiement</h3>
                                 <p id="live-syllabus-subtitle-copilot" class="syllabus-subtitle">Parcours calibré pour concevoir des agents IA autonomes connectés aux données d'entreprise et déployés sur Microsoft 365.</p>
 
@@ -4574,6 +4677,21 @@
                                 <div class="syllabus-header-badge">
                                     <img src="images/monogram-bt.png" alt="Monogramme BenchTech" width="26" height="26">
                                     <span>BenchTech Académie — Cursus Hybride Sur-Mesure</span>
+                                </div>
+
+                                <div class="syllabus-studio-quickswitch">
+                                    <div class="quickswitch-box">
+                                        <i class="fas fa-layer-group quickswitch-icon" aria-hidden="true"></i>
+                                        <select class="quickswitch-select" onchange="navigateToStudio(this.value)" aria-label="Changer de studio de formation">
+                                            <option value="powerbi-studio">📊 Power BI &amp; DAX Studio</option>
+                                            <option value="excel-studio">📗 Excel Avancé Studio</option>
+                                            <option value="sql-studio">🗄️ SQL &amp; SGBD Studio</option>
+                                            <option value="unix-studio">🐧 UNIX &amp; Linux Studio</option>
+                                            <option value="cloud-devops-studio">☁️ Cloud &amp; DevOps Studio</option>
+                                            <option value="copilot-studio">🤖 Copilot &amp; IA Studio</option>
+                                            <option value="hybrid-studio" selected>🧩 Studio Hybride Multi-Tech</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <h3 id="live-syllabus-title-hybrid" class="syllabus-title">Cursus Hybride : Contrôle de Gestion &amp; BI Avancée</h3>
@@ -5740,13 +5858,15 @@
                 }, 120);
             }
 
-            // Défilement vers le studio
+            // Défilement fluide vers le studio avec décalage pour laisser visible le header et la barre d'onglets
             setTimeout(() => {
                 const studioEl = document.getElementById(cleanId) || document.getElementById('studios-sur-mesure');
                 if (studioEl) {
-                    studioEl.scrollIntoView({ behavior: 'smooth' });
+                    const yOffset = -140;
+                    const y = studioEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
                 }
-            }, 180);
+            }, 120);
         };
 
         window.prefillContactForm = function(topic) {
@@ -6690,6 +6810,11 @@
                 } else {
                     panel.classList.remove('active');
                 }
+            });
+
+            // Synchroniser tous les sélecteurs rapides du syllabus
+            document.querySelectorAll('.quickswitch-select').forEach(select => {
+                select.value = cleanId;
             });
 
             // Mettre à jour immédiatement la fiche pédagogique du studio affiché
