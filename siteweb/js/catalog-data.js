@@ -687,8 +687,8 @@ window.BENCHTECH_CATALOG = {
           "badge_technique": "Docker & Conteneurs",
           "objectif_operationnel": "Concevoir des images Docker multi-stage légères et sécurisées, isoler les réseaux de conteneurs et publier sur des registres d'entreprise sécurisés.",
           "ordre_pedagogique": 1,
-          "niveau_code": "OPER",
-          "niveau_libelle": "Opérationnel / Intermédiaire",
+          "niveau_code": "FOND",
+          "niveau_libelle": "Fondamentaux / Prise en main",
           "modules": [
             {
               "id_module": 13,
@@ -728,8 +728,8 @@ window.BENCHTECH_CATALOG = {
           "badge_technique": "Kubernetes Core",
           "objectif_operationnel": "Déployer des workloads conteneurisés en haute disponibilité, gérer les stratégies de Rolling Updates, l'Ingress Controller et le stockage persistant.",
           "ordre_pedagogique": 2,
-          "niveau_code": "AVAN",
-          "niveau_libelle": "Avancé / Perfectionnement",
+          "niveau_code": "FOND",
+          "niveau_libelle": "Fondamentaux / Prise en main",
           "modules": [
             {
               "id_module": 15,
@@ -769,8 +769,8 @@ window.BENCHTECH_CATALOG = {
           "badge_technique": "Terraform IaC",
           "objectif_operationnel": "Provisionner et versionner des infrastructures Cloud souveraines (Azure, AWS ou OpenStack) de façon reproductible, modulaire et sans dérive.",
           "ordre_pedagogique": 3,
-          "niveau_code": "AVAN",
-          "niveau_libelle": "Avancé / Perfectionnement",
+          "niveau_code": "OPER",
+          "niveau_libelle": "Opérationnel / Intermédiaire",
           "modules": [
             {
               "id_module": 17,
@@ -892,8 +892,8 @@ window.BENCHTECH_CATALOG = {
           "badge_technique": "DevSecOps",
           "objectif_operationnel": "Intégrer les contrôles de sécurité Shift-Left (SAST, SCA, scan de conteneurs Trivy) et verrouiller les politiques d'admission Kubernetes avec OPA Gatekeeper.",
           "ordre_pedagogique": 6,
-          "niveau_code": "EXPT",
-          "niveau_libelle": "Expert / Architecte",
+          "niveau_code": "AVAN",
+          "niveau_libelle": "Avancé / Perfectionnement",
           "modules": [
             {
               "id_module": 23,

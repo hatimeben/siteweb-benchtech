@@ -843,31 +843,25 @@
                     </p>
                 </div>
 
-                <!-- Filtre interactif par catégories (Inspiration Stripe & Databricks) -->
-                <div class="category-filter" role="tablist" aria-label="Filtrer les programmes par catégorie">
+                <!-- Filtre interactif par Domaines Métiers (Standard Learning Tree / Enterprise Academy) -->
+                <div class="category-filter" role="tablist" aria-label="Filtrer les formations par domaine d'expertise">
                     <button class="filter-btn active" data-filter="all" type="button">
-                        <i class="fas fa-layer-group" aria-hidden="true"></i> Tous les programmes (11)
-                    </button>
-                    <button class="filter-btn" data-filter="sur-mesure" type="button" style="border-color: var(--color-magician); font-weight: 700;">
-                        <i class="fas fa-sliders" aria-hidden="true"></i> Cursus Sur-Mesure (7)
-                    </button>
-                    <button class="filter-btn" data-filter="ai-copilot" type="button">
-                        <i class="fas fa-robot" aria-hidden="true"></i> IA &amp; Copilotes (3)
+                        <i class="fas fa-layer-group" aria-hidden="true"></i> Tous les Domaines (11)
                     </button>
                     <button class="filter-btn" data-filter="data-bi" type="button">
-                        <i class="fas fa-chart-line" aria-hidden="true"></i> Data &amp; BI (2)
+                        <i class="fas fa-chart-line" aria-hidden="true"></i> Data &amp; Analytics (3)
                     </button>
-                    <button class="filter-btn" data-filter="cloud-devops" type="button">
-                        <i class="fas fa-cloud" aria-hidden="true"></i> Cloud &amp; DevOps (1)
+                    <button class="filter-btn" data-filter="cloud-infra" type="button">
+                        <i class="fas fa-cloud" aria-hidden="true"></i> Cloud, DevOps &amp; Systèmes (2)
                     </button>
-                    <button class="filter-btn" data-filter="cs-systems" type="button">
-                        <i class="fas fa-terminal" aria-hidden="true"></i> Systèmes &amp; Infra Cloud (3)
-                    </button>
-                    <button class="filter-btn" data-filter="databases" type="button">
-                        <i class="fas fa-database" aria-hidden="true"></i> SGBD &amp; SQL (1)
+                    <button class="filter-btn" data-filter="ai-copilot" type="button">
+                        <i class="fas fa-robot" aria-hidden="true"></i> IA Générative &amp; Logiciel (4)
                     </button>
                     <button class="filter-btn" data-filter="project-agile" type="button">
                         <i class="fas fa-tasks" aria-hidden="true"></i> Agilité &amp; Projets (2)
+                    </button>
+                    <button class="filter-btn" data-filter="sur-mesure" type="button" style="border-color: var(--color-magician); font-weight: 700;">
+                        <i class="fas fa-sliders" aria-hidden="true"></i> Cursus Sur-Mesure (7)
                     </button>
                 </div>
 
@@ -1096,7 +1090,7 @@
                     </article>
 
                     <!-- Formation 2 : Algorithmique (Catégorie Informatique Fondamentale) -->
-                    <article class="card academy-card" data-category="cs-systems">
+                    <article class="card academy-card" data-category="ai-copilot cs-systems">
                         <div class="academy-card-header">
                             <span class="domain-badge">Informatique Fondamentale</span>
                             <span class="meta-chip"><i class="fas fa-users" aria-hidden="true"></i> Inter / Intra</span>
@@ -1121,7 +1115,7 @@
                     </article>
 
                     <!-- Formation 7 : UNIX & Linux Sur-Mesure (Catégorie Systèmes & Infra / Sur-Mesure) -->
-                    <article class="card academy-card featured-course" data-category="cs-systems sur-mesure">
+                    <article class="card academy-card featured-course" data-category="cloud-infra cs-systems sur-mesure">
                         <div class="academy-card-header">
                             <span class="domain-badge" style="background-color: var(--color-magician-light); color: var(--color-sage); border: 1px solid var(--color-magician-border);"><i class="fas fa-terminal" aria-hidden="true"></i> Systèmes &amp; Infra</span>
                             <span class="featured-pill"><i class="fas fa-sliders" aria-hidden="true"></i> 100% À la Carte</span>
@@ -1136,11 +1130,22 @@
                         <p>
                             Acquérez l'autonomie sur les serveurs de production : ligne de commande POSIX, gestion des processus, permissions, administration systemd et automatisation par scripts Bash.
                         </p>
-                        <ul class="academy-topics">
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Administration système, processus &amp; gestion des flux I/O</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Scripting Bash, Sed/Awk &amp; automatisation de tâches récurrentes</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Sécurité fondamentale, SSH hardening, LVM &amp; droits POSIX</li>
-                        </ul>
+                        <!-- Programme Structuré : 3 Niveaux de 2 Jours (14h) et 4 Blocs -->
+                        <div class="course-modules-list">
+                            <div class="course-modules-title"><i class="fas fa-layer-group" aria-hidden="true"></i> 3 Niveaux au choix (2 jours / 14h — 4 blocs par niveau) :</div>
+                            <div class="course-module-step">
+                                <strong>Niveau 1 — Fondamentaux Shell &amp; POSIX</strong>
+                                <span>1.1 Architecture &amp; FHS | 1.2 Commandes fichiers | 1.3 Permissions chmod | 1.4 Redirections &amp; Pipes.</span>
+                            </div>
+                            <div class="course-module-step">
+                                <strong>Niveau 2 — Scripting Bash &amp; Flux I/O</strong>
+                                <span>2.1 Processus &amp; signaux | 2.2 Variables Bash | 2.3 Filtres Sed/Awk | 2.4 Fonctions &amp; codes retour.</span>
+                            </div>
+                            <div class="course-module-step">
+                                <strong>Niveau 3 — Administration &amp; Hardening</strong>
+                                <span>3.1 Services systemd | 3.2 LVM &amp; stockage | 3.3 Réseau &amp; SSH Hardening | 3.4 Logs journald &amp; audit.</span>
+                            </div>
+                        </div>
                         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
                             <a href="formations/unix-linux.html" class="btn btn-primary btn-card-action" style="width: 100%;"><i class="fas fa-file-lines" aria-hidden="true"></i> Fiche complète &amp; Syllabus</a>
                             <div style="display: flex; gap: 8px;">
@@ -1152,7 +1157,7 @@
 
                     
                     <!-- Formation Phare : Cloud Computing, Conteneurs & Ingénierie DevOps -->
-                    <article class="card academy-card featured-course" data-category="cloud-devops cs-systems sur-mesure">
+                    <article class="card academy-card featured-course" data-category="cloud-infra cloud-devops cs-systems sur-mesure">
                         <div class="academy-card-header">
                             <span class="domain-badge" style="background-color: var(--color-magician-light); color: var(--color-sage); border: 1px solid var(--color-magician-border);"><i class="fas fa-cloud" aria-hidden="true"></i> Cloud &amp; DevOps</span>
                             <span class="featured-pill"><i class="fas fa-sliders" aria-hidden="true"></i> 100% À la Carte</span>
@@ -1167,11 +1172,22 @@
                         <p>
                             Maîtrisez l'ingénierie Cloud Native : conteneurisation multi-stage Docker, clusters Kubernetes en haute disponibilité, provisionnement Terraform et pipelines CI/CD résilients.
                         </p>
-                        <ul class="academy-topics">
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Docker multi-stage, images minimales, volumes persistants &amp; réseaux</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Kubernetes (Pods, Ingress, Rolling Updates, Secrets &amp; Autoscaling)</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Terraform IaC, Remote State locking, CI/CD GitHub Actions &amp; OPA</li>
-                        </ul>
+                        <!-- Programme Structuré : 3 Niveaux modulables par blocs de 3h30 -->
+                        <div class="course-modules-list">
+                            <div class="course-modules-title"><i class="fas fa-layer-group" aria-hidden="true"></i> 3 Niveaux au choix (1 à 2 jours par niveau — blocs de 3h30) :</div>
+                            <div class="course-module-step">
+                                <strong>Niveau 1 — Conteneurs &amp; K8s Core</strong>
+                                <span>1.1 Docker Engine, Multi-Stage &amp; Compose | 1.2 Pods, Deployments &amp; Ingress Kubernetes.</span>
+                            </div>
+                            <div class="course-module-step">
+                                <strong>Niveau 2 — Automatisation &amp; IaC</strong>
+                                <span>2.1 Infrastructure as Code avec Terraform | 2.2 Pipelines CI/CD automatisés (GitHub / GitLab).</span>
+                            </div>
+                            <div class="course-module-step">
+                                <strong>Niveau 3 — Production, SRE &amp; DevSecOps</strong>
+                                <span>3.1 Observabilité Prometheus &amp; Grafana | 3.2 DevSecOps, scan Trivy &amp; OPA Gatekeeper.</span>
+                            </div>
+                        </div>
                         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
                             <a href="formations/cloud-devops.html" class="btn btn-primary btn-card-action" style="width: 100%;"><i class="fas fa-file-lines" aria-hidden="true"></i> Fiche complète &amp; Syllabus</a>
                             <div style="display: flex; gap: 8px;">
@@ -1181,8 +1197,8 @@
                         </div>
                     </article>
 
-<!-- Formation 4 : Bases de Données & SQL (Catégorie SGBD & SQL) -->
-                    <article class="card academy-card featured-course" data-category="databases sur-mesure">
+                    <!-- Formation 4 : Bases de Données & SQL (Catégorie SGBD & SQL) -->
+                    <article class="card academy-card featured-course" data-category="data-bi databases sur-mesure">
                         <div class="academy-card-header">
                             <span class="domain-badge" style="background-color: var(--color-magician-light); color: var(--color-sage); border: 1px solid var(--color-magician-border);"><i class="fas fa-database" aria-hidden="true"></i> Bases de Données</span>
                             <span class="featured-pill"><i class="fas fa-sliders" aria-hidden="true"></i> 100% À la Carte</span>
@@ -1197,11 +1213,22 @@
                         <p>
                             De la conception conceptuelle (MCD/MLD) aux requêtes analytiques complexes. Maîtrisez les jointures, fenêtrages, indexation B-Tree et plans d'exécution EXPLAIN.
                         </p>
-                        <ul class="academy-topics">
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Modélisation relationnelle &amp; normalisation 3NF</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> SQL analytique, CTE récursives &amp; fenêtrage OVER</li>
-                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Stratégies d'indexation, EXPLAIN tuning &amp; transactions ACID</li>
-                        </ul>
+                        <!-- Programme Structuré : 3 Niveaux de 2 Jours (14h) et 4 Blocs -->
+                        <div class="course-modules-list">
+                            <div class="course-modules-title"><i class="fas fa-layer-group" aria-hidden="true"></i> 3 Niveaux au choix (2 jours / 14h — 4 blocs par niveau) :</div>
+                            <div class="course-module-step">
+                                <strong>Niveau 1 — Modélisation &amp; Requêtes Fondamentales</strong>
+                                <span>1.1 Modélisation 3NF | 1.2 DDL/DML &amp; contraintes | 1.3 Jointures &amp; sous-requêtes | 1.4 Fonctions d'agrégation.</span>
+                            </div>
+                            <div class="course-module-step">
+                                <strong>Niveau 2 — SQL Analytique &amp; Fenêtrage</strong>
+                                <span>2.1 Window Functions (OVER, ROW_NUMBER) | 2.2 CTE récursives | 2.3 Opérateurs ensemblistes | 2.4 Vues matérialisées.</span>
+                            </div>
+                            <div class="course-module-step">
+                                <strong>Niveau 3 — Optimisation, Index &amp; Concurrence</strong>
+                                <span>3.1 Plans d'exécution EXPLAIN | 3.2 Index B-Tree &amp; GiST | 3.3 Transactions ACID &amp; MVCC | 3.4 Tuning mémoires SGBD.</span>
+                            </div>
+                        </div>
                         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: auto;">
                             <a href="formations/sql-sgbd.html" class="btn btn-primary btn-card-action" style="width: 100%;"><i class="fas fa-file-lines" aria-hidden="true"></i> Fiche complète &amp; Syllabus</a>
                             <div style="display: flex; gap: 8px;">
@@ -3526,196 +3553,224 @@
                                     Cochez les blocs souhaités. Chaque bloc représente une demi-journée de 3h30 avec 2 modules combinant concepts et atelier pratique.
                                 </p>
 
-                                <div class="builder-levels-wrap">
+                                <div class="blocks-checkbox-list">
                                     
-                                    <!-- MODULES CLOUD & DEVOPS -->
-                                    <div class="builder-level-group">
+                                    <!-- ================= NIVEAU 1 ================= -->
+                                    <div class="level-group-wrapper" data-level-group-cld="1">
                                         <div class="level-group-header">
-                                            <span class="level-indicator level-operational"></span>
-                                            <h5>Parcours d'Ingénierie Cloud Native &amp; DevOps (6 Blocs de 3h30 — 21h au total)</h5>
+                                            <div class="level-group-title">
+                                                <i class="fas fa-seedling"></i> Niveau 1 : Fondamentaux Conteneurs &amp; K8s Core
+                                            </div>
+                                            <div class="level-group-meta-wrap">
+                                                <span class="level-group-duration"><i class="fas fa-clock"></i> 1 jour (7h) — 2 blocs</span>
+                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="1">Tout décocher</button>
+                                            </div>
                                         </div>
-                                        <div class="blocks-checklist">
 
-                                            <!-- BLOC 1.1 -->
-                                            <div class="block-item block-item-cld" data-block-cld="1.1">
-                                                <div class="block-header" role="button" tabindex="0" aria-expanded="false">
-                                                    <div class="block-header-left">
-                                                        <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                            <input type="checkbox" class="block-toggle block-toggle-cld" value="1.1" checked>
-                                                            <span class="block-custom-check"></span>
-                                                        </label>
-                                                        <span class="block-badge initial">Docker &amp; Conteneurs</span>
-                                                        <span class="block-title">Bloc 1.1 : Conteneurisation d'Applications avec Docker &amp; Registries Privés</span>
-                                                    </div>
-                                                    <div class="block-header-right">
-                                                        <span class="block-duration">~3h30</span>
-                                                        <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
-                                                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
+                                        <!-- BLOC 1.1 -->
+                                        <div class="block-item block-item-cld" data-block-cld="1.1">
+                                            <div class="block-header" role="button" tabindex="0" aria-expanded="false">
+                                                <div class="block-header-left">
+                                                    <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="1.1" checked>
+                                                        <span class="block-custom-check"></span>
+                                                    </label>
+                                                    <span class="block-badge initial">Docker &amp; Conteneurs</span>
+                                                    <span class="block-title">Bloc 1.1 : Conteneurisation d'Applications avec Docker &amp; Registries Privés</span>
                                                 </div>
-                                                <div class="block-collapse-content" style="display: none;">
-                                                    <p class="block-desc">Architecture Docker Engine, multi-stage builds ultra-légers (&lt; 90 Mo), volumes managés persistants, réseaux bridge isolés et multi-conteneurs Docker Compose.</p>
-                                                    <div class="block-pills">
-                                                        <span class="block-pill">Docker Engine</span>
-                                                        <span class="block-pill">Multi-Stage Builds</span>
-                                                        <span class="block-pill">Volumes persistants</span>
-                                                        <span class="block-pill">Docker Compose</span>
-                                                        <span class="block-pill">Réduction CVEs</span>
-                                                    </div>
+                                                <div class="block-header-right">
+                                                    <span class="block-duration">~3h30</span>
+                                                    <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
+                                                        <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                                                    </button>
                                                 </div>
                                             </div>
-
-                                            <!-- BLOC 1.2 -->
-                                            <div class="block-item block-item-cld" data-block-cld="1.2">
-                                                <div class="block-header" role="button" tabindex="0" aria-expanded="false">
-                                                    <div class="block-header-left">
-                                                        <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                            <input type="checkbox" class="block-toggle block-toggle-cld" value="1.2" checked>
-                                                            <span class="block-custom-check"></span>
-                                                        </label>
-                                                        <span class="block-badge bi">Kubernetes Core</span>
-                                                        <span class="block-title">Bloc 1.2 : Orchestration &amp; Déploiement Résilient avec Kubernetes (K8s)</span>
-                                                    </div>
-                                                    <div class="block-header-right">
-                                                        <span class="block-duration">~3h30</span>
-                                                        <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
-                                                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="block-collapse-content" style="display: none;">
-                                                    <p class="block-desc">Architecture Control Plane, Pods, Deployments, ReplicaSets, Rolling Updates sans coupure, Ingress Controller Nginx, sondes liveness/readiness et secrets chiffrés.</p>
-                                                    <div class="block-pills">
-                                                        <span class="block-pill">Control Plane K8s</span>
-                                                        <span class="block-pill">Zero-Downtime Rollout</span>
-                                                        <span class="block-pill">Ingress Nginx TLS</span>
-                                                        <span class="block-pill">ConfigMaps &amp; Secrets</span>
-                                                        <span class="block-pill">Probes</span>
-                                                    </div>
+                                            <div class="block-collapse-content" style="display: none;">
+                                                <p class="block-desc">Architecture Docker Engine, multi-stage builds ultra-légers (&lt; 90 Mo), volumes managés persistants, réseaux bridge isolés et multi-conteneurs Docker Compose.</p>
+                                                <div class="block-pills">
+                                                    <span class="block-pill">Docker Engine</span>
+                                                    <span class="block-pill">Multi-Stage Builds</span>
+                                                    <span class="block-pill">Volumes persistants</span>
+                                                    <span class="block-pill">Docker Compose</span>
+                                                    <span class="block-pill">Réduction CVEs</span>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- BLOC 2.1 -->
-                                            <div class="block-item block-item-cld" data-block-cld="2.1">
-                                                <div class="block-header" role="button" tabindex="0" aria-expanded="false">
-                                                    <div class="block-header-left">
-                                                        <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                            <input type="checkbox" class="block-toggle block-toggle-cld" value="2.1" checked>
-                                                            <span class="block-custom-check"></span>
-                                                        </label>
-                                                        <span class="block-badge bi">Terraform IaC</span>
-                                                        <span class="block-title">Bloc 2.1 : Infrastructure as Code (IaC) avec Terraform &amp; Multi-Cloud</span>
-                                                    </div>
-                                                    <div class="block-header-right">
-                                                        <span class="block-duration">~3h30</span>
-                                                        <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
-                                                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
+                                        <!-- BLOC 1.2 -->
+                                        <div class="block-item block-item-cld" data-block-cld="1.2">
+                                            <div class="block-header" role="button" tabindex="0" aria-expanded="false">
+                                                <div class="block-header-left">
+                                                    <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="1.2" checked>
+                                                        <span class="block-custom-check"></span>
+                                                    </label>
+                                                    <span class="block-badge bi">Kubernetes Core</span>
+                                                    <span class="block-title">Bloc 1.2 : Orchestration &amp; Déploiement Résilient avec Kubernetes (K8s)</span>
                                                 </div>
-                                                <div class="block-collapse-content" style="display: none;">
-                                                    <p class="block-desc">Cycle de vie Terraform (init, plan, apply), gestion du tfstate distant, state locking concurrentiel, modules d'infrastructure réutilisables et détection de dérive (Drift).</p>
-                                                    <div class="block-pills">
-                                                        <span class="block-pill">Syntaxe HCL</span>
-                                                        <span class="block-pill">Remote State Locking</span>
-                                                        <span class="block-pill">Modules d'entreprise</span>
-                                                        <span class="block-pill">VPC &amp; Subnets</span>
-                                                        <span class="block-pill">Drift Detection</span>
-                                                    </div>
+                                                <div class="block-header-right">
+                                                    <span class="block-duration">~3h30</span>
+                                                    <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
+                                                        <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                                                    </button>
                                                 </div>
                                             </div>
-
-                                            <!-- BLOC 2.2 -->
-                                            <div class="block-item block-item-cld" data-block-cld="2.2">
-                                                <div class="block-header" role="button" tabindex="0" aria-expanded="false">
-                                                    <div class="block-header-left">
-                                                        <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                            <input type="checkbox" class="block-toggle block-toggle-cld" value="2.2" checked>
-                                                            <span class="block-custom-check"></span>
-                                                        </label>
-                                                        <span class="block-badge initial">CI/CD Automation</span>
-                                                        <span class="block-title">Bloc 2.2 : Pipelines CI/CD &amp; Automatisation des Déploiements</span>
-                                                    </div>
-                                                    <div class="block-header-right">
-                                                        <span class="block-duration">~3h30</span>
-                                                        <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
-                                                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="block-collapse-content" style="display: none;">
-                                                    <p class="block-desc">Pipelines GitHub Actions et GitLab CI, runners sécurisés, mise en cache de dépendances, packaging d'artéfacts et déploiements continus Blue/Green &amp; Canary.</p>
-                                                    <div class="block-pills">
-                                                        <span class="block-pill">GitHub Actions</span>
-                                                        <span class="block-pill">GitLab CI</span>
-                                                        <span class="block-pill">Cache dépendances</span>
-                                                        <span class="block-pill">Canary Deployment</span>
-                                                        <span class="block-pill">Environnements protégés</span>
-                                                    </div>
+                                            <div class="block-collapse-content" style="display: none;">
+                                                <p class="block-desc">Architecture Control Plane, Pods, Deployments, ReplicaSets, Rolling Updates sans coupure, Ingress Controller Nginx, sondes liveness/readiness et secrets chiffrés.</p>
+                                                <div class="block-pills">
+                                                    <span class="block-pill">Control Plane K8s</span>
+                                                    <span class="block-pill">Zero-Downtime Rollout</span>
+                                                    <span class="block-pill">Ingress Nginx TLS</span>
+                                                    <span class="block-pill">ConfigMaps &amp; Secrets</span>
+                                                    <span class="block-pill">Probes</span>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
 
-                                            <!-- BLOC 3.1 -->
-                                            <div class="block-item block-item-cld" data-block-cld="3.1">
-                                                <div class="block-header" role="button" tabindex="0" aria-expanded="false">
-                                                    <div class="block-header-left">
-                                                        <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                            <input type="checkbox" class="block-toggle block-toggle-cld" value="3.1">
-                                                            <span class="block-custom-check"></span>
-                                                        </label>
-                                                        <span class="block-badge advanced">Observabilité SRE</span>
-                                                        <span class="block-title">Bloc 3.1 : Observabilité, Monitoring &amp; Métriques (Prometheus &amp; Grafana)</span>
-                                                    </div>
-                                                    <div class="block-header-right">
-                                                        <span class="block-duration">~3h30</span>
-                                                        <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
-                                                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
+                                    <!-- ================= NIVEAU 2 ================= -->
+                                    <div class="level-group-wrapper" data-level-group-cld="2">
+                                        <div class="level-group-header">
+                                            <div class="level-group-title">
+                                                <i class="fas fa-code-branch"></i> Niveau 2 : Automatisation &amp; Infrastructure as Code
+                                            </div>
+                                            <div class="level-group-meta-wrap">
+                                                <span class="level-group-duration"><i class="fas fa-clock"></i> 1 jour (7h) — 2 blocs</span>
+                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="2">Tout décocher</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- BLOC 2.1 -->
+                                        <div class="block-item block-item-cld" data-block-cld="2.1">
+                                            <div class="block-header" role="button" tabindex="0" aria-expanded="false">
+                                                <div class="block-header-left">
+                                                    <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="2.1" checked>
+                                                        <span class="block-custom-check"></span>
+                                                    </label>
+                                                    <span class="block-badge bi">Terraform IaC</span>
+                                                    <span class="block-title">Bloc 2.1 : Infrastructure as Code (IaC) avec Terraform &amp; Multi-Cloud</span>
                                                 </div>
-                                                <div class="block-collapse-content" style="display: none;">
-                                                    <p class="block-desc">Collecte de séries temporelles avec Prometheus, requêtes PromQL avancées, dashboards exécutifs Grafana, SLI/SLO et routage intelligent des alertes Alertmanager.</p>
-                                                    <div class="block-pills">
-                                                        <span class="block-pill">Prometheus Pull</span>
-                                                        <span class="block-pill">PromQL avancée</span>
-                                                        <span class="block-pill">Dashboards Grafana</span>
-                                                        <span class="block-pill">Métriques RED/USE</span>
-                                                        <span class="block-pill">Alertmanager</span>
-                                                    </div>
+                                                <div class="block-header-right">
+                                                    <span class="block-duration">~3h30</span>
+                                                    <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
+                                                        <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                                                    </button>
                                                 </div>
                                             </div>
-
-                                            <!-- BLOC 3.2 -->
-                                            <div class="block-item block-item-cld" data-block-cld="3.2">
-                                                <div class="block-header" role="button" tabindex="0" aria-expanded="false">
-                                                    <div class="block-header-left">
-                                                        <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                            <input type="checkbox" class="block-toggle block-toggle-cld" value="3.2">
-                                                            <span class="block-custom-check"></span>
-                                                        </label>
-                                                        <span class="block-badge expert">DevSecOps</span>
-                                                        <span class="block-title">Bloc 3.2 : DevSecOps : Sécurisation CI/CD &amp; Politiques OPA Gatekeeper</span>
-                                                    </div>
-                                                    <div class="block-header-right">
-                                                        <span class="block-duration">~3h30</span>
-                                                        <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
-                                                            <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="block-collapse-content" style="display: none;">
-                                                    <p class="block-desc">Shift-Left Security, analyse statique SAST, scan de vulnérabilités conteneurs avec Trivy, détection de secrets leakés et admission controllers avec OPA Gatekeeper.</p>
-                                                    <div class="block-pills">
-                                                        <span class="block-pill">Shift-Left Security</span>
-                                                        <span class="block-pill">Scan Trivy CVEs</span>
-                                                        <span class="block-pill">Secrets Detection</span>
-                                                        <span class="block-pill">OPA Gatekeeper</span>
-                                                        <span class="block-pill">Pod Security Standards</span>
-                                                    </div>
+                                            <div class="block-collapse-content" style="display: none;">
+                                                <p class="block-desc">Cycle de vie Terraform (init, plan, apply), gestion du tfstate distant, state locking concurrentiel, modules d'infrastructure réutilisables et détection de dérive (Drift).</p>
+                                                <div class="block-pills">
+                                                    <span class="block-pill">Syntaxe HCL</span>
+                                                    <span class="block-pill">Remote State Locking</span>
+                                                    <span class="block-pill">Modules d'entreprise</span>
+                                                    <span class="block-pill">VPC &amp; Subnets</span>
+                                                    <span class="block-pill">Drift Detection</span>
                                                 </div>
                                             </div>
+                                        </div>
 
+                                        <!-- BLOC 2.2 -->
+                                        <div class="block-item block-item-cld" data-block-cld="2.2">
+                                            <div class="block-header" role="button" tabindex="0" aria-expanded="false">
+                                                <div class="block-header-left">
+                                                    <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="2.2" checked>
+                                                        <span class="block-custom-check"></span>
+                                                    </label>
+                                                    <span class="block-badge initial">CI/CD Automation</span>
+                                                    <span class="block-title">Bloc 2.2 : Pipelines CI/CD &amp; Automatisation des Déploiements</span>
+                                                </div>
+                                                <div class="block-header-right">
+                                                    <span class="block-duration">~3h30</span>
+                                                    <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
+                                                        <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="block-collapse-content" style="display: none;">
+                                                <p class="block-desc">Pipelines GitHub Actions et GitLab CI, runners sécurisés, mise en cache de dépendances, packaging d'artéfacts et déploiements continus Blue/Green &amp; Canary.</p>
+                                                <div class="block-pills">
+                                                    <span class="block-pill">GitHub Actions</span>
+                                                    <span class="block-pill">GitLab CI</span>
+                                                    <span class="block-pill">Cache dépendances</span>
+                                                    <span class="block-pill">Canary Deployment</span>
+                                                    <span class="block-pill">Environnements protégés</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ================= NIVEAU 3 ================= -->
+                                    <div class="level-group-wrapper" data-level-group-cld="3">
+                                        <div class="level-group-header">
+                                            <div class="level-group-title">
+                                                <i class="fas fa-shield-alt"></i> Niveau 3 : Production, SRE &amp; DevSecOps
+                                            </div>
+                                            <div class="level-group-meta-wrap">
+                                                <span class="level-group-duration"><i class="fas fa-clock"></i> 1 jour (7h) — 2 blocs</span>
+                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="3">Tout cocher</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- BLOC 3.1 -->
+                                        <div class="block-item block-item-cld" data-block-cld="3.1">
+                                            <div class="block-header" role="button" tabindex="0" aria-expanded="false">
+                                                <div class="block-header-left">
+                                                    <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="3.1">
+                                                        <span class="block-custom-check"></span>
+                                                    </label>
+                                                    <span class="block-badge advanced">Observabilité SRE</span>
+                                                    <span class="block-title">Bloc 3.1 : Observabilité, Monitoring &amp; Métriques (Prometheus &amp; Grafana)</span>
+                                                </div>
+                                                <div class="block-header-right">
+                                                    <span class="block-duration">~3h30</span>
+                                                    <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
+                                                        <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="block-collapse-content" style="display: none;">
+                                                <p class="block-desc">Collecte de séries temporelles avec Prometheus, requêtes PromQL avancées, dashboards exécutifs Grafana, SLI/SLO et routage intelligent des alertes Alertmanager.</p>
+                                                <div class="block-pills">
+                                                    <span class="block-pill">Prometheus Pull</span>
+                                                    <span class="block-pill">PromQL avancée</span>
+                                                    <span class="block-pill">Dashboards Grafana</span>
+                                                    <span class="block-pill">Métriques RED/USE</span>
+                                                    <span class="block-pill">Alertmanager</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- BLOC 3.2 -->
+                                        <div class="block-item block-item-cld" data-block-cld="3.2">
+                                            <div class="block-header" role="button" tabindex="0" aria-expanded="false">
+                                                <div class="block-header-left">
+                                                    <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="3.2">
+                                                        <span class="block-custom-check"></span>
+                                                    </label>
+                                                    <span class="block-badge expert">DevSecOps</span>
+                                                    <span class="block-title">Bloc 3.2 : DevSecOps : Sécurisation CI/CD &amp; Politiques OPA Gatekeeper</span>
+                                                </div>
+                                                <div class="block-header-right">
+                                                    <span class="block-duration">~3h30</span>
+                                                    <button type="button" class="block-accordion-btn" aria-label="Déplier le détail de ce bloc">
+                                                        <i class="fas fa-plus accordion-icon" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="block-collapse-content" style="display: none;">
+                                                <p class="block-desc">Shift-Left Security, analyse statique SAST, scan de vulnérabilités conteneurs avec Trivy, détection de secrets leakés et admission controllers avec OPA Gatekeeper.</p>
+                                                <div class="block-pills">
+                                                    <span class="block-pill">Shift-Left Security</span>
+                                                    <span class="block-pill">Scan Trivy CVEs</span>
+                                                    <span class="block-pill">Secrets Detection</span>
+                                                    <span class="block-pill">OPA Gatekeeper</span>
+                                                    <span class="block-pill">Pod Security Standards</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -8731,11 +8786,50 @@
                     `;
                 }).join('');
             }
+
+            // Mise à jour de l'état des boutons "Tout cocher" de chaque groupe de niveau Cloud & DevOps
+            [1, 2, 3].forEach(lvl => {
+                const groupBoxes = Array.from(document.querySelectorAll(`[data-level-group-cld="${lvl}"] .block-toggle-cld`));
+                const allChecked = groupBoxes.length > 0 && groupBoxes.every(cb => cb.checked);
+                const btn = document.querySelector(`.level-select-all-btn-cld[data-target-level-cld="${lvl}"]`);
+                if (btn) {
+                    btn.textContent = allChecked ? "Tout décocher" : "Tout cocher";
+                }
+            });
         }
 
         // Écouteurs de changement pour Cloud & DevOps
         document.querySelectorAll('.block-toggle-cld').forEach(cb => {
-            cb.addEventListener('change', updateCloudDevopsStudioSyllabus);
+            cb.addEventListener('change', () => {
+                const parent = cb.closest('.block-item-cld');
+                if (parent) {
+                    if (cb.checked) parent.classList.add('checked');
+                    else parent.classList.remove('checked');
+                }
+                updateCloudDevopsStudioSyllabus();
+            });
+        });
+
+        // Boutons "Tout cocher / Tout décocher" par niveau Cloud & DevOps
+        const levelSelectAllBtnsCld = document.querySelectorAll('.level-select-all-btn-cld');
+        levelSelectAllBtnsCld.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetLvl = btn.getAttribute('data-target-level-cld');
+                const groupBoxes = Array.from(document.querySelectorAll(`[data-level-group-cld="${targetLvl}"] .block-toggle-cld`));
+                const allChecked = groupBoxes.length > 0 && groupBoxes.every(cb => cb.checked);
+
+                groupBoxes.forEach(cb => {
+                    cb.checked = !allChecked;
+                    const parent = cb.closest('.block-item-cld');
+                    if (parent) {
+                        if (cb.checked) parent.classList.add('checked');
+                        else parent.classList.remove('checked');
+                    }
+                });
+
+                btn.textContent = allChecked ? "Tout cocher" : "Tout décocher";
+                updateCloudDevopsStudioSyllabus();
+            });
         });
 
         ['cld-profile-select', 'cld-format-select', 'cld-orientation-select', 'cld-pace-select'].forEach(id => {
