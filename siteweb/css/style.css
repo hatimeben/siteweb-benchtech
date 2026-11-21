@@ -170,13 +170,15 @@ img {
    4. NAVIGATION (HEADER)
    -------------------------------------------------------------------------- */
 header {
-    background-color: var(--header-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: var(--transition);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
 }
 
 header .container {
@@ -414,18 +416,30 @@ nav {
    -------------------------------------------------------------------------- */
 .hero {
     background-color: var(--bg-primary); /* Fond #FFFFFF épuré */
-    padding: 100px 0 85px;
+    padding: 80px 0 70px;
     position: relative;
     border-bottom: 1px solid var(--border-color);
     background-image: 
-        radial-gradient(circle at 85% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 45%),
-        radial-gradient(circle at 15% 85%, rgba(27, 42, 74, 0.03) 0%, transparent 45%);
+        radial-gradient(circle at 88% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 10% 80%, rgba(27, 42, 74, 0.03) 0%, transparent 45%);
+}
+
+.hero .container {
+    max-width: 1280px;
+}
+
+.hero-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 36px;
 }
 
 .hero-content {
-    max-width: 940px;
-    margin: 0 auto;
-    text-align: center;
+    max-width: none;
+    margin: 0;
+    text-align: left;
 }
 
 /* Slogan officiel avec touche dorée (#D4AF37) */
@@ -437,7 +451,7 @@ nav {
     background-color: var(--color-magician-light);
     border: 1px solid var(--color-magician-border);
     border-radius: var(--radius-full);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .slogan-badge i {
@@ -446,7 +460,7 @@ nav {
 }
 
 .slogan-text {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-style: italic;
     font-weight: 600;
     color: var(--color-magician);
@@ -454,13 +468,14 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.4rem;
+    font-size: 3.1rem;
     font-weight: 800;
     line-height: 1.18;
     color: var(--color-sage);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     letter-spacing: -0.025em;
     text-wrap: balance;
+    text-align: left;
 }
 
 .hero h1 .highlight-gold {
@@ -470,20 +485,289 @@ nav {
 }
 
 .hero-description {
-    font-size: 1.18rem;
+    font-size: 1.12rem;
     line-height: 1.7;
     color: var(--text-body);
-    max-width: 800px;
-    margin: 0 auto 36px;
+    max-width: 620px;
+    margin: 0 0 28px 0;
+    text-align: left;
 }
 
 .hero-actions {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    gap: 18px;
-    margin-bottom: 48px;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+/* KPIs de Crédibilité B2B */
+.hero-kpis {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 22px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+}
+
+.kpi-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kpi-number {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-sage);
+    line-height: 1.1;
+    font-family: var(--font-heading);
+}
+
+.kpi-number.gold {
+    color: var(--color-magician);
+}
+
+.kpi-label {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.kpi-divider {
+    width: 1px;
+    height: 32px;
+    background: #E2E8F0;
+}
+
+/* Carte Executive Immersive (Cockpit à droite) */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-card-cockpit {
+    width: 100%;
+    max-width: 480px;
+    background: linear-gradient(150deg, #1B2A4A 0%, #0F172A 100%);
+    border: 1.5px solid rgba(212, 175, 55, 0.35);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 
+        0 24px 50px rgba(15, 23, 42, 0.22),
+        0 0 35px rgba(212, 175, 55, 0.10);
+    position: relative;
+    color: #FFFFFF;
+}
+
+.cockpit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cockpit-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cockpit-monogram {
+    width: 36px;
+    height: 36px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1.5px solid var(--color-magician);
+    border-radius: 9px;
+    color: var(--color-magician);
+    font-weight: 800;
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+}
+
+.cockpit-title {
+    font-size: 0.90rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+}
+
+.cockpit-subtitle {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.cockpit-status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.70rem;
+    font-weight: 700;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.15);
+    padding: 3px 9px;
+    border-radius: 9999px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.cockpit-status-dot i {
+    font-size: 0.55rem;
+}
+
+.cockpit-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.cockpit-metric-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+    transition: var(--transition);
+}
+
+.cockpit-metric-box:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(212, 175, 55, 0.4);
+}
+
+.metric-box-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metric-box-label i {
+    color: var(--color-magician);
+}
+
+.metric-box-val {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    font-family: var(--font-heading);
+}
+
+.metric-progress-bar {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-magician), #E5C365);
+    border-radius: 9999px;
+}
+
+.cockpit-stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.stack-pill {
+    font-size: 0.74rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: rgba(255, 255, 255, 0.9);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stack-pill i {
+    color: var(--color-magician);
+}
+
+.cockpit-floating-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #F1E5C0;
+}
+
+.cockpit-floating-badge i {
+    color: var(--color-magician);
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .hero-split-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .hero-description {
+        text-align: center;
+        margin: 0 auto 28px;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
+    .hero-kpis {
+        justify-content: center;
+    }
+    .hero-card-cockpit {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+    .hero-kpis {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        text-align: center;
+    }
+    .kpi-divider {
+        display: none;
+    }
+    .cockpit-metrics-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Indicateurs de crédibilité sous le hero */
@@ -3970,6 +4254,7 @@ summary:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
 
 /* ==========================================================================
    REFONTE DU CONFIGURATEUR STUDIOS SUR-MESURE (STYLE ÉPURÉ & PLEINE LARGEUR)
