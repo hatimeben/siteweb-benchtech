@@ -1348,6 +1348,28 @@
 
                 <!-- 1. STUDIO POWER BI -->
                 <div id="powerbi-studio" class="powerbi-studio-section studio-panel active">
+                    <!-- Presets rapides en haut (2 jours / 14h par niveau) -->
+                    <div class="unix-presets-bar">
+                        <span class="preset-label"><i class="fas fa-wand-magic-sparkles"></i> Formats types (2 jours / 14h par niveau) :</span>
+                        <div class="preset-pills">
+                            <button type="button" class="preset-btn preset-btn-pbi" data-preset-pbi="niveau1">
+                                <i class="fas fa-seedling"></i> Niveau 1 : Fondamentaux &amp; ETL (2 jours / 14h)
+                            </button>
+                            <button type="button" class="preset-btn preset-btn-pbi" data-preset-pbi="niveau2">
+                                <i class="fas fa-cubes"></i> Niveau 2 : Modélisation &amp; DAX (2 jours / 14h)
+                            </button>
+                            <button type="button" class="preset-btn preset-btn-pbi" data-preset-pbi="niveau3">
+                                <i class="fas fa-shield-alt"></i> Niveau 3 : Avancé, RLS &amp; Cloud (2 jours / 14h)
+                            </button>
+                            <button type="button" class="preset-btn preset-btn-pbi" data-preset-pbi="pl300">
+                                <i class="fas fa-certificate"></i> Prépa PL-300 (4 jours / 28h)
+                            </button>
+                            <button type="button" class="preset-btn preset-btn-pbi" data-preset-pbi="integral">
+                                <i class="fas fa-graduation-cap"></i> Masterclass Intégrale (6 jours / 42h)
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="powerbi-studio-grid">
                         <!-- Colonne Gauche : Sélecteur de Blocs & Options -->
                         <div class="powerbi-builder-col">
@@ -1547,15 +1569,15 @@
                                             </div>
                                             <div class="level-group-meta-wrap">
                                                 <span class="level-group-duration"><i class="fas fa-clock"></i> 2 jours (14h) — 4 blocs</span>
-                                                <button type="button" class="level-select-all-btn level-select-all-btn-pbi" data-target-level-pbi="2">Tout décocher</button>
+                                                <button type="button" class="level-select-all-btn level-select-all-btn-pbi" data-target-level-pbi="2">Tout cocher</button>
                                             </div>
                                         </div>
 
-                                        <div class="block-item block-item-pbi checked" data-block-pbi="2.1">
+                                        <div class="block-item block-item-pbi" data-block-pbi="2.1">
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.1" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.1">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge inter">Star Schema</span>
@@ -1579,11 +1601,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="block-item block-item-pbi checked" data-block-pbi="2.2">
+                                        <div class="block-item block-item-pbi" data-block-pbi="2.2">
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.2" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.2">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge dax">DAX Core</span>
@@ -1607,11 +1629,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="block-item block-item-pbi checked" data-block-pbi="2.3">
+                                        <div class="block-item block-item-pbi" data-block-pbi="2.3">
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.3" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.3">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge dax">DAX Avancé</span>
@@ -1635,11 +1657,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="block-item block-item-pbi checked" data-block-pbi="2.4">
+                                        <div class="block-item block-item-pbi" data-block-pbi="2.4">
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.4" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-pbi" value="2.4">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge bi">Time Intel</span>
@@ -3563,7 +3585,7 @@
                                             </div>
                                             <div class="level-group-meta-wrap">
                                                 <span class="level-group-duration"><i class="fas fa-clock"></i> 1 jour (7h) — 2 blocs</span>
-                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="1">Tout décocher</button>
+                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="1">Tout cocher</button>
                                             </div>
                                         </div>
 
@@ -3572,7 +3594,7 @@
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="1.1" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="1.1">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge initial">Docker &amp; Conteneurs</span>
@@ -3602,7 +3624,7 @@
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="1.2" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="1.2">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge bi">Kubernetes Core</span>
@@ -3636,7 +3658,7 @@
                                             </div>
                                             <div class="level-group-meta-wrap">
                                                 <span class="level-group-duration"><i class="fas fa-clock"></i> 1 jour (7h) — 2 blocs</span>
-                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="2">Tout décocher</button>
+                                                <button type="button" class="level-select-all-btn level-select-all-btn-cld" data-target-level-cld="2">Tout cocher</button>
                                             </div>
                                         </div>
 
@@ -3645,7 +3667,7 @@
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="2.1" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="2.1">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge bi">Terraform IaC</span>
@@ -3675,7 +3697,7 @@
                                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                                 <div class="block-header-left">
                                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
-                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="2.2" checked>
+                                                        <input type="checkbox" class="block-toggle block-toggle-cld" value="2.2">
                                                         <span class="block-custom-check"></span>
                                                     </label>
                                                     <span class="block-badge initial">CI/CD Automation</span>
@@ -6406,13 +6428,13 @@
 
             // Fallback si aucun bloc n'est coché
             if (selectedBlockIds.length === 0) {
-                if (titleEl) titleEl.textContent = 'Formation Power BI Sur-Mesure — Aucun bloc sélectionné';
-                if (subtitleEl) subtitleEl.textContent = 'Conseil : cochez 3 à 4 blocs pour un parcours de 2 jours, ou utilisez un format type ci-dessus.';
-                if (durationEl) durationEl.textContent = '0 jour — 0 heure';
-                if (ratioEl) ratioEl.textContent = '—';
-                if (levelEl) levelEl.textContent = '—';
-                if (objectivesListEl) objectivesListEl.innerHTML = '<li><i class="fas fa-mouse-pointer" aria-hidden="true"></i> Aucun bloc sélectionné. Cochez vos blocs ou choisissez un format type.</li>';
-                if (modulesContainerEl) modulesContainerEl.innerHTML = '';
+                if (titleEl) titleEl.textContent = 'Studio Power BI : Composez Votre Cursus Sur-Mesure';
+                if (subtitleEl) subtitleEl.textContent = 'Sélectionnez vos blocs prioritaires ci-contre ou choisissez un format type (Niveau 1, Niveau 2, Niveau 3, PL-300...) ci-dessus.';
+                if (durationEl) durationEl.textContent = '0 jour (Sélection libre)';
+                if (ratioEl) ratioEl.textContent = '75% Ateliers / 25% Théorie';
+                if (levelEl) levelEl.textContent = 'Modulable selon vos blocs';
+                if (objectivesListEl) objectivesListEl.innerHTML = '<li><i class="fas fa-hand-pointer" aria-hidden="true"></i> Cochez vos blocs de compétences cibles ou cliquez sur un Niveau type pour calibrer vos objectifs opérationnels.</li>';
+                if (modulesContainerEl) modulesContainerEl.innerHTML = '<div class="syllabus-empty-hint" style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem; border: 1px dashed var(--border-color); border-radius: 8px;"><i class="fas fa-cubes" style="font-size: 1.5rem; color: var(--color-magician); margin-bottom: 8px; display: block;"></i>Sélectionnez un niveau clé ci-dessus ou cochez vos blocs de 3h30 pour générer votre feuille de route.</div>';
                 return;
             }
 
@@ -8718,13 +8740,13 @@
             const profileSelect = document.getElementById('cld-profile-select');
 
             if (selectedBlockIds.length === 0) {
-                if (titleEl) titleEl.textContent = 'Formation Cloud & DevOps Sur-Mesure — Aucun bloc sélectionné';
-                if (subtitleEl) subtitleEl.textContent = 'Conseil : cochez 3 à 4 blocs pour un parcours de 2 jours, ou utilisez un format type ci-dessus.';
-                if (durationEl) durationEl.textContent = '0 jour — 0 heure';
-                if (ratioEl) ratioEl.textContent = '—';
-                if (levelEl) levelEl.textContent = '—';
-                if (objectivesListEl) objectivesListEl.innerHTML = '<li><i class="fas fa-mouse-pointer" aria-hidden="true"></i> Aucun bloc sélectionné. Cochez vos blocs ou choisissez un format type.</li>';
-                if (modulesContainerEl) modulesContainerEl.innerHTML = '';
+                if (titleEl) titleEl.textContent = 'Studio Cloud & DevOps : Composez Votre Cursus Sur-Mesure';
+                if (subtitleEl) subtitleEl.textContent = 'Sélectionnez vos blocs prioritaires ci-contre ou choisissez un format type (Conteneurs, IaC & CI/CD, DevSecOps...) ci-dessus.';
+                if (durationEl) durationEl.textContent = '0 jour (Sélection libre)';
+                if (ratioEl) ratioEl.textContent = '80% Labs / 20% Architecture';
+                if (levelEl) levelEl.textContent = 'Modulable selon vos blocs';
+                if (objectivesListEl) objectivesListEl.innerHTML = '<li><i class="fas fa-hand-pointer" aria-hidden="true"></i> Cochez vos blocs de compétences cibles ou cliquez sur un Niveau type pour calibrer vos objectifs opérationnels.</li>';
+                if (modulesContainerEl) modulesContainerEl.innerHTML = '<div class="syllabus-empty-hint" style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem; border: 1px dashed var(--border-color); border-radius: 8px;"><i class="fas fa-cubes" style="font-size: 1.5rem; color: var(--color-magician); margin-bottom: 8px; display: block;"></i>Sélectionnez un format type ci-dessus ou cochez vos blocs de 3h30 pour générer votre feuille de route.</div>';
                 return;
             }
 
