@@ -4653,15 +4653,33 @@
 
                             <!-- Sélecteur à la Carte des 5 Technologies -->
                             <div class="studio-card builder-blocks-card">
-                                <h4><i class="fas fa-layer-group"></i> 3. Personnalisation Fine : Cochez Vos Blocs Croisés</h4>
-                                <p class="builder-helper-text">Vous pouvez ajuster les blocs ci-dessous ou concevoir un assemblage personnalisé entre les 5 spécialités :</p>
+                                <div class="hybrid-blocks-header-row">
+                                    <h4><i class="fas fa-layer-group"></i> 3. Personnalisation Fine : Cochez Vos Blocs Croisés</h4>
+                                    <div class="hybrid-blocks-global-actions">
+                                        <span class="hybrid-global-counter" id="hybrid-global-counter">0 bloc sélectionné</span>
+                                        <button type="button" class="hybrid-reset-btn" id="hybrid-reset-all-btn" title="Tout décocher">
+                                            <i class="fas fa-rotate-left"></i> Réinitialiser
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="builder-helper-text">Cliquez sur un groupe pour le déplier, cochez les blocs souhaités. Utilisez la recherche pour filtrer rapidement.</p>
 
+                                <!-- Barre de recherche de blocs -->
+                                <div class="hybrid-search-bar">
+                                    <i class="fas fa-search hybrid-search-icon"></i>
+                                    <input type="text" id="hybrid-block-search" class="hybrid-search-input" placeholder="Rechercher un bloc (ex: DAX, Docker, Pivot...)">
+                                    <button type="button" class="hybrid-search-clear" id="hybrid-search-clear" title="Effacer">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Filtres par technologie (conservés) -->
                                 <div class="hybrid-tech-filter-tabs">
-                                    <button type="button" class="hybrid-tech-tab active" data-tech-filter="all">Toutes les technologies</button>
+                                    <button type="button" class="hybrid-tech-tab active" data-tech-filter="all">Toutes</button>
                                     <button type="button" class="hybrid-tech-tab" data-tech-filter="powerbi">Power BI</button>
                                     <button type="button" class="hybrid-tech-tab" data-tech-filter="excel">Excel</button>
-                                    <button type="button" class="hybrid-tech-tab" data-tech-filter="sql">SQL &amp; SGBD</button>
-                                    <button type="button" class="hybrid-tech-tab" data-tech-filter="unix">UNIX / Linux</button>
+                                    <button type="button" class="hybrid-tech-tab" data-tech-filter="sql">SQL</button>
+                                    <button type="button" class="hybrid-tech-tab" data-tech-filter="unix">Linux</button>
                                     <button type="button" class="hybrid-tech-tab" data-tech-filter="copilot">Agents IA</button>
                                 </div>
 
@@ -8220,24 +8238,39 @@
             const techKeys = ['powerbi', 'excel', 'sql', 'unix', 'copilot'];
             const defaultPackBlocks = HYBRID_PACKS_DATA['pack-bi-control'].blocks;
 
-            techKeys.forEach(tech => {
+            // Couleurs par techno pour les badges compteurs
+            const techColors = {
+                powerbi: '#BE185D', excel: '#166534', sql: '#1D4ED8',
+                unix: '#854D0E', copilot: '#6D28D9'
+            };
+
+            techKeys.forEach((tech, idx) => {
                 const meta = TECH_META[tech];
                 const dataObj = meta.data();
+                const blockIds = Object.keys(dataObj);
+                const totalBlocks = blockIds.length;
+                const checkedCount = blockIds.filter(id => defaultPackBlocks.some(b => b.tech === tech && b.id === id)).length;
+                // Premier groupe ouvert par défaut, les autres repliés
+                const isOpen = idx === 0;
 
                 htmlStr += `
-                    <div class="level-group-wrapper hybrid-tech-group" data-tech-group="${tech}">
-                        <div class="level-group-header">
+                    <div class="level-group-wrapper hybrid-tech-group ${isOpen ? 'group-open' : ''}" data-tech-group="${tech}">
+                        <div class="level-group-header hybrid-group-accordion-header" role="button" tabindex="0" aria-expanded="${isOpen}" data-group-tech="${tech}">
                             <div class="level-group-title">
+                                <i class="fas fa-chevron-right hybrid-group-chevron"></i>
                                 <i class="fas ${meta.icon}"></i> ${meta.name}
                             </div>
                             <div class="level-group-meta-wrap">
-                                <span class="level-group-duration"><i class="fas fa-cubes"></i> 12 blocs</span>
+                                <span class="hybrid-group-counter" id="hybrid-counter-${tech}" style="background:${techColors[tech]}22; color:${techColors[tech]}; border:1px solid ${techColors[tech]}44;">
+                                    <span class="counter-checked" id="hybrid-checked-${tech}">${checkedCount}</span>/<span>${totalBlocks}</span>
+                                </span>
                                 <button type="button" class="level-select-all-btn hybrid-tech-select-all-btn" data-tech-toggle="${tech}">Tout cocher</button>
                             </div>
                         </div>
+                        <div class="hybrid-group-body" style="display:${isOpen ? 'block' : 'none'};">
                 `;
 
-                Object.keys(dataObj).forEach(id => {
+                blockIds.forEach(id => {
                     const block = dataObj[id];
                     const isInitiallyChecked = defaultPackBlocks.some(b => b.tech === tech && b.id === id);
 
@@ -8245,7 +8278,7 @@
                     const pillsHtml = rawTopics.map(t => `<span class="block-pill">${t.trim()}</span>`).join('');
 
                     htmlStr += `
-                        <div class="block-item block-item-hybrid ${isInitiallyChecked ? 'checked' : ''}" data-hybrid-tech="${tech}" data-hybrid-id="${id}">
+                        <div class="block-item block-item-hybrid ${isInitiallyChecked ? 'checked' : ''}" data-hybrid-tech="${tech}" data-hybrid-id="${id}" data-block-name="${(block.name || '').toLowerCase()} ${(block.topics || '').toLowerCase()}">
                             <div class="block-header" role="button" tabindex="0" aria-expanded="false">
                                 <div class="block-header-left">
                                     <label class="block-checkbox-wrap" title="Sélectionner ce bloc pour le cursus">
@@ -8272,52 +8305,163 @@
                     `;
                 });
 
-                htmlStr += '</div>';
+                htmlStr += '</div></div>';
             });
 
             container.innerHTML = htmlStr;
 
-            // Attacher les écouteurs sur les checkboxes hybrides
+            // ── Accordéons groupes technos ──
+            container.querySelectorAll('.hybrid-group-accordion-header').forEach(header => {
+                const toggleGroup = () => {
+                    const group = header.closest('.hybrid-tech-group');
+                    const body = group.querySelector('.hybrid-group-body');
+                    const isOpen = group.classList.toggle('group-open');
+                    header.setAttribute('aria-expanded', String(isOpen));
+                    body.style.display = isOpen ? 'block' : 'none';
+                };
+                header.addEventListener('click', (e) => {
+                    // Ne pas toggle si on clique sur un bouton enfant
+                    if (e.target.closest('.level-select-all-btn')) return;
+                    toggleGroup();
+                });
+                header.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleGroup(); }
+                });
+            });
+
+            // ── Compteurs par groupe ──
+            function updateGroupCounter(tech) {
+                const group = container.querySelector(`.hybrid-tech-group[data-tech-group="${tech}"]`);
+                if (!group) return;
+                const checked = group.querySelectorAll('.block-toggle-hybrid:checked').length;
+                const el = document.getElementById(`hybrid-checked-${tech}`);
+                if (el) el.textContent = checked;
+            }
+
+            function updateGlobalCounter() {
+                const total = container.querySelectorAll('.block-toggle-hybrid:checked').length;
+                const el = document.getElementById('hybrid-global-counter');
+                if (el) el.textContent = `${total} bloc${total > 1 ? 's' : ''} sélectionné${total > 1 ? 's' : ''}`;
+            }
+
+            // ── Checkboxes hybrides ──
             container.querySelectorAll('.block-toggle-hybrid').forEach(cb => {
                 cb.addEventListener('change', () => {
                     const item = cb.closest('.block-item-hybrid');
-                    if (item) {
-                        item.classList.toggle('checked', cb.checked);
-                    }
+                    if (item) item.classList.toggle('checked', cb.checked);
                     // Désactiver les presets fixes car sélection manuelle
                     document.querySelectorAll('.preset-btn-hybrid').forEach(b => b.classList.remove('active'));
                     document.querySelectorAll('.hybrid-pack-card').forEach(c => c.classList.remove('active'));
                     const customPreset = document.querySelector('.preset-btn-hybrid[data-preset-hybrid="pack-custom"]');
                     if (customPreset) customPreset.classList.add('active');
-
+                    updateGroupCounter(cb.getAttribute('data-tech'));
+                    updateGlobalCounter();
                     updateHybridStudioSyllabus();
                 });
             });
 
-            // Attacher les écouteurs "Tout cocher" par techno
+            // ── Boutons "Tout cocher/décocher" par techno ──
             container.querySelectorAll('.hybrid-tech-select-all-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     const tech = btn.getAttribute('data-tech-toggle');
                     const group = container.querySelector(`.hybrid-tech-group[data-tech-group="${tech}"]`);
                     if (!group) return;
 
+                    // Ouvrir le groupe si fermé
+                    if (!group.classList.contains('group-open')) {
+                        const body = group.querySelector('.hybrid-group-body');
+                        group.classList.add('group-open');
+                        group.querySelector('.hybrid-group-accordion-header').setAttribute('aria-expanded', 'true');
+                        if (body) body.style.display = 'block';
+                    }
+
                     const cbs = group.querySelectorAll('.block-toggle-hybrid');
                     const allChecked = Array.from(cbs).every(cb => cb.checked);
-
                     cbs.forEach(cb => {
                         cb.checked = !allChecked;
                         const item = cb.closest('.block-item-hybrid');
-                        if (item) {
-                            item.classList.toggle('checked', !allChecked);
-                        }
+                        if (item) item.classList.toggle('checked', !allChecked);
                     });
-
                     document.querySelectorAll('.preset-btn-hybrid').forEach(b => b.classList.remove('active'));
                     document.querySelectorAll('.hybrid-pack-card').forEach(c => c.classList.remove('active'));
-                    btn.textContent = allChecked ? "Tout cocher" : "Tout décocher";
+                    btn.textContent = allChecked ? 'Tout cocher' : 'Tout décocher';
+                    updateGroupCounter(tech);
+                    updateGlobalCounter();
                     updateHybridStudioSyllabus();
                 });
             });
+
+            // ── Bouton Réinitialiser global ──
+            const resetBtn = document.getElementById('hybrid-reset-all-btn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    container.querySelectorAll('.block-toggle-hybrid').forEach(cb => {
+                        cb.checked = false;
+                        const item = cb.closest('.block-item-hybrid');
+                        if (item) item.classList.remove('checked');
+                    });
+                    // Réactiver le filtre "Toutes"
+                    document.querySelectorAll('.hybrid-tech-tab').forEach(t => t.classList.remove('active'));
+                    const allTab = document.querySelector('.hybrid-tech-tab[data-tech-filter="all"]');
+                    if (allTab) allTab.classList.add('active');
+                    container.querySelectorAll('.block-item-hybrid').forEach(b => b.style.display = '');
+                    // Vider la recherche
+                    const searchInput = document.getElementById('hybrid-block-search');
+                    if (searchInput) searchInput.value = '';
+                    const clearBtn = document.getElementById('hybrid-search-clear');
+                    if (clearBtn) clearBtn.style.display = 'none';
+                    ['powerbi','excel','sql','unix','copilot'].forEach(t => updateGroupCounter(t));
+                    updateGlobalCounter();
+                    updateHybridStudioSyllabus();
+                });
+            }
+
+            // ── Recherche de blocs ──
+            const searchInput = document.getElementById('hybrid-block-search');
+            const clearBtn = document.getElementById('hybrid-search-clear');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    const q = searchInput.value.trim().toLowerCase();
+                    if (clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
+
+                    container.querySelectorAll('.block-item-hybrid').forEach(item => {
+                        const name = item.getAttribute('data-block-name') || '';
+                        const match = !q || name.includes(q);
+                        item.style.display = match ? '' : 'none';
+                    });
+
+                    // Ouvrir les groupes qui ont des résultats visibles
+                    if (q) {
+                        container.querySelectorAll('.hybrid-tech-group').forEach(group => {
+                            const hasVisible = Array.from(group.querySelectorAll('.block-item-hybrid')).some(b => b.style.display !== 'none');
+                            const body = group.querySelector('.hybrid-group-body');
+                            if (hasVisible && !group.classList.contains('group-open')) {
+                                group.classList.add('group-open');
+                                group.querySelector('.hybrid-group-accordion-header').setAttribute('aria-expanded', 'true');
+                                if (body) body.style.display = 'block';
+                            } else if (!hasVisible && group.classList.contains('group-open')) {
+                                group.classList.remove('group-open');
+                                group.querySelector('.hybrid-group-accordion-header').setAttribute('aria-expanded', 'false');
+                                if (body) body.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            }
+            if (clearBtn) {
+                clearBtn.style.display = 'none';
+                clearBtn.addEventListener('click', () => {
+                    if (searchInput) searchInput.value = '';
+                    clearBtn.style.display = 'none';
+                    container.querySelectorAll('.block-item-hybrid').forEach(b => b.style.display = '');
+                    searchInput.dispatchEvent(new Event('input'));
+                });
+            }
+
+            // Compteurs initiaux
+            ['powerbi','excel','sql','unix','copilot'].forEach(t => updateGroupCounter(t));
+            updateGlobalCounter();
         }
 
         // Moteur de calcul et mise à jour du syllabus Hybride en direct
@@ -8548,11 +8692,11 @@
         const exportHybridBtn = document.getElementById('btn-export-hybrid-program');
         if (exportHybridBtn) {
             exportHybridBtn.addEventListener('click', () => {
-                const selectedBlocks = Array.from(document.querySelectorAll('.hybrid-block-toggle:checked')).map(cb => {
-                    const item = cb.closest('.hybrid-block-item');
+                const selectedBlocks = Array.from(document.querySelectorAll('.block-toggle-hybrid:checked')).map(cb => {
+                    const item = cb.closest('.block-item-hybrid');
                     const blockTitle = item.querySelector('.block-title') ? item.querySelector('.block-title').textContent : ('Bloc ' + cb.value);
                     const blockDuration = item.querySelector('.block-duration') ? item.querySelector('.block-duration').textContent : '~3h30';
-                    const blockBadge = item.querySelector('.hybrid-tech-tag') ? item.querySelector('.hybrid-tech-tag').textContent : 'Hybride';
+                    const blockBadge = item.querySelector('.block-badge') ? item.querySelector('.block-badge').textContent : 'Hybride';
                     const blockDesc = item.querySelector('.block-desc') ? item.querySelector('.block-desc').textContent : '';
 
                     return {

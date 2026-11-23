@@ -1645,6 +1645,173 @@ nav {
     margin: 0;
 }
 
+/* En-tête blocs hybrides & actions globales */
+.hybrid-blocks-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.hybrid-blocks-global-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hybrid-global-counter {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-sage);
+    background: var(--color-magician-light, rgba(212, 175, 55, 0.12));
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.hybrid-reset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #64748B;
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hybrid-reset-btn:hover {
+    color: #DC2626;
+    border-color: #F87171;
+    background: #FEF2F2;
+}
+
+/* Barre de recherche dans les blocs hybrides */
+.hybrid-search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 12px 0 16px 0;
+}
+
+.hybrid-search-icon {
+    position: absolute;
+    left: 12px;
+    color: #94A3B8;
+    font-size: 0.88rem;
+    pointer-events: none;
+}
+
+.hybrid-search-input {
+    width: 100%;
+    padding: 9px 36px 9px 36px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    color: var(--color-sage);
+    transition: var(--transition);
+}
+
+.hybrid-search-input:focus {
+    border-color: var(--color-magician);
+    background: #FFFFFF;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.hybrid-search-clear {
+    position: absolute;
+    right: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: #E2E8F0;
+    color: #64748B;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.72rem;
+    transition: var(--transition);
+}
+
+.hybrid-search-clear:hover {
+    background: #CBD5E1;
+    color: #1E293B;
+}
+
+/* Onglets de filtrage technologie */
+.hybrid-tech-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.hybrid-tech-tab {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-body);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hybrid-tech-tab:hover {
+    border-color: var(--color-magician);
+    color: var(--color-sage);
+}
+
+.hybrid-tech-tab.active {
+    background: var(--color-sage);
+    color: #FFFFFF;
+    border-color: var(--color-sage);
+    box-shadow: 0 2px 6px rgba(27, 42, 74, 0.18);
+}
+
+/* Accordéon par technologie */
+.hybrid-group-accordion-header {
+    cursor: pointer;
+    user-select: none;
+    transition: var(--transition);
+}
+
+.hybrid-group-accordion-header:hover {
+    background-color: rgba(212, 175, 55, 0.08);
+}
+
+.hybrid-group-chevron {
+    font-size: 0.75rem;
+    color: var(--color-magician);
+    transition: transform 0.2s ease;
+    margin-right: 4px;
+}
+
+.hybrid-tech-group.group-open .hybrid-group-chevron {
+    transform: rotate(90deg);
+}
+
+.hybrid-group-counter {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+}
+
 .studio-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
